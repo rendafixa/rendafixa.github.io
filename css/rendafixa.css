@@ -1,0 +1,16 @@
+body {
+    padding-top: 70px;
+}
+
+#results span.net {
+    font-weight: bold;
+}
+
+#results div.result {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#results div.result p {
+    margin: 0;
+}

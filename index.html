@@ -1,1 +1,145 @@
-It works!
+
+<!DOCTYPE html>
+<html lang="en" ng-app="RendaFixaApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora Renda Fixa</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/rendafixa.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/1.6.0/math.min.js"></script>
+</head>
+<body role="document">
+    <div class="container" role="main">
+        <div class="content">
+            <div ng-controller="CalculatorController">
+    <h1>Simulador de Investimentos</h1>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="amount">Valor da aplicação</label>
+            <div class="input-group">
+                <div class="input-group-addon">R$</div>
+                <input type="text" class="form-control" id="amount" ng-model="amount" ng-change="calculate()" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="period">Período</label>
+            <div class="input-group">
+                <input type="text " class="form-control" id="period" ng-model="period" ng-change="calculate()" />
+                <div class="input-group-addon">dias</div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <label for="selic">SELIC</label>
+            <div class="input-group">
+                <input type="text" class="form-control tax-mask" id="selic" ng-model="selic" ng-change="calculate()" />
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cdi">CDI</label>
+            <div class="input-group">
+                <input type="text" class="form-control tax-mask" id="cdi" ng-model="cdi" ng-change="calculate()" />
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <label for="cdb">CDB/LC</label>
+            <div class="input-group">
+                <input type="text" class="form-control tax-mask" id="cdb" ng-model="cdbTax" ng-change="calculate()" />
+                <div class="input-group-addon">% do CDI</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lci">LCA/LCI</label>
+            <div class="input-group">
+                <input type="text" class="form-control tax-mask" id="lci" ng-model="lcxTax" ng-change="calculate()" />
+                <div class="input-group-addon">% do CDI</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8" id="results">
+        <div class="result">
+            <h4>Poupança</h4>
+            <div class="col-md-6 row">
+                <p>Líquido: <span class="net">R$ {{poupanca.net}}</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.poupanca}}%; min-width: 2em;">{{percent.poupanca}}%</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p>Juros: R$ {{poupanca.interest}}</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="result">
+            <h4>CDB/LC</h4>
+            <div class="col-md-6 row">
+                <p>Líquido: <span class="net">R$ {{cdb.net}}</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.cdb}}%; min-width: 2em;">{{percent.cdb}}%</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p>Juros: R$ {{cdb.interest}}</p>
+                <p>Bruto: R$ {{cdb.gross}}</p>
+                <p>IRPF: R$ {{cdb.irpf.amount}} <span class="badge">{{cdb.irpf.branch}}%</span></p>
+                <p>IOF: R$ {{cdb.iof}}</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="result">
+            <h4>LCA/LCI</h4>
+            <div class="col-md-6 row">
+                <p>Líquido: <span class="net">R$ {{lcx.net}}</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.lcx}}%; min-width: 2em;">{{percent.lcx}}%</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p>Juros: R$ {{lcx.interest}}</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="result">
+            <h4>Tesouro SELIC</h4>
+            <div class="col-md-6 row">
+                <p>Líquido: <span class="net">R$ {{tesouroselic.net}}</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.tesouroselic}}%; min-width: 2em;">{{percent.tesouroselic}}%</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p>Juros: R$ {{tesouroselic.interest}}</p>
+                <p>Bruto: R$ {{tesouroselic.gross}}</p>
+                <p>IRPF: R$ {{tesouroselic.irpf.amount}} <span class="badge">{{tesouroselic.irpf.branch}}%</span></p>
+                <p>IOF: R$ {{tesouroselic.iof}}</p>
+                <p>CBLC: R$ {{tesouroselic.cblc}}</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/calculadora.js"></script>
+</body>
+</html>
