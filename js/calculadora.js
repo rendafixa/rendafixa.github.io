@@ -1,12 +1,24 @@
 var RendaFixaApp = angular.module('RendaFixaApp', []);
 
 RendaFixaApp.controller('CalculatorController', function ($scope, $http) {
+    var selicCentralBankService = 'http://www3.bcb.gov.br/selic/consulta/taxaSelic.do?method=listarTaxaDiaria';
+    var selicXpath = "//table[@class='tabelaTaxaSelic']/tbody/tr[last()]/td[2]";
+    var selicQuery = 'select * from html where url=\'' + selicCentralBankService + '\' and xpath="' + selicXpath + '"';
+    var yqlSelicTaxUrl = 'http://query.yahooapis.com/v1/public/yql?q=' + fixedEncodeURIComponent(selicQuery) + '&format=json&callback=JSON_CALLBACK';
+
+    $http.jsonp(yqlSelicTaxUrl).success(function (json) {
+        if (json.query.results.td) {
+            var selicValue = json.query.results.td;
+            $scope.selic = selicValue.replace(',', '.');
+            $scope.calculate();
+        }
+    });
 
     $http.get('taxes.json').success(function (data) {
-        $scope.selic = data.selic;
+        if ($scope.selic === undefined) {
+            $scope.selic = data.selic;
+        }
         $scope.cdi = data.cdi;
-
-        $scope.calculate();
     });
 
     $scope.cdbTax = 83;
@@ -22,6 +34,10 @@ RendaFixaApp.controller('CalculatorController', function ($scope, $http) {
         $scope.percent = AbstractType.calculatePercent($scope);
     };
 });
+
+var fixedEncodeURIComponent = function (str) {
+    return encodeURIComponent(str).replace(/[!'()]/g, escape).replace(/\*/g, "%2A").replace(/\"/g, "%22");
+};
 
 /**
  * @TODO do not allow negative amount on any type
