@@ -46,6 +46,11 @@ var fixedEncodeURIComponent = function (str) {
 
 var PoupancaType = {
     calculate: function (amount, period) {
+        // Poupanca is compounded monthly
+        if (period < 30) {
+            return {'net': amount, 'interest': 0};
+        }
+
         var months = AbstractType.getPeriodInMonths(period);
         var net = math.round(math.pow(1.005, months) * amount, 2);
 
@@ -128,11 +133,7 @@ var AbstractType = {
     },
 
     calculateIof: function (amount, period) {
-        if (period <= 0 || period >= 30) {
-            return 0;
-        }
-
-        if (amount == 0) {
+        if (period == 0 || period >= 30 || amount == 0) {
             return 0;
         }
 
