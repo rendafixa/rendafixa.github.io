@@ -14,3 +14,8 @@ body {
 #results div.result p {
     margin: 0;
 }
+
+p.advert {
+    color: red;
+    font-weight: bold;
+}
