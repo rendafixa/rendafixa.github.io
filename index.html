@@ -86,13 +86,13 @@
         <div class="result">
             <h4>Poupança</h4>
             <div class="col-md-6 row">
-                <p>Líquido: <span class="net">R$ {{poupanca.net}}</span></p>
+                <p>Líquido: <span class="net">{{poupanca.net|currency}}</span></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.poupanca}}%; min-width: 2em;">{{percent.poupanca}}%</div>
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.poupanca}}%; min-width: 2em;">{{percent.poupanca|number:2}}%</div>
                 </div>
             </div>
             <div class="col-md-6">
-                <p>Juros: R$ {{poupanca.interest}}</p>
+                <p>Juros: {{poupanca.interest|currency}}</p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -100,16 +100,16 @@
         <div class="result">
             <h4>CDB/LC</h4>
             <div class="col-md-6 row">
-                <p>Líquido: <span class="net">R$ {{cdb.net}}</span></p>
+                <p>Líquido: <span class="net">{{cdb.net|currency}}</span></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.cdb}}%; min-width: 2em;">{{percent.cdb}}%</div>
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.cdb}}%; min-width: 2em;">{{percent.cdb|number:2}}%</div>
                 </div>
             </div>
             <div class="col-md-6">
-                <p>Juros: R$ {{cdb.interest}}</p>
-                <p>Bruto: R$ {{cdb.gross}}</p>
-                <p>IRPF: R$ {{cdb.irpf.amount}} <span class="badge">{{cdb.irpf.branch}}%</span></p>
-                <p>IOF: R$ {{cdb.iof}}</p>
+                <p>Juros: {{cdb.interest|currency}}</p>
+                <p>Bruto: {{cdb.gross|currency}}</p>
+                <p>IRPF: {{cdb.irpf.amount|currency}} <span class="badge">{{cdb.irpf.branch|number:2}}%</span></p>
+                <p>IOF: {{cdb.iof|currency}}</p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -117,13 +117,13 @@
         <div class="result">
             <h4>LCA/LCI</h4>
             <div class="col-md-6 row">
-                <p>Líquido: <span class="net">R$ {{lcx.net}}</span></p>
+                <p>Líquido: <span class="net">{{lcx.net|currency}}</span></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.lcx}}%; min-width: 2em;">{{percent.lcx}}%</div>
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.lcx}}%; min-width: 2em;">{{percent.lcx|number:2}}%</div>
                 </div>
             </div>
             <div class="col-md-6">
-                <p>Juros: R$ {{lcx.interest}}</p>
+                <p>Juros: {{lcx.interest|currency}}</p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -131,17 +131,17 @@
         <div class="result">
             <h4>Tesouro SELIC</h4>
             <div class="col-md-6 row">
-                <p>Líquido: <span class="net">R$ {{tesouroselic.net}}</span></p>
+                <p>Líquido: <span class="net">{{tesouroselic.net|currency}}</span></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.tesouroselic}}%; min-width: 2em;">{{percent.tesouroselic}}%</div>
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent.tesouroselic}}%; min-width: 2em;">{{percent.tesouroselic|number:2}}%</div>
                 </div>
             </div>
             <div class="col-md-6">
-                <p>Juros: R$ {{tesouroselic.interest}}</p>
-                <p>Bruto: R$ {{tesouroselic.gross}}</p>
-                <p>IRPF: R$ {{tesouroselic.irpf.amount}} <span class="badge">{{tesouroselic.irpf.branch}}%</span></p>
-                <p>IOF: R$ {{tesouroselic.iof}}</p>
-                <p>CBLC: R$ {{tesouroselic.cblc}}</p>
+                <p>Juros: {{tesouroselic.interest|currency}}</p>
+                <p>Bruto: {{tesouroselic.gross|currency}}</p>
+                <p>IRPF: {{tesouroselic.irpf.amount|currency}} <span class="badge">{{tesouroselic.irpf.branch|number:2}}%</span></p>
+                <p>IOF: {{tesouroselic.iof|currency}}</p>
+                <p>CBLC: {{tesouroselic.cblc|currency}}</p>
             </div>
             <div class="clearfix"></div>
         </div>
