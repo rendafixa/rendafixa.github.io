@@ -127,8 +127,9 @@ var TesouroSelicType = {
     },
 
     calculateCblc: function (amount, period) {
-        var semesters = math.ceil(period / 180);
-        return amount * ((this.cblc / 100) / 2) * semesters;
+        var tax = AbstractType.calculateDailyTax(this.cblc);
+        var gross = AbstractType.calculateFutureValue(amount, tax, period);
+        return (gross - amount);
     }
 };
 
