@@ -63,10 +63,9 @@ var PoupancaType = {
 
 var CDBType = {
     calculate: function (cdi, amount, period, percent) {
-        var months = AbstractType.getPeriodInMonths(period);
-        var tax = math.pow((((cdi * (percent / 100)) / 100) + 1), (1 / 12));
+        var tax = AbstractType.calculateDailyTax(cdi, percent);
+        var gross = AbstractType.calculateFutureValue(amount, tax, period);
 
-        var gross = math.round(math.pow(tax, months) * amount, 2);
         var iof = AbstractType.calculateIof(gross - amount, period);
         var irpf = AbstractType.calculateIrpf(gross - amount, period);
         var net = math.round(gross - iof - irpf.amount, 2);
@@ -83,9 +82,13 @@ var CDBType = {
 
 var LCxType = {
     calculate: function (cdi, amount, period, percent) {
-        var months = AbstractType.getPeriodInMonths(period);
-        var rate = math.pow((((cdi * (percent / 100)) / 100) + 1), (1 / 12));
-        var net = math.round(math.pow(rate, months) * amount, 2);
+        // Shorter LCx can't be issued by law
+        if (period < 60) {
+            return {'net': amount, 'interest': 0};
+        }
+
+        var tax = AbstractType.calculateDailyTax(cdi, percent);
+        var net = AbstractType.calculateFutureValue(amount, tax, period);
 
         return {
             'net': net,
@@ -98,10 +101,8 @@ var TesouroSelicType = {
     cblc: 0.3,
 
     calculate: function (selic, amount, period) {
-        var months = AbstractType.getPeriodInMonths(period);
-        var tax = math.pow(((selic / 100) + 1), (1 / 12));
-
-        var gross = math.round(math.pow(tax, months) * amount, 2);
+        var tax = AbstractType.calculateDailyTax(selic);
+        var gross = AbstractType.calculateFutureValue(amount, tax, period);
         var iof = AbstractType.calculateIof(gross - amount, period);
         var irpf = AbstractType.calculateIrpf(gross - amount, period);
         var cblc = this.calculateCblc(amount, period);
@@ -174,6 +175,18 @@ var AbstractType = {
             'poupanca': math.round(scope.poupanca.interest / max, 2),
             'tesouroselic': math.round(scope.tesouroselic.interest / max, 2)
         };
-    }
+    },
+
+    calculateFutureValue: function (amount, tax, period)
+    {
+        // Base 252 = 252/360
+        var days = math.floor(period * 0.7);
+        return math.round(math.pow(tax, days) * amount, 2);
+    },
+
+    calculateDailyTax: function (yearlyTax, percent = 100)
+    {
+        return math.pow((((yearlyTax * (percent / 100)) / 100) + 1), (1 / 252));
+    },
 
 }
