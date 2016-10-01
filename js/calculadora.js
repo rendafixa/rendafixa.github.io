@@ -51,13 +51,21 @@ var PoupancaType = {
             return {'net': amount, 'interest': 0};
         }
 
-        var months = AbstractType.getPeriodInMonths(period);
+        var months = this.getPeriodInMonths(period);
         var net = math.round(math.pow(1.005, months) * amount, 2);
 
         return {
             'net': net,
             'interest': math.round(net - amount, 2)
         };
+    },
+
+    getPeriodInMonths: function (period) {
+        if (period < 0) {
+            return 0;
+        }
+
+        return math.floor(period / 30);
     }
 };
 
@@ -104,8 +112,8 @@ var TesouroSelicType = {
         var tax = AbstractType.calculateDailyTax(selic);
         var gross = AbstractType.calculateFutureValue(amount, tax, period);
         var iof = AbstractType.calculateIof(gross - amount, period);
-        var irpf = AbstractType.calculateIrpf(gross - amount, period);
         var cblc = this.calculateCblc(amount, period);
+        var irpf = AbstractType.calculateIrpf(gross - amount - cblc, period);
         var net = math.round(gross - iof - irpf.amount - cblc, 2);
 
         return {
@@ -125,14 +133,6 @@ var TesouroSelicType = {
 };
 
 var AbstractType = {
-    getPeriodInMonths: function (period) {
-        if (period < 0) {
-            return 0;
-        }
-
-        return math.floor(period / 30);
-    },
-
     calculateIof: function (amount, period) {
         if (period == 0 || period >= 30 || amount == 0) {
             return 0;
@@ -181,6 +181,7 @@ var AbstractType = {
     {
         // Base 252 = 252/360
         var days = math.floor(period * 0.7);
+        console.log(amount, tax, period, days);
         return math.round(math.pow(tax, days) * amount, 2);
     },
 
