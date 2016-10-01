@@ -4,7 +4,7 @@ RendaFixaApp.controller('CalculatorController', function ($scope, $http) {
     var selicCentralBankService = 'http://www3.bcb.gov.br/selic/consulta/taxaSelic.do?method=listarTaxaDiaria';
     var selicXpath = "//table[@class='tabelaTaxaSelic']/tbody/tr[last()]/td[2]";
     var selicQuery = 'select * from html where url=\'' + selicCentralBankService + '\' and xpath="' + selicXpath + '"';
-    var yqlSelicTaxUrl = 'http://query.yahooapis.com/v1/public/yql?q=' + fixedEncodeURIComponent(selicQuery) + '&format=json&callback=JSON_CALLBACK';
+    var yqlSelicTaxUrl = '//query.yahooapis.com/v1/public/yql?q=' + fixedEncodeURIComponent(selicQuery) + '&format=json&callback=JSON_CALLBACK';
 
     $http.jsonp(yqlSelicTaxUrl).success(function (json) {
         if (json.query.results.td) {
