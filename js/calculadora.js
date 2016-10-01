@@ -75,7 +75,7 @@ var CDBType = {
         var gross = AbstractType.calculateFutureValue(amount, tax, period);
 
         var iof = AbstractType.calculateIof(gross - amount, period);
-        var irpf = AbstractType.calculateIrpf(gross - amount, period);
+        var irpf = AbstractType.calculateIrpf(gross - amount - iof, period);
         var net = math.round(gross - iof - irpf.amount, 2);
 
         return {
@@ -113,7 +113,7 @@ var TesouroSelicType = {
         var gross = AbstractType.calculateFutureValue(amount, tax, period);
         var iof = AbstractType.calculateIof(gross - amount, period);
         var cblc = this.calculateCblc(amount, period);
-        var irpf = AbstractType.calculateIrpf(gross - amount - cblc, period);
+        var irpf = AbstractType.calculateIrpf(gross - amount - cblc - iof, period);
         var net = math.round(gross - iof - irpf.amount - cblc, 2);
 
         return {
@@ -181,8 +181,7 @@ var AbstractType = {
     calculateFutureValue: function (amount, tax, period)
     {
         // Base 252 = 252/360
-        var days = math.floor(period * 0.7);
-        console.log(amount, tax, period, days);
+        var days = (period < 5 ? period : math.floor(period * 0.7));
         return math.round(math.pow(tax, days) * amount, 2);
     },
 
