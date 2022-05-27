@@ -55,7 +55,7 @@ export default {
   components: true,
 
   generate: {
-    dir: 'dist'
+    dir: 'dist',
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
