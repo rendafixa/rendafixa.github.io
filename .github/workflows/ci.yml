@@ -39,3 +39,11 @@ jobs:
 
       - name: Deploy 😎
         run: npm run generate
+
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          commit_message: ${{ github.event.head_commit.message }}
