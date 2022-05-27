@@ -14,14 +14,33 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Calculadora Renda Fixa para simulação de investimentos CDB, LCI, LCA e Tesouro Direto' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Calculadora Renda Fixa para simulação de investimentos CDB, LCI, LCA e Tesouro Direto',
+      },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
       { rel: 'manifest', href: '/site.webmanifest' },
     ],
   },
@@ -36,7 +55,7 @@ export default {
   components: true,
 
   generate: {
-    dir: 'docs'
+    dir: 'docs',
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
