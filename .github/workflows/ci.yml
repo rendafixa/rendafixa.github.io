@@ -1,5 +1,4 @@
 name: Build and Deploy
-
 on:
   push:
     branches:
@@ -7,39 +6,26 @@ on:
   pull_request:
     branches:
       - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
       - name: Setup node env 🏗
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           check-latest: true
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
+          cache: 'npm'
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
-
       - name: Run linter 👀
         run: npm run lint
-
       - name: Run tests 🧪
         run: npm run test
-
       - name: Deploy 😎
         run: npm run generate
-
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/master'
