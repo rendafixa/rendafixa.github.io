@@ -29,6 +29,9 @@
 </template>
 <script>
 export default {
-  name: 'AboutPage'
+  name: 'AboutPage',
+  head: {
+    title: 'Sobre'
+  }
 }
 </script>

@@ -1,30 +1,23 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <RendaFixaLogo />
-      <!-- <v-card class="logo py-4 d-flex justify-center">
-        <RendaFixaLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Some headline
-        </v-card-title>
-        <v-card-text>
-          Here you are
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/sobre"> Continue </v-btn>
-        </v-card-actions>
-      </v-card> -->
+  <v-row>
+    <v-col cols="6">
+      <InvestmentInput />
+    </v-col>
+    <v-col cols="6">
+      <InvestmentSimulation />
     </v-col>
   </v-row>
 </template>
 
 <script>
-import RendaFixaLogo from '~/components/RendaFixaLogo.vue'
+import InvestmentInput from '~/components/InvestmentInput.vue'
+import InvestmentSimulation from '~/components/InvestmentSimulation.vue'
 export default {
   name: 'IndexPage',
-  components: { RendaFixaLogo }
+  components: { InvestmentInput, InvestmentSimulation },
+  head: {
+    title: 'Calculadora Renda Fixa',
+    titleTemplate: null
+  }
 }
 </script>

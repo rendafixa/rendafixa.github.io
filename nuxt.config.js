@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - Calculadora Renda Fixa',
-    title: 'Calculadora Renda Fixa',
+    titleTemplate: '%s | Calculadora Renda Fixa',
+    title: 'A page needs a title',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -18,7 +18,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Calculadora Renda Fixa para simulação de investimentos CDB, LCI, LCA e Tesouro Direto'
+          'Calculadora Renda Fixa para simulação de investimentos CDB, RDB, LC, LCI, LCA e Tesouro Direto'
       },
       { name: 'format-detection', content: 'telephone=no' }
     ],
