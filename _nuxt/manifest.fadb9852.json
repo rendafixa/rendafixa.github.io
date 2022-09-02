@@ -1,9 +1,0 @@
-{
-  "name": "calculadora-renda-fixa",
-  "short_name": "calculadora-renda-fixa",
-  "icons": [],
-  "start_url": "/?standalone=true",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "lang": "pt-br"
-}
