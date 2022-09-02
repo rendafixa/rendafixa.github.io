@@ -6,7 +6,11 @@
       aplicação:
     </p>
     <InvestmentResult name="Poupança" amount="86.40" />
-    <InvestmentResult name="CDB / RDB" amount="123.45" before-tax-amount="156.89" />
+    <InvestmentResult
+      name="CDB / RDB"
+      amount="123.45"
+      before-tax-amount="156.89"
+    />
   </div>
 </template>
 <script>
