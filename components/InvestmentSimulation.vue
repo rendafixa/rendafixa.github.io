@@ -5,12 +5,24 @@
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
-    <InvestmentResult name="Poupança" amount="86.40" />
+    <InvestmentResult
+      name="LCI / LCA"
+      amount="123.45"
+      before-tax-amount="156.89"
+    />
     <InvestmentResult
       name="CDB / RDB"
       amount="123.45"
       before-tax-amount="156.89"
+      tax-amount="33.41"
+      tax-percentage="20"
     />
+    <InvestmentResult
+      name="Tesouro Selic"
+      amount="123.45"
+      before-tax-amount="156.89"
+    />
+    <InvestmentResult name="Poupança" amount="86.40" />
   </div>
 </template>
 <script>
