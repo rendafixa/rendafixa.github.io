@@ -3,9 +3,13 @@
     <v-card-title>{{ name }}</v-card-title>
     <v-card-text>
       <div v-if="!!beforeTaxAmount">Valor Bruto: R$ {{ beforeTaxAmount }}</div>
-      <div v-if="!!taxAmount">Imposto de Renda: R$ {{ taxAmount }}</div>
-      <div v-if="!!taxPercentage">Imposto de Renda: {{ taxPercentage }}%</div>
-      <div>Valor Líquido: R$ {{ amount }}</div>
+      <div v-if="!!taxAmount">
+        Imposto de Renda: R$ {{ taxAmount.toFixed(2) }}
+      </div>
+      <div v-if="!!taxPercentage">
+        Imposto de Renda: {{ taxPercentage.toFixed(2) }}%
+      </div>
+      <div>Valor Líquido: R$ {{ amount.toFixed(2) }}</div>
     </v-card-text>
   </v-card>
 </template>
@@ -13,9 +17,9 @@
 export default {
   props: {
     name: {
-      type: Text,
+      type: String,
       required: true,
-      validator: (value) => !!value
+      validator: (content) => !!content
     },
     amount: {
       type: Number,
@@ -23,10 +27,10 @@ export default {
       validator: (value) => parseInt(value) > 0
     },
     beforeTaxAmount: {
-      type: Number,
+      type: String,
       required: false,
-      default: null,
-      validator: (value) => parseInt(value) > 0
+      default: null
+      // validator: (value: Number) => parseInt(value) > 0
     },
     taxAmount: {
       type: Number,

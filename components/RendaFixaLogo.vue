@@ -11,16 +11,14 @@
 export default {
   props: {
     width: {
-      type: Number,
+      type: String,
       required: false,
-      default: 64,
-      validator: (value) => parseInt(value) > 0
+      default: '64'
     },
     height: {
-      type: Number,
+      type: String,
       required: false,
-      default: 64,
-      validator: (value) => parseInt(value) > 0
+      default: '64'
     }
   }
 }

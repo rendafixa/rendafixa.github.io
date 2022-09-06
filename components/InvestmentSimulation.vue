@@ -7,25 +7,25 @@
     </p>
     <InvestmentResult
       name="LCI / LCA"
-      amount="123.45"
+      :amount="amount"
       before-tax-amount="156.89"
     />
     <InvestmentResult
       name="CDB / RDB"
-      amount="123.45"
-      before-tax-amount="156.89"
-      tax-amount="33.41"
-      tax-percentage="20"
+      :amount="resultCDB.interestAmount"
+      :tax-amount="resultCDB.taxAmount"
+      :tax-percentage="resultCDB.taxPercentage"
     />
     <InvestmentResult
       name="Tesouro Selic"
-      amount="123.45"
-      before-tax-amount="156.89"
+      :amount="amount"
+      before-tax-amount="158.89"
     />
-    <InvestmentResult name="Poupança" amount="86.40" />
+    <InvestmentResult name="Poupança" :amount="amount" />
   </div>
 </template>
 <script>
+import * as finance from '../finance.js'
 import InvestmentResult from './InvestmentResult.vue'
 export default {
   components: { InvestmentResult },
@@ -39,9 +39,13 @@ export default {
       lcx: 100,
       rules: {
         required: (value) => !!value || 'Obrigatório',
-        positive: (value) =>
-          parseInt(value) > 0 || 'Deve ser um número positivo'
+        positive: (value) => value > 0 || 'Deve ser um número positivo'
       }
+    }
+  },
+  computed: {
+    resultCDB() {
+      return finance.getCDBResult(this.amount, this.di, this.cdb, this.duration)
     }
   }
 }
