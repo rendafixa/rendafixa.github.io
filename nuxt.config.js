@@ -20,6 +20,21 @@ export default {
         content:
           'Calculadora Renda Fixa para simulação de investimentos CDB, RDB, LC, LCI, LCA e Tesouro Direto'
       },
+      {
+        hid: 'apple-mobile-web-app-title',
+        name: 'apple-mobile-web-app-title',
+        content: 'Renda Fixa'
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Renda Fixa'
+      },
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        content: 'Calculadora Renda Fixa'
+      },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
