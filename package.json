@@ -13,7 +13,7 @@
     "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix && npm run lint:style -- --fix",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --cache",
