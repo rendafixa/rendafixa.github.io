@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup node env 🏗
         uses: actions/setup-node@v3
         with:
@@ -33,6 +35,8 @@ jobs:
           args: >
             -Dsonar.organization=rendafixa
             -Dsonar.projectKey=rendafixa_rendafixa.github.io
+            -Dsonar.test.inclusions='test/**/*.spec.js'
+            -Dsonar.exclusions='/test/**/*.spec.js'
       - name: Deploy 😎
         run: npm run generate
       - name: Publish
