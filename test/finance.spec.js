@@ -16,3 +16,15 @@ describe('getIndexIR', () => {
     expect(finance.getIndexIR(periods)).toBe(result)
   })
 })
+
+describe('getCompoundInterest', () => {
+  test('calculate correctly', () => {
+    const amount = 1_000
+    const periods = 12
+    const index = 1.01
+    expect(finance.compoundInterest(amount, index, 1)).toBe(10)
+    expect(finance.compoundInterest(amount, index, periods)).toBe(
+      126.8250301319697
+    )
+  })
+})
