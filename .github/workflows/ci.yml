@@ -26,7 +26,7 @@ jobs:
         run: npm run lint
       - name: Run tests 🧪
         run: npm run test
-      - name: SonarCloud Scan
+      - name: SonarCloud Scan 👾
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,7 +37,7 @@ jobs:
             -Dsonar.projectKey=rendafixa_rendafixa.github.io
       - name: Deploy 😎
         run: npm run generate
-      - name: Publish
+      - name: Publish 🍻
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/master'
         with:
