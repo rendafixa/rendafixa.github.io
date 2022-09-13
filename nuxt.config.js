@@ -76,9 +76,7 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
-    // https://google-analytics.nuxtjs.org/setup
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/vuetify'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -88,7 +86,9 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://sitemap.nuxtjs.org
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    // https://github.com/nuxt-community/google-gtag-module
+    '@nuxtjs/google-gtag'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -126,8 +126,9 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
-  googleAnalytics: {
-    id: 'G-J2PEL1FQS8'
+  'google-gtag': {
+    id: 'G-J2PEL1FQS8',
+    debug: true
   },
 
   sitemap: {
