@@ -5,7 +5,7 @@
       <v-col cols="12" sm="6">
         <v-card>
           <v-img src="/images/help-wanted.jpg" max-height="100"></v-img>
-          <v-card-title>Você é um desenvolvedor frontend?</v-card-title>
+          <v-card-title>Você é um desenvolvedor?</v-card-title>
           <v-card-subtitle>Tens experiência com Vue.js?</v-card-subtitle>
           <v-card-text
             >Precisamos de um desenvolvedor frontend, que possa aplicar sua
