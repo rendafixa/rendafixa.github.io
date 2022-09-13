@@ -128,7 +128,7 @@ export default {
 
   'google-gtag': {
     id: 'G-J2PEL1FQS8',
-    debug: true
+    debug: false
   },
 
   sitemap: {

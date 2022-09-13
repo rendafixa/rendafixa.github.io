@@ -4,7 +4,7 @@
     <v-row class="pb-4">
       <v-col cols="12" sm="6">
         <v-card>
-          <v-img src="images/help-wanted.jpg" max-height="100"></v-img>
+          <v-img src="/images/help-wanted.jpg" max-height="100"></v-img>
           <v-card-title>Você é um desenvolvedor frontend?</v-card-title>
           <v-card-subtitle>Tens experiência com Vue.js?</v-card-subtitle>
           <v-card-text
@@ -34,7 +34,7 @@
       </v-col>
       <v-col cols="12" sm="6">
         <v-card>
-          <v-img src="images/laptop-ide-code.jpg" max-height="100"></v-img>
+          <v-img src="/images/laptop-ide-code.jpg" max-height="100"></v-img>
           <v-card-title>Como tudo começou?</v-card-title>
           <v-card-subtitle
             >Era uma vez um artesão de software que quis fazer sua própria

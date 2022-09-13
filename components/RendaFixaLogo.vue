@@ -1,7 +1,7 @@
 <template>
   <NuxtLink to="/">
     <img
-      src="images/budget.svg"
+      src="/images/budget.svg"
       alt="Calculadora Renda Fixa"
       title="Calculadora Renda Fixa"
       :width="width"
