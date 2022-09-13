@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s | Calculadora Renda Fixa',
-    title: 'A page needs a title',
+    titleTemplate: '%s | Renda Fixa',
+    title: 'Calculadora',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -86,7 +86,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    // https://sitemap.nuxtjs.org
+    '@nuxtjs/sitemap'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -126,5 +128,9 @@ export default {
 
   googleAnalytics: {
     id: 'G-J2PEL1FQS8'
+  },
+
+  sitemap: {
+    hostname: 'https://rendafixa.github.io'
   }
 }

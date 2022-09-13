@@ -1,11 +1,13 @@
 <template>
-  <img
-    src="images/budget.svg"
-    alt="Calculadora Renda Fixa"
-    title="Calculadora Renda Fixa"
-    :width="width"
-    :height="height"
-  />
+  <NuxtLink to="/">
+    <img
+      src="images/budget.svg"
+      alt="Calculadora Renda Fixa"
+      title="Calculadora Renda Fixa"
+      :width="width"
+      :height="height"
+    />
+  </NuxtLink>
 </template>
 <script>
 export default {

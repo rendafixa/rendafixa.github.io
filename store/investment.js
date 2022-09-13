@@ -24,9 +24,9 @@ axios
 export const state = {
   amount: 1000,
   duration: 12,
-  di: 11.23,
-  selic: 12.34,
+  di: 0.01,
+  selic: 0.01,
   cdb: 105,
   lcx: 100,
-  poupanca: 0.68
+  poupanca: 0.01
 }

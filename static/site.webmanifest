@@ -1,6 +1,7 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Calculadora Renda Fixa",
+  "short_name": "Renda Fixa",
+  "description": "Calculadora Renda Fixa para CDB/RDB/Tesouro Selic/LCI/LCA/Poupança",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

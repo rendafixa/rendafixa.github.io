@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="2">
-    <v-card-title class="text-h6">Detalhes do Investimento</v-card-title>
+    <v-card-title class="text-h6">Investimento</v-card-title>
     <v-card-text>
       <v-form @submit.prevent="submit">
         <v-text-field

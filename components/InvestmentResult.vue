@@ -2,12 +2,12 @@
   <v-card elevation="2" class="mb-2">
     <v-card-title>{{ name }}</v-card-title>
     <v-card-text>
-      <div v-if="!!amount">Valor Investido: R$ {{ amount.toFixed(2) }}</div>
+      <div v-if="!!amount">Valor Investido: {{ amount | currency }}</div>
       <div v-if="!!interestAmount">
-        Valor Bruto: R$ {{ interestAmount.toFixed(2) }}
+        Valor Bruto: {{ interestAmount | currency }}
       </div>
       <div v-if="!!taxAmount">
-        Impostos: R$ {{ taxAmount.toFixed(2) }}
+        Impostos: {{ taxAmount | currency }}
         <v-badge
           v-if="!!taxPercentage"
           :content="taxPercentage | percent"
@@ -15,7 +15,13 @@
           color="red lighten-2"
         />
       </div>
-      <div>Valor Total Líquido: R$ {{ totalAmount.toFixed(2) }}</div>
+      <div>Valor Total Líquido: {{ totalAmount | currency }}</div>
+      <v-progress-linear
+        v-model="totalProfitPercentage"
+        :color="color"
+        height="25"
+        >{{ totalProfitPercentage | percent }}</v-progress-linear
+      >
     </v-card-text>
   </v-card>
 </template>
@@ -23,7 +29,18 @@
 export default {
   filters: {
     percent(amount) {
-      return amount + '%'
+      return amount.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%'
+    },
+    number(amount) {
+      return amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
+    },
+    currency(amount) {
+      return amount.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        currencyDisplay: 'symbol',
+        minimumFractionDigits: 2
+      })
     }
   },
   props: {
@@ -53,11 +70,22 @@ export default {
       required: false,
       default: null,
       validator: (value) => parseInt(value) > 0
+    },
+    color: {
+      type: String,
+      required: false,
+      default: 'amber'
     }
   },
   computed: {
+    totalProfit() {
+      return this.interestAmount - this.taxAmount
+    },
     totalAmount() {
-      return this.amount + this.interestAmount - this.taxAmount
+      return this.amount + this.totalProfit
+    },
+    totalProfitPercentage() {
+      return (this.totalProfit / this.amount) * 100
     }
   }
 }
