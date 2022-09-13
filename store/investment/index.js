@@ -13,8 +13,10 @@ axios
     state.selic = response.data.conteudo[0].MetaSelic
   })
 
-  axios
-  .get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json')
+axios
+  .get(
+    'https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json'
+  )
   .then(function (response) {
     state.poupanca = parseFloat(response.data[0].valor)
   })

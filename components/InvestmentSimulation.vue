@@ -40,7 +40,11 @@ export default {
       )
     },
     resultPoupanca() {
-      return getPoupancaResult(this.investment.amount,this.investment.poupanca, this.investment.duration)
+      return getPoupancaResult(
+        this.investment.amount,
+        this.investment.poupanca,
+        this.investment.duration
+      )
     }
   }
 }
