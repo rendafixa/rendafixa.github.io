@@ -4,10 +4,7 @@
     <v-row class="pb-4">
       <v-col cols="12" sm="6">
         <v-card>
-          <v-img
-            src="images/help-wanted.jpg"
-            max-height="100"
-          ></v-img>
+          <v-img src="images/help-wanted.jpg" max-height="100"></v-img>
           <v-card-title>Você é um desenvolvedor frontend?</v-card-title>
           <v-card-subtitle>Tens experiência com Vue.js?</v-card-subtitle>
           <v-card-text
