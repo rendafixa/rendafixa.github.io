@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Simulação do Investimento</h2>
+    <h2 class="text-h6">Simulação do Investimento</h2>
     <p class="grey--text">
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:

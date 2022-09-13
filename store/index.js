@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as investment from './investment/index'
+import * as investment from './investment'
 
 Vue.use(Vuex)
 

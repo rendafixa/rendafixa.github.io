@@ -8,7 +8,7 @@
       </div>
       <div v-if="!!taxAmount">
         Impostos: R$ {{ taxAmount.toFixed(2) }}
-        <span v-if="!!taxPercentage">{{ taxPercentage.toFixed(2) }}%</span>
+        <v-badge v-if="!!taxPercentage" :content="taxPercentage | percent" class="pl-1" color="red lighten-2" />
       </div>
       <div>Valor Total Líquido: R$ {{ totalAmount.toFixed(2) }}</div>
     </v-card-text>
@@ -16,6 +16,11 @@
 </template>
 <script>
 export default {
+  filters: {
+    percent (amount) {
+      return amount + '%'
+    }
+  },
   props: {
     name: {
       type: String,
