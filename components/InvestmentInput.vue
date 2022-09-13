@@ -4,7 +4,7 @@
     <v-card-text>
       <v-form @submit.prevent="submit">
         <v-text-field
-          v-model="amount"
+          v-model="investment.amount"
           type="number"
           label="Valor da Aplicação"
           prepend-icon="mdi-cash-multiple"
@@ -15,7 +15,7 @@
         >
         </v-text-field>
         <v-text-field
-          v-model="duration"
+          v-model="investment.duration"
           type="number"
           label="Vencimento"
           prepend-icon="mdi-calendar"
@@ -25,7 +25,7 @@
         >
         </v-text-field>
         <v-text-field
-          v-model="di"
+          v-model="investment.di"
           type="number"
           label="Taxa DI"
           prepend-icon="mdi-finance"
@@ -35,7 +35,7 @@
         >
         </v-text-field>
         <v-text-field
-          v-model="selic"
+          v-model="investment.selic"
           type="number"
           label="Taxa SELIC"
           prepend-icon="mdi-finance"
@@ -45,7 +45,7 @@
         >
         </v-text-field>
         <v-text-field
-          v-model="cdb"
+          v-model="investment.cdb"
           type="number"
           label="CDB/RDB/LC"
           prepend-icon="mdi-finance"
@@ -55,7 +55,7 @@
         >
         </v-text-field>
         <v-text-field
-          v-model="lcx"
+          v-model="investment.lcx"
           type="number"
           label="LCI/LCA"
           prepend-icon="mdi-finance"
@@ -71,12 +71,7 @@
 export default {
   data() {
     return {
-      amount: 1000,
-      duration: 12,
-      di: 13.65,
-      selic: 13.65,
-      cdb: 105,
-      lcx: 100,
+      investment: this.$store.state.investment,
       rules: {
         required: (value) => !!value || 'Obrigatório',
         positive: (value) =>

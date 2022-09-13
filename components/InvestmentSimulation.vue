@@ -7,12 +7,12 @@
     </p>
     <InvestmentResult
       name="Poupança"
-      :amount="amount"
+      :amount="investment.amount"
       :interest-amount="resultPoupanca.interestAmount"
     />
     <InvestmentResult
       name="CDB / RDB"
-      :amount="amount"
+      :amount="investment.amount"
       :interest-amount="resultCDB.interestAmount"
       :tax-amount="resultCDB.taxAmount"
       :tax-percentage="resultCDB.taxPercentage"
@@ -27,24 +27,20 @@ export default {
   components: { InvestmentResult },
   data() {
     return {
-      amount: 1000,
-      duration: 12,
-      di: 13.65,
-      selic: 13.65,
-      cdb: 105,
-      lcx: 100,
-      rules: {
-        required: (value) => !!value || 'Obrigatório',
-        positive: (value) => value > 0 || 'Deve ser um número positivo'
-      }
+      investment: this.$store.state.investment
     }
   },
   computed: {
     resultCDB() {
-      return getCDBResult(this.amount, this.di, this.cdb, this.duration)
+      return getCDBResult(
+        this.investment.amount,
+        this.investment.di,
+        this.investment.cdb,
+        this.investment.duration
+      )
     },
     resultPoupanca() {
-      return getPoupancaResult(this.amount, this.duration)
+      return getPoupancaResult(this.investment.amount,this.investment.poupanca, this.investment.duration)
     }
   }
 }

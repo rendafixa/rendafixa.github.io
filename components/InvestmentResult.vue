@@ -8,7 +8,7 @@
       </div>
       <div v-if="!!taxAmount">
         Impostos: R$ {{ taxAmount.toFixed(2) }}
-        <span v-if="!!txPercentage">{{ taxPercentage.toFixed(2) }}%</span>
+        <span v-if="!!taxPercentage">{{ taxPercentage.toFixed(2) }}%</span>
       </div>
       <div>Valor Total Líquido: R$ {{ totalAmount.toFixed(2) }}</div>
     </v-card-text>
