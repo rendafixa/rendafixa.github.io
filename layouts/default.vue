@@ -2,7 +2,9 @@
   <v-app>
     <v-app-bar app>
       <RendaFixaLogo width="54" height="54" />
-      <v-app-bar-title shrink-on-scroll class="pl-2 text-no-wrap"
+      <v-app-bar-title
+        shrink-on-scroll
+        class="pl-2 text-no-wrap d-none d-sm-flex"
         >Calculadora Renda Fixa</v-app-bar-title
       >
       <v-spacer />

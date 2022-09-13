@@ -6,6 +6,7 @@
       title="Calculadora Renda Fixa"
       :width="width"
       :height="height"
+      class="pa-1"
     />
   </NuxtLink>
 </template>
