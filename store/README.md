@@ -1,10 +1,9 @@
-# STORE
+# Calculadora Renda Fixa
+[![Website](https://img.shields.io/website?down_message=offline&label=rendafixa.github.io&up_message=online&url=https%3A%2F%2Frendafixa.github.io)](https://rendafixa.github.io)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rendafixa_rendafixa.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rendafixa_rendafixa.github.io)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=rendafixa_rendafixa.github.io&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=rendafixa_rendafixa.github.io)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=rendafixa_rendafixa.github.io&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=rendafixa_rendafixa.github.io)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rendafixa_rendafixa.github.io&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=rendafixa_rendafixa.github.io)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=rendafixa_rendafixa.github.io&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=rendafixa_rendafixa.github.io)
 
-**This directory is not required, you can delete it if you don't want to use it.**
-
-This directory contains your Vuex Store files.
-Vuex Store option is implemented in the Nuxt.js framework.
-
-Creating a file in this directory automatically activates the option in the framework.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/vuex-store).
+Simule seus investimentos CDB/RDB, LCI/LCA, Poupança e Tesouro Selic.
