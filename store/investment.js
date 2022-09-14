@@ -1,32 +1,48 @@
-import axios from 'axios'
-
-axios
-  .get('https://www2.cetip.com.br/ConsultarTaxaDi/ConsultarTaxaDICetip.aspx')
-  .then(function (response) {
-    const index = response.data.taxa
-    state.di = parseFloat(index.replace(/[.]/g, '').replace(',', '.'))
-  })
-
-axios
-  .get('https://www.bcb.gov.br/api/servico/sitebcb/historicotaxasjuros')
-  .then(function (response) {
-    state.selic = response.data.conteudo[0].MetaSelic
-  })
-
-axios
-  .get(
-    'https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json'
-  )
-  .then(function (response) {
-    state.poupanca = parseFloat(response.data[0].valor)
-  })
-
-export const state = {
-  amount: 1000,
-  duration: 12,
-  di: 0.01,
-  selic: 0.01,
+export const state = () => ({
+  amount: 10000,
   cdb: 105,
+  di: null,
+  duration: 12,
   lcx: 100,
-  poupanca: 0.01
+  poupanca: null,
+  selic: null
+})
+
+export const mutations = {
+  setAmount(state, newAmount) {
+    state.amount = newAmount
+    localStorage.setItem('investment.amount', newAmount)
+  },
+  setCdb(state, newCdb) {
+    state.cdb = newCdb
+    localStorage.setItem('investment.cdb', newCdb)
+  },
+  setDuration(state, newDuration) {
+    state.duration = newDuration
+    localStorage.setItem('investment.duration', newDuration)
+  },
+  setDi(state, newDi) {
+    state.di = newDi
+    localStorage.setItem('investment.di', newDi)
+  },
+  setLcx(state, newLcx) {
+    state.lcx = newLcx
+    localStorage.setItem('investment.lcx', newLcx)
+  },
+  setSelic(state, newSelic) {
+    state.selic = newSelic
+    localStorage.setItem('investment.selic', newSelic)
+  },
+  setPoupanca(state, newPoupanca) {
+    state.poupanca = newPoupanca
+    localStorage.setItem('investment.poupanca', newPoupanca)
+  },
+  initializeStore(state) {
+    state.amount = parseInt(localStorage.getItem('investment.amount'))
+    state.cdb = parseInt(localStorage.getItem('investment.cdb'))
+    state.di = localStorage.getItem('investment.di')
+    state.lcx = localStorage.getItem('investment.lcx')
+    state.selic = localStorage.getItem('investment.selic')
+    state.poupanca = localStorage.getItem('investment.poupanca')
+  }
 }
