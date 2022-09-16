@@ -66,8 +66,8 @@ export default {
     },
     amount: {
       type: Number,
-      required: true
-      // validator: (value) => parseInt(value) > 0
+      required: true,
+      validator: (value) => parseFloat(value) > 0
     },
     interestAmount: {
       type: Number,
