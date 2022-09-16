@@ -43,7 +43,8 @@ export const mutations = {
     localStorage.setItem('investment.poupanca', newPoupanca)
   },
   initializeStore(state) {
-    state.amount = parseFloat(localStorage.getItem('investment.amount')) || defaultAmount
+    state.amount =
+      parseFloat(localStorage.getItem('investment.amount')) || defaultAmount
     state.cdb = localStorage.getItem('investment.cdb') || defaultCdb
     state.duration =
       localStorage.getItem('investment.duration') || defaultDuration
