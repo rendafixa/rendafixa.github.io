@@ -53,3 +53,41 @@ export const mutations = {
     state.poupanca = localStorage.getItem('investment.poupanca')
   }
 }
+
+export const actions = {
+  fetchPoupanca(store) {
+    return fetch(
+      'https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json'
+    ).then((res) =>
+      res.json().then(function (response) {
+        const poupanca = parseFloat(response[0].valor)
+        store.commit('setPoupanca', poupanca)
+        return store.state.poupanca
+      })
+    )
+  },
+  fetchDi(store) {
+    return fetch(
+      'https://www2.cetip.com.br/ConsultarTaxaDi/ConsultarTaxaDICetip.aspx'
+    ).then((res) =>
+      res.json().then(function (response) {
+        const cdi = parseFloat(
+          response.taxa.replace(/[.]/g, '').replace(',', '.')
+        )
+        store.commit('setDi', cdi)
+        return store.state.cdi
+      })
+    )
+  },
+  fetchSelic(store) {
+    return fetch(
+      'https://www.bcb.gov.br/api/servico/sitebcb/historicotaxasjuros'
+    ).then((res) =>
+      res.json().then(function (response) {
+        const selic = response.conteudo[0].MetaSelic
+        store.commit('setSelic', selic)
+        return store.state.selic
+      })
+    )
+  }
+}
