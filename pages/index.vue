@@ -15,13 +15,6 @@ import InvestmentSimulation from '~/components/InvestmentSimulation.vue'
 export default {
   name: 'IndexPage',
   components: { InvestmentInput, InvestmentSimulation },
-  data() {
-    return {
-      cdiFetch: null,
-      selicFetch: null,
-      poupancaFetch: null
-    }
-  },
   fetch() {
     this.$store.commit('investment/initializeStore')
     this.$store.dispatch('investment/fetchPoupanca')
