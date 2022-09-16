@@ -1,9 +1,14 @@
+const defaultAmount = 1000
+const defaultCdb = 100
+const defaultDuration = 12
+const defaultLcx = 100
+
 export const state = () => ({
-  amount: 10000,
-  cdb: 105,
+  amount: defaultAmount,
+  cdb: defaultCdb,
   di: null,
-  duration: 12,
-  lcx: 100,
+  duration: defaultDuration,
+  lcx: defaultLcx,
   poupanca: null,
   selic: null
 })
@@ -38,10 +43,12 @@ export const mutations = {
     localStorage.setItem('investment.poupanca', newPoupanca)
   },
   initializeStore(state) {
-    state.amount = parseInt(localStorage.getItem('investment.amount'))
-    state.cdb = parseInt(localStorage.getItem('investment.cdb'))
+    state.amount = localStorage.getItem('investment.amount') || defaultAmount
+    state.cdb = localStorage.getItem('investment.cdb') || defaultCdb
+    state.duration =
+      localStorage.getItem('investment.duration') || defaultDuration
     state.di = localStorage.getItem('investment.di')
-    state.lcx = localStorage.getItem('investment.lcx')
+    state.lcx = localStorage.getItem('investment.lcx') || defaultLcx
     state.selic = localStorage.getItem('investment.selic')
     state.poupanca = localStorage.getItem('investment.poupanca')
   }
