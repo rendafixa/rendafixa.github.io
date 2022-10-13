@@ -85,8 +85,6 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://sitemap.nuxtjs.org
-    '@nuxtjs/sitemap',
     // https://github.com/nuxt-community/google-gtag-module
     '@nuxtjs/google-gtag'
   ],
@@ -129,9 +127,5 @@ export default {
   'google-gtag': {
     id: 'G-J2PEL1FQS8',
     debug: false
-  },
-
-  sitemap: {
-    hostname: 'https://rendafixa.github.io'
   }
 }
