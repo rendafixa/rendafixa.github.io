@@ -1,11 +1,6 @@
 name: Build and Deploy
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+  pull_request
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -37,10 +32,3 @@ jobs:
             -Dsonar.projectKey=rendafixa_rendafixa.github.io
       - name: Deploy 😎
         run: npm run generate
-      - name: Publish 🍻
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/master'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          commit_message: ${{ github.event.head_commit.message }}

@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import indicadores from '../../assets/indicadores.json'
+import indicadores from 'assets/indicadores.json'
 
 export default {
   name: 'IndicadorPage',
