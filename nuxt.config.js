@@ -86,11 +86,12 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://github.com/nuxt-community/google-gtag-module
-    '@nuxtjs/google-gtag',
-    // https://github.com/mktcode/gh-pages-dynamic-nuxt-routes
-    // https://dev.to/mktcode/github-pages-with-dynamic-routes-dli
-    'gh-pages-dynamic-nuxt-routes'
+    '@nuxtjs/google-gtag'
   ],
+
+  router: {
+    middleware: 'gh-pages'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
