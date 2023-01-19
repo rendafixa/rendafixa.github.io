@@ -43,7 +43,7 @@ jobs:
       #            -Dsonar.organization=rendafixa
       #            -Dsonar.projectKey=rendafixa_rendafixa.github.io
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v3
         with:
           static_site_generator: nuxt
       - name: Restore cache
