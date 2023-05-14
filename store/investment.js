@@ -1,6 +1,12 @@
+export const DurationType = {
+  Days: 'Dias',
+  Months: 'Meses',
+  Years: 'Anos'
+}
 const defaultAmount = 1000
 const defaultCdb = 100
 const defaultDuration = 12
+const defaultDurationType = DurationType.Months
 const defaultLcx = 100
 
 export const state = () => ({
@@ -8,6 +14,8 @@ export const state = () => ({
   cdb: defaultCdb,
   di: null,
   duration: defaultDuration,
+  durationType: defaultDurationType,
+  durationTypeOptions: Object.values(DurationType),
   lcx: defaultLcx,
   poupanca: null,
   selic: null
@@ -25,6 +33,10 @@ export const mutations = {
   setDuration(state, newDuration) {
     state.duration = newDuration
     localStorage.setItem('investment.duration', newDuration)
+  },
+  setDurationType(state, newDurationType) {
+    state.durationType = newDurationType
+    localStorage.setItem('investment.durationType', newDurationType)
   },
   setDi(state, newDi) {
     state.di = newDi
@@ -48,6 +60,8 @@ export const mutations = {
     state.cdb = localStorage.getItem('investment.cdb') || defaultCdb
     state.duration =
       localStorage.getItem('investment.duration') || defaultDuration
+    state.durationType =
+      localStorage.getItem('investment.durationType') || defaultDurationType
     state.di = localStorage.getItem('investment.di')
     state.lcx = localStorage.getItem('investment.lcx') || defaultLcx
     state.selic = localStorage.getItem('investment.selic')

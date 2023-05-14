@@ -12,5 +12,5 @@ export function getPoupancaResult(amount, index, periods) {
 }
 
 function getIndexPoupanca(index) {
-  return index / 100 + 1
+  return Math.pow(index / 100 + 1, 1 / 30)
 }

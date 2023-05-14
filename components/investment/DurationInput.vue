@@ -4,7 +4,6 @@
     type="number"
     label="Vencimento"
     prepend-icon="mdi-calendar"
-    suffix="meses"
     min="1"
     :rules="[rules.required, rules.positive]"
   />

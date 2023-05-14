@@ -4,7 +4,10 @@
     <v-card-text>
       <v-form @submit.prevent="submit">
         <AmountInput />
-        <DurationInput />
+        <div class="duration-container">
+          <DurationInput />
+          <DurationTypeInput />
+        </div>
         <IndexDiInput />
         <IndexSelicInput />
         <IndexCdbInput />
@@ -15,6 +18,7 @@
 </template>
 <script>
 import AmountInput from './investment/AmountInput.vue'
+import DurationTypeInput from './investment/DurationTypeInput.vue'
 import DurationInput from './investment/DurationInput.vue'
 import IndexDiInput from './investment/IndexDiInput.vue'
 import IndexSelicInput from './investment/IndexSelicInput.vue'
@@ -23,6 +27,7 @@ import IndexLcxInput from './investment/IndexLcxInput.vue'
 export default {
   components: {
     AmountInput,
+    DurationTypeInput,
     DurationInput,
     IndexDiInput,
     IndexSelicInput,
@@ -31,3 +36,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.duration-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+</style>
