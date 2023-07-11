@@ -58,7 +58,7 @@ jobs:
       - name: Deploy 😎
         run: npm run generate
       - name: Publish 🍻
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
   deploy:
