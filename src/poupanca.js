@@ -4,11 +4,15 @@ export function getPoupancaResult(amount, index, periods) {
   const interestAmount = finance.compoundInterest(
     amount,
     getIndexPoupanca(index),
-    periods
+    calculateFullMonthsDays(periods)
   )
-  const taxAmount = 0
-  const taxPercentage = 0
-  return { interestAmount, taxAmount, taxPercentage }
+
+  return { interestAmount }
+}
+
+export function calculateFullMonthsDays(days) {
+  const daysInMonth = 30
+  return days < daysInMonth ? 0 : Math.floor(days / daysInMonth) * daysInMonth
 }
 
 function getIndexPoupanca(index) {
