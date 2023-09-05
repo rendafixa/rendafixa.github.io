@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
     app: {
         head: {
@@ -68,6 +69,8 @@ export default defineNuxtConfig({
       storage: 'localStorage'
     },
     vuetify: {
+      vuetifyOptions: {
+      },
         moduleOptions: {
             treeshaking: true,
             useIconCDN: true,
@@ -75,7 +78,7 @@ export default defineNuxtConfig({
             /* vite-plugin-vuetify options */
             styles: true,
             autoImport: true,
-            useVuetifyLabs: true
+            useVuetifyLabs: false
         }
     }
 })

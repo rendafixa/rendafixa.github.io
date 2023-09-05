@@ -1,40 +1,32 @@
 <template>
-  <div>
-    <v-skeleton-loader
-      :loading='loading'
-      type='card-heading, text@6'
-      class='mb-5'
-      tile
-      elevation='2'
-    >
-      <v-card elevation='2' class='mb-2'>
-        <v-card-title>{{ name }}</v-card-title>
-        <v-card-text>
-          <div v-if='!!amount'>Valor Investido: {{ amountDisplay }}</div>
-          <div v-if='!!interestAmount'>
-            Valor Bruto: {{ interestAmountDisplay }}
-          </div>
-          <div v-if='!!taxAmount'>
-            Impostos: {{ taxAmountDisplay }}
-            <v-badge
-              v-if='!!taxPercentage'
-              :content='taxPercentageDisplay'
-              class='pl-1'
-              color='red lighten-2'
-            />
-          </div>
-          <div>Valor Total Líquido: {{ totalAmountDisplay }}</div>
-          <v-progress-linear
-            v-model='totalProfitPercentage'
-            :color='color'
-            height='25'
-          >{{ totalProfitPercentageDisplay }}
-          </v-progress-linear
-          >
-        </v-card-text>
-      </v-card>
-    </v-skeleton-loader>
-  </div>
+  <Suspense>
+    <v-card elevation='2' class='mb-2'>
+      <v-card-title>{{ name }}</v-card-title>
+      <v-card-text>
+        <div v-if='!!amount'>Valor Investido: {{ amountDisplay }}</div>
+        <div v-if='!!interestAmount'>
+          Valor Bruto: {{ interestAmountDisplay }}
+        </div>
+        <div v-if='!!taxAmount'>
+          Impostos: {{ taxAmountDisplay }}
+          <v-badge
+            v-if='!!taxPercentage'
+            :content='taxPercentageDisplay'
+            class='pl-1'
+            color='red lighten-2'
+          />
+        </div>
+        <div>Valor Total Líquido: {{ totalAmountDisplay }}</div>
+        <v-progress-linear
+          v-model='totalProfitPercentage'
+          :color='color'
+          height='25'
+        >{{ totalProfitPercentageDisplay }}
+        </v-progress-linear
+        >
+      </v-card-text>
+    </v-card>
+  </Suspense>
 </template>
 
 <script setup lang='ts'>
