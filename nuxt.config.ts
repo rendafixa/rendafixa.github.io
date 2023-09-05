@@ -67,7 +67,6 @@ export default defineNuxtConfig({
     piniaPersistedstate: {
       storage: 'localStorage'
     },
-    ssr: true,
     vuetify: {
         moduleOptions: {
             treeshaking: true,

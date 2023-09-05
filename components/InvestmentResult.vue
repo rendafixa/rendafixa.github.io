@@ -1,0 +1,109 @@
+<template>
+  <div>
+    <v-skeleton-loader
+      :loading='loading'
+      type='card-heading, text@6'
+      class='mb-5'
+      tile
+      elevation='2'
+    >
+      <v-card elevation='2' class='mb-2'>
+        <v-card-title>{{ name }}</v-card-title>
+        <v-card-text>
+          <div v-if='!!amount'>Valor Investido: {{ amountDisplay }}</div>
+          <div v-if='!!interestAmount'>
+            Valor Bruto: {{ interestAmountDisplay }}
+          </div>
+          <div v-if='!!taxAmount'>
+            Impostos: {{ taxAmountDisplay }}
+            <v-badge
+              v-if='!!taxPercentage'
+              :content='taxPercentageDisplay'
+              class='pl-1'
+              color='red lighten-2'
+            />
+          </div>
+          <div>Valor Total Líquido: {{ totalAmountDisplay }}</div>
+          <v-progress-linear
+            v-model='totalProfitPercentage'
+            :color='color'
+            height='25'
+          >{{ totalProfitPercentageDisplay }}
+          </v-progress-linear
+          >
+        </v-card-text>
+      </v-card>
+    </v-skeleton-loader>
+  </div>
+</template>
+
+<script setup lang='ts'>
+import { computed } from 'vue'
+import { SymbolKind } from 'vscode-languageserver-types'
+import Boolean = SymbolKind.Boolean
+
+const defaultLocale = 'pt-BR'
+const filters = {
+  percent(amount: number) {
+    return amount.toLocaleString(defaultLocale, { maximumFractionDigits: 2 }) + '%'
+  },
+  number(amount: number) {
+    return amount.toLocaleString(defaultLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  },
+  currency(amount: number) {
+    return amount.toLocaleString(defaultLocale, {
+      style: 'currency',
+      currency: 'BRL',
+      currencyDisplay: 'symbol',
+      minimumFractionDigits: 2
+    })
+  }
+}
+
+const props = defineProps({
+  loading: Boolean,
+  name: {
+    type: String,
+    required: true,
+    validator: (content: string) => !!content
+  },
+  amount: {
+    type: Number,
+    required: true,
+    validator: (value: number) => parseFloat(value.toString()) > 0
+  },
+  interestAmount: {
+    type: Number,
+    required: true
+    // validator: (value: number) => parseInt(value.toString()) > 0,
+  },
+  taxAmount: {
+    type: Number,
+    required: false,
+    default: null
+    // validator: (value: number | null) => (value !== null ? parseInt(value.toString()) > 0 : true),
+  },
+  taxPercentage: {
+    type: Number,
+    required: false,
+    default: null,
+    validator: (value: number | null) => (value !== null ? parseInt(value.toString()) > 0 : true)
+  },
+  color: {
+    type: String,
+    required: false,
+    default: 'amber'
+  }
+})
+
+const totalProfit = computed(() => props.interestAmount - (props.taxAmount ?? 0))
+const totalAmount = computed(() => props.amount + totalProfit.value)
+const totalProfitPercentage = computed(() => (totalProfit.value / props.amount) * 100)
+
+const taxPercentageDisplay = computed(() => filters.percent(props.taxPercentage))
+const taxAmountDisplay = computed(() => filters.currency(props.taxAmount))
+const amountDisplay = computed(() => filters.currency(props.amount))
+const totalAmountDisplay = computed(() => filters.currency(totalAmount.value))
+const interestAmountDisplay = computed(() => filters.currency(props.interestAmount))
+const totalProfitPercentageDisplay = computed(() => filters.number(totalProfitPercentage.value))
+</script>
