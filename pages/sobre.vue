@@ -98,11 +98,11 @@
     </v-card>
   </div>
 </template>
-<script>
-export default {
-  name: 'AboutPage',
-  head: {
-    title: 'Sobre'
-  }
-}
+<script setup lang="ts">
+useHead({
+  title: 'Sobre',
+  meta: [
+    { name: 'description', content: 'Saiba mais como o projeto Calculadora Renda Fixa começou e quem são os desenvolvedores' }
+  ],
+})
 </script>

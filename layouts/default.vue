@@ -1,33 +1,43 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <RendaFixaLogo width="54" height="54" />
+      <NuxtLink to="/">
+        <img
+            src="/images/budget.svg"
+            alt="Calculadora Renda Fixa"
+            title="Calculadora Renda Fixa"
+            class="pa-1"
+            width="64"
+            height="64"
+        />
+      </NuxtLink>
       <v-app-bar-title
-        shrink-on-scroll
-        class="pl-2 text-no-wrap d-none d-sm-flex"
-        >Calculadora Renda Fixa</v-app-bar-title
+          shrink-on-scroll
+          class="pl-2 text-no-wrap d-none d-sm-flex"
+      >Calculadora Renda Fixa
+      </v-app-bar-title
       >
-      <v-spacer />
-      <NavigationBar />
+      <v-spacer/>
+      <NavigationBar/>
     </v-app-bar>
     <v-main>
       <v-container fluid>
-        <Nuxt keep-alive />
+        <slot/>
       </v-container>
     </v-main>
   </v-app>
 </template>
-
-<script>
-import RendaFixaLogo from '~/components/RendaFixaLogo.vue'
-import NavigationBar from '~/components/NavigationBar.vue'
-export default {
-  name: 'DefaultLayout',
-  components: { RendaFixaLogo, NavigationBar },
-  data() {
-    return {
-      title: ''
-    }
-  }
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s;
 }
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+</style>
+<script setup lang="ts">
 </script>

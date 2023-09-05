@@ -1,68 +1,19 @@
 {
-  "name": "calculadora-renda-fixa",
-  "version": "1.0.0",
+  "name": "nuxt-app",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
-    "lint:prettier": "prettier --check .",
-    "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
-    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix && npm run lint:style -- --fix",
-    "prepare": "husky install",
-    "test": "jest --coverage"
-  },
-  "lint-staged": {
-    "*.{js,ts,vue}": "eslint --cache",
-    "*.{css,scss,sass,html,vue}": "stylelint",
-    "*.**": "prettier --check --ignore-unknown"
-  },
-  "dependencies": {
-    "@coders-tm/vue-number-format": "^3.1.3",
-    "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/google-analytics": "^2.4.0",
-    "@nuxtjs/google-gtag": "^1.0.4",
-    "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/sitemap": "^2.4.0",
-    "core-js": "^3.19.3",
-    "gh-pages-dynamic-nuxt-routes": "^1.0.0",
-    "nuxt": "^2.15.8",
-    "vue": "^2.6.14",
-    "vue-gtag": "^1.16.1",
-    "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
-    "vuetify": "^2.6.11",
-    "webpack": "^4.46.0"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.16.3",
-    "@nuxt/types": "^2.15.8",
-    "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/eslint-config-typescript": "^8.0.0",
-    "@nuxtjs/eslint-module": "^3.0.2",
-    "@nuxtjs/stylelint-module": "^4.1.0",
-    "@nuxtjs/vuetify": "^1.12.3",
-    "@vue/runtime-dom": "latest",
-    "@vue/test-utils": "^1.3.0",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^27.4.4",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-nuxt": "^3.1.0",
-    "eslint-plugin-vue": "^8.2.0",
-    "husky": "^7.0.4",
-    "jest": "^27.4.4",
-    "lint-staged": "^13.0.3",
-    "postcss-html": "^1.3.0",
-    "prettier": "^2.5.1",
-    "stylelint": "^14.16.1",
-    "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended-vue": "^1.4.0",
-    "stylelint-config-standard": "^29.0.0",
-    "ts-jest": "^27.1.1",
-    "vue-jest": "^3.0.4"
+    "@invictus.codes/nuxt-vuetify": "^0.3.0",
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.7.1"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11"
   }
 }
