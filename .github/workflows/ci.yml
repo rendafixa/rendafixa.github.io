@@ -5,29 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup node env 🏗
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           check-latest: true
-          cache: 'npm'
+          cache: 'yarn'
       - name: Install dependencies 👨🏻‍💻
-        run: npm ci --prefer-offline --no-audit
-      - name: Run linter 👀
-        run: npm run lint
-      #      - name: Run tests 🧪
-      #        run: npm run test
-      #      - name: SonarCloud Scan 👾
-      #        uses: SonarSource/sonarcloud-github-action@master
-      #        env:
-      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #        with:
-      #          args: >
-      #            -Dsonar.organization=rendafixa
-      #            -Dsonar.projectKey=rendafixa_rendafixa.github.io
+        run: yarn install --immutable --immutable-cache --check-cache
       - name: Deploy 😎
-        run: npm run generate
+        run: yarn generate
