@@ -60,9 +60,13 @@ export default defineNuxtConfig({
     },
     modules: [
         '@invictus.codes/nuxt-vuetify',
-        '@pinia/nuxt'
+        '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt'
     ],
     devtools: {enabled: true},
+    piniaPersistedstate: {
+      storage: 'localStorage'
+    },
     ssr: true,
     vuetify: {
         moduleOptions: {
