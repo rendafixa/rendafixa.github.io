@@ -1,13 +1,13 @@
-export function compoundInterest(amount, index, periods) {
-  return amount * Math.pow(index, periods) - amount
+export function compoundInterest(amount, index, days) {
+  return amount * Math.pow(index, days) - amount
 }
 
-export function getIndexIR(periods) {
-  if (periods <= 6) {
+export function getIndexIR(days) {
+  if (days <= 180) {
     return 22.5
-  } else if (periods <= 12) {
+  } else if (days <= 360) {
     return 20
-  } else if (periods <= 24) {
+  } else if (days <= 720) {
     return 17.5
   } else {
     return 15

@@ -32,11 +32,17 @@ import InvestmentResult from './InvestmentResult.vue'
 import { getCDBResult } from '~/src/cdb'
 import { getLcxResult } from '~/src/lcx'
 import { getPoupancaResult } from '~/src/poupanca'
+import { DurationType } from '~/store/investment'
 export default {
   components: { InvestmentResult },
   data() {
     return {
-      investment: this.$store.state.investment
+      investment: this.$store.state.investment,
+      periodMultiplier: {
+        [DurationType.Days]: 1,
+        [DurationType.Months]: 365 / 12,
+        [DurationType.Years]: 365
+      }
     }
   },
   computed: {
@@ -45,7 +51,7 @@ export default {
         this.investment.amount,
         this.investment.di,
         this.investment.cdb,
-        this.investment.duration
+        this.getDurationInDays()
       )
     },
     resultLcx() {
@@ -53,14 +59,22 @@ export default {
         this.investment.amount,
         this.investment.di,
         this.investment.lcx,
-        this.investment.duration
+        this.getDurationInDays()
       )
     },
     resultPoupanca() {
       return getPoupancaResult(
         this.investment.amount,
         this.investment.poupanca,
-        this.investment.duration
+        this.getDurationInDays()
+      )
+    }
+  },
+  methods: {
+    getDurationInDays() {
+      return Math.floor(
+        this.investment.duration *
+          this.periodMultiplier[this.investment.durationType]
       )
     }
   }

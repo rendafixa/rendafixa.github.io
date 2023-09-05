@@ -11,5 +11,5 @@ export function getLcxResult(amount, di, yearlyIndex, periods) {
 
 function getIndexLcx(yearlyInterest, di) {
   const index = yearlyInterest / 100
-  return Math.pow((index * di) / 100 + 1, 1 / 12)
+  return Math.pow((index * di) / 100 + 1, 1 / 365)
 }
