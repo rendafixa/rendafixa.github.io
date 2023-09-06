@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class='text-h6'>Simulação</h2>
-    <p class='grey--text'>
+    <p class='font-weight-light'>
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
