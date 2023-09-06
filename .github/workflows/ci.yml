@@ -16,5 +16,7 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies 👨🏻‍💻
         run: yarn install --immutable --immutable-cache --check-cache
+      - name: Tests 🧑‍🔬
+        run: yarn test
       - name: Deploy 😎
         run: yarn generate

@@ -6,13 +6,18 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest"
   },
   "devDependencies": {
     "@invictus.codes/nuxt-vuetify": "^0.3.0",
     "@nuxt/devtools": "latest",
+    "@nuxt/test-utils": "^3.7.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
-    "nuxt": "^3.7.1"
+    "@vitejs/plugin-vue": "^4.3.4",
+    "jsdom": "^22.1.0",
+    "nuxt": "^3.7.1",
+    "vitest": "^0.34.3"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11"
