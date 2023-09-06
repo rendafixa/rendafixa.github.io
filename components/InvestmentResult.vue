@@ -10,9 +10,9 @@
         <div v-if='!!taxAmount'>
           Impostos: {{ taxAmountDisplay }}
           <v-badge
+            inline
             v-if='!!taxPercentage'
             :content='taxPercentageDisplay'
-            class='pl-1'
             color='red lighten-2'
           />
         </div>
