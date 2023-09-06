@@ -69,10 +69,8 @@
   </div>
 </template>
 <script setup lang="ts">
-useHead({
+useSeoMeta({
   title: 'Sobre',
-  meta: [
-    { name: 'description', content: 'Saiba mais como o projeto Calculadora Renda Fixa começou e quem são os desenvolvedores' }
-  ],
+  description: 'Saiba mais como o projeto Calculadora Renda Fixa começou e quem são os desenvolvedores',
 })
 </script>

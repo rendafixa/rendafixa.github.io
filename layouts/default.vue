@@ -22,7 +22,8 @@
     </v-app-bar>
     <v-main>
       <v-container fluid>
-        <slot/>
+        <SeoKit />
+        <NuxtPage />
       </v-container>
     </v-main>
   </v-app>

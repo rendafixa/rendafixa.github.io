@@ -9,15 +9,8 @@ export default defineNuxtConfig({
             },
             title: 'Calculadora',
             meta: [
-                {charset: 'utf-8'},
-                {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content:
-                        'Calculadora de investimentos Renda Fixa para simulação de ' +
-                        'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto'
-                },
+                { charset: 'utf-8' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 {
                     hid: 'apple-mobile-web-app-title',
                     name: 'apple-mobile-web-app-title',
@@ -33,10 +26,10 @@ export default defineNuxtConfig({
                     name: 'og:site_name',
                     content: 'Calculadora Renda Fixa'
                 },
-                {name: 'format-detection', content: 'telephone=no'}
+                { name: 'format-detection', content: 'telephone=no' }
             ],
             link: [
-                {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
                 {
                     rel: 'apple-touch-icon',
                     sizes: '180x180',
@@ -54,7 +47,7 @@ export default defineNuxtConfig({
                     sizes: '16x16',
                     href: '/favicon-16x16.png'
                 },
-                {rel: 'manifest', href: '/site.webmanifest'}
+                { rel: 'manifest', href: '/site.webmanifest' }
             ]
         },
         pageTransition: { name: 'page', mode: 'out-in' }
@@ -64,13 +57,25 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@pinia-plugin-persistedstate/nuxt'
     ],
-    devtools: {enabled: true},
+    extends: [
+        'nuxt-seo-kit'
+    ],
+    runtimeConfig: {
+        public: {
+          siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://rendafixa.github.io',
+          siteName: 'Calculadora Renda Fixa',
+          siteDescription: 'Calculadora de investimentos Renda Fixa para simulação de ' +
+          'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
+          language: 'pt'
+        }
+      },
+    devtools: { enabled: true },
     piniaPersistedstate: {
-      storage: 'localStorage'
+        storage: 'localStorage'
     },
     vuetify: {
-      vuetifyOptions: {
-      },
+        vuetifyOptions: {
+        },
         moduleOptions: {
             treeshaking: true,
             useIconCDN: true,
