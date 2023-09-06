@@ -67,13 +67,11 @@ const props = defineProps({
   interestAmount: {
     type: Number,
     required: true
-    // validator: (value: number) => parseInt(value.toString()) > 0,
   },
   taxAmount: {
     type: Number,
     required: false,
     default: null
-    // validator: (value: number | null) => (value !== null ? parseInt(value.toString()) > 0 : true),
   },
   taxPercentage: {
     type: Number,
@@ -97,5 +95,5 @@ const taxAmountDisplay = computed(() => filters.currency(props.taxAmount))
 const amountDisplay = computed(() => filters.currency(props.amount))
 const totalAmountDisplay = computed(() => filters.currency(totalAmount.value))
 const interestAmountDisplay = computed(() => filters.currency(props.interestAmount))
-const totalProfitPercentageDisplay = computed(() => filters.number(totalProfitPercentage.value))
+const totalProfitPercentageDisplay = computed(() => filters.percent(totalProfitPercentage.value))
 </script>
