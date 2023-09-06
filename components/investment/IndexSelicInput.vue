@@ -2,6 +2,7 @@
   <v-text-field
     v-model.number="selic"
     type="number"
+    variant="underlined"
     label="Taxa SELIC"
     prepend-icon="mdi-finance"
     suffix="% ao ano"

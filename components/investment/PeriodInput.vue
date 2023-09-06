@@ -2,6 +2,7 @@
   <v-text-field
     v-model.number="period"
     type="number"
+    variant="underlined"
     label="Vencimento"
     prepend-icon="mdi-calendar"
     min="1"

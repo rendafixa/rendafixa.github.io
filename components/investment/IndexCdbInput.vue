@@ -2,6 +2,7 @@
   <v-text-field
     v-model.number='cdb'
     type='number'
+    variant="underlined"
     label='CDB/RDB/LC'
     prepend-icon='mdi-finance'
     suffix='% DI'

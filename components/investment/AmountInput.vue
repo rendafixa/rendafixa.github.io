@@ -2,6 +2,7 @@
   <v-text-field
     v-model.number='amount'
     type='number'
+    variant="underlined"
     label='Valor da Aplicação'
     prepend-icon='mdi-cash-multiple'
     prefix='R$'

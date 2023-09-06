@@ -2,6 +2,7 @@
   <v-text-field
     v-model.number="lcx"
     type="number"
+    variant="underlined"
     label="LCI/LCA"
     prepend-icon="mdi-finance"
     suffix="% DI"

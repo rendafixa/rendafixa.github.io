@@ -2,6 +2,7 @@
   <v-select
     v-model="periodType"
     label="Tipo de período"
+    variant="underlined"
     :items="periodTypesOptions"
     item-title=''
     return-object

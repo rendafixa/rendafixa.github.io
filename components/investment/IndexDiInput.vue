@@ -2,6 +2,7 @@
   <v-text-field
     v-model.number="di"
     type="number"
+    variant="underlined"
     label="Taxa DI"
     prepend-icon="mdi-finance"
     suffix="% ao ano"
