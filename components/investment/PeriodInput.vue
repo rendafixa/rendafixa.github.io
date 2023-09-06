@@ -21,6 +21,6 @@ const rules = {
 
 const period = computed({
   get: () => store.period,
-  set: (newDuration) => store.setPeriod(newDuration),
+  set: (newPeriod) => store.setPeriod(newPeriod),
 })
 </script>

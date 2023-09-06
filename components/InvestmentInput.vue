@@ -4,8 +4,8 @@ import IndexDiInput from '~/components/investment/IndexDiInput.vue'
 import IndexSelicInput from '~/components/investment/IndexSelicInput.vue'
 import IndexCdbInput from '~/components/investment/IndexCdbInput.vue'
 import IndexLcxInput from '~/components/investment/IndexLcxInput.vue'
-import DurationInput from '~/components/investment/DurationInput.vue'
-import DurationTypeInput from '~/components/investment/DurationTypeInput.vue'
+import PeriodInput from './investment/PeriodInput.vue'
+import PeriodTypeInput from './investment/PeriodTypeInput.vue'
 </script>
 
 <template>
@@ -14,9 +14,9 @@ import DurationTypeInput from '~/components/investment/DurationTypeInput.vue'
     <v-card-text>
       <v-form @submit.prevent>
         <AmountInput />
-        <div class="duration-container">
-          <DurationInput />
-          <DurationTypeInput />
+        <div class="period-container">
+          <PeriodInput />
+          <PeriodTypeInput />
         </div>
         <IndexDiInput />
         <IndexSelicInput />
@@ -27,7 +27,7 @@ import DurationTypeInput from '~/components/investment/DurationTypeInput.vue'
   </v-card>
 </template>
 <style scoped>
-.duration-container {
+.period-container {
   display: flex;
   flex-direction: row;
   align-items: center;
