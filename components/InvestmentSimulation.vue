@@ -5,25 +5,12 @@
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
-    <InvestmentResult
-      name='Poupança'
-      :amount='investment.amount'
-      :interest-amount='resultPoupanca.interestAmount'
+    <InvestmentResult name='Poupança' :amount='investment.amount' :interest-amount='resultPoupanca.interestAmount'
       :loading='!investment.poupanca' />
-    <InvestmentResult
-      name='CDB / RDB'
-      :amount='investment.amount'
-      :interest-amount='resultCDB.interestAmount'
-      :tax-amount='resultCDB.taxAmount'
-      :tax-percentage='resultCDB.taxPercentage'
-      :loading='!investment.di'
-    />
-    <InvestmentResult
-      name='LCI / LCA'
-      :amount='investment.amount'
-      :interest-amount='resultLcx.interestAmount'
-      :loading='!investment.di'
-    />
+    <InvestmentResult name='CDB / RDB' :amount='investment.amount' :interest-amount='resultCDB.interestAmount'
+      :tax-amount='resultCDB.taxAmount' :tax-percentage='resultCDB.taxPercentage' :loading='!investment.di' />
+    <InvestmentResult name='LCI / LCA' :amount='investment.amount' :interest-amount='resultLcx.interestAmount'
+      :loading='!investment.di' />
   </div>
 </template>
 

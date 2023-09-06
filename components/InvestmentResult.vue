@@ -1,9 +1,8 @@
 <template>
-  <Suspense>
     <v-card elevation='2' class='mb-2'>
       <v-card-title>{{ name }}</v-card-title>
       <v-card-text>
-        <div v-if='!!amount'>Valor Investido: {{ amountDisplay }}</div>
+        <div v-if="hasAmount">Valor Investido: {{ amountDisplay }}</div>
         <div v-if='!!interestAmount'>
           Valor Bruto: {{ interestAmountDisplay }}
         </div>
@@ -17,22 +16,15 @@
           />
         </div>
         <div>Valor Total Líquido: {{ totalAmountDisplay }}</div>
-        <v-progress-linear
-          v-model='totalProfitPercentage'
-          :color='color'
-          height='25'
-        >{{ totalProfitPercentageDisplay }}
-        </v-progress-linear
-        >
+        <v-progress-linear v-model='totalProfitPercentage' :color='color' height='25'>
+          {{ totalProfitPercentageDisplay }}
+        </v-progress-linear>
       </v-card-text>
     </v-card>
-  </Suspense>
 </template>
 
 <script setup lang='ts'>
 import { computed } from 'vue'
-import { SymbolKind } from 'vscode-languageserver-types'
-import Boolean = SymbolKind.Boolean
 
 const defaultLocale = 'pt-BR'
 const filters = {
@@ -85,6 +77,7 @@ const props = defineProps({
     default: 'amber'
   }
 })
+const hasAmount = computed(() => !!props.amount)
 
 const totalProfit = computed(() => props.interestAmount - (props.taxAmount ?? 0))
 const totalAmount = computed(() => props.amount + totalProfit.value)
