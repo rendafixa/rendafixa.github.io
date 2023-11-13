@@ -29,16 +29,16 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies 👨🏻‍💻
         run: yarn install --immutable --immutable-cache --check-cache
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-        with:
-          static_site_generator: nuxt
+#      - name: Setup Pages
+#        uses: actions/configure-pages@v2
+#        with:
+#          static_site_generator: nuxt
       - name: Deploy 😎
         run: yarn generate
       - name: Publish 🍻
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./.output.public
+          path: ./dist
   deploy:
     environment:
       name: github-pages
