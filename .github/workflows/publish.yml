@@ -38,7 +38,7 @@ jobs:
       - name: Publish 🍻
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./dist
+          path: ./.output.public
   deploy:
     environment:
       name: github-pages
