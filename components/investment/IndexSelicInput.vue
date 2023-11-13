@@ -7,10 +7,8 @@
     prepend-icon="mdi-finance"
     suffix="% ao ano"
     min="0"
-    
     :rules="[rules.required, rules.positive]"
-  >
-  </v-text-field>
+  ></v-text-field>
 </template>
 
 <script setup lang='ts'>

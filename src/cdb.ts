@@ -1,19 +1,20 @@
-import * as finance from './finance';
+import * as finance from './finance'
 
 export function getCDBResult(
   amount: number,
   di: number,
   yearlyIndex: number,
-  periods: number
-): { interestAmount: number; taxAmount: number; taxPercentage: number } {
+  days: number
+): { interestAmount: number; taxAmount: number; taxPercentage: number, iofAmount: number } {
   const interestAmount = finance.compoundInterest(
     amount,
     getIndexCDB(yearlyIndex, di),
-    periods
+    days
   );
-  const taxPercentage = finance.getIndexIR(periods);
-  const taxAmount = interestAmount * (taxPercentage / 100);
-  return { interestAmount, taxAmount, taxPercentage };
+  const taxPercentage = finance.getIndexIR(days)
+  const iofAmount = finance.getIOFAmount(days, interestAmount)
+  const taxAmount = (interestAmount - iofAmount) * (taxPercentage / 100)
+  return { interestAmount, taxAmount, taxPercentage, iofAmount }
 }
 
 function getIndexCDB(yearlyInterest: number, di: number): number {

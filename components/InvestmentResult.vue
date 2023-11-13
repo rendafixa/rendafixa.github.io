@@ -4,10 +4,11 @@
       <v-card-text>
         <div v-if="hasAmount">Valor Investido: {{ amountDisplay }}</div>
         <div v-if='!!interestAmount'>
-          Valor Bruto: {{ interestAmountDisplay }}
+          Rendimento Bruto: {{ interestAmountDisplay }}
         </div>
+        <div v-if='!!iofAmount'>IOF: {{ iofAmountDisplay }}</div>
         <div v-if='!!taxAmount'>
-          Impostos: {{ taxAmountDisplay }}
+          Imposto de Renda: {{ taxAmountDisplay }}
           <v-badge
             inline
             v-if='!!taxPercentage'
@@ -71,6 +72,11 @@ const props = defineProps({
     default: null,
     validator: (value: number | null) => (value !== null ? parseInt(value.toString()) > 0 : true)
   },
+  iofAmount: {
+    type: Number,
+    required: false,
+    default: null
+  },
   color: {
     type: String,
     required: false,
@@ -79,13 +85,14 @@ const props = defineProps({
 })
 const hasAmount = computed(() => !!props.amount)
 
-const totalProfit = computed(() => props.interestAmount - (props.taxAmount ?? 0))
+const totalProfit = computed(() => props.interestAmount - props.iofAmount - (props.taxAmount ?? 0))
 const totalAmount = computed(() => props.amount + totalProfit.value)
 const totalProfitPercentage = computed(() => (totalProfit.value / props.amount) * 100)
 
 const taxPercentageDisplay = computed(() => filters.percent(props.taxPercentage))
 const taxAmountDisplay = computed(() => filters.currency(props.taxAmount))
 const amountDisplay = computed(() => filters.currency(props.amount))
+const iofAmountDisplay = computed(() => filters.currency(props.iofAmount))
 const totalAmountDisplay = computed(() => filters.currency(totalAmount.value))
 const interestAmountDisplay = computed(() => filters.currency(props.interestAmount))
 const totalProfitPercentageDisplay = computed(() => filters.percent(totalProfitPercentage.value))
