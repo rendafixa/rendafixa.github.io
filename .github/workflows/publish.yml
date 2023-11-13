@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: yarn install --immutable --immutable-cache --check-cache
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v3
         with:
           static_site_generator: nuxt
       - name: Deploy 😎
