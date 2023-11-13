@@ -41,7 +41,7 @@ jobs:
             .nuxt
           key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
           restore-keys: |
-            ${{ runner.os }}-nuxt-build-
+            ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
       - name: Deploy 😎
         run: yarn generate
       - name: Publish 🍻
