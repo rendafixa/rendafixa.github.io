@@ -8,22 +8,13 @@
     </v-col>
   </v-row>
 </template>
+<script setup lang='ts'>
+useSeoMeta({
+  title: 'Calculadora',
+  description: 'Calculadora de investimentos Renda Fixa para simulação de rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto'
+})
+import { useInvestmentStore } from '~/store/investment'
+const store = useInvestmentStore()
+store.initializeStore()
 
-<script>
-import InvestmentInput from '~/components/InvestmentInput.vue'
-import InvestmentSimulation from '~/components/InvestmentSimulation.vue'
-export default {
-  name: 'IndexPage',
-  components: { InvestmentInput, InvestmentSimulation },
-  fetch() {
-    this.$store.commit('investment/initializeStore')
-    this.$store.dispatch('investment/fetchPoupanca')
-    this.$store.dispatch('investment/fetchDi')
-    this.$store.dispatch('investment/fetchSelic')
-  },
-  head: {
-    title: 'Calculadora Renda Fixa',
-    titleTemplate: null
-  }
-}
 </script>

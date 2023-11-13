@@ -1,83 +1,66 @@
 <template>
   <div>
-    <h2 class="text-h6">Simulação</h2>
-    <p class="grey--text">
+    <h2 class='text-h6'>Simulação</h2>
+    <p class='font-weight-light'>
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
-    <InvestmentResult
-      name="Poupança"
-      :amount="investment.amount"
-      :interest-amount="resultPoupanca.interestAmount"
-      :loading="!investment.poupanca"
-    />
-    <InvestmentResult
-      name="CDB / RDB"
-      :amount="investment.amount"
-      :interest-amount="resultCDB.interestAmount"
-      :tax-amount="resultCDB.taxAmount"
-      :tax-percentage="resultCDB.taxPercentage"
-      :iof-amount="resultCDB.iofAmount"
-      :loading="!investment.di"
-    />
-    <InvestmentResult
-      name="LCI / LCA"
-      :amount="investment.amount"
-      :interest-amount="resultLcx.interestAmount"
-      :loading="!investment.di"
-    />
+    <InvestmentResult name='Poupança' :amount='investment.amount' :interest-amount='resultPoupanca.interestAmount'
+      :loading='!investment.poupanca' />
+    <InvestmentResult name='CDB / RDB' :amount='investment.amount'
+                      :interest-amount='resultCDB.interestAmount'
+                      :tax-amount='resultCDB.taxAmount'
+                      :tax-percentage='resultCDB.taxPercentage'
+                      :loading='!investment.di'
+                      :iof-amount='resultCDB.iofAmount' />
+    <InvestmentResult name='LCI / LCA' :amount='investment.amount' :interest-amount='resultLcx.interestAmount'
+      :loading='!investment.di' />
   </div>
 </template>
-<script>
-import InvestmentResult from './InvestmentResult.vue'
+
+<script setup lang='ts'>
+import InvestmentResult from '~/components/InvestmentResult.vue'
+import { computed } from 'vue'
 import { getCDBResult } from '~/src/cdb'
 import { getLcxResult } from '~/src/lcx'
 import { getPoupancaResult } from '~/src/poupanca'
-import { DurationType } from '~/store/investment'
-export default {
-  components: { InvestmentResult },
-  data() {
-    return {
-      investment: this.$store.state.investment,
-      periodMultiplier: {
-        [DurationType.Days]: 1,
-        [DurationType.Months]: 365 / 12,
-        [DurationType.Years]: 365
-      }
-    }
-  },
-  computed: {
-    resultCDB() {
-      return getCDBResult(
-        this.investment.amount,
-        this.investment.di,
-        this.investment.cdb,
-        this.getDurationInDays()
-      )
-    },
-    resultLcx() {
-      return getLcxResult(
-        this.investment.amount,
-        this.investment.di,
-        this.investment.lcx,
-        this.getDurationInDays()
-      )
-    },
-    resultPoupanca() {
-      return getPoupancaResult(
-        this.investment.amount,
-        this.investment.poupanca,
-        this.getDurationInDays()
-      )
-    }
-  },
-  methods: {
-    getDurationInDays() {
-      return Math.floor(
-        this.investment.duration *
-          this.periodMultiplier[this.investment.durationType]
-      )
-    }
-  }
+import { PeriodTypes, useInvestmentStore } from '~/store/investment'
+
+const investment = useInvestmentStore()
+
+const periodMultiplier = {
+  [PeriodTypes.Days]: 1,
+  [PeriodTypes.Months]: 365 / 12,
+  [PeriodTypes.Years]: 365
+}
+
+const resultCDB = computed(() => {
+  return getCDBResult(
+    investment.amount,
+    investment.di,
+    investment.cdb,
+    getDurationInDays()
+  )
+})
+
+const resultLcx = computed(() => {
+  return getLcxResult(
+    investment.amount,
+    investment.di,
+    investment.lcx,
+    getDurationInDays()
+  )
+})
+
+const resultPoupanca = computed(() => {
+  return getPoupancaResult(
+    investment.amount,
+    investment.poupanca,
+    getDurationInDays()
+  )
+})
+
+function getDurationInDays() {
+  return Math.floor(investment.period * periodMultiplier[investment.periodType])
 }
 </script>

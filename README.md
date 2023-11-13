@@ -8,3 +8,34 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=rendafixa_rendafixa.github.io&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=rendafixa_rendafixa.github.io)
 
 Simule seus investimentos CDB/RDB, LCI/LCA, Poupança e Tesouro Selic.
+
+
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+yarn install
+```
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+yarn dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+yarn build
+```
+
+Locally preview production build:
+
+```bash
+yarn preview
+```

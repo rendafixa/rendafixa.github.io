@@ -1,27 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "jsx": "preserve",
-    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
-    "esModuleInterop": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "strict": true,
-    "noEmit": true,
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"]
-    },
-    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node"]
-  },
-  "exclude": ["node_modules", ".nuxt", "dist"],
-  "vueCompilerOptions": {
-    "target": 2.7
-    // "target": 2, // For Vue version <= 2.6.14
-    // https://marketplace.visualstudio.com/items?itemName=Vue.volar
-  }
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json"
 }

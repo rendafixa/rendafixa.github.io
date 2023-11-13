@@ -1,12 +1,22 @@
+<script setup lang='ts'>
+import AmountInput from '~/components/investment/AmountInput.vue'
+import IndexDiInput from '~/components/investment/IndexDiInput.vue'
+import IndexSelicInput from '~/components/investment/IndexSelicInput.vue'
+import IndexCdbInput from '~/components/investment/IndexCdbInput.vue'
+import IndexLcxInput from '~/components/investment/IndexLcxInput.vue'
+import PeriodInput from './investment/PeriodInput.vue'
+import PeriodTypeInput from './investment/PeriodTypeInput.vue'
+</script>
+
 <template>
   <v-card elevation="2">
     <v-card-title class="text-h6">Investimento</v-card-title>
     <v-card-text>
-      <v-form @submit.prevent="submit">
+      <v-form @submit.prevent>
         <AmountInput />
-        <div class="duration-container">
-          <DurationInput />
-          <DurationTypeInput />
+        <div class="period-container">
+          <PeriodInput />
+          <PeriodTypeInput />
         </div>
         <IndexDiInput />
         <IndexSelicInput />
@@ -16,29 +26,8 @@
     </v-card-text>
   </v-card>
 </template>
-<script>
-import AmountInput from './investment/AmountInput.vue'
-import DurationTypeInput from './investment/DurationTypeInput.vue'
-import DurationInput from './investment/DurationInput.vue'
-import IndexDiInput from './investment/IndexDiInput.vue'
-import IndexSelicInput from './investment/IndexSelicInput.vue'
-import IndexCdbInput from './investment/IndexCdbInput.vue'
-import IndexLcxInput from './investment/IndexLcxInput.vue'
-export default {
-  components: {
-    AmountInput,
-    DurationTypeInput,
-    DurationInput,
-    IndexDiInput,
-    IndexSelicInput,
-    IndexCdbInput,
-    IndexLcxInput
-  }
-}
-</script>
-
 <style scoped>
-.duration-container {
+.period-container {
   display: flex;
   flex-direction: row;
   align-items: center;
