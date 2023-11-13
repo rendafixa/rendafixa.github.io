@@ -13,10 +13,11 @@
       <v-card-text>
         <div v-if="!!amount">Valor Investido: {{ amount | currency }}</div>
         <div v-if="!!interestAmount">
-          Valor Bruto: {{ interestAmount | currency }}
+          Rendimento Bruto: {{ interestAmount | currency }}
         </div>
+        <div v-if="!!iofAmount">IOF: {{ iofAmount | currency }}</div>
         <div v-if="!!taxAmount">
-          Impostos: {{ taxAmount | currency }}
+          Imposto de Renda: {{ taxAmount | currency }}
           <v-badge
             v-if="!!taxPercentage"
             :content="taxPercentage | percent"
@@ -86,6 +87,11 @@ export default {
       default: null,
       validator: (value) => parseInt(value) > 0
     },
+    iofAmount: {
+      type: Number,
+      required: false,
+      default: null
+    },
     color: {
       type: String,
       required: false,
@@ -94,7 +100,7 @@ export default {
   },
   computed: {
     totalProfit() {
-      return this.interestAmount - this.taxAmount
+      return this.interestAmount - this.iofAmount - this.taxAmount
     },
     totalAmount() {
       return this.amount + this.totalProfit

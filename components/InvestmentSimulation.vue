@@ -17,6 +17,7 @@
       :interest-amount="resultCDB.interestAmount"
       :tax-amount="resultCDB.taxAmount"
       :tax-percentage="resultCDB.taxPercentage"
+      :iof-amount="resultCDB.iofAmount"
       :loading="!investment.di"
     />
     <InvestmentResult
