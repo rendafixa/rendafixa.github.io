@@ -33,15 +33,6 @@ jobs:
         uses: actions/configure-pages@v2
         with:
           static_site_generator: nuxt
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            dist
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
       - name: Deploy 😎
         run: yarn generate
       - name: Publish 🍻
