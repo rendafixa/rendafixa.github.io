@@ -71,7 +71,7 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   build: {
-    transpile: [/echarts/, /zrender/],
+    transpile: [/echarts/, /zrender/, , /resize-detector/],
   },
   piniaPersistedstate: {
     storage: "localStorage",
