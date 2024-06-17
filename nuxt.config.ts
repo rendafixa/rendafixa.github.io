@@ -55,20 +55,21 @@ export default defineNuxtConfig({
     modules: [
         '@invictus.codes/nuxt-vuetify',
         '@pinia/nuxt',
-        '@pinia-plugin-persistedstate/nuxt'
+        '@pinia-plugin-persistedstate/nuxt',
+        '@nuxtjs/seo'
     ],
     extends: [
         'nuxt-seo-kit'
     ],
     runtimeConfig: {
         public: {
-          siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://rendafixa.github.io',
-          siteName: 'Calculadora Renda Fixa',
-          siteDescription: 'Calculadora de investimentos Renda Fixa para simulação de ' +
-          'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
-          language: 'pt'
+            siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://rendafixa.github.io',
+            siteName: 'Calculadora Renda Fixa',
+            siteDescription: 'Calculadora de investimentos Renda Fixa para simulação de ' +
+                'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
+            language: 'pt'
         }
-      },
+    },
     devtools: { enabled: true },
     piniaPersistedstate: {
         storage: 'localStorage'
@@ -85,5 +86,15 @@ export default defineNuxtConfig({
             autoImport: true,
             useVuetifyLabs: false
         }
+    },
+    seo: {
+        redirectToCanonicalSiteUrl: true
+    },
+    site: {
+        url: process.env.NUXT_PUBLIC_SITE_URL || 'https://rendafixa.github.io',
+        name: 'Calculadora Renda Fixa',
+        description: 'Calculadora de investimentos Renda Fixa para simulação de ' +
+            'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
+        defaultLocale: 'pt'
     }
 })
