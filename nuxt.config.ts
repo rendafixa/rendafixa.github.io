@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+
 export default defineNuxtConfig({
     app: {
         head: {
@@ -52,24 +54,20 @@ export default defineNuxtConfig({
         },
         pageTransition: { name: 'page', mode: 'out-in' }
     },
+    build: {
+        transpile: ['vuetify'],
+    },
     modules: [
-        '@invictus.codes/nuxt-vuetify',
         '@pinia/nuxt',
         '@pinia-plugin-persistedstate/nuxt',
-        '@nuxtjs/seo'
-    ],
-    extends: [
-        'nuxt-seo-kit'
-    ],
-    runtimeConfig: {
-        public: {
-            siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://rendafixa.github.io',
-            siteName: 'Calculadora Renda Fixa',
-            siteDescription: 'Calculadora de investimentos Renda Fixa para simulação de ' +
-                'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
-            language: 'pt'
+        '@nuxtjs/seo',
+        (_options, nuxt) => {
+            nuxt.hooks.hook('vite:extendConfig', (config) => {
+                // @ts-expect-error
+                config.plugins.push(vuetify({ autoImport: true }))
+            })
         }
-    },
+    ],
     devtools: { enabled: true },
     piniaPersistedstate: {
         storage: 'localStorage'
@@ -96,5 +94,12 @@ export default defineNuxtConfig({
         description: 'Calculadora de investimentos Renda Fixa para simulação de ' +
             'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
         defaultLocale: 'pt'
-    }
+    },
+    vite: {
+        vue: {
+            template: {
+                transformAssetUrls,
+            },
+        },
+    },
 })
