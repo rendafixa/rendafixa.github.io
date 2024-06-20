@@ -19,7 +19,7 @@
     "nuxt": "^3.12.2",
     "vite-plugin-vuetify": "^2.0.3",
     "vitest": "^1.6.0",
-    "vuetify": "^3.6.9"
+    "vuetify": "^3.6.10"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
