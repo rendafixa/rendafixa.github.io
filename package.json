@@ -15,7 +15,7 @@
     "@nuxtjs/seo": "^2.0.0-rc.10",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@vitejs/plugin-vue": "^4.3.4",
-    "jsdom": "^24.1.0",
+    "jsdom": "^22.1.0",
     "nuxt": "^3.12.3",
     "vite-plugin-vuetify": "^2.0.3",
     "vitest": "^1.6.0",
