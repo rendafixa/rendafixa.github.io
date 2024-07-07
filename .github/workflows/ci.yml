@@ -11,7 +11,7 @@ jobs:
       - name: Setup node env 🏗
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           check-latest: true
           cache: 'yarn'
       - name: Install dependencies 👨🏻‍💻
