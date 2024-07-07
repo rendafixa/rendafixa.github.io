@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "rendafixa",
   "private": true,
   "scripts": {
     "build": "nuxt build",
