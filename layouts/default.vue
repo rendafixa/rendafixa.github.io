@@ -1,31 +1,26 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <NuxtLink to="/">
-        <img
-            src="/images/budget.svg"
-            alt="Calculadora Renda Fixa"
-            title="Calculadora Renda Fixa"
-            class="pa-1"
-            width="64"
-            height="64"
-        />
-      </NuxtLink>
-      <v-app-bar-title
+    <v-layout>
+      <SideBar />
+
+      <v-app-bar app>
+        <v-app-bar-nav-icon @click="isOpen = !isOpen"></v-app-bar-nav-icon>
+        <v-app-bar-title
           shrink-on-scroll
-          class="pl-2 text-no-wrap d-none d-sm-flex"
-      >Calculadora Renda Fixa
-      </v-app-bar-title
-      >
-      <v-spacer/>
-      <NavigationBar/>
-    </v-app-bar>
-    <v-main>
-      <v-container fluid>
-        <SeoKit />
-        <NuxtPage />
-      </v-container>
-    </v-main>
+          class="text-no-wrap d-flex font-weight-regular"
+          >{{ onPage ? "Calculadora Renda Fixa" : "Sobre este Projeto" }}
+        </v-app-bar-title>
+
+        <NavigationBar class="pr-2" />
+      </v-app-bar>
+
+      <v-main>
+        <v-sheet>
+          <SeoKit />
+          <NuxtPage />
+        </v-sheet>
+      </v-main>
+    </v-layout>
   </v-app>
 </template>
 <style>
@@ -39,6 +34,15 @@
   opacity: 0;
   filter: blur(1rem);
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
 </style>
 <script setup lang="ts">
+import { usePageStore } from "~/store/page";
+
+const page = usePageStore();
+
+const { isOpen, onPage } = storeToRefs(page);
 </script>
