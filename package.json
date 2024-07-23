@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "rendafixa",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -10,18 +10,20 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@invictus.codes/nuxt-vuetify": "^0.3.0",
     "@nuxt/devtools": "latest",
     "@nuxt/test-utils": "^3.7.1",
+    "@nuxtjs/seo": "^2.0.0-rc.10",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@vitejs/plugin-vue": "^4.3.4",
     "jsdom": "^22.1.0",
     "nuxt": "^3.11.2",
-    "nuxt-seo-kit": "^0.1.4",
-    "vitest": "^1.4.0"
+    "vite-plugin-vuetify": "^2.0.3",
+    "vitest": "^1.6.0",
+    "vuetify": "^3.6.9"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.5.1",
+    "@mdi/font": "^7.4.47",
+    "@pinia/nuxt": "^0.5.1"
     "nuxt-highcharts": "^3.1.1",
     "pinia": "^2.1.7"
   }
