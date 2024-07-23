@@ -7,60 +7,62 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: '%s | Renda Fixa',
       htmlAttrs: {
-        lang: 'pt'
+        lang: 'pt',
       },
       title: 'Calculadora',
       meta: [
-        {charset: 'utf-8'},
-        {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'apple-mobile-web-app-title',
           name: 'apple-mobile-web-app-title',
-          content: 'Renda Fixa'
+          content: 'Renda Fixa',
         },
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'Calculadora Renda Fixa'
+          content: 'Calculadora Renda Fixa',
         },
         {
           hid: 'og:site_name',
           name: 'og:site_name',
-          content: 'Calculadora Renda Fixa'
+          content: 'Calculadora Renda Fixa',
         },
-        {name: 'format-detection', content: 'telephone=no'}
+        { name: 'format-detection', content: 'telephone=no' },
       ],
       link: [
-        {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
-          href: '/apple-touch-icon.png'
+          href: '/apple-touch-icon.png',
         },
         {
           rel: 'icon',
           type: 'image/png',
           sizes: '32x32',
-          href: '/favicon-32x32.png'
+          href: '/favicon-32x32.png',
         },
         {
           rel: 'icon',
           type: 'image/png',
           sizes: '16x16',
-          href: '/favicon-16x16.png'
+          href: '/favicon-16x16.png',
         },
-        {rel: 'manifest', href: '/site.webmanifest'}
-      ]
+        { rel: 'manifest', href: '/site.webmanifest' },
+      ],
     },
-    pageTransition: {name: 'page', mode: 'out-in'}
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
   build: {
-    transpile: ['vuetify'],
+    transpile: ['vuetify', 'pinia-plugin-persistedstate'],
   },
   modules: [
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/seo',
+    '@invictus.codes/nuxt-vuetify',
+    'nuxt-highcharts',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -68,9 +70,9 @@ export default defineNuxtConfig({
       })
     }
   ],
-  devtools: {enabled: true},
+  devtools: { enabled: true },
   piniaPersistedstate: {
-    storage: 'localStorage'
+    storage: 'localStorage',
   },
   vuetify: {
     vuetifyOptions: {},
@@ -81,8 +83,8 @@ export default defineNuxtConfig({
       /* vite-plugin-vuetify options */
       styles: true,
       autoImport: true,
-      useVuetifyLabs: false
-    }
+      useVuetifyLabs: false,
+    },
   },
   seo: {
     redirectToCanonicalSiteUrl: true
@@ -101,4 +103,4 @@ export default defineNuxtConfig({
       },
     },
   },
-})
+});
