@@ -8034,10 +8034,10 @@ vue@^3.4.21:
     "@vue/server-renderer" "3.4.23"
     "@vue/shared" "3.4.23"
 
-vuetify@^3.6.9:
-  version "3.6.9"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.6.9.tgz#6c063fa6e8097e854406467db25e8d8a40e26e71"
-  integrity sha512-LVIZL0OCwzg3Aw2F8nT1rK/renpTPOcDEPe5E002Vj+VjXwsCNqwwxNteGfrcNlp0vgIJ8WusMvaxp69UJ3NJg==
+vuetify@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.7.0.tgz#1230e97330b9112492aa25183809e483477b2c36"
+  integrity sha512-x+UaU4SPYNcJSE/voCTBFrNn0q9Spzx2EMfDdUj0NYgHGKb59OqnZte+AjaJaoOXy1AHYIGEpm5Ryk2BEfgWuw==
 
 w3c-keyname@^2.2.4:
   version "2.2.8"
