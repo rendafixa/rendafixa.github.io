@@ -18,7 +18,7 @@
     "jsdom": "^25.0.0",
     "nuxt": "^3.13.1",
     "vite-plugin-vuetify": "^2.0.3",
-    "vitest": "^2.0.5",
+    "vitest": "^2.1.0",
     "vuetify": "^3.7.1"
   },
   "dependencies": {
