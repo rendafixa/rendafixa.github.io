@@ -1,35 +1,50 @@
-<script setup lang='ts'>
-import AmountInput from '~/components/investment/AmountInput.vue'
-import IndexDiInput from '~/components/investment/IndexDiInput.vue'
-import IndexSelicInput from '~/components/investment/IndexSelicInput.vue'
-import IndexCdbInput from '~/components/investment/IndexCdbInput.vue'
-import IndexLcxInput from '~/components/investment/IndexLcxInput.vue'
-import PeriodInput from './investment/PeriodInput.vue'
-import PeriodTypeInput from './investment/PeriodTypeInput.vue'
+<script setup lang="ts">
+import AmountInput from "~/components/investment/AmountInput.vue";
+import IndexDiInput from "~/components/investment/IndexDiInput.vue";
+import IndexSelicInput from "~/components/investment/IndexSelicInput.vue";
+import IndexCdbInput from "~/components/investment/IndexCdbInput.vue";
+import IndexLcxInput from "~/components/investment/IndexLcxInput.vue";
+import PeriodInput from "./investment/PeriodInput.vue";
+import PeriodTypeInput from "./investment/PeriodTypeInput.vue";
 </script>
 
 <template>
-  <v-card elevation="2">
-    <v-card-title class="text-h6">Investimento</v-card-title>
-    <v-card-text>
-      <v-form @submit.prevent>
-        <AmountInput />
-        <div class="period-container">
-          <PeriodInput />
-          <PeriodTypeInput />
+  <v-card elevation="2" class="d-flex justify-center">
+    <!-- <v-card-title class="text-h6 font-weight-medium">Investimento</v-card-title>
+
+    <v-divider></v-divider> -->
+
+    <v-container class="pa-6 flex-1-1-100">
+      <v-form @submit.prevent class="">
+        <div class="pa-2">
+          <AmountInput />
         </div>
-        <IndexDiInput />
-        <IndexSelicInput />
-        <IndexCdbInput />
-        <IndexLcxInput />
+        <v-row>
+          <v-col>
+            <div class="pa-2">
+              <PeriodInput />
+            </div>
+          </v-col>
+          <v-col>
+            <div class="pa-2">
+              <PeriodTypeInput />
+            </div>
+          </v-col>
+        </v-row>
+        <div class="pa-2">
+          <IndexDiInput />
+        </div>
+        <div class="pa-2">
+          <IndexSelicInput />
+        </div>
+        <div class="pa-2">
+          <IndexCdbInput />
+        </div>
+        <div class="pa-2">
+          <IndexLcxInput />
+        </div>
       </v-form>
-    </v-card-text>
+    </v-container>
   </v-card>
 </template>
-<style scoped>
-.period-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-</style>
+<style scoped></style>
