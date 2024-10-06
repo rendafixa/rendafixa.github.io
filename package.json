@@ -16,7 +16,7 @@
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@vitejs/plugin-vue": "^5.1.2",
     "jsdom": "^25.0.0",
-    "nuxt": "^3.13.1",
+    "nuxt": "^3.13.2",
     "vite-plugin-vuetify": "^2.0.3",
     "vitest": "^2.0.5",
     "vuetify": "^3.7.1"
