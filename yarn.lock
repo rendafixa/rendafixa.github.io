@@ -917,14 +917,14 @@
     rc9 "^2.1.2"
     std-env "^3.7.0"
 
-"@nuxt/test-utils@>=3.13.1", "@nuxt/test-utils@^3.14.2":
-  version "3.14.2"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.14.2.tgz#05a767e432f2f0874987581b4f148c87c86aa14b"
-  integrity sha512-n5soEpHom9aL9sMwrBiD3xGR+oXbx+O8zL2NF9aelWOTSzPPNN+Qo3cBEECMc6NYQi1a4LbCKkPjQfbtPvaqkg==
+"@nuxt/test-utils@>=3.13.1", "@nuxt/test-utils@^3.14.3":
+  version "3.14.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.14.3.tgz#ba202cbd7b9f2bb05f7496ccfd87e563efa58ba7"
+  integrity sha512-5SoyaR9bQG7xcyj6kSnzFVWvpAdiKSruRkq3KVDKEAbxwHhtyz2Ijqxf8iGE3W9dAM0F+omIvLmjen3ITgd3rA==
   dependencies:
-    "@nuxt/kit" "^3.13.1"
-    "@nuxt/schema" "^3.13.1"
-    c12 "^1.11.2"
+    "@nuxt/kit" "^3.13.2"
+    "@nuxt/schema" "^3.13.2"
+    c12 "^2.0.1"
     consola "^3.2.3"
     defu "^6.1.4"
     destr "^2.0.3"
@@ -934,7 +934,7 @@
     local-pkg "^0.5.0"
     magic-string "^0.30.11"
     node-fetch-native "^1.6.4"
-    ofetch "^1.3.4"
+    ofetch "^1.4.0"
     pathe "^1.1.2"
     perfect-debounce "^1.0.0"
     radix3 "^1.1.2"
@@ -943,7 +943,7 @@
     tinyexec "^0.3.0"
     ufo "^1.5.4"
     unenv "^1.10.0"
-    unplugin "^1.14.0"
+    unplugin "^1.14.1"
     vitest-environment-nuxt "^1.0.1"
 
 "@nuxt/vite-builder@3.13.2":
@@ -2160,6 +2160,24 @@ c12@^1.11.1, c12@^1.11.2:
     pkg-types "^1.2.0"
     rc9 "^2.1.2"
 
+c12@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/c12/-/c12-2.0.1.tgz#5702d280b31a08abba39833494c9b1202f0f5aec"
+  integrity sha512-Z4JgsKXHG37C6PYUtIxCfLJZvo6FyhHJoClwwb9ftUkLpPSkuYqn6Tr+vnaN8hymm0kIbcg6Ey3kv/Q71k5w/A==
+  dependencies:
+    chokidar "^4.0.1"
+    confbox "^0.1.7"
+    defu "^6.1.4"
+    dotenv "^16.4.5"
+    giget "^1.2.3"
+    jiti "^2.3.0"
+    mlly "^1.7.1"
+    ohash "^1.1.4"
+    pathe "^1.1.2"
+    perfect-debounce "^1.0.0"
+    pkg-types "^1.2.0"
+    rc9 "^2.1.2"
+
 cac@^6.7.14:
   version "6.7.14"
   resolved "https://registry.yarnpkg.com/cac/-/cac-6.7.14.tgz#804e1e6f506ee363cb0e3ccbb09cad5dd9870959"
@@ -2266,6 +2284,13 @@ chokidar@^3.5.1, chokidar@^3.6.0:
     readdirp "~3.6.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+chokidar@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-4.0.1.tgz#4a6dff66798fb0f72a94f616abbd7e1a19f31d41"
+  integrity sha512-n8enUVCED/KVRQlab1hr3MVpcVMvxtZjmEa956u+4YijlmQED223XMSYj2tLuKvr4jcCTzNNMpQDUer72MMmzA==
+  dependencies:
+    readdirp "^4.0.1"
 
 chownr@^2.0.0:
   version "2.0.0"
@@ -3758,6 +3783,11 @@ jiti@^2.1.2, jiti@^2.3.1:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-2.3.1.tgz#b81ff051075117768dd67829f47f5035eeceb5c7"
   integrity sha512-xPZ6pPzUifI8XDBBxIL4OB1w1ZKmBpmNEeKwNt2d0Spn8XisAIZhWrlOHq5seBrFGTxVx9PbrWvEMyrk4IO5bA==
 
+jiti@^2.3.0:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-2.3.2.tgz#ea3620d59372cf4829458fa4b921b54255435819"
+  integrity sha512-9ZLDe7kYLCyWTAP6EIyg3B4ZuHy5W0gdy6y1rgrWrAOpTrUU+vKuKa1+OXB7MBkujyvm6a2b7i0ETHQDbgY98A==
+
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -5105,6 +5135,11 @@ readdir-glob@^1.1.2:
   dependencies:
     minimatch "^5.1.0"
 
+readdirp@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-4.0.2.tgz#388fccb8b75665da3abffe2d8f8ed59fe74c230a"
+  integrity sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==
+
 readdirp@~3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.6.0.tgz#74a370bd857116e245b29cc97340cd431a02a6c7"
@@ -5903,7 +5938,7 @@ unplugin-vue-router@^0.10.8:
     unplugin "^1.12.2"
     yaml "^2.5.0"
 
-unplugin@^1.10.0, unplugin@^1.10.1, unplugin@^1.12.2, unplugin@^1.14.0, unplugin@^1.14.1, unplugin@^1.3.1:
+unplugin@^1.10.0, unplugin@^1.10.1, unplugin@^1.12.2, unplugin@^1.14.1, unplugin@^1.3.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.14.1.tgz#c76d6155a661e43e6a897bce6b767a1ecc344c1a"
   integrity sha512-lBlHbfSFPToDYp9pjXlUEFVxYLaue9f9T1HC+4OHlmj+HnMDdz9oZY+erXfoCe/5V/7gKUSY2jpXPb9S7f0f/w==
