@@ -54,9 +54,13 @@ export const useInvestmentStore = defineStore('investment', {
         .catch((error) => console.log(error));
     },
     fetchDi() {
-      fetch('https://www2.cetip.com.br/ConsultarTaxaDi/ConsultarTaxaDICetip.aspx')
+      fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4391/dados/ultimos/13?formato=json')
         .then((response) => response.json())
-        .then((data) => this.di = parseFloat(data.taxa.replace(/[.]/g, '').replace(',', '.')))
+        .then((data: { valor: string }[]) => this.di = data
+          .slice(1) // Ignores the partial value of current month
+          .map((item: any) => parseFloat(item.valor))
+          .reduce((acc, value) => acc + value, 0)
+        )
         .catch((error) => console.log(error));
     },
     fetchSelic() {
