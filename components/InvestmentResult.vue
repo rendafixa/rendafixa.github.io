@@ -1,25 +1,53 @@
 <template>
-    <v-card elevation='2' class='mb-2'>
+    <v-card elevation='2' class='mb-2' max-width='400px'>
       <v-card-title>{{ name }}</v-card-title>
       <v-card-text>
-        <div v-if="hasAmount">Valor Investido: {{ amountDisplay }}</div>
-        <div v-if='!!interestAmount'>
-          Rendimento Bruto: {{ interestAmountDisplay }}
-        </div>
-        <div v-if='!!iofAmount'>IOF: {{ iofAmountDisplay }}</div>
-        <div v-if='!!taxAmount'>
-          Imposto de Renda: {{ taxAmountDisplay }}
-          <v-badge
-            inline
-            v-if='!!taxPercentage'
-            :content='taxPercentageDisplay'
-            color='red lighten-2'
-          />
-        </div>
-        <div>Valor Total Líquido: {{ totalAmountDisplay }}</div>
-        <v-progress-linear v-model='totalProfitPercentage' :color='color' height='25'>
-          {{ totalProfitPercentageDisplay }}
-        </v-progress-linear>
+        <v-table density="compact">
+          <tbody>
+            <tr v-if="hasAmount">
+              <td class="border-0">Valor Investido</td>
+              <td class="border-0 text-right">
+                <code>{{ amountDisplay }}</code>
+              </td>
+            </tr>
+            <tr v-if='!!interestAmount'>
+              <td class="border-0">Rendimento Bruto</td>
+              <td class="border-0 text-right">
+                <code>{{ interestAmountDisplay }}</code>
+              </td>
+            </tr>
+            <tr v-if='!!iofAmount'>
+              <td class="border-0">IOF</td>
+              <td class="border-0 text-right">
+                <code>{{ iofAmountDisplay }}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="border-0">Imposto de Renda <v-badge
+                inline
+                v-if='!!taxPercentage'
+                :content='taxPercentageDisplay'
+                color='red lighten-2'
+              /></td>
+              <td class="border-0 text-right">
+                <code>{{ taxAmountDisplay }}</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="border-0 border-t-sm">Valor Total Líquido</td>
+              <td class="border-0 border-t-sm text-right">
+                <code>{{ totalAmountDisplay }}</code>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+              <v-progress-linear v-model='totalProfitPercentage' :color='color' height='25'>
+                {{ totalProfitPercentageDisplay }}
+              </v-progress-linear>
+              </td>
+            </tr>
+          </tbody>
+        </v-table>
       </v-card-text>
     </v-card>
 </template>
@@ -90,7 +118,7 @@ const totalAmount = computed(() => props.amount + totalProfit.value)
 const totalProfitPercentage = computed(() => (totalProfit.value / props.amount) * 100)
 
 const taxPercentageDisplay = computed(() => filters.percent(props.taxPercentage))
-const taxAmountDisplay = computed(() => filters.currency(props.taxAmount))
+const taxAmountDisplay = computed(() => filters.currency((props.taxAmount ? props.taxAmount * -1 : 0)))
 const amountDisplay = computed(() => filters.currency(props.amount))
 const iofAmountDisplay = computed(() => filters.currency(props.iofAmount))
 const totalAmountDisplay = computed(() => filters.currency(totalAmount.value))
