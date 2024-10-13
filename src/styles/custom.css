@@ -1,0 +1,11 @@
+:root .v-table {
+    line-height: 1.6;
+}
+
+:root .v-table--density-compact {
+  --v-table-row-height: 1rem;
+}
+
+:root .v-table > .v-table__wrapper > table > tbody > tr > td {
+  padding: 0;
+}
