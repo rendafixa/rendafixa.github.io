@@ -13,10 +13,6 @@
 <style>
 #container {
   min-width: 310px;
-  max-width: 800px;
-}
-.small-chart .highcharts-axis-title {
-  display: none;
 }
 .small-chart .highcharts-axis-title {
   display: none;

@@ -13,6 +13,4 @@
 import { usePageStore } from "~/store/page";
 
 const page = usePageStore();
-
-const { isOpen, onPage } = storeToRefs(page);
 </script>

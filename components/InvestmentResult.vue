@@ -56,7 +56,7 @@
             </v-card>
           </v-col>
 
-          <v-col v-if="!!taxAmount" lg="5" cols="12">
+          <v-col v-if="!!taxAmount" lg="8" cols="12">
             <v-card style="background-color: #fafafa">
               <v-card-text>
                 <div class="d-flex align-center justify-center flex-column">

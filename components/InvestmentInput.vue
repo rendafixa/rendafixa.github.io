@@ -10,10 +10,6 @@ import PeriodTypeInput from "./investment/PeriodTypeInput.vue";
 
 <template>
   <v-card elevation="2" class="d-flex justify-center">
-    <!-- <v-card-title class="text-h6 font-weight-medium">Investimento</v-card-title>
-
-    <v-divider></v-divider> -->
-
     <v-container class="pa-6 flex-1-1-100">
       <v-form @submit.prevent class="">
         <div class="pa-2">
@@ -47,4 +43,3 @@ import PeriodTypeInput from "./investment/PeriodTypeInput.vue";
     </v-container>
   </v-card>
 </template>
-<style scoped></style>

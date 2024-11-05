@@ -64,5 +64,3 @@ const page = usePageStore();
 
 const { isOpen } = storeToRefs(page);
 </script>
-
-<style></style>
