@@ -16,6 +16,9 @@
             color='red lighten-2'
           />
         </div>
+        <div>
+          Rendimento Líquido: {{ liquidAmountDisplay }}
+        </div>
         <div>Valor Total Líquido: {{ totalAmountDisplay }}</div>
         <v-progress-linear v-model='totalProfitPercentage' :color='color' height='25'>
           {{ totalProfitPercentageDisplay }}
@@ -93,6 +96,7 @@ const taxPercentageDisplay = computed(() => filters.percent(props.taxPercentage)
 const taxAmountDisplay = computed(() => filters.currency(props.taxAmount))
 const amountDisplay = computed(() => filters.currency(props.amount))
 const iofAmountDisplay = computed(() => filters.currency(props.iofAmount))
+const liquidAmountDisplay = computed(() => filters.currency(totalProfit.value))
 const totalAmountDisplay = computed(() => filters.currency(totalAmount.value))
 const interestAmountDisplay = computed(() => filters.currency(props.interestAmount))
 const totalProfitPercentageDisplay = computed(() => filters.percent(totalProfitPercentage.value))
