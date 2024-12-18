@@ -41,4 +41,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Trigger publish workflow
       if: ${{ env.has_changes == 'true' }}
-      uses: ./.github/workflows/publish.yml
+      run: |
+        curl -X POST \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/actions/workflows/publish.yml/dispatches \
+          -d '{"ref":"master"}'
