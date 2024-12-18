@@ -1,0 +1,31 @@
+name: Update Indexes
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  update-indicadores:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+          node-version: 20
+          check-latest: true
+          cache: 'yarn'
+    - name: Install dependencies
+      run: yarn install --immutable --immutable-cache --check-cache
+    - name: Update indicadores.json
+      run: yarn update-indexes
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add assets/indicadores.json
+        git commit -m 'Update indicadores.json with latest values'
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
