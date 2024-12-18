@@ -39,3 +39,6 @@ jobs:
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Trigger publish workflow
+      if: ${{ env.has_changes == 'true' }}
+      uses: ./.github/workflows/publish.yml
