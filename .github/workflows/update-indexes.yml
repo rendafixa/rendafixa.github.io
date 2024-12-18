@@ -27,6 +27,7 @@ jobs:
           echo "has_changes=false" >> $GITHUB_ENV
         else
           echo "has_changes=true" >> $GITHUB_ENV
+        fi
     - name: Commit and push changes
       if: steps.check_changes.outputs.has_changes == 'true'
       run: |
