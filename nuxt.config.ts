@@ -54,13 +54,15 @@ export default defineNuxtConfig({
     },
     pageTransition: {name: 'page', mode: 'out-in'}
   },
+
   build: {
     transpile: ['vuetify'],
   },
+
   modules: [
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/seo',
+    'nuxt-schema-org',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -68,10 +70,13 @@ export default defineNuxtConfig({
       })
     }
   ],
+
   devtools: {enabled: true},
+
   piniaPersistedstate: {
     storage: 'localStorage'
   },
+
   vuetify: {
     vuetifyOptions: {},
     moduleOptions: {
@@ -84,9 +89,11 @@ export default defineNuxtConfig({
       useVuetifyLabs: false
     }
   },
+
   seo: {
     redirectToCanonicalSiteUrl: true
   },
+
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://rendafixa.github.io',
     name: 'Calculadora Renda Fixa',
@@ -94,6 +101,7 @@ export default defineNuxtConfig({
       'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
     defaultLocale: 'pt'
   },
+
   vite: {
     vue: {
       template: {
@@ -101,4 +109,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: '2024-12-18',
 })

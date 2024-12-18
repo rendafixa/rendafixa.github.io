@@ -22,7 +22,6 @@
     </v-app-bar>
     <v-main>
       <v-container fluid>
-        <SeoKit />
         <NuxtPage />
       </v-container>
     </v-main>
