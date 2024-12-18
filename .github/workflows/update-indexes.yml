@@ -20,12 +20,20 @@ jobs:
       run: yarn install --immutable --immutable-cache --check-cache
     - name: Update indicadores.json
       run: yarn update-indexes
+    - name: Checking for changes
+      id: check_changes
+      run: |
+        if git diff --exit-code assets/indicadores.json; then
+          echo "has_changes=false" >> $GITHUB_ENV
+        else
+          echo "has_changes=true" >> $GITHUB_ENV
     - name: Commit and push changes
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add assets/indicadores.json
-        git commit -m 'Update indicadores.json with latest values'
+        git commit -m "Update indicadores.json"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
