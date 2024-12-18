@@ -6,6 +6,7 @@ on:
 
 jobs:
   update-indicadores:
+    name: Update indicadores
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -29,8 +30,7 @@ jobs:
           echo "has_changes=true" >> $GITHUB_ENV
         fi
     - name: Commit and push changes
-      if: ${{ steps.check_changes.outputs.has_changes == 'true' }}
-      # if: env.has_changes == 'true'
+      if: ${{ env.has_changes == 'true' }}
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
