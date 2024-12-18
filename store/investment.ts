@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import indicadores from '~/assets/indicadores.json'
 
 export enum PeriodTypes {
   Days = 'dias',
@@ -43,31 +44,12 @@ export const useInvestmentStore = defineStore('investment', {
       this.selic = newSelic
     },
     initializeStore() {
-      this.fetchPoupanca()
-      this.fetchDi()
-      this.fetchSelic()
+      this.loadIndexes()
     },
-    fetchPoupanca() {
-      fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json')
-        .then((response) => response.json())
-        .then((data) => this.poupanca = parseFloat(data[0].valor))
-        .catch((error) => console.log(error));
-    },
-    fetchDi() {
-      fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4391/dados/ultimos/13?formato=json')
-        .then((response) => response.json())
-        .then((data: { valor: string }[]) => this.di = data
-          .slice(1) // Ignores the partial value of current month
-          .map((item: any) => parseFloat(item.valor))
-          .reduce((acc, value) => acc + value, 0)
-        )
-        .catch((error) => console.log(error));
-    },
-    fetchSelic() {
-      fetch('https://www.bcb.gov.br/api/servico/sitebcb/historicotaxasjuros')
-        .then((response) => response.json())
-        .then((data) => this.selic = data.conteudo[0].MetaSelic)
-        .catch((error) => console.log(error))
+    loadIndexes() {
+      this.di = indicadores.cdi.value
+      this.selic = indicadores.selic.value
+      this.poupanca = indicadores.poupanca.value
     }
   }
 })
