@@ -18,8 +18,8 @@
     "jsdom": "^25.0.0",
     "nuxt": "^3.14.1592",
     "vite-plugin-vuetify": "^2.0.3",
-    "vitest": "^2.1.4",
-    "vuetify": "^3.7.4"
+    "vitest": "^2.1.8",
+    "vuetify": "^3.7.6"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
