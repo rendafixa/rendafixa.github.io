@@ -10,6 +10,11 @@ async function fetchPoupanca() {
     console.log('Fetching Poupanca...');
     const response = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json');
     const value = parseFloat(response.data[0].valor);
+    if(isNaN(value)) {
+      console.error('Invalid Poupanca value received:', value);
+      console.error('Full payload:', response.data);
+      return null;
+    }
     console.log('Poupanca value fetched:', value);
     return value;
   } catch (error) {
@@ -48,7 +53,11 @@ async function updateIndicadores() {
     const selicValue = await fetchSelic();
     const cdiValue = await fetchDi();
 
-    indicadores.poupanca.value = poupancaValue;
+    if (!poupancaValue || isNaN(poupancaValue)) {
+      console.warn('Skipping update: Invalid poupanca value.');
+      indicadores.poupanca.value = poupancaValue;
+    }
+    
     indicadores.selic.value = selicValue;
     indicadores.cdi.value = cdiValue;
 
