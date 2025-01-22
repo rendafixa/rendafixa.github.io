@@ -2,48 +2,49 @@ name: Update Indexes
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 8,12,18 * * 1-5'
+      timezone: 'America/Sao_Paulo'
 
 jobs:
   update-indicadores:
     name: Update indicadores
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
           node-version: 20
           check-latest: true
           cache: 'yarn'
-    - name: Install dependencies
-      run: yarn install --immutable --immutable-cache --check-cache
-    - name: Update indicadores.json
-      run: yarn update-indexes
-    - name: Checking for changes
-      id: check_changes
-      run: |
-        if git diff --exit-code assets/indicadores.json; then
-          echo "has_changes=false" >> $GITHUB_ENV
-        else
-          echo "has_changes=true" >> $GITHUB_ENV
-        fi
-    - name: Commit and push changes
-      if: ${{ env.has_changes == 'true' }}
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add assets/indicadores.json
-        git commit -m "Update indicadores.json on $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Trigger publish workflow
-      if: ${{ env.has_changes == 'true' }}
-      run: |
-        curl -X POST \
-          -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/actions/workflows/publish.yml/dispatches \
-          -d '{"ref":"master"}'
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Update indicadores.json
+        run: yarn update-indexes
+      - name: Checking for changes
+        id: check_changes
+        run: |
+          if git diff --exit-code assets/indicadores.json; then
+            echo "has_changes=false" >> $GITHUB_ENV
+          else
+            echo "has_changes=true" >> $GITHUB_ENV
+          fi
+      - name: Commit and push changes
+        if: ${{ env.has_changes == 'true' }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add assets/indicadores.json
+          git commit -m "Updated indicadores.json on $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Trigger publish workflow
+        if: ${{ env.has_changes == 'true' }}
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/publish.yml/dispatches \
+            -d '{"ref":"master"}'
