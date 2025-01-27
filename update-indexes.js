@@ -55,6 +55,7 @@ async function updateIndicadores() {
 
     if (!poupancaValue || isNaN(poupancaValue)) {
       console.warn('Skipping update: Invalid poupanca value.');
+    }else{
       indicadores.poupanca.value = poupancaValue;
     }
     
