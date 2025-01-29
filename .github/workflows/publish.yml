@@ -24,13 +24,13 @@ jobs:
       - name: Setup node env 🏗
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           check-latest: true
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies 👨🏻‍💻
-        run: yarn install --immutable --immutable-cache --check-cache
+        run: pnpm install --frozen-lockfile
       - name: Deploy 😎
-        run: yarn generate
+        run: pnpm generate
       - name: Publish 🍻
         uses: actions/upload-pages-artifact@v3
         with:
