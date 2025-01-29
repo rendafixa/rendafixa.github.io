@@ -26,6 +26,5 @@
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.7.9",
     "nuxt-schema-org": "^4.0.4"
-  },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  }
 }
