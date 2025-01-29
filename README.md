@@ -15,7 +15,7 @@ Simule seus investimentos CDB/RDB, LCI/LCA, Poupança e Tesouro Selic.
 Make sure to install the dependencies:
 
 ```bash
-yarn install
+pnpm install
 ```
 
 ## Development Server
@@ -23,7 +23,7 @@ yarn install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 ## Production
@@ -31,11 +31,11 @@ yarn dev
 Build the application for production:
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Locally preview production build:
 
 ```bash
-yarn preview
+pnpm preview
 ```
