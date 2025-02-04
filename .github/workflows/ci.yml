@@ -1,5 +1,6 @@
 name: Publish
-on: pull_request
+on:
+  pull_request
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -8,15 +9,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        name: Configure PNPM
+        with:
+          version: 10
       - name: Setup node env 🏗
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           check-latest: true
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies 👨🏻‍💻
-        run: yarn install --immutable --immutable-cache --check-cache
+        run: pnpm install --frozen-lockfile
       - name: Tests 🧑‍🔬
-        run: yarn test
+        run: pnpm test
       - name: Deploy 😎
-        run: yarn generate
+        run: pnpm generate
