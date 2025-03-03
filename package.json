@@ -26,5 +26,10 @@
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.7.9",
     "nuxt-schema-org": "^4.0.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
