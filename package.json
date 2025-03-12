@@ -24,7 +24,7 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.5.1",
-    "axios": "^1.8.1",
+    "axios": "^1.8.2",
     "nuxt-schema-org": "^4.0.4"
   },
   "pnpm": {
