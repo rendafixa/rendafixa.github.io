@@ -13,7 +13,6 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/test-utils": "^3.17.1",
-    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "jsdom": "^26.0.0",
     "nuxt": "^3.16.0",
@@ -23,9 +22,10 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@pinia/nuxt": "^0.5.1",
+    "@pinia/nuxt": "^0.10.1",
     "axios": "^1.8.2",
-    "nuxt-schema-org": "^5.0.4"
+    "nuxt-schema-org": "^5.0.4",
+    "pinia-plugin-persistedstate": "^4.2.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
