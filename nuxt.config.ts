@@ -61,10 +61,10 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
-    'pinia-plugin-persistedstate/nuxt',
     'nuxt-schema-org',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
+        // @ts-expect-error
         config.plugins.push(vuetify({autoImport: true}))
       })
     }

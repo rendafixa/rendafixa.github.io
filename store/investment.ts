@@ -20,7 +20,6 @@ export const useInvestmentStore = defineStore('investment', {
       selic: null as Number | null
     }
   },
-  persist: true,
   actions: {
     setAmount(newAmount: number) {
       this.amount = newAmount
