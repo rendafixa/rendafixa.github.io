@@ -23,7 +23,7 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.10.1",
-    "axios": "^1.8.2",
+    "axios": "^1.8.4",
     "nuxt-schema-org": "^5.0.4"
   },
   "pnpm": {
