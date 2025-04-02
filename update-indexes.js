@@ -68,5 +68,5 @@ async function updateIndicadores() {
     console.error('Error updating indicadores.json:', error);
   }
 }
-
+teste ignore
 updateIndicadores();
