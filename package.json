@@ -18,13 +18,13 @@
     "nuxt": "^3.16.2",
     "vite-plugin-vuetify": "^2.1.0",
     "vitest": "^3.1.1",
-    "vuetify": "^3.7.16"
+    "vuetify": "^3.8.2"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.10.1",
     "axios": "^1.8.4",
-    "nuxt-schema-org": "^5.0.4"
+    "nuxt-schema-org": "^5.0.5"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
