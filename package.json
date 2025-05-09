@@ -13,7 +13,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/test-utils": "^3.17.1",
-    "@vitejs/plugin-vue": "^5.2.3",
+    "@vitejs/plugin-vue": "^5.2.4",
     "jsdom": "^26.1.0",
     "nuxt": "^3.16.2",
     "vite-plugin-vuetify": "^2.1.1",
