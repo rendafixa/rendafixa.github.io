@@ -18,7 +18,7 @@
     "nuxt": "^3.17.4",
     "vite-plugin-vuetify": "^2.1.1",
     "vitest": "^3.1.1",
-    "vuetify": "^3.8.6"
+    "vuetify": "^3.8.11"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
