@@ -18,8 +18,8 @@ importers:
         specifier: ^1.9.0
         version: 1.9.0
       nuxt-schema-org:
-        specifier: ^5.0.5
-        version: 5.0.5(@unhead/vue@2.0.8(vue@3.5.14(typescript@5.8.2)))(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2))
+        specifier: ^5.0.6
+        version: 5.0.6(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2))
     devDependencies:
       '@nuxt/devtools':
         specifier: latest
@@ -1258,13 +1258,13 @@ packages:
     resolution: {integrity: sha512-07ny+LHRzQXepkGg6w0mFY41fVUNBrL2Roj/++7V1txKugfjm/Ci/qSND03r2RhlJhJYMcTn9AhhSSqQp0Ysyw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@unhead/schema-org@2.0.8':
-    resolution: {integrity: sha512-AR2xdPggAQA+9+qWDw/jM8tMWXASVVCyHNi1vVd+q7qMRs87P6jt05dZ5z5JmutUoUE+mFfGYXisRnjv3y8jTA==}
+  '@unhead/schema-org@2.0.12':
+    resolution: {integrity: sha512-wsOjcTvNncJwTUouw84vku0dKSfYiWEKxqV9abzpbjOJ6+44woO7XKFGD7MdTcRgsfkjO1J0MLHaG7VEBwJkGg==}
     peerDependencies:
-      '@unhead/react': 2.0.8
-      '@unhead/solid-js': 2.0.8
-      '@unhead/svelte': 2.0.8
-      '@unhead/vue': 2.0.8
+      '@unhead/react': 2.0.12
+      '@unhead/solid-js': 2.0.12
+      '@unhead/svelte': 2.0.12
+      '@unhead/vue': 2.0.12
     peerDependenciesMeta:
       '@unhead/react':
         optional: true
@@ -1274,11 +1274,6 @@ packages:
         optional: true
       '@unhead/vue':
         optional: true
-
-  '@unhead/vue@2.0.8':
-    resolution: {integrity: sha512-e30+CfCl1avR+hzFtpvnBSesZ5TN2KbShStdT2Z+zs5WIBUvobQwVxSR0arX43To6KfwtCXAfi0iOOIH0kufHQ==}
-    peerDependencies:
-      vue: '>=3.5.13'
 
   '@unhead/vue@2.0.9':
     resolution: {integrity: sha512-0t8YXVXvEgXkXhCb22hqPrsgun3Jqul/ZvydgBY0SlEfEbC1ioL15/1QuJwBFG3us6OnSewjbDagg4Jh478g8g==}
@@ -3062,19 +3057,19 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxt-schema-org@5.0.5:
-    resolution: {integrity: sha512-OXV1WdSpyttiAgRicdtqMHYMNcgj7hcws2zRmgI9zMI/Rbs6z4/74aZLtSM3YNS/Bvbr9LcCSzYT6WJOvEB1Yg==}
+  nuxt-schema-org@5.0.6:
+    resolution: {integrity: sha512-ssNYeb/bARsTgbkIB+EdpXkwtX/+TKb/3vd0KxE6xuu60A4h4OCNwUnJhVhkpaLa+ry8nKDk30FUpgWdJyzNHA==}
     peerDependencies:
       '@unhead/vue': ^2.0.7
     peerDependenciesMeta:
       '@unhead/vue':
         optional: true
 
-  nuxt-site-config-kit@3.1.9:
-    resolution: {integrity: sha512-bcmpajYJgkNzA0jTq6CmmhKF2wHZUUKeVx/CIGI8lwWuAD81EBUZN0T4iKvVDo54g9UBrUUl8/5GhD65YBBG0A==}
+  nuxt-site-config-kit@3.2.2:
+    resolution: {integrity: sha512-SmTBVm6JQd5zHBy04/qn0gWo3rg1HTRGT/H91hxk/o+mDB3ll+TkzpZekD46RUBO/AD02ArLG5n2ndu6zhWsHA==}
 
-  nuxt-site-config@3.1.9:
-    resolution: {integrity: sha512-YB69GX0st8drv1d5xypweseiEWeR22tfGdyVH3U4R+mpUSz8paBx48ArKC6MgV22DKItoQm51LVoapF5pl5bEQ==}
+  nuxt-site-config@3.2.2:
+    resolution: {integrity: sha512-0zCo8nZKk11F4oEWvioTPpxYesJtiwWGfanh1coOfPmvGdYuCcJ/pusy8zdPb6xQkvAYqpTZUy7KKfjXjrE8rA==}
 
   nuxt@3.17.4:
     resolution: {integrity: sha512-49tkp7/+QVhuEOFoTDVvNV6Pc5+aI7wWjZHXzLUrt3tlWLPFh0yYbNXOc3kaxir1FuhRQHHyHZ7azCPmGukfFg==}
@@ -3721,8 +3716,8 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  site-config-stack@3.1.9:
-    resolution: {integrity: sha512-ed53+wLi+36SGqidU+YUpl7f1OHClPLmvUJ/aYZny1dCBnXvOsuFottrMkXDIK2N5UaMED9mz8KrRZTk94ARCg==}
+  site-config-stack@3.2.2:
+    resolution: {integrity: sha512-T1NphPh1sWlsIXbD1q1HDgHbX40miTyi++cDqXkVOuHQ/eQnGp6w8cwB8u9XmgSZsnmZpsQJgPUTNH7SX173AA==}
     peerDependencies:
       vue: ^3
 
@@ -3994,8 +3989,8 @@ packages:
   unenv@2.0.0-rc.17:
     resolution: {integrity: sha512-B06u0wXkEd+o5gOCMl/ZHl5cfpYbDZKAT+HWTL+Hws6jWu7dCiqBBXXXzMFcFVJb8D4ytAnYmxJA83uwOQRSsg==}
 
-  unhead@2.0.8:
-    resolution: {integrity: sha512-63WR+y08RZE7ChiFdgNY64haAkhCtUS5/HM7xo4Q83NA63txWbEh2WGmrKbArdQmSct+XlqbFN8ZL1yWpQEHEA==}
+  unhead@2.0.12:
+    resolution: {integrity: sha512-5oo0lwz81XDXCmrHGzgmbaNOxM8R9MZ3FkEs2ROHeW8e16xsrv7qXykENlISrcxr3RLPHQEsD1b6js9P2Oj/Ow==}
 
   unhead@2.0.9:
     resolution: {integrity: sha512-ZLTNJ51PZPO4/3keW7FHiTMb6K+JmhhVApJA52qWNw7NMYPD8fM2eA+hUEaCA2L5bZtbRg43TT7n/lJ+/9o6pw==}
@@ -5222,7 +5217,7 @@ snapshots:
       mlly: 1.7.4
       ohash: 2.0.11
       pathe: 2.0.3
-      pkg-types: 2.2.0
+      pkg-types: 2.1.0
       scule: 1.3.0
       semver: 7.7.2
       std-env: 3.9.0
@@ -5271,7 +5266,7 @@ snapshots:
 
   '@nuxt/telemetry@2.6.6(magicast@0.3.5)':
     dependencies:
-      '@nuxt/kit': 3.17.7(magicast@0.3.5)
+      '@nuxt/kit': 3.17.4(magicast@0.3.5)
       citty: 0.1.6
       consola: 3.4.2
       destr: 2.0.5
@@ -5762,21 +5757,12 @@ snapshots:
       '@typescript-eslint/types': 5.62.0
       eslint-visitor-keys: 3.4.3
 
-  '@unhead/schema-org@2.0.8(@unhead/vue@2.0.8(vue@3.5.14(typescript@5.8.2)))':
+  '@unhead/schema-org@2.0.12':
     dependencies:
       defu: 6.1.4
       ohash: 2.0.11
       ufo: 1.6.1
-      unhead: 2.0.8
-    optionalDependencies:
-      '@unhead/vue': 2.0.8(vue@3.5.14(typescript@5.8.2))
-
-  '@unhead/vue@2.0.8(vue@3.5.14(typescript@5.8.2))':
-    dependencies:
-      hookable: 5.5.3
-      unhead: 2.0.8
-      vue: 3.5.14(typescript@5.8.2)
-    optional: true
+      unhead: 2.0.12
 
   '@unhead/vue@2.0.9(vue@3.5.14(typescript@5.8.2))':
     dependencies:
@@ -6320,7 +6306,7 @@ snapshots:
       ohash: 2.0.11
       pathe: 2.0.3
       perfect-debounce: 1.0.0
-      pkg-types: 2.2.0
+      pkg-types: 2.1.0
       rc9: 2.1.2
     optionalDependencies:
       magicast: 0.3.5
@@ -7802,17 +7788,15 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxt-schema-org@5.0.5(@unhead/vue@2.0.8(vue@3.5.14(typescript@5.8.2)))(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2)):
+  nuxt-schema-org@5.0.6(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2)):
     dependencies:
-      '@nuxt/kit': 3.17.4(magicast@0.3.5)
-      '@unhead/schema-org': 2.0.8(@unhead/vue@2.0.8(vue@3.5.14(typescript@5.8.2)))
+      '@nuxt/kit': 3.17.7(magicast@0.3.5)
+      '@unhead/schema-org': 2.0.12
       defu: 6.1.4
-      nuxt-site-config: 3.1.9(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2))
+      nuxt-site-config: 3.2.2(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2))
       pathe: 2.0.3
-      pkg-types: 2.1.0
+      pkg-types: 2.2.0
       sirv: 3.0.1
-    optionalDependencies:
-      '@unhead/vue': 2.0.8(vue@3.5.14(typescript@5.8.2))
     transitivePeerDependencies:
       - '@unhead/react'
       - '@unhead/solid-js'
@@ -7820,25 +7804,25 @@ snapshots:
       - magicast
       - vue
 
-  nuxt-site-config-kit@3.1.9(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2)):
+  nuxt-site-config-kit@3.2.2(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2)):
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       pkg-types: 2.2.0
-      site-config-stack: 3.1.9(vue@3.5.14(typescript@5.8.2))
+      site-config-stack: 3.2.2(vue@3.5.14(typescript@5.8.2))
       std-env: 3.9.0
       ufo: 1.6.1
     transitivePeerDependencies:
       - magicast
       - vue
 
-  nuxt-site-config@3.1.9(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2)):
+  nuxt-site-config@3.2.2(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2)):
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      nuxt-site-config-kit: 3.1.9(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2))
+      nuxt-site-config-kit: 3.2.2(magicast@0.3.5)(vue@3.5.14(typescript@5.8.2))
       pathe: 2.0.3
-      pkg-types: 2.1.0
+      pkg-types: 2.2.0
       sirv: 3.0.1
-      site-config-stack: 3.1.9(vue@3.5.14(typescript@5.8.2))
+      site-config-stack: 3.2.2(vue@3.5.14(typescript@5.8.2))
       ufo: 1.6.1
     transitivePeerDependencies:
       - magicast
@@ -8650,7 +8634,7 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
-  site-config-stack@3.1.9(vue@3.5.14(typescript@5.8.2)):
+  site-config-stack@3.2.2(vue@3.5.14(typescript@5.8.2)):
     dependencies:
       ufo: 1.6.1
       vue: 3.5.14(typescript@5.8.2)
@@ -8906,12 +8890,12 @@ snapshots:
   unenv@2.0.0-rc.17:
     dependencies:
       defu: 6.1.4
-      exsolve: 1.0.7
+      exsolve: 1.0.5
       ohash: 2.0.11
       pathe: 2.0.3
       ufo: 1.6.1
 
-  unhead@2.0.8:
+  unhead@2.0.12:
     dependencies:
       hookable: 5.5.3
 
