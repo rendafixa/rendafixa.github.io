@@ -16,7 +16,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "jsdom": "^26.1.0",
     "nuxt": "^3.17.4",
-    "vite-plugin-vuetify": "^2.1.1",
+    "vite-plugin-vuetify": "^2.1.2",
     "vitest": "^3.2.4",
     "vuetify": "^3.9.5"
   },
