@@ -3,7 +3,7 @@
     "title": "Poupança",
     "description": "Depósitos de poupança a partir de 04.05.2012 - Rentabilidade no período",
     "unitDisplay": "% a.m.",
-    "value": 0.673
+    "value": 0.6749
   },
   "selic": {
     "title": "SELIC",
@@ -14,6 +14,7 @@
   "cdi": {
     "title": "CDI",
     "description": "Taxa de juros - CDI anualizada base 252",
-    "unitDisplay": "% a.a."
+    "unitDisplay": "% a.a.",
+    "value": 12.190000000000001
   }
 }
