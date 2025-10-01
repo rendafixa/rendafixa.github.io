@@ -59,6 +59,10 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
 
+  future: {
+    compatibilityVersion: 4,
+  },
+
   modules: [
     '@pinia/nuxt',
     'nuxt-schema-org',

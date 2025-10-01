@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { compoundInterest, getIndexIR, getIOFAmount, getIOFPercentage } from '../../src/finance'
+import { compoundInterest, getIndexIR, getIOFAmount, getIOFPercentage } from '../../../app/src/finance'
 
 describe('getIndexIR function', () => {
     const testCases = [

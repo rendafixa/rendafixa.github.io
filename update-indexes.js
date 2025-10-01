@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, 'assets', 'indicadores.json');
+const filePath = path.join(__dirname, 'app', 'assets', 'indicadores.json');
 const indicadores = require(filePath);
 
 async function fetchPoupanca() {
