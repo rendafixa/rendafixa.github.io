@@ -22,9 +22,10 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@pinia/nuxt": "^0.10.1",
+    "@pinia/nuxt": "^0.11.2",
     "axios": "^1.12.2",
-    "nuxt-schema-org": "^5.0.9"
+    "nuxt-schema-org": "^5.0.9",
+    "pinia": "^3.0.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
