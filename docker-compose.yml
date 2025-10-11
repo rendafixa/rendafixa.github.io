@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  rendafixa:
+    build: .
+    container_name: rendafixa-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NUXT_PUBLIC_SITE_URL=http://localhost:3000
+    # Optional: Mount for live updates during development (commented out for production)
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add a reverse proxy if needed
+  nginx:
+    image: nginx:alpine
+    container_name: rendafixa-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - rendafixa
+    restart: unless-stopped
