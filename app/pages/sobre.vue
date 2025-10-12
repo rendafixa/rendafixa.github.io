@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <h1 class="text-h5 pb-5">Sobre este projeto</h1>
     <v-row class="pb-4">
       <v-col cols="12" sm="6">
@@ -66,7 +66,7 @@
         </p>
       </v-card-text>
     </v-card>
-  </div>
+  </v-container>
 </template>
 <script setup lang="ts">
 useSeoMeta({

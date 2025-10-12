@@ -78,7 +78,7 @@ const props = defineProps({
     type: Number,
     required: false,
     default: null,
-    validator: (value: number | null) => (value !== null ? parseInt(value.toString()) > 0 : true)
+    validator: (value: number | null) => (value !== null ? parseFloat(value.toString()) >= 0 : true)
   },
   iofAmount: {
     type: Number,
