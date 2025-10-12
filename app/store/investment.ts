@@ -124,27 +124,17 @@ export const useInvestmentStore = defineStore('investment', {
     },
     loadIndexes() {
       // Carrega os índices econômicos do arquivo JSON
-      const economicIndicators: EconomicIndicators = indicadores as EconomicIndicators;
+      const economicIndicators = indicadores as EconomicIndicators;
+      
+      // Validação da estrutura do JSON
+      if (!economicIndicators.cdi?.value || !economicIndicators.selic?.value || !economicIndicators.poupanca?.value) {
+        console.error('Estrutura inválida no arquivo indicadores.json');
+        throw new Error('Não foi possível carregar os indicadores econômicos');
+      }
       
       this.di = economicIndicators.cdi.value;
       this.selic = economicIndicators.selic.value;
       this.poupanca = economicIndicators.poupanca.value;
-      
-      // Validação adicional para garantir valores válidos
-      if (this.di === undefined || this.di === null) {
-        console.error('Taxa DI não encontrada nos indicadores econômicos');
-        this.di = 0;
-      }
-      
-      if (this.selic === undefined || this.selic === null) {
-        console.error('Taxa SELIC não encontrada nos indicadores econômicos');
-        this.selic = 0;
-      }
-      
-      if (this.poupanca === undefined || this.poupanca === null) {
-        console.error('Taxa da poupança não encontrada nos indicadores econômicos');
-        this.poupanca = 0;
-      }
     }
   }
 })

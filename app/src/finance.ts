@@ -53,7 +53,7 @@ export function getIndexIR(days: number): number {
 
 /**
  * Obtém a porcentagem do Imposto sobre Operações Financeiras (IOF) com base nos dias até o resgate
- * @param daysToRedeem Número de dias até o resgate do investimento
+ * @param daysToRedeem Número de dias até o resgate do investimento (progressivo nos primeiros 30 dias)
  * @returns Percentual do IOF aplicável
  */
 export function getIOFPercentage(daysToRedeem: number): number {
@@ -62,23 +62,26 @@ export function getIOFPercentage(daysToRedeem: number): number {
     return 0;
   }
 
+  // Tabela regressiva de IOF para os primeiros 30 dias
+  // Fonte: http://normas.receita.fazenda.gov.br/sijut2consulta/AtoDownload?id=87191
   const iofTable: number[] = [
     96, 93, 90, 86, 83, 80, 76, 73, 70, 66, 63, 60, 56, 53, 50, 46, 43, 40, 36,
     33, 30, 26, 23, 20, 16, 13, 10, 6, 3, 0
-  ]
+  ];
 
   if (daysToRedeem <= 30) {
-    const index: number = daysToRedeem - 1
+    // Usamos o dia 1 como índice 0, dia 2 como índice 1, etc.
+    const index: number = Math.min(daysToRedeem - 1, iofTable.length - 1);
     // Verifica se o índice está dentro dos limites da tabela
     if (index >= 0 && index < iofTable.length) {
-      return iofTable[index]
+      return iofTable[index];
     } else {
-      console.warn(`Índice de IOF fora dos limites: ${index}`)
-      return 0
+      console.warn(`Índice de IOF fora dos limites: ${index}`);
+      return 0;
     }
   }
 
-  return 0 // Não há IOF após 30 dias
+  return 0; // Não há IOF após 30 dias
 }
 
 /**

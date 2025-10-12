@@ -19,8 +19,8 @@ import { useInvestmentStore } from '~/store/investment'
 const store = useInvestmentStore()
 
 const rules = {
-  required: (value: any) => !!value || 'Obrigatório',
-  positive: (value: any) => parseInt(value) > 0 || 'Deve ser um número positivo'
+  required: (value: any) => (value !== null && value !== undefined && value !== '') || 'Obrigatório',
+  positive: (value: any) => parseInt(value) >= 0 || 'Deve ser um número não negativo'
 }
 
 const cdb = computed({

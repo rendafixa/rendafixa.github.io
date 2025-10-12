@@ -122,12 +122,15 @@ const resultLC = computed(() => {
   if (!investment.di || !investment.lc) {
     return {
       interestAmount: 0,
+      taxAmount: 0,
+      taxPercentage: 0,
+      iofAmount: 0,
       netAmount: investment.amount,
       grossAmount: investment.amount
     };
   }
-  // Usando a mesma lógica do LCI/LCA, mas com o percentual do LC
-  return getLcxResult(
+  // LC tem tributação como CDB (IR regressivo e IOF regressivo nos primeiros 30 dias)
+  return getCDBResult(
     investment.amount,
     investment.di,
     investment.lc,

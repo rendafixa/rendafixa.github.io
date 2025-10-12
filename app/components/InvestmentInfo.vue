@@ -57,13 +57,17 @@
 
           <v-window-item value="lc">
             <h3 class="text-h6 mb-2">LC (Letra de Crédito)</h3>
-            <p><strong>Funcionamento:</strong> Similar a LCI/LCA, mas para outros setores (comercial, industriais).</p>
+            <p><strong>Funcionamento:</strong> Similar a CDB, mas emitida por instituições financeiras para financiar outros setores (comercial, industriais).</p>
             <p><strong>Cálculo:</strong></p>
             <ul>
               <li>Baseado em percentual do CDI</li>
               <li>Aplica juros compostos</li>
             </ul>
-            <p><strong>Isenção fiscal:</strong> ISENTOS de Imposto de Renda (IR) e Imposto sobre Operações Financeiras (IOF)</p>
+            <p><strong>Tributação:</strong></p>
+            <ul>
+              <li>IR regressivo: 22,5% (até 180 dias), 20% (181-360 dias), 17,5% (361-720 dias), 15% (acima de 720 dias)</li>
+              <li>IOF regressivo: varia de 96% a 0% nos primeiros 30 dias, zerando após 30 dias</li>
+            </ul>
           </v-window-item>
 
           <v-window-item value="tesouro">
@@ -78,7 +82,7 @@
             <p><strong>Tributação:</strong></p>
             <ul>
               <li>IR regressivo (mesmo que CDB): 22,5% (até 180 dias), 20% (181-360 dias), 17,5% (361-720 dias), 15% (acima de 720 dias)</li>
-              <li>IOF: aplicável no primeiro dia, zerando após o primeiro dia</li>
+              <li>IOF regressivo: varia de 96% a 0% nos primeiros 30 dias, zerando após 30 dias</li>
             </ul>
           </v-window-item>
         </v-window>
@@ -89,9 +93,9 @@
           <ul>
             <li>Fórmula de juros compostos: <code>M = C * (1 + i)^n</code></li>
             <li>Taxas convertidas para base diária</li>
-            <li>IOF regressivo para resgates em até 30 dias</li>
+            <li>IOF regressivo para resgates em até 30 dias (tabela: 96% no 1º dia, reduzindo diariamente até 0% no 30º dia)</li>
             <li>IR regressivo baseado no tempo de aplicação</li>
-            <li>Isenção de IR e IOF para LCI/LCA/LC</li>
+            <li>Isenção de IR e IOF para LCI/LCA (LCI e LCA são isentos, mas LC tem tributação como CDB)</li>
           </ul>
           <p><strong>Observação:</strong> Para aplicações reais, o cálculo considera dias úteis vs dias corridos, o que pode afetar levemente o resultado final.</p>
         </div>

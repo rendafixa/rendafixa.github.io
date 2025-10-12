@@ -69,8 +69,8 @@ export function getTesouroResult(
   );
   
   // Tesouro Direto tem tratamento fiscal diferente
-  // IOF: Aplicável apenas no primeiro dia de investimento
-  const iofAmount = days <= 1 ? finance.getIOFAmount(days, interestAmount) : 0;
+  // IOF: Aplicável nos primeiros 30 dias (tabela regressiva)
+  const iofAmount = finance.getIOFAmount(days, interestAmount);
   
   // IR: Regressivo baseado no tempo de investimento
   const taxPercentage = finance.getIndexIR(days);
