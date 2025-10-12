@@ -19,7 +19,7 @@
         <div>
           Rendimento Líquido: {{ liquidAmountDisplay }}
         </div>
-        <div>Valor Total Líquido: {{ totalAmountDisplay }}</div>
+        <div>Valor Total Líquido: {{ netAmountDisplay }}</div>
         <v-progress-linear v-model='totalProfitPercentage' :color='color' height='25'>
           {{ totalProfitPercentageDisplay }}
         </v-progress-linear>
@@ -64,6 +64,11 @@ const props = defineProps({
     type: Number,
     required: true
   },
+  netAmount: {
+    type: Number,
+    required: false,
+    default: null
+  },
   taxAmount: {
     type: Number,
     required: false,
@@ -88,8 +93,20 @@ const props = defineProps({
 })
 const hasAmount = computed(() => !!props.amount)
 
-const totalProfit = computed(() => props.interestAmount - props.iofAmount - (props.taxAmount ?? 0))
-const totalAmount = computed(() => props.amount + totalProfit.value)
+// Se netAmount for fornecido, usamos esse valor; caso contrário, calculamos
+const totalAmount = computed(() => {
+  if (props.netAmount !== null && props.netAmount !== undefined) {
+    return props.netAmount;
+  }
+  // Fallback para cálculo antigo se netAmount não for fornecido
+  const calculatedNet = props.interestAmount - (props.iofAmount ?? 0) - (props.taxAmount ?? 0);
+  return props.amount + calculatedNet;
+})
+
+// Cálculo do rendimento líquido baseado no valor total líquido
+const totalProfit = computed(() => totalAmount.value - props.amount)
+
+// Percentual de lucro baseado no valor investido
 const totalProfitPercentage = computed(() => (totalProfit.value / props.amount) * 100)
 
 const taxPercentageDisplay = computed(() => filters.percent(props.taxPercentage))
@@ -97,7 +114,7 @@ const taxAmountDisplay = computed(() => filters.currency(props.taxAmount))
 const amountDisplay = computed(() => filters.currency(props.amount))
 const iofAmountDisplay = computed(() => filters.currency(props.iofAmount))
 const liquidAmountDisplay = computed(() => filters.currency(totalProfit.value))
-const totalAmountDisplay = computed(() => filters.currency(totalAmount.value))
+const netAmountDisplay = computed(() => filters.currency(totalAmount.value))
 const interestAmountDisplay = computed(() => filters.currency(props.interestAmount))
 const totalProfitPercentageDisplay = computed(() => filters.percent(totalProfitPercentage.value))
 </script>
