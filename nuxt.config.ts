@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import vuetify, {transformAssetUrls} from 'vite-plugin-vuetify'
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   app: {
@@ -55,10 +55,6 @@ export default defineNuxtConfig({
     pageTransition: {name: 'page', mode: 'out-in'}
   },
 
-  build: {
-    transpile: ['vuetify'],
-  },
-
   future: {
     compatibilityVersion: 4,
   },
@@ -66,13 +62,11 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     'nuxt-schema-org',
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        // @ts-expect-error
-        config.plugins.push(vuetify({autoImport: true}))
-      })
-    }
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   devtools: {enabled: true},
 
@@ -80,38 +74,15 @@ export default defineNuxtConfig({
     storage: 'localStorage'
   },
 
-  vuetify: {
-    vuetifyOptions: {},
-    moduleOptions: {
-      treeshaking: true,
-      useIconCDN: true,
-
-      /* vite-plugin-vuetify options */
-      styles: true,
-      autoImport: true,
-      useVuetifyLabs: false
-    }
-  },
-
   seo: {
     redirectToCanonicalSiteUrl: true
   },
 
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://rendafixa.github.io',
-    name: 'Calculadora Renda Fixa',
-    description: 'Calculadora de investimentos Renda Fixa para simulação de ' +
-      'rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
-    defaultLocale: 'pt'
+    url: 'https://rendafixa.github.io',
+    name: 'Calculadora Renda Fixa'
   },
 
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
-  },
-
-  compatibilityDate: '2024-12-18',
+  compatibilityDate: '2025-01-16',
 })
+
