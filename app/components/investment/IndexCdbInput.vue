@@ -31,33 +31,14 @@
 <script setup lang='ts'>
 import {computed} from 'vue'
 import {useInvestmentStore} from '~/store/investment'
+import {usePositiveNumberValidation} from '~/composables/usePositiveNumberValidation'
 
 const store = useInvestmentStore()
-
-const rules = {
-  required: (value: any) => !!value || 'Obrigatório',
-  positive: (value: any) => parseInt(value) > 0 || 'Deve ser um número positivo'
-}
 
 const cdb = computed({
   get: () => store.cdb,
   set: (data) => store.setCdb(data)
 })
 
-const isValid = computed(() => {
-  if (!cdb.value) {
-    return false
-  }
-  return Number(cdb.value) > 0
-})
-
-const errorMessage = computed(() => {
-  if (!cdb.value) {
-    return 'Obrigatório'
-  }
-  if (Number(cdb.value) <= 0) {
-    return 'Deve ser um número positivo'
-  }
-  return ''
-})
+const { isValid, errorMessage } = usePositiveNumberValidation(cdb)
 </script>
