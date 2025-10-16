@@ -35,12 +35,18 @@ const lcx = computed({
   set: (data) => store.setLcx(data)
 })
 const isValid = computed(() => {
-  if (!lcx.value) return false
-  return parseInt(lcx.value.toString()) > 0
+  if (!lcx.value){
+    return false
+  }
+  return Number.parseInt(lcx.value.toString()) > 0
 })
 const errorMessage = computed(() => {
-  if (!lcx.value) return 'Obrigatório'
-  if (parseInt(lcx.value.toString()) <= 0) return 'Deve ser um número positivo'
+  if (!lcx.value){
+    return 'Obrigatório'
+  }
+  if (Number.parseInt(lcx.value.toString()) <= 0){
+    return 'Deve ser um número positivo'
+  }
   return ''
 })
 </script>
