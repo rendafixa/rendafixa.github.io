@@ -178,12 +178,12 @@ const progressBarColor = computed(() => {
 
 const headerGradientClass = computed(() => {
   const gradientMap: Record<string, string> = {
-    'amber': 'from-amber-500 to-amber-600',
-    'green': 'from-green-500 to-green-600',
-    'blue': 'from-blue-500 to-blue-600',
-    'red': 'from-red-500 to-red-600',
+    'amber': 'from-amber-400 to-amber-500',
+    'green': 'from-green-400 to-green-500',
+    'blue': 'from-blue-400 to-blue-500',
+    'red': 'from-red-400 to-red-500',
   }
-  return gradientMap[props.color] || 'from-amber-500 to-amber-600'
+  return gradientMap[props.color] || 'from-amber-400 to-amber-500'
 })
 
 const colorDotClass = computed(() => {
@@ -206,4 +206,3 @@ const profitabilityTextColor = computed(() => {
   return textColorMap[props.color] || 'text-amber-700'
 })
 </script>
-
