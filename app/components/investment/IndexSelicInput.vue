@@ -31,6 +31,7 @@
 <script setup lang='ts'>
 import {computed} from 'vue'
 import {useInvestmentStore} from '~/store/investment'
+import {usePositiveNumberValidation} from '~/composables/usePositiveNumberValidation'
 
 const store = useInvestmentStore()
 
@@ -39,21 +40,6 @@ const selic = computed({
   set: (data) => store.setSelic(data)
 })
 
-const isValid = computed(() => {
-  if (!selic.value) {
-    return false
-  }
-  return Number(selic.value) > 0
-})
-
-const errorMessage = computed(() => {
-  if (!selic.value) {
-    return 'Obrigatório'
-  }
-  if (Number(selic.value) <= 0) {
-    return 'Deve ser um número positivo'
-  }
-  return ''
-})
+const { isValid, errorMessage } = usePositiveNumberValidation(selic)
 </script>
 

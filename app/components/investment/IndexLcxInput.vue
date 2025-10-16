@@ -30,25 +30,14 @@
 <script setup lang='ts'>
 import {computed} from 'vue'
 import {useInvestmentStore} from '~/store/investment'
+import {usePositiveNumberValidation} from '~/composables/usePositiveNumberValidation'
 
 const store = useInvestmentStore()
+
 const lcx = computed({
   get: () => store.lcx,
   set: (data) => store.setLcx(data)
 })
-const isValid = computed(() => {
-  if (!lcx.value) {
-    return false
-  }
-  return Number(lcx.value) > 0
-})
-const errorMessage = computed(() => {
-  if (!lcx.value) {
-    return 'Obrigatório'
-  }
-  if (Number(lcx.value) <= 0) {
-    return 'Deve ser um número positivo'
-  }
-  return ''
-})
+
+const { isValid, errorMessage } = usePositiveNumberValidation(lcx)
 </script>
