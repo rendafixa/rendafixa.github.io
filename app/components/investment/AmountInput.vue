@@ -39,12 +39,12 @@ const amount = computed({
 
 const isValid = computed(() => {
   if (!amount.value) return false
-  return parseInt(amount.value.toString()) > 0
+  return Number.parseInt(amount.value.toString()) > 0
 })
 
 const errorMessage = computed(() => {
   if (!amount.value) return 'Obrigatório'
-  if (parseInt(amount.value.toString()) <= 0) return 'Deve ser um número positivo'
+  if (Number.parseInt(amount.value.toString()) <= 0) return 'Deve ser um número positivo'
   return ''
 })
 </script>
