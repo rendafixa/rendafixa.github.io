@@ -6,7 +6,8 @@
     <div class="relative">
       <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
         </svg>
       </div>
       <input
@@ -27,24 +28,25 @@
   </div>
 </template>
 <script setup lang='ts'>
-import { computed } from 'vue'
-import { useInvestmentStore } from '~/store/investment'
+import {computed} from 'vue'
+import {useInvestmentStore} from '~/store/investment'
+
 const store = useInvestmentStore()
 const lcx = computed({
   get: () => store.lcx,
   set: (data) => store.setLcx(data)
 })
 const isValid = computed(() => {
-  if (!lcx.value){
+  if (!lcx.value) {
     return false
   }
-  return Number.parseInt(lcx.value.toString()) > 0
+  return Number(lcx.value) > 0
 })
 const errorMessage = computed(() => {
-  if (!lcx.value){
+  if (!lcx.value) {
     return 'Obrigatório'
   }
-  if (Number.parseInt(lcx.value.toString()) <= 0){
+  if (Number(lcx.value) <= 0) {
     return 'Deve ser um número positivo'
   }
   return ''

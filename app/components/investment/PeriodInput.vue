@@ -40,14 +40,14 @@ const isValid = computed(() => {
   if (!period.value) {
     return false
   }
-  return Number.parseInt(period.value.toString()) > 0
+  return Number(period.value) > 0
 })
 
 const errorMessage = computed(() => {
   if (!period.value) {
     return 'Obrigatório'
   }
-  if (Number.parseInt(period.value.toString()) <= 0) {
+  if (Number(period.value) <= 0) {
     return 'Deve ser um número positivo'
   }
   return ''

@@ -43,14 +43,14 @@ const isValid = computed(() => {
   if (!selic.value) {
     return false
   }
-  return Number.parseInt(selic.value.toString()) > 0
+  return Number(selic.value) > 0
 })
 
 const errorMessage = computed(() => {
   if (!selic.value) {
     return 'Obrigatório'
   }
-  if (Number.parseInt(selic.value.toString()) <= 0) {
+  if (Number(selic.value) <= 0) {
     return 'Deve ser um número positivo'
   }
   return ''

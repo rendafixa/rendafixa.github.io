@@ -41,17 +41,17 @@ const di = computed({
 })
 
 const isValid = computed(() => {
-  if (!di.value){
+  if (!di.value) {
     return false
   }
-  return Number.parseInt(di.value.toString()) > 0
+  return Number(di.value) > 0
 })
 
 const errorMessage = computed(() => {
   if (!di.value) {
     return 'Obrigatório'
   }
-  if (Number.parseInt(di.value.toString()) <= 0) {
+  if (Number(di.value) <= 0) {
     return 'Deve ser um número positivo'
   }
   return ''
