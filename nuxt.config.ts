@@ -74,6 +74,11 @@ export default defineNuxtConfig({
     }
   ],
 
+  // Configurações para persistência do Pinia
+  pinia: {
+    storesDirs: ['./app/store/**']
+  },
+
   devtools: {enabled: true},
 
   piniaPersistedstate: {

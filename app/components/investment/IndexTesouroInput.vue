@@ -1,14 +1,15 @@
 <template>
   <v-text-field
-    v-model.number="lcx"
-    type="number"
+    v-model.number='tesouro'
+    type='number'
     variant="underlined"
-    label="LCI/LCA"
-    prepend-icon="mdi-finance"
-    suffix="% DI"
-    min="0"
-    :rules="[rules.required, rules.positive]"
-  ></v-text-field>
+    label='Tesouro Direto'
+    prepend-icon='mdi-treasure-chest'
+    suffix='% SELIC'
+    min='0'
+    :rules='[rules.required, rules.positive]'
+  >
+  </v-text-field>
 </template>
 
 <script setup lang='ts'>
@@ -22,8 +23,8 @@ const rules = {
   positive: (value: any) => parseInt(value) >= 0 || 'Deve ser um número não negativo'
 }
 
-const lcx = computed({
-  get: () => store.lcx,
-  set: (data) => store.setLcx(data)
+const tesouro = computed({
+  get: () => store.tesouro,
+  set: (data) => store.setTesouro(data)
 })
 </script>
