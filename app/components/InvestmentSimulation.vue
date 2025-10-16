@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 class='text-h6'>Simulação</h2>
-    <p class='font-weight-light'>
+    <h2 class='text-lg font-semibold text-gray-900 mb-2'>Simulação</h2>
+    <p class='text-gray-600 mb-4'>
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
@@ -64,3 +64,4 @@ function getDurationInDays() {
   return Math.floor(investment.period * periodMultiplier[investment.periodType])
 }
 </script>
+

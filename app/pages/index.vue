@@ -1,12 +1,12 @@
 <template>
-  <v-row>
-    <v-col cols="12" sm="5" md="4">
+  <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+    <div class="sm:col-span-5 md:col-span-4">
       <InvestmentInput />
-    </v-col>
-    <v-col cols="12" sm="7" md="8">
+    </div>
+    <div class="sm:col-span-7 md:col-span-8">
       <InvestmentSimulation />
-    </v-col>
-  </v-row>
+    </div>
+  </div>
 </template>
 <script setup lang='ts'>
 useSeoMeta({

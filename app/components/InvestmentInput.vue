@@ -9,10 +9,12 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
 </script>
 
 <template>
-  <v-card elevation="2">
-    <v-card-title class="text-h6">Investimento</v-card-title>
-    <v-card-text>
-      <v-form @submit.prevent>
+  <div class="bg-white rounded-lg shadow-md">
+    <div class="px-6 py-4 border-b border-gray-200">
+      <h2 class="text-lg font-semibold text-gray-900">Investimento</h2>
+    </div>
+    <div class="px-6 py-4">
+      <form @submit.prevent>
         <AmountInput />
         <div class="period-container">
           <PeriodInput />
@@ -22,14 +24,17 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
         <IndexSelicInput />
         <IndexCdbInput />
         <IndexLcxInput />
-      </v-form>
-    </v-card-text>
-  </v-card>
+      </form>
+    </div>
+  </div>
 </template>
+
 <style scoped>
 .period-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1rem;
 }
 </style>
+
