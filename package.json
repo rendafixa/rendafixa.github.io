@@ -24,7 +24,7 @@
     "axios": "^1.12.2",
     "nuxt-schema-org": "^5.0.9",
     "pinia": "^3.0.3",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.15"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
