@@ -59,10 +59,6 @@ describe('getIOFAmount', () => {
 
   it('returns 0 for days greater than 30', () => {
     const interestAmount = 1000
-
-    // Assuming getIOFPercentage is correct based on the previous tests
-    const iofPercentage = getIOFPercentage(35)
-
     const result = getIOFAmount(35, interestAmount)
 
     expect(result).toBe(0)

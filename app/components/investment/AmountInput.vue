@@ -29,28 +29,36 @@
 </template>
 
 <script setup lang='ts'>
-import {computed} from 'vue'
+import {computed, ref} from 'vue'
 import {useInvestmentStore} from '~/store/investment'
 
 const store = useInvestmentStore();
+const storeAmount = ref(store.amount)
 
-const amount = computed({
-  get: () => store.amount,
-  set: (newValue) => store.setAmount(newValue),
-})
-
-const isValid = computed(() => {
-  if (!amount.value) {
+const validateAmount = (value: number | null): boolean => {
+  if (!value) {
     return false
   }
-  return Number(amount.value) > 0
+  return Number(value) > 0
+}
+
+const amount = computed({
+  get: () => storeAmount.value,
+  set: (newValue) => {
+    storeAmount.value = newValue
+    if (validateAmount(newValue)) {
+      store.setAmount(Number(newValue))
+    }
+  },
 })
 
+const isValid = computed(() => validateAmount(storeAmount.value))
+
 const errorMessage = computed(() => {
-  if (!amount.value) {
+  if (!storeAmount.value) {
     return 'Obrigatório'
   }
-  if (Number(amount.value) <= 0) {
+  if (Number(storeAmount.value) <= 0) {
     return 'Deve ser um número positivo'
   }
   return ''

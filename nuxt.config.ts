@@ -62,6 +62,7 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     'nuxt-schema-org',
+    '@nuxt/test-utils/module',
   ],
 
   vite: {
