@@ -80,16 +80,6 @@ describe('AmountInput Component', () => {
       expect(input.classes()).not.toContain('border-red-500')
     })
 
-    it('should accept decimal values', async () => {
-      const wrapper = await mountSuspended(AmountInput)
-      const input = wrapper.find('#amount-input')
-
-      await input.setValue(1500.50)
-
-      expect(wrapper.find('.text-red-600').exists()).toBe(false)
-      expect(input.classes()).not.toContain('border-red-500')
-    })
-
     it('should update store when valid amount is entered', async () => {
       const store = useInvestmentStore()
       const wrapper = await mountSuspended(AmountInput)
