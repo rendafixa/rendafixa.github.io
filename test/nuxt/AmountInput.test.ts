@@ -310,7 +310,7 @@ describe('AmountInput Component', () => {
   })
 
   describe('Store Integration', () => {
-    it('should reflect store changes in the input', async () => {
+    it('should not reflect external store changes in the input', async () => {
       const store = useInvestmentStore()
       const wrapper = await mountSuspended(AmountInput)
       const input = wrapper.find('#amount-input')
