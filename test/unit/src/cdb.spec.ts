@@ -7,7 +7,7 @@ function expectedCDB(amount: number, di: number, yearlyIndex: number, days: numb
   const yearlyRate = yearlyIndex / 100 // convert to decimal
   const dailyFactor = Math.pow((yearlyRate * di) / 100 + 1, 1 / 365)
   const rawInterest = amount * Math.pow(dailyFactor, days) - amount
-  const interestAmount = parseFloat(rawInterest.toFixed(2))
+  const interestAmount = Number.parseFloat(rawInterest.toFixed(2))
   const taxPercentage = getIndexIR(days)
   const iofAmount = getIOFAmount(days, interestAmount)
   const taxAmount = (interestAmount - iofAmount) * (taxPercentage / 100)
