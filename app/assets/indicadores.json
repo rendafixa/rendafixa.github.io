@@ -8,8 +8,7 @@
   "selic": {
     "title": "SELIC",
     "description": "Taxa de juros - Selic anualizada base 252",
-    "unitDisplay": "% a.a.",
-    "value": 15
+    "unitDisplay": "% a.a."
   },
   "cdi": {
     "title": "CDI",
