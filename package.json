@@ -25,7 +25,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "axios": "^1.13.1",
     "nuxt-schema-org": "^5.0.9",
-    "pinia": "^3.0.3",
+    "pinia": "^3.0.4",
     "tailwindcss": "^4.1.17"
   },
   "pnpm": {
