@@ -15,8 +15,8 @@ importers:
         specifier: ^4.1.17
         version: 4.1.17(vite@7.1.12(@types/node@22.13.10)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)(yaml@2.8.1))
       axios:
-        specifier: ^1.13.1
-        version: 1.13.1
+        specifier: ^1.13.2
+        version: 1.13.2
       nuxt-schema-org:
         specifier: ^5.0.9
         version: 5.0.9(@unhead/vue@2.0.19(vue@3.5.22(typescript@5.8.2)))(h3@1.15.4)(magicast@0.5.1)(unhead@2.0.19)(vue@3.5.22(typescript@5.8.2))
@@ -1561,8 +1561,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
-  axios@1.13.1:
-    resolution: {integrity: sha512-hU4EGxxt+j7TQijx1oYdAjw4xuIp1wRQSsbMFwSthCWeBQur1eF+qJ5iQ5sN3Tw8YRzQNKb8jszgBdMDVqwJcw==}
+  axios@1.13.2:
+    resolution: {integrity: sha512-VPk9ebNqPcy5lRGuSlKx752IlDatOjT9paPlm8A7yOuW2Fbvp4X3JznJtT4f0GzGLLiWE9W8onz51SqLYwzGaA==}
 
   b4a@1.7.3:
     resolution: {integrity: sha512-5Q2mfq2WfGuFp3uS//0s6baOJLMoVduPYVeNmDYxu5OUA1/cBfvr2RIS7vi62LdNj/urk1hfmj867I3qt6uZ7Q==}
@@ -5817,7 +5817,7 @@ snapshots:
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
-  axios@1.13.1:
+  axios@1.13.2:
     dependencies:
       follow-redirects: 1.15.11
       form-data: 4.0.4
