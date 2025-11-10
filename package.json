@@ -21,7 +21,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.11.2",
+    "@pinia/nuxt": "^0.11.3",
     "@tailwindcss/vite": "^4.1.17",
     "axios": "^1.13.1",
     "nuxt-schema-org": "^5.0.9",
