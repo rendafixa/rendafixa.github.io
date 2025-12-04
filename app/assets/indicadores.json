@@ -14,6 +14,7 @@
   "cdi": {
     "title": "CDI",
     "description": "Taxa de juros - CDI anualizada base 252",
-    "unitDisplay": "% a.a."
+    "unitDisplay": "% a.a.",
+    "value": 13.18
   }
 }
