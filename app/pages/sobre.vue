@@ -1,46 +1,12 @@
 <template>
-  <div>
+  <div class="px-10">
     <h1 class="text-2xl font-bold text-gray-900 mb-6">Sobre este projeto</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+    <div class="mb-4">
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <img src="/images/help-wanted.jpg" class="w-full h-24 object-cover" alt="Help Wanted" />
-        <div class="p-6">
-          <h2 class="text-xl font-semibold text-gray-900 mb-2">Você é um desenvolvedor?</h2>
-          <p class="text-sm text-gray-600 mb-4">Tens experiência com Vue.js?</p>
-          <p class="text-gray-700 mb-6">
-            Precisamos de um desenvolvedor frontend, que possa aplicar sua
-            criatividade no desenvolvimento do frontend desse projeto. Todo
-            desenvolvedor backend tem a fama de fazer péssimas interfaces
-            (pa-dum-ts!)
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <a
-              href="https://github.com/rendafixa/rendafixa.github.io"
-              class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors"
-            >
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-              Quero ajudar
-            </a>
-            <a
-              href="https://github.com/rendafixa/rendafixa.github.io/issues/new"
-              class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors"
-            >
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Achei um bug
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <img src="/images/laptop-ide-code.jpg" class="w-full h-24 object-cover" alt="Laptop IDE Code" />
+        <img src="/images/laptop-ide-code.jpg" class="w-full h-80 object-cover" alt="Laptop IDE Code" />
         <div class="p-6">
           <h2 class="text-xl font-semibold text-gray-900 mb-2">Como tudo começou?</h2>
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-gray-700 mb-4">
             Era uma vez um artesão de software que quis fazer sua própria
             calculadora de renda fixa ...
           </p>
@@ -52,7 +18,7 @@
             </p>
             <p>
               Desenvolvido por
-              <a href="https://marcelorodrigo.com" class="text-blue-600 hover:text-blue-800 underline">Marcelo Rodrigo</a> e alguns
+              <a href="https://marcelorodrigo.com" class="text-blue-600 hover:text-blue-800 underline" title="Marcelo Rodrigo">Marcelo Rodrigo</a> e alguns
               <a
                 href="https://github.com/rendafixa/rendafixa.github.io/graphs/contributors"
                 title="GitHub Contributors"
