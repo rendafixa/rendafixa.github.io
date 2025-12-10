@@ -18,7 +18,8 @@
             </p>
             <p>
               Desenvolvido por
-              <a href="https://marcelorodrigo.com" class="text-blue-600 hover:text-blue-800 underline" title="Marcelo Rodrigo">Marcelo Rodrigo</a> e alguns
+              <a href="https://marcelorodrigo.com" class="text-blue-600 hover:text-blue-800 underline" title="Marcelo Rodrigo">Marcelo Rodrigo</a>
+              e
               <a
                 href="https://github.com/rendafixa/rendafixa.github.io/graphs/contributors"
                 title="GitHub Contributors"
