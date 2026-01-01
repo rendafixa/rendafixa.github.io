@@ -8,17 +8,24 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest",
-    "update-indexes": "node update-indexes.js"
+    "update-indexes": "node update-indexes.mjs",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/eslint": "^1.12.1",
     "@nuxt/test-utils": "^3.21.0",
     "@tailwindcss/typography": "^0.5.19",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/test-utils": "^2.4.6",
+    "eslint": "^9.39.2",
+    "eslint-flat-config": "^2.0.0",
     "happy-dom": "^20.0.11",
     "jsdom": "^27.4.0",
     "nuxt": "^4.2.2",
+    "typescript": "^5.9.3",
+    "vite-plugin-eslint2": "^5.0.4",
     "vitest": "^3.2.4"
   },
   "dependencies": {

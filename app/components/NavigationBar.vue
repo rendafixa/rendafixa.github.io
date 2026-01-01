@@ -5,18 +5,83 @@
       class="inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label="Calculator"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="4" y="2" width="16" height="20" rx="2"/>
-        <line x1="8" y1="6" x2="16" y2="6"/>
-        <line x1="16" y1="10" x2="16" y2="10"/>
-        <line x1="12" y1="10" x2="12" y2="10"/>
-        <line x1="8" y1="10" x2="8" y2="10"/>
-        <line x1="16" y1="14" x2="16" y2="14"/>
-        <line x1="12" y1="14" x2="12" y2="14"/>
-        <line x1="8" y1="14" x2="8" y2="14"/>
-        <line x1="16" y1="18" x2="16" y2="18"/>
-        <line x1="12" y1="18" x2="12" y2="18"/>
-        <line x1="8" y1="18" x2="8" y2="18"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect
+          x="4"
+          y="2"
+          width="16"
+          height="20"
+          rx="2"
+        />
+        <line
+          x1="8"
+          y1="6"
+          x2="16"
+          y2="6"
+        />
+        <line
+          x1="16"
+          y1="10"
+          x2="16"
+          y2="10"
+        />
+        <line
+          x1="12"
+          y1="10"
+          x2="12"
+          y2="10"
+        />
+        <line
+          x1="8"
+          y1="10"
+          x2="8"
+          y2="10"
+        />
+        <line
+          x1="16"
+          y1="14"
+          x2="16"
+          y2="14"
+        />
+        <line
+          x1="12"
+          y1="14"
+          x2="12"
+          y2="14"
+        />
+        <line
+          x1="8"
+          y1="14"
+          x2="8"
+          y2="14"
+        />
+        <line
+          x1="16"
+          y1="18"
+          x2="16"
+          y2="18"
+        />
+        <line
+          x1="12"
+          y1="18"
+          x2="12"
+          y2="18"
+        />
+        <line
+          x1="8"
+          y1="18"
+          x2="8"
+          y2="18"
+        />
       </svg>
     </NuxtLink>
     <NuxtLink
@@ -24,12 +89,34 @@
       class="inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label="Information"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="12" y1="16" x2="12" y2="12"/>
-        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <line
+          x1="12"
+          y1="16"
+          x2="12"
+          y2="12"
+        />
+        <line
+          x1="12"
+          y1="8"
+          x2="12.01"
+          y2="8"
+        />
       </svg>
     </NuxtLink>
   </div>
 </template>
-

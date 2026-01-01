@@ -19,7 +19,7 @@ describe('getCDBResult - tax percentage tiers', () => {
     { days: 30, expected: 22.5 },
     { days: 181, expected: 20 },
     { days: 400, expected: 17.5 },
-    { days: 900, expected: 15 }
+    { days: 900, expected: 15 },
   ]
 
   for (const { days, expected } of tierCases) {
@@ -82,4 +82,3 @@ describe('getCDBResult - long term lowest tax bracket', () => {
     expect(result.taxAmount).toBeCloseTo(expected.taxAmount, 6)
   })
 })
-

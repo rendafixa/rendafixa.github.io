@@ -11,7 +11,9 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
 <template>
   <div class="bg-white rounded-lg shadow-md">
     <div class="px-6 py-4 border-b border-gray-200">
-      <h2 class="text-lg font-semibold text-gray-900">Investimento</h2>
+      <h2 class="text-lg font-semibold text-gray-900">
+        Investimento
+      </h2>
     </div>
     <div class="px-6 py-4">
       <form @submit.prevent>
@@ -37,4 +39,3 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
   gap: 1rem;
 }
 </style>
-

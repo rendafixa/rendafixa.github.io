@@ -39,7 +39,7 @@ pnpm build && pnpm preview  # Test production build locally
 ```bash
 pnpm update-indexes      # Fetch latest DI/SELIC/savings rates from BCB API
 ```
-This runs `update-indexes.js`, which calls `https://api.bcb.gov.br/` endpoints and updates `app/assets/indicadores.json`. Critical for production accuracy.
+This runs `update-indexes.mjs`, which calls `https://api.bcb.gov.br/` endpoints and updates `app/assets/indicadores.json`. Critical for production accuracy.
 
 ## Project-Specific Conventions
 
@@ -75,6 +75,16 @@ const periodMultiplier = {
 - Pinia: Store initialized in `index.vue` page via `store.initializeStore()`
 - Tailwind CSS + Vite integration (check `@tailwindcss/vite` in config)
 
+### Linting & Formatting (Nuxt 4/Vue 3 Best Practice)
+- Project uses **ESLint flat config** with official `@nuxt/eslint` module. See `eslint.config.mjs` (auto-generated).
+- Formatting rules are enforced by the **ESLint Stylistic** plugin—no `.editorconfig` file is needed or used.
+- No Prettier: all stylistic and layout concerns handled via ESLint rules.
+- **Lint scripts:**
+  - `pnpm lint` — Check entire codebase for lint and style violations
+  - `pnpm lint:fix` — Auto-fix fixable issues (recommended before commit)
+- **CI/CD:** Lint runs automatically in GitHub Actions (`.github/workflows/ci.yml` and `publish.yml`). Commits/PRs failing lint will cause the pipeline to fail.
+- TypeScript and Vue SFCs are deeply integrated in lint setup. Prefer explicit, non-`any` types.
+
 ## Testing Patterns
 - Unit tests in `test/unit/src/` use **Vitest** with `describe`/`it` blocks
 - Example: `finance.spec.ts` tests IR brackets and compound interest edge cases
@@ -82,7 +92,7 @@ const periodMultiplier = {
 
 ## External Dependencies & Integration Points
 - **BCB API** (`https://api.bcb.gov.br/`): Fetches DI, SELIC, savings rates
-  - Series IDs: `4391` (DI), `1 month avg`, others in `update-indexes.js`
+  - Series IDs: `4391` (DI), `1 month avg`, others in `update-indexes.mjs`
 - **Nuxt Schema Org**: SEO metadata (Portuguese pt-BR)
 - **Axios**: HTTP calls for index updates
 - **SonarCloud**: CI/CD quality gates (see badges in README)

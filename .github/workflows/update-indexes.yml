@@ -2,11 +2,12 @@ name: Update Indexes
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8,12,18 * * 1-5'
-      timezone: 'America/Sao_Paulo'
+    - cron: '0 11,15,21 * * 1-5'
 
 jobs:
   update-indicadores:
+    permissions:
+      contents: write
     name: Update indicadores
     runs-on: ubuntu-latest
     steps:

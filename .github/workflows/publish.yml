@@ -4,18 +4,16 @@ on:
     branches:
       - master
   workflow_dispatch:
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-# Allow one concurrent deployment
 concurrency:
   group: 'pages'
   cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v6
@@ -32,6 +30,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies 👨🏻‍💻
         run: pnpm install --frozen-lockfile
+      - name: Lint check ✅
+        run: pnpm lint
       - name: Deploy 😎
         run: pnpm generate
       - name: Publish 🍻
@@ -39,6 +39,10 @@ jobs:
         with:
           path: ./dist
   deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
