@@ -31,9 +31,18 @@ async function fetchPoupanca() {
   try {
     console.log('Fetching Poupanca...')
     const response = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json')
-    const value = parseFloat(response.data[0].valor)
-    if (isNaN(value)) {
-      console.error('Invalid Poupanca value received:', value)
+    if (!Array.isArray(response.data) || response.data.length === 0) {
+      console.error('[ERROR] BCB API returned no data for Poupanca:', response.data)
+      return null
+    }
+    const first = response.data[0]
+    if (!first || typeof first.valor === 'undefined') {
+      console.error('[ERROR] Unexpected BCB API payload shape (missing "valor"): ', response.data)
+      return null
+    }
+    const value = Number.parseFloat(first.valor)
+    if (!Number.isFinite(value)) {
+      console.error('[ERROR] Invalid Poupanca value received (not a finite number):', first.valor)
       console.error('Full payload:', response.data)
       return null
     }
