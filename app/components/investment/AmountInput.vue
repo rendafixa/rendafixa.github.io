@@ -52,8 +52,6 @@ import { computed, ref } from 'vue'
 import { useInvestmentStore } from '~/store/investment'
 
 const store = useInvestmentStore()
-const storeAmount = ref(store.amount)
-
 const validateAmount = (value: number | null): boolean => {
   if (!value) {
     return false
@@ -62,22 +60,21 @@ const validateAmount = (value: number | null): boolean => {
 }
 
 const amount = computed({
-  get: () => storeAmount.value,
+  get: () => store.amount,
   set: (newValue) => {
-    storeAmount.value = newValue
     if (validateAmount(newValue)) {
       store.setAmount(Number(newValue))
     }
   },
 })
 
-const isValid = computed(() => validateAmount(storeAmount.value))
+const isValid = computed(() => validateAmount(store.amount))
 
 const errorMessage = computed(() => {
-  if (!storeAmount.value) {
+  if (!store.amount) {
     return 'Obrigatório'
   }
-  if (Number(storeAmount.value) <= 0) {
+  if (Number(store.amount) <= 0) {
     return 'Deve ser um número positivo'
   }
   return ''
