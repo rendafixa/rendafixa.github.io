@@ -51,9 +51,6 @@ importers:
       eslint-flat-config:
         specifier: ^2.0.0
         version: 2.0.0(eslint@9.39.2(jiti@2.6.1))
-      eslint-stylistic:
-        specifier: 0.0.0-0
-        version: 0.0.0-0
       happy-dom:
         specifier: ^20.0.11
         version: 20.0.11
@@ -2710,9 +2707,6 @@ packages:
   eslint-scope@8.4.0:
     resolution: {integrity: sha512-sNXOfKCn74rt8RICKMvJS7XKV/Xk9kA7DyJr8mJik3S7Cwgy3qlkkmyS2uQB3jiJg6VNdZd/pDBJu0nvG2NlTg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  eslint-stylistic@0.0.0-0:
-    resolution: {integrity: sha512-rN7XdybP48UW/b/ZWKQkMATHb6rpA9BJHolrVelSpeBxvfsPb5s0gT7JE4NWlG1e+9OMxk3IpkSb6qzdvBlWrA==}
 
   eslint-typegen@2.3.0:
     resolution: {integrity: sha512-azYgAvhlz1AyTpeLfVSKcrNJInuIsRrcUrOcHmEl8T9oMKesePVUPrF8gRgE6azV8CAlFzxJDTyaXAAbA/BYiA==}
@@ -7830,8 +7824,6 @@ snapshots:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 5.3.0
-
-  eslint-stylistic@0.0.0-0: {}
 
   eslint-typegen@2.3.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:

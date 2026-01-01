@@ -21,7 +21,6 @@
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.39.2",
     "eslint-flat-config": "^2.0.0",
-    "eslint-stylistic": "0.0.0-0",
     "happy-dom": "^20.0.11",
     "jsdom": "^27.4.0",
     "nuxt": "^4.2.2",
