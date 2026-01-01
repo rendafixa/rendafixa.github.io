@@ -8,14 +8,16 @@
     </div>
   </div>
 </template>
-
 <script setup lang='ts'>
-import { useInvestmentStore } from '~/store/investment'
-
 useSeoMeta({
   title: 'Calculadora',
-  description: 'Calculadora de investimentos Renda Fixa para simulação de rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
+  description: 'Calculadora de investimentos Renda Fixa para simulação de rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto'
 })
+import { useInvestmentStore } from '~/store/investment'
+import { onMounted } from 'vue'
 const store = useInvestmentStore()
-store.initializeStore()
+onMounted(() => {
+  store.initializeStore()
+})
+
 </script>
