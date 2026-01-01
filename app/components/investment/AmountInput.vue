@@ -17,7 +17,7 @@
          min='1'
          class="block w-full pl-10 pr-16 py-2 border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none transition-colors"
          :class="{ 'border-red-500': !isValid }"
-         aria-label="Valor da Aplicação"
+
          :aria-describedby="!isValid && amount !== null ? 'amount-error' : null"
        />
       <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
