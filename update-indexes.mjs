@@ -51,6 +51,7 @@ async function fetchPoupanca() {
   }
   catch (error) {
     console.error('Error fetching Poupanca:', error)
+    return null
   }
 }
 
@@ -65,6 +66,7 @@ async function fetchDi() {
   }
   catch (error) {
     console.error('Error fetching DI:', error)
+    return null
   }
 }
 
