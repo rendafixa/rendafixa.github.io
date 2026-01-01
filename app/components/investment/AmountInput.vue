@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useInvestmentStore } from '~/store/investment'
 
 const store = useInvestmentStore()

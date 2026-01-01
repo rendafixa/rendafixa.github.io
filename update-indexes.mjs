@@ -16,12 +16,14 @@ try {
   const rawData = fs.readFileSync(filePath, 'utf-8')
   try {
     indicadores = JSON.parse(rawData)
-  } catch (parseError) {
+  }
+  catch (parseError) {
     console.error(`[ERROR] Malformed JSON in indicadores.json at ${filePath}`)
     console.error(parseError.stack || parseError)
     process.exit(1)
   }
-} catch (fileError) {
+}
+catch (fileError) {
   console.error(`[ERROR] Unable to read indicadores.json at ${filePath}`)
   console.error(fileError.stack || fileError)
   process.exit(1)
@@ -110,12 +112,14 @@ async function updateIndicadores() {
 
     if (selicValue !== null && selicValue !== undefined && !isNaN(selicValue)) {
       indicadores.selic.value = selicValue
-    } else {
+    }
+    else {
       console.warn('Skipping update: Invalid selic value.')
     }
     if (cdiValue !== null && cdiValue !== undefined && !isNaN(cdiValue)) {
       indicadores.cdi.value = cdiValue
-    } else {
+    }
+    else {
       console.warn('Skipping update: Invalid cdi value.')
     }
 
