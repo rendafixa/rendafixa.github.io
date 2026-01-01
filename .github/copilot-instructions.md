@@ -88,8 +88,10 @@ const periodMultiplier = {
 - **SonarCloud**: CI/CD quality gates (see badges in README)
 
 ## Key Files Reference
-- `package.json`: Build/test scripts and dependencies
-- `nuxt.config.ts`: Tailwind, SEO meta, static generation config
+- `package.json`: Build/test/lint scripts and dependencies
+- `nuxt.config.ts`: Tailwind, SEO meta, static generation and lint config
+- `eslint.config.mjs`: ESLint flat config entry point (auto-generated)
+- `.github/workflows/pr-title.yml`: PR title conventional commit validation
 - `vitest.config.ts`: Test runner configuration
 - `tsconfig.json`: TypeScript strict mode (recommended)
 - `app/assets/indicadores.json`: Runtime market data (do not commit hardcoded values)

@@ -1,0 +1,29 @@
+name: 'Conventional PR Title'
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+concurrency:
+  group: pr-title-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  check-title:
+    permissions:
+      pull-requests: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check pull request title for Conventional Commit
+        uses: amannn/action-semantic-pull-request@v6
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
