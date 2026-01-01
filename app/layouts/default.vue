@@ -12,9 +12,9 @@
                 class="w-12 h-12"
               />
             </NuxtLink>
-            <h1 class="ml-3 text-xl font-semibold text-gray-900 hidden sm:block whitespace-nowrap">
-              Calculadora Renda Fixa
-            </h1>
+<h1 class="ml-3 text-xl font-semibold text-gray-900 hidden sm:block whitespace-nowrap">
+  Calculadora Renda Fixa
+</h1>
           </div>
           <NavigationBar />
         </div>
