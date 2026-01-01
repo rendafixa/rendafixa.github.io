@@ -39,7 +39,7 @@ pnpm build && pnpm preview  # Test production build locally
 ```bash
 pnpm update-indexes      # Fetch latest DI/SELIC/savings rates from BCB API
 ```
-This runs `update-indexes.js`, which calls `https://api.bcb.gov.br/` endpoints and updates `app/assets/indicadores.json`. Critical for production accuracy.
+This runs `update-indexes.mjs`, which calls `https://api.bcb.gov.br/` endpoints and updates `app/assets/indicadores.json`. Critical for production accuracy.
 
 ## Project-Specific Conventions
 
@@ -92,7 +92,7 @@ const periodMultiplier = {
 
 ## External Dependencies & Integration Points
 - **BCB API** (`https://api.bcb.gov.br/`): Fetches DI, SELIC, savings rates
-  - Series IDs: `4391` (DI), `1 month avg`, others in `update-indexes.js`
+  - Series IDs: `4391` (DI), `1 month avg`, others in `update-indexes.mjs`
 - **Nuxt Schema Org**: SEO metadata (Portuguese pt-BR)
 - **Axios**: HTTP calls for index updates
 - **SonarCloud**: CI/CD quality gates (see badges in README)
