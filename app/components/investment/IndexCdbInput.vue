@@ -52,7 +52,7 @@ const store = useInvestmentStore()
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const rules = {
   required: (value: unknown) => !!value || 'Obrigatório',
-  positive: (value: unknown) => parseInt(value as string) > 0 || 'Deve ser um número positivo',
+  positive: (value: unknown) => Number.parseInt(value as string) > 0 || 'Deve ser um número positivo',
 }
 
 const cdb = computed({
