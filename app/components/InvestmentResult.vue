@@ -72,7 +72,7 @@
         </div>
 
         <div
-          v-if="!!interestAmount"
+          v-if="hasInterestAmount"
           class="flex items-center justify-between py-2 border-b border-gray-100"
         >
           <div class="flex items-center gap-2">
@@ -96,7 +96,7 @@
         </div>
 
         <div
-          v-if="!!taxAmount"
+          v-if="hasTaxAmount"
           class="flex items-center justify-between"
         >
           <div class="flex items-center gap-2 flex-1">
@@ -112,7 +112,7 @@
         </div>
 
         <div
-          v-if="!!iofAmount"
+          v-if="hasIofAmount"
           class="flex items-center justify-between"
         >
           <span class="text-sm text-gray-600">IOF</span>
@@ -185,7 +185,10 @@ const props = defineProps({
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const hasAmount = computed(() => !!props.amount)
-const hasDeductions = computed(() => !!props.taxAmount || !!props.iofAmount)
+const hasInterestAmount = computed(() => props.interestAmount !== 0 && props.interestAmount !== null && props.interestAmount !== undefined)
+const hasTaxAmount = computed(() => props.taxAmount !== null && props.taxAmount !== undefined && props.taxAmount !== 0)
+const hasIofAmount = computed(() => props.iofAmount !== null && props.iofAmount !== undefined && props.iofAmount !== 0)
+const hasDeductions = computed(() => hasTaxAmount.value || hasIofAmount.value)
 
 const totalProfit = computed(() => props.interestAmount - props.iofAmount - (props.taxAmount ?? 0))
 const totalAmount = computed(() => props.amount + totalProfit.value)
