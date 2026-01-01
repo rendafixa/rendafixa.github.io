@@ -185,7 +185,7 @@ const props = defineProps({
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const hasAmount = computed(() => !!props.amount)
-const hasInterestAmount = computed(() => props.interestAmount !== 0 && props.interestAmount !== null && props.interestAmount !== undefined)
+const hasInterestAmount = computed(() => props.interestAmount !== 0)
 const hasTaxAmount = computed(() => props.taxAmount !== null && props.taxAmount !== undefined && props.taxAmount !== 0)
 const hasIofAmount = computed(() => props.iofAmount !== null && props.iofAmount !== undefined && props.iofAmount !== 0)
 const hasDeductions = computed(() => hasTaxAmount.value || hasIofAmount.value)
