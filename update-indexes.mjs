@@ -103,20 +103,20 @@ async function updateIndicadores() {
     const selicValue = await fetchSelic()
     const cdiValue = await fetchDi()
 
-    if (!poupancaValue || isNaN(poupancaValue)) {
+    if (poupancaValue == null || Number.isNaN(poupancaValue)) {
       console.warn('Skipping update: Invalid poupanca value.')
     }
     else {
       indicadores.poupanca.value = poupancaValue
     }
 
-    if (selicValue !== null && selicValue !== undefined && !isNaN(selicValue)) {
+    if (selicValue !== null && selicValue !== undefined && !Number.isNaN(selicValue)) {
       indicadores.selic.value = selicValue
     }
     else {
       console.warn('Skipping update: Invalid selic value.')
     }
-    if (cdiValue !== null && cdiValue !== undefined && !isNaN(cdiValue)) {
+    if (cdiValue !== null && cdiValue !== undefined && !Number.isNaN(cdiValue)) {
       indicadores.cdi.value = cdiValue
     }
     else {
