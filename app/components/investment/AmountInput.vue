@@ -22,23 +22,28 @@
           />
         </svg>
       </div>
-<input
-         id="amount-input"
-         v-model.number='amount'
-         type='number'
-         min='1'
-         class="block w-full pl-10 pr-16 py-2 border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none transition-colors"
-         :class="{ 'border-red-500': !isValid }"
+      <input
+        id="amount-input"
+        v-model.number="amount"
+        type="number"
+        min="1"
+        class="block w-full pl-10 pr-16 py-2 border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none transition-colors"
+        :class="{ 'border-red-500': !isValid }"
 
-         :aria-describedby="!isValid && amount !== null ? 'amount-error' : null"
-       />
+        :aria-describedby="!isValid && amount !== null ? 'amount-error' : null"
+      >
       <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
         <span class="text-gray-500 text-sm">R$ ,00</span>
       </div>
     </div>
-<p v-if="!isValid && amount !== null" class="mt-1 text-sm text-red-600" id="amount-error" aria-live="polite">
-       {{ errorMessage }}
-     </p>
+    <p
+      v-if="!isValid && amount !== null"
+      id="amount-error"
+      class="mt-1 text-sm text-red-600"
+      aria-live="polite"
+    >
+      {{ errorMessage }}
+    </p>
   </div>
 </template>
 
