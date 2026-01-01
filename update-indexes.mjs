@@ -59,8 +59,19 @@ async function fetchDi() {
   try {
     console.log('Fetching DI...')
     const response = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4391/dados/ultimos/13?formato=json')
+    if (!Array.isArray(response.data) || response.data.length <= 1) {
+      console.error('[ERROR] BCB API returned insufficient DI data (need at least 2 items):', response.data)
+      return 0
+    }
     const data = response.data.slice(1) // Ignores the partial value of current month
-    const value = data.map(item => parseFloat(item.valor)).reduce((acc, value) => acc + value, 0)
+    const value = data.reduce((acc, item) => {
+      const num = Number.parseFloat(item.valor)
+      if (!Number.isFinite(num)) {
+        console.warn('[WARN] Skipping non-numeric DI value:', item.valor)
+        return acc
+      }
+      return acc + num
+    }, 0)
     console.log('DI value fetched:', value)
     return value
   }
