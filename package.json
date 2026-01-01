@@ -8,7 +8,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest",
-    "update-indexes": "node update-indexes.js",
+    "update-indexes": "node update-indexes.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
