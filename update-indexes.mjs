@@ -7,7 +7,25 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const filePath = path.join(__dirname, 'app', 'assets', 'indicadores.json')
-const indicadores = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+let indicadores
+if (!fs.existsSync(filePath)) {
+  console.error(`[ERROR] File not found or inaccessible: ${filePath}`)
+  process.exit(1)
+}
+try {
+  const rawData = fs.readFileSync(filePath, 'utf-8')
+  try {
+    indicadores = JSON.parse(rawData)
+  } catch (parseError) {
+    console.error(`[ERROR] Malformed JSON in indicadores.json at ${filePath}`)
+    console.error(parseError.stack || parseError)
+    process.exit(1)
+  }
+} catch (fileError) {
+  console.error(`[ERROR] Unable to read indicadores.json at ${filePath}`)
+  console.error(fileError.stack || fileError)
+  process.exit(1)
+}
 
 async function fetchPoupanca() {
   try {
