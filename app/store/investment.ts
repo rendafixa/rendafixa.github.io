@@ -4,7 +4,7 @@ import indicadores from '~/assets/indicadores.json'
 export enum PeriodTypes {
   Days = 'dias',
   Months = 'meses',
-  Years = 'anos'
+  Years = 'anos',
 }
 
 export const useInvestmentStore = defineStore('investment', {
@@ -12,12 +12,12 @@ export const useInvestmentStore = defineStore('investment', {
     return {
       amount: 1000,
       cdb: 100,
-      di: null as Number | null,
+      di: null as number | null,
       period: 360,
       periodType: PeriodTypes.Days,
       lcx: 100,
-      poupanca: null as Number | null,
-      selic: null as Number | null
+      poupanca: null as number | null,
+      selic: null as number | null,
     }
   },
   actions: {
@@ -49,6 +49,6 @@ export const useInvestmentStore = defineStore('investment', {
       this.di = indicadores.cdi.value
       this.selic = indicadores.selic.value
       this.poupanca = indicadores.poupanca.value
-    }
-  }
+    },
+  },
 })

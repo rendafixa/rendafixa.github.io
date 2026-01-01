@@ -75,6 +75,16 @@ const periodMultiplier = {
 - Pinia: Store initialized in `index.vue` page via `store.initializeStore()`
 - Tailwind CSS + Vite integration (check `@tailwindcss/vite` in config)
 
+### Linting & Formatting (Nuxt 4/Vue 3 Best Practice)
+- Project uses **ESLint flat config** with official `@nuxt/eslint` module. See `eslint.config.mjs` (auto-generated).
+- Formatting rules are enforced by the **ESLint Stylistic** plugin—no `.editorconfig` file is needed or used.
+- No Prettier: all stylistic and layout concerns handled via ESLint rules.
+- **Lint scripts:**
+  - `pnpm lint` — Check entire codebase for lint and style violations
+  - `pnpm lint:fix` — Auto-fix fixable issues (recommended before commit)
+- **CI/CD:** Lint runs automatically in GitHub Actions (`.github/workflows/ci.yml` and `publish.yml`). Commits/PRs failing lint will cause the pipeline to fail.
+- TypeScript and Vue SFCs are deeply integrated in lint setup. Prefer explicit, non-`any` types.
+
 ## Testing Patterns
 - Unit tests in `test/unit/src/` use **Vitest** with `describe`/`it` blocks
 - Example: `finance.spec.ts` tests IR brackets and compound interest edge cases
@@ -88,8 +98,9 @@ const periodMultiplier = {
 - **SonarCloud**: CI/CD quality gates (see badges in README)
 
 ## Key Files Reference
-- `package.json`: Build/test scripts and dependencies
-- `nuxt.config.ts`: Tailwind, SEO meta, static generation config
+- `package.json`: Build/test/lint scripts and dependencies
+- `nuxt.config.ts`: Tailwind, SEO meta, static generation and lint config
+- `eslint.config.mjs`: ESLint flat config entry point (auto-generated)
 - `vitest.config.ts`: Test runner configuration
 - `tsconfig.json`: TypeScript strict mode (recommended)
 - `app/assets/indicadores.json`: Runtime market data (do not commit hardcoded values)

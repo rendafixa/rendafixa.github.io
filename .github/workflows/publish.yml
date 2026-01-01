@@ -32,6 +32,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies 👨🏻‍💻
         run: pnpm install --frozen-lockfile
+      - name: Lint check ✅
+        run: pnpm lint
       - name: Deploy 😎
         run: pnpm generate
       - name: Publish 🍻
