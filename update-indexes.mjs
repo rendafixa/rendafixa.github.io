@@ -91,6 +91,7 @@ async function fetchSelic() {
   }
   catch (error) {
     console.error('Error fetching Selic:', error)
+    return null
   }
 }
 
@@ -107,8 +108,16 @@ async function updateIndicadores() {
       indicadores.poupanca.value = poupancaValue
     }
 
-    indicadores.selic.value = selicValue
-    indicadores.cdi.value = cdiValue
+    if (selicValue !== null && selicValue !== undefined && !isNaN(selicValue)) {
+      indicadores.selic.value = selicValue
+    } else {
+      console.warn('Skipping update: Invalid selic value.')
+    }
+    if (cdiValue !== null && cdiValue !== undefined && !isNaN(cdiValue)) {
+      indicadores.cdi.value = cdiValue
+    } else {
+      console.warn('Skipping update: Invalid cdi value.')
+    }
 
     fs.writeFileSync(filePath, JSON.stringify(indicadores, null, 2))
     console.log('indicadores.json updated successfully')
