@@ -1,5 +1,9 @@
 name: Build and Deploy
 on:
+  workflow_run:
+    workflows: [ "Update Indexes" ]
+    types:
+      - completed
   push:
     branches:
       - master

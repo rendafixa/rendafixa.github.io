@@ -36,6 +36,7 @@ jobs:
             echo "has_changes=true" >> $GITHUB_ENV
           fi
       - name: Commit and push changes
+        id: commit-and-push
         if: ${{ env.has_changes == 'true' }}
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -43,18 +44,5 @@ jobs:
           git add app/assets/indicadores.json
           git commit -m "Updated indicadores.json on $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Trigger publish workflow
-        if: ${{ env.has_changes == 'true' }}
-        uses: actions/github-script@v8
-        with:
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'publish.yml',
-              ref: 'master'
-            })
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
