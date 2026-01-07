@@ -4,7 +4,13 @@ updates:
     directory: '/'
     schedule:
       interval: daily
+    commit-message:
+      include: "scope"
+      prefix: "deps"
   - package-ecosystem: github-actions
     directory: '/'
     schedule:
       interval: daily
+    commit-message:
+      include: "scope"
+      prefix: "deps"
