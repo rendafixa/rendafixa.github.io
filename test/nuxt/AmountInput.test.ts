@@ -120,14 +120,14 @@ describe('AmountInput Component', () => {
   })
 
   describe('Store Integration', () => {
-    it('should not reflect external store changes in the input', async () => {
+    it('should reflect external store changes in the input', async () => {
       const wrapper = await mountSuspended(AmountInput)
       const store = useInvestmentStore()
       const input = wrapper.find('#amount-input')
       store.setAmount(3000)
       await wrapper.vm.$nextTick()
       const inputEl = input.element as HTMLInputElement
-      expect(inputEl.value).not.toBe('3000')
+      expect(inputEl.value).toBe('3000')
     })
 
     it('should update store only with valid values', async () => {
