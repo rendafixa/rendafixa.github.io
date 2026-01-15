@@ -26,10 +26,10 @@
         rendimento</strong>.
     </p>
     <h3>Período de Rendimento</h3>
-    <p class="p-4 shadow shadow-gray-300 rounded-lg bg-gradient-to-r from-slate-100 to-amber-50">
+    <ContentGradientBox>
       A <strong>data de aniversário</strong> da conta de depósito de poupança é o dia do mês de sua abertura. Para
       contas abertas nos dias 29, 30 e 31, considera-se como data de aniversário o dia 1º do mês seguinte.
-    </p>
+    </ContentGradientBox>
     <h3>Crédito dos Rendimentos</h3>
     <ul>
       <li>

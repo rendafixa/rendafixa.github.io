@@ -2,12 +2,12 @@
   <div class="flex gap-2">
     <NuxtLink
       to="/"
-      class="inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors"
       aria-label="Calculator"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6"
+        class="w-6 h-6 opacity-60 hover:opacity-100 transition-opacity"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -85,13 +85,31 @@
       </svg>
     </NuxtLink>
     <NuxtLink
+      to="/como-calcular-juros-da-poupanca"
+      class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors"
+      aria-label="Savings Account Calculator Guide"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 opacity-60 hover:opacity-100 transition-opacity"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15h4v-6h-4v6m0-8h4V7h-4v2" />
+      </svg>
+    </NuxtLink>
+    <NuxtLink
       to="/sobre"
-      class="inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors"
       aria-label="Information"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6"
+        class="w-6 h-6 opacity-60 hover:opacity-100 transition-opacity"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
