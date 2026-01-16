@@ -67,16 +67,16 @@
       <strong>Dados:</strong> Mesmo aporte de R$ 10.000 em CDB. Resgate em apenas 15 dias com rendimento bruto de R$ 75.
     </p>
     <ol>
-      <li><strong>IOF (dia 15):</strong> Conforme tabela regressiva do IOF → <strong>40%</strong> sobre o rendimento bruto.</li>
-      <li><strong>Cálculo do IOF:</strong> 40% × R$ 75 = <strong>R$ 30,00</strong>.</li>
-      <li><strong>Rendimento após IOF:</strong> R$ 75 − R$ 30 = <strong>R$ 45,00</strong>.</li>
+      <li><strong>IOF (dia 15):</strong> Conforme a tabela regressiva do IOF (ver <code>app/src/finance.ts</code>) → <strong>50%</strong> sobre o rendimento bruto.</li>
+      <li><strong>Cálculo do IOF:</strong> 50% × R$ 75 = <strong>R$ 37,50</strong>.</li>
+      <li><strong>Rendimento após IOF:</strong> R$ 75 − R$ 37,50 = <strong>R$ 37,50</strong>.</li>
       <li><strong>Dias de aplicação:</strong> 15 dias → alíquota de IR = <strong>22,5%</strong>.</li>
-      <li><strong>Cálculo do IR:</strong> 22,5% × R$ 45 = <strong>R$ 10,13</strong> (arredondado).</li>
-      <li><strong>Rendimento líquido:</strong> R$ 45 − R$ 10,13 = <strong>R$ 34,87</strong>.</li>
-      <li><strong>Saldo final:</strong> R$ 10.000 + R$ 34,87 = <strong>R$ 10.034,87</strong>.</li>
+      <li><strong>Cálculo do IR:</strong> 22,5% × R$ 37,50 = <strong>R$ 8,44</strong> (arredondado).</li>
+      <li><strong>Rendimento líquido:</strong> R$ 37,50 − R$ 8,44 = <strong>R$ 29,06</strong>.</li>
+      <li><strong>Saldo final:</strong> R$ 10.000 + R$ 29,06 = <strong>R$ 10.029,06</strong>.</li>
     </ol>
     <p>
-      <em>Observe:</em> O resgate antecipado (dia 15) resultou em um ganho líquido de apenas R$ 34,87 contra R$ 465,00 no exemplo anterior.
+      <em>Observe:</em> O resgate antecipado (dia 15) resultou em um ganho líquido de apenas R$ 29,06 contra R$ 465,00 no exemplo anterior.
       Esta é a razão pela qual aplicações de longo prazo tendem a ser mais vantajosas: menores alíquotas de IR e sem IOF.
     </p>
 
