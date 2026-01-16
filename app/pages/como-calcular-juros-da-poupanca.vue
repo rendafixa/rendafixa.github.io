@@ -49,6 +49,13 @@
       >Banco
         Central do Brasil</a>.
     </p>
+    <h3>Impostos na Poupança</h3>
+    <p>
+      A poupança é isenta de imposto de renda, ou seja, os rendimentos não sofrem desconto de IR. Para entender melhor como funcionam os impostos em outros investimentos de renda fixa, confira nosso guia sobre <NuxtLink
+        to="/como-calcular-imposto-de-renda"
+        class="text-blue-600 hover:text-blue-800 underline"
+      >como calcular o imposto de renda</NuxtLink>.
+    </p>
     <h3>Fontes Oficiais</h3>
     <ul>
       <li>
