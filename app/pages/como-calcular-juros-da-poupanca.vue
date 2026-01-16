@@ -5,6 +5,7 @@
       De acordo com a <a
         href="https://www.bcb.gov.br/estatisticas/remuneradepositospoupanca"
         target="_blank"
+        rel="noopener noreferrer"
       >legislação
         atual</a>, a remuneração dos depósitos de poupança é composta de duas parcelas:
     </p>
@@ -44,6 +45,7 @@
       fornecidos pelo <a
         href="https://www.bcb.gov.br/estatisticas/remuneradepositospoupanca"
         target="_blank"
+        rel="noopener noreferrer"
       >Banco
         Central do Brasil</a>.
     </p>
@@ -53,6 +55,7 @@
         <a
           href="https://www.bcb.gov.br/estatisticas/remuneradepositospoupanca"
           target="_blank"
+          rel="noopener noreferrer"
         >Remuneração dos
           Depósitos de Poupança – BCB</a>
       </li>
