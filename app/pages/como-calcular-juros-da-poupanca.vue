@@ -86,7 +86,6 @@ import InvestmentResult from '~/components/InvestmentResult.vue'
 import { computed } from 'vue'
 import { getPoupancaResult } from '~/src/poupanca'
 import { useInvestmentStore } from '~/store/investment'
-import indicadores from '~/assets/indicadores.json'
 
 useSeoMeta({
   title: 'Como Calcular Juros da Poupança',
@@ -97,7 +96,6 @@ const investment = useInvestmentStore()
 
 const poupancaExample = computed(() => {
   // Simulação fixa: R$ 10.000 por 6 meses (180 dias)
-  const poupancaIndex = indicadores.poupanca?.value ?? investment.poupanca ?? 0
-  return getPoupancaResult(10000, poupancaIndex, 180)
+  return getPoupancaResult(10000, investment.poupanca ?? 0, 180)
 })
 </script>
