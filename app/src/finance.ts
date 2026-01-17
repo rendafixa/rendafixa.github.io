@@ -24,12 +24,13 @@ export function getIOFPercentage(daysToRedeem: number): number {
     33, 30, 26, 23, 20, 16, 13, 10, 6, 3, 0,
   ]
 
-  if (daysToRedeem <= 30) {
+  if (daysToRedeem >= 1 && daysToRedeem <= 30) {
     const index: number = daysToRedeem - 1
-    return iofTable[index]
+    const pct = iofTable[index] ?? 0
+    return pct
   }
 
-  return 0 // No IOF for redemption after 30 days
+  return 0 // No IOF for redemption after 30 days or invalid days
 }
 
 export function getIOFAmount(daysToRedeem: number, interestAmount: number): number {
