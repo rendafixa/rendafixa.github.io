@@ -40,7 +40,6 @@
       <li>Trimestralmente, na data de aniversário no último mês do trimestre, para os demais depósitos.</li>
     </ul>
 
-    <!-- Exemplo prático usando InvestmentResult (R$ 10.000, 6 meses) -->
     <InvestmentResult
       name="Poupança (exemplo 6 meses)"
       :amount="10000"
@@ -101,7 +100,6 @@ onMounted(() => {
 })
 
 const poupancaExample = computed(() => {
-  // Simulação fixa: R$ 10.000 por 6 meses (180 dias)
   return getPoupancaResult(10000, investment.poupanca ?? 0, 180)
 })
 </script>
