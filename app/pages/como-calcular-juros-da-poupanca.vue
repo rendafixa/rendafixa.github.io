@@ -83,7 +83,7 @@
 
 <script setup lang="ts">
 import InvestmentResult from '~/components/InvestmentResult.vue'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { getPoupancaResult } from '~/src/poupanca'
 import { useInvestmentStore } from '~/store/investment'
 
@@ -93,6 +93,12 @@ useSeoMeta({
 })
 
 const investment = useInvestmentStore()
+
+onMounted(() => {
+  if (!investment.poupanca) {
+    investment.loadIndexes()
+  }
+})
 
 const poupancaExample = computed(() => {
   // Simulação fixa: R$ 10.000 por 6 meses (180 dias)
