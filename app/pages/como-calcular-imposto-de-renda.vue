@@ -5,7 +5,7 @@
     <p>
       Esta página explica, de forma clara e prática, como o Imposto de Renda (IR) incide sobre as principais aplicações financeiras no Brasil
       (CDB/RDB, LCI/LCA, fundos e poupança). As regras e tabelas aqui citadas seguem a legislação e normas oficiais (Receita Federal, Planalto,
-      Banco Central e CVM) — links no final da página.
+      Banco Central e CVM). Veja os links no final da página.
     </p>
 
     <h3>Tabela regressiva do IR para aplicações de renda fixa</h3>
@@ -128,7 +128,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Medida Provisória nº 1.303/2025 — Tributação de aplicações financeiras e ativos virtuais (Planalto)
+          Medida Provisória nº 1.303/2025: Tributação de aplicações financeiras e ativos virtuais (Planalto)
         </a>
       </li>
       <li>
@@ -137,7 +137,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Lei nº 15.191/2025 — Tabela progressiva mensal do IRPF (Planalto)
+          Lei nº 15.191/2025: Tabela progressiva mensal do IRPF (Planalto)
         </a>
       </li>
       <li>
@@ -146,7 +146,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Lei nº 9.250/1995 — IRPF e base de cálculo (Planalto)
+          Lei nº 9.250/1995: IRPF e base de cálculo (Planalto)
         </a>
       </li>
       <li>
@@ -155,7 +155,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Receita Federal do Brasil — Orientações sobre Imposto de Renda
+          Receita Federal do Brasil: Orientações sobre Imposto de Renda
         </a>
       </li>
       <li>
@@ -164,7 +164,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Receita Federal — Tabelas do Imposto de Renda (2026)
+          Receita Federal: Tabelas do Imposto de Renda (2026)
         </a>
       </li>
       <li>
@@ -173,7 +173,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Banco Central — Remuneração dos Depósitos de Poupança
+          Banco Central: Remuneração dos Depósitos de Poupança
         </a>
       </li>
       <li>
@@ -182,7 +182,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Banco Central do Brasil — Índices oficiais (DI, SELIC, Poupança)
+          Banco Central do Brasil: Índices oficiais (DI, SELIC, Poupança)
         </a>
       </li>
       <li>
@@ -191,7 +191,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          CVM — Comissão de Valores Mobiliários (orientações sobre fundos e tributação)
+          CVM: Comissão de Valores Mobiliários (orientações sobre fundos e tributação)
         </a>
       </li>
     </ul>
