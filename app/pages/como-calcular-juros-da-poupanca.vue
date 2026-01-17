@@ -39,6 +39,17 @@
       </li>
       <li>Trimestralmente, na data de aniversário no último mês do trimestre, para os demais depósitos.</li>
     </ul>
+
+    <!-- Exemplo prático usando InvestmentResult (R$ 10.000, 30 dias) -->
+    <InvestmentResult
+      name="Poupança (exemplo 30 dias)"
+      :amount="10000"
+      :interest-amount="poupancaExample.interestAmount"
+      :loading="!investment.poupanca"
+      color="amber"
+      class="mb-6"
+    />
+
     <h3>Como obtemos o índice da Poupança</h3>
     <p>
       Este projeto obtém automaticamente o índice mais recente da poupança por meio de integração com a dados oficiais
@@ -71,8 +82,20 @@
 </template>
 
 <script setup lang="ts">
+import InvestmentResult from '~/components/InvestmentResult.vue'
+import { computed } from 'vue'
+import { getPoupancaResult } from '~/src/poupanca'
+import { useInvestmentStore } from '~/store/investment'
+
 useSeoMeta({
   title: 'Como Calcular Juros da Poupança',
   description: 'Entenda como funciona o cálculo dos juros da poupança, incluindo regras da Selic, TR, datas de aniversário conforme fontes oficiais do Banco Central',
+})
+
+const investment = useInvestmentStore()
+
+const poupancaExample = computed(() => {
+  // Simulação fixa: R$ 10.000 por 30 dias (sem IOF)
+  return getPoupancaResult(10000, investment.poupanca ?? 0, 30)
 })
 </script>
