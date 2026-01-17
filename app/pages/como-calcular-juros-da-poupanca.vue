@@ -40,9 +40,9 @@
       <li>Trimestralmente, na data de aniversário no último mês do trimestre, para os demais depósitos.</li>
     </ul>
 
-    <!-- Exemplo prático usando InvestmentResult (R$ 10.000, 30 dias) -->
+    <!-- Exemplo prático usando InvestmentResult (R$ 10.000, 6 meses) -->
     <InvestmentResult
-      name="Poupança (exemplo 30 dias)"
+      name="Poupança (exemplo 6 meses)"
       :amount="10000"
       :interest-amount="poupancaExample.interestAmount"
       :loading="!investment.poupanca"
@@ -95,7 +95,7 @@ useSeoMeta({
 const investment = useInvestmentStore()
 
 const poupancaExample = computed(() => {
-  // Simulação fixa: R$ 10.000 por 30 dias (sem IOF)
-  return getPoupancaResult(10000, investment.poupanca ?? 0, 30)
+  // Simulação fixa: R$ 10.000 por 6 meses (180 dias) - calculateFullMonthsDays in src/poupanca considera meses completos
+  return getPoupancaResult(10000, investment.poupanca ?? 0, 180)
 })
 </script>
