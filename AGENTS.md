@@ -15,6 +15,7 @@ app/
 ├── components/        # Vue 3 SFCs
 │   └── investment/    # Specialized input components
 └── assets/indicadores.json  # Runtime market data (DI, SELIC, savings rate)
+test/unit/src/         # Vitest unit tests matching src structure
 ```
 
 **Data Flow**: User adjusts input → Pinia store updates → Computed properties in `InvestmentSimulation.vue` recalculate → Results render.
@@ -48,7 +49,10 @@ All currency calculations use `.toFixed(2)` before `Number.parseFloat()` (see `f
 
 ```bash
 pnpm dev              # Dev server + HMR on localhost:3000
-pnpm test             # Vitest unit tests
+pnpm test             # Run all Vitest tests
+pnpm test test/unit/src/finance.spec.ts  # Run single test file
+pnpm test -- --run    # Run tests once (watch mode disabled)
+pnpm lint             # Run ESLint check
 pnpm lint:fix         # Auto-fix ESLint + Stylistic rules
 pnpm update-indexes   # Fetch latest BCB indices → indicadores.json
 pnpm generate         # Static site generation (GitHub Pages)
@@ -62,6 +66,35 @@ pnpm generate         # Static site generation (GitHub Pages)
 - **No Prettier**: All formatting handled via ESLint
 - Run `pnpm lint` in CI automatically
 - **TypeScript strict mode enabled** in `tsconfig.json` — prefer explicit types over `any`
+
+### Imports
+- Third-party imports first (`import { ref } from 'vue'`)
+- Internal imports using `~` alias (`import { getCDBResult } from '~/src/cdb'`)
+- Named exports preferred over default exports
+- Use `* as finance` for grouping related functions from same module
+
+### Vue 3 Components
+- Use `<script setup lang='ts'>` syntax
+- Props with explicit types and validators where applicable
+- Computed properties for all derived state
+- Template uses kebab-case for components and properties
+- Portuguese for UI text, English for code identifiers
+
+### Pinia Stores
+- Options API style (`defineStore('name', { state, actions })`)
+- Actions for state mutations (no direct mutation from components)
+- Type annotations for all parameters and returns
+
+### TypeScript
+- Explicit types on function parameters and returns
+- `null` instead of `undefined` for optional values (e.g., index data)
+- `Record<string, Type>` for typed object maps
+- Avoid `any` — use `unknown` or explicit types
+
+### Error Handling
+- Check for `null` values before calculations (indices may be null during loading)
+- No try/catch in calculation modules — let errors propagate to UI
+- Display loading states in components when data is unavailable
 
 ## Testing Approach
 
