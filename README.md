@@ -31,7 +31,7 @@ Simule e compare CDB/RDB, LCI/LCA e Poupança com foco em impostos, IOF e índic
 ## Dados Oficiais
 
 - As simulações seguem as regras fiscais brasileiras (tabela regressiva de IR por prazo e tabela de IOF para resgates em menos de 30 dias);
-- Índices de referência (DI, SELIC e taxa da poupança) são obtidos a partir de fontes oficiais que são atualiadas várias vezes ao dia, automaticamente.
+- Índices de referência (DI, SELIC e taxa da poupança) são obtidos a partir de fontes oficiais que são atualizadas várias vezes ao dia, automaticamente.
 
 ## Observações finais
 
