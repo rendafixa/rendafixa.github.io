@@ -31,7 +31,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.11.3",
     "@tailwindcss/vite": "^4.1.18",
-    "axios": "^1.13.3",
+    "axios": "^1.13.4",
     "nuxt-schema-org": "^5.0.10",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.1.18"
