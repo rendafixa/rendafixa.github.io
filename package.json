@@ -20,7 +20,7 @@
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.39.2",
-    "happy-dom": "^20.6.1",
+    "happy-dom": "^20.6.3",
     "jsdom": "^27.4.0",
     "nuxt": "^4.3.1",
     "typescript": "^5.9.3",
@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.11.3",
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.2.0",
     "axios": "^1.13.5",
     "nuxt-schema-org": "^5.0.10",
     "pinia": "^3.0.4",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.2.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
