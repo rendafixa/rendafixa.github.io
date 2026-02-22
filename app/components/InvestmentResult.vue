@@ -1,5 +1,5 @@
 <template>
-  <div     class="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl dark:hover:shadow-white/15 transition-shadow duration-300 not-prose">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl dark:hover:shadow-white/15 transition-shadow duration-300 not-prose">
     <!-- Header with gradient background -->
     <div
       class="px-6 py-4 bg-gradient-to-r"
@@ -14,7 +14,7 @@
       <!-- Main metrics grid - Most important information -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <!-- Total Amount Card -->
-        <div         class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
           <div class="flex items-center gap-2 mb-2">
             <div
               class="w-3 h-3 rounded-full"
@@ -30,7 +30,7 @@
         </div>
 
         <!-- Liquid Profit Card -->
-        <div         class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
+        <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
           <div class="flex items-center gap-2 mb-2">
             <div class="w-3 h-3 rounded-full bg-green-500" />
             <p class="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -224,7 +224,8 @@ const headerGradientClass = computed(() => {
       red: 'from-red-800 to-red-900',
     }
     return gradientMap[props.color] || 'from-amber-800 to-amber-900'
-  } else {
+  }
+  else {
     const gradientMap: Record<string, string> = {
       amber: 'from-amber-400 to-amber-500',
       green: 'from-green-400 to-green-500',
