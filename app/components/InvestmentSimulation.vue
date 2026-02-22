@@ -3,7 +3,7 @@
     <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
       Simulação
     </h2>
-    <p class="text-gray-600 mb-4">
+    <p class="text-gray-600 dark:text-gray-300 mb-4">
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
