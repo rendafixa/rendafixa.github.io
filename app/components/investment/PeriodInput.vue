@@ -20,7 +20,7 @@
         v-model.number="period"
         type="number"
         min="1"
-        class="block w-full pl-10 pr-3 py-2 border-b-2 border-gray-300 dark:border-gray-600 dark:bg-transparent text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors"
+        class="block w-full pl-10 pr-3 py-2 border-b-2 border-gray-300 dark:border-gray-600 dark:bg-transparent text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-hidden transition-colors"
         :class="{ 'border-red-500 dark:border-red-400': !isValid }"
       >
     </div>

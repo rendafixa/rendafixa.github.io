@@ -10,7 +10,7 @@
       <select
         id="period-type-input"
         v-model="periodType"
-        class="block w-full py-2 px-3 border-b-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors appearance-none cursor-pointer"
+        class="block w-full py-2 px-3 border-b-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-hidden transition-colors appearance-none cursor-pointer"
       >
         <option
           v-for="option in periodTypesOptions"
