@@ -9,9 +9,9 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
 </script>
 
 <template>
-  <div class="bg-white rounded-lg shadow-md">
-    <div class="px-6 py-4 border-b border-gray-200">
-      <h2 class="text-lg font-semibold text-gray-900">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 transition-colors">
+    <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
         Investimento
       </h2>
     </div>

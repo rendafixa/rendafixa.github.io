@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-lg font-semibold text-gray-900 mb-2">
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
       Simulação
     </h2>
     <p class="text-gray-600 mb-4">
