@@ -25,7 +25,7 @@ describe('AmountInput Component', () => {
 
     it('should display money icon', async () => {
       const wrapper = await mountSuspended(AmountInput)
-      expect(wrapper.find('svg').exists()).toBe(true)
+      expect(wrapper.find('ion-icon').attributes('name')).toBe('cash-outline')
     })
   })
 
