@@ -61,7 +61,6 @@ export default defineNuxtConfig({
         {
           type: 'module',
           src: 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js',
-          defer: true,
           integrity: 'sha384-ka/QOj1/87D5umY1GYq4GS0y8e8vwy0Wj0BKvxJTWpNFUIarDm645Kvr8QaxM3jy',
           crossorigin: 'anonymous',
         },
