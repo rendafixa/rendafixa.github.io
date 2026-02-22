@@ -216,24 +216,21 @@ const progressBarColor = computed(() => {
 })
 
 const headerGradientClass = computed(() => {
-  if (isDark.value) {
-    const gradientMap: Record<string, string> = {
-      amber: 'from-amber-800 to-amber-900',
-      green: 'from-green-800 to-green-900',
-      blue: 'from-blue-800 to-blue-900',
-      red: 'from-red-800 to-red-900',
-    }
-    return gradientMap[props.color] || 'from-amber-800 to-amber-900'
+  const darkGradientMap: Record<string, string> = {
+    amber: 'from-amber-800 to-amber-900',
+    green: 'from-green-800 to-green-900',
+    blue: 'from-blue-800 to-blue-900',
+    red: 'from-red-800 to-red-900',
   }
-  else {
-    const gradientMap: Record<string, string> = {
-      amber: 'from-amber-400 to-amber-500',
-      green: 'from-green-400 to-green-500',
-      blue: 'from-blue-400 to-blue-500',
-      red: 'from-red-400 to-red-500',
-    }
-    return gradientMap[props.color] || 'from-amber-400 to-amber-500'
+  const lightGradientMap: Record<string, string> = {
+    amber: 'from-amber-400 to-amber-500',
+    green: 'from-green-400 to-green-500',
+    blue: 'from-blue-400 to-blue-500',
+    red: 'from-red-400 to-red-500',
   }
+  const gradientMap = isDark.value ? darkGradientMap : lightGradientMap
+  const defaultGradient = isDark.value ? 'from-amber-800 to-amber-900' : 'from-amber-400 to-amber-500'
+  return gradientMap[props.color] || defaultGradient
 })
 
 const colorDotClass = computed(() => {
