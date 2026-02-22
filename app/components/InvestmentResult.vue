@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300 not-prose">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl dark:hover:shadow-white/15 transition-shadow duration-300 not-prose">
     <!-- Header with gradient background -->
     <div
       class="px-6 py-4 bg-gradient-to-r"
@@ -14,30 +14,30 @@
       <!-- Main metrics grid - Most important information -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <!-- Total Amount Card -->
-        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 border border-blue-200">
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
           <div class="flex items-center gap-2 mb-2">
             <div
               class="w-3 h-3 rounded-full"
               :class="colorDotClass"
             />
-            <p class="text-sm font-medium text-gray-600">
+            <p class="text-sm font-medium text-gray-600 dark:text-gray-400">
               Valor Total Líquido
             </p>
           </div>
-          <p class="text-2xl font-bold text-gray-900">
+          <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">
             {{ totalAmountDisplay }}
           </p>
         </div>
 
         <!-- Liquid Profit Card -->
-        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 border border-green-200">
+        <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
           <div class="flex items-center gap-2 mb-2">
             <div class="w-3 h-3 rounded-full bg-green-500" />
-            <p class="text-sm font-medium text-gray-600">
+            <p class="text-sm font-medium text-gray-600 dark:text-gray-400">
               Rendimento Líquido
             </p>
           </div>
-          <p class="text-2xl font-bold text-green-700">
+          <p class="text-2xl font-bold text-green-700 dark:text-green-400">
             {{ liquidAmountDisplay }}
           </p>
         </div>
@@ -46,13 +46,13 @@
       <!-- Progress bar showing profitability -->
       <div class="mb-6">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-sm font-medium text-gray-600">Rentabilidade</span>
+          <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Rentabilidade</span>
           <span
             class="text-sm font-bold"
             :class="profitabilityTextColor"
           >{{ totalProfitPercentageDisplay }}</span>
         </div>
-        <div class="relative h-3 bg-gray-200 rounded-full overflow-hidden">
+        <div class="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <div
             class="absolute inset-y-0 left-0 transition-all duration-500 ease-out rounded-full"
             :class="progressBarColor"
@@ -63,34 +63,34 @@
 
       <!-- Detailed breakdown section -->
       <div>
-        <div class="flex items-center justify-between border-b border-gray-100">
+        <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700">
           <div class="flex items-center gap-2">
             <div class="w-2 h-2 rounded-full bg-blue-500" />
-            <span class="text-sm text-gray-600">Valor Investido</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Valor Investido</span>
           </div>
-          <span class="text-sm font-semibold text-gray-900">{{ amountDisplay }}</span>
+          <span class="text-sm font-semibold text-gray-900 dark:text-gray-100">{{ amountDisplay }}</span>
         </div>
 
         <div
           v-if="hasInterestAmount"
-          class="flex items-center justify-between py-2 border-b border-gray-100"
+          class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700"
         >
           <div class="flex items-center gap-2">
             <div class="w-2 h-2 rounded-full bg-green-500" />
-            <span class="text-sm text-gray-600">Rendimento Bruto</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Rendimento Bruto</span>
           </div>
-          <span class="text-sm font-semibold text-green-700">{{ interestAmountDisplay }}</span>
+          <span class="text-sm font-semibold text-green-700 dark:text-green-400">{{ interestAmountDisplay }}</span>
         </div>
       </div>
 
       <!-- Deductions section - highlighted -->
       <div
         v-if="hasDeductions"
-        class="bg-red-50 rounded-lg p-4 border border-red-100 space-y-3"
+        class="bg-red-50 dark:bg-red-900/10 rounded-lg p-4 border border-red-100 dark:border-red-900/30 space-y-3"
       >
         <div class="flex items-center gap-2 mb-2">
           <div class="w-3 h-3 rounded-full bg-red-500" />
-          <p class="text-sm font-semibold text-gray-700">
+          <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Deduções
           </p>
         </div>
@@ -100,23 +100,23 @@
           class="flex items-center justify-between"
         >
           <div class="flex items-center gap-2 flex-1">
-            <span class="text-sm text-gray-600">Imposto de Renda</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Imposto de Renda</span>
             <span
               v-if="!!taxPercentage"
-              class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-red-200 text-red-900"
+              class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-red-200 dark:bg-red-900/30 text-red-900 dark:text-red-300"
             >
               {{ taxPercentageDisplay }}
             </span>
           </div>
-          <span class="text-sm font-semibold text-red-700">-{{ taxAmountDisplay }}</span>
+          <span class="text-sm font-semibold text-red-700 dark:text-red-400">-{{ taxAmountDisplay }}</span>
         </div>
 
         <div
           v-if="hasIofAmount"
           class="flex items-center justify-between"
         >
-          <span class="text-sm text-gray-600">IOF</span>
-          <span class="text-sm font-semibold text-red-700">-{{ iofAmountDisplay }}</span>
+          <span class="text-sm text-gray-600 dark:text-gray-400">IOF</span>
+          <span class="text-sm font-semibold text-red-700 dark:text-red-400">-{{ iofAmountDisplay }}</span>
         </div>
       </div>
     </div>
@@ -183,8 +183,6 @@ const props = defineProps({
   },
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const hasAmount = computed(() => !!props.amount)
 const hasInterestAmount = computed(() => props.interestAmount !== 0)
 const hasTaxAmount = computed(() => props.taxAmount !== null && props.taxAmount !== undefined && props.taxAmount !== 0)
 const hasIofAmount = computed(() => props.iofAmount !== null && props.iofAmount !== undefined && props.iofAmount !== 0)
@@ -215,12 +213,12 @@ const progressBarColor = computed(() => {
 
 const headerGradientClass = computed(() => {
   const gradientMap: Record<string, string> = {
-    amber: 'from-amber-400 to-amber-500',
-    green: 'from-green-400 to-green-500',
-    blue: 'from-blue-400 to-blue-500',
-    red: 'from-red-400 to-red-500',
+    amber: 'from-amber-400 to-amber-500 dark:from-amber-800 dark:to-amber-900',
+    green: 'from-green-400 to-green-500 dark:from-green-800 dark:to-green-900',
+    blue: 'from-blue-400 to-blue-500 dark:from-blue-800 dark:to-blue-900',
+    red: 'from-red-400 to-red-500 dark:from-red-800 dark:to-red-900',
   }
-  return gradientMap[props.color] || 'from-amber-400 to-amber-500'
+  return gradientMap[props.color] || 'from-amber-400 to-amber-500 dark:from-amber-800 dark:to-amber-900'
 })
 
 const colorDotClass = computed(() => {

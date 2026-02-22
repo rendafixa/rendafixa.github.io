@@ -1,5 +1,5 @@
 <template>
-  <section class="prose max-w-3xl mx-auto my-8 px-4 sm:px-8">
+  <section class="prose dark:prose-invert max-w-3xl mx-auto my-8 px-4 sm:px-8">
     <h2>Como calcular o Imposto de Renda sobre investimentos</h2>
 
     <p>
