@@ -68,6 +68,12 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
   },
 
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => tag.startsWith('ion-'),
+    },
+  },
+
   site: {
     url: 'https://rendafixa.github.io',
     name: 'Calculadora Renda Fixa',
