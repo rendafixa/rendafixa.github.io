@@ -27,6 +27,11 @@ const isDark = computed(() => {
   return preference.value === 'dark'
 })
 
+/**
+ * Ensures the root HTML element has the 'dark' class when the active theme is dark and removes it otherwise.
+ *
+ * This is a no-op outside a browser environment (when `document` is undefined).
+ */
 function applyTheme() {
   if (typeof document === 'undefined')
     return
@@ -44,6 +49,17 @@ function applyTheme() {
 
 watch(isDark, applyTheme)
 
+/**
+ * Exposes reactive theme state and controls for managing light, dark, and system preferences.
+ *
+ * @returns An object containing:
+ * - `preference` — reactive reference to the user's theme preference (`'light' | 'dark' | 'system'`)
+ * - `isDark` — computed boolean indicating whether the effective theme is dark
+ * - `currentTheme` — computed string with the effective theme (`'light' | 'dark'`)
+ * - `setTheme` — function to update the theme preference and persist it to localStorage when available
+ * - `toggleTheme` — function that toggles between light and dark themes
+ * - `initTheme` — function that applies the current theme to the document
+ */
 export function useTheme() {
   const currentTheme = computed(() => {
     if (preference.value === 'system') {
