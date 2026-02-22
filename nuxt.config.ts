@@ -57,6 +57,13 @@ export default defineNuxtConfig({
         },
         { rel: 'manifest', href: '/site.webmanifest' },
       ],
+      script: [
+        {
+          type: 'module',
+          src: 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js',
+          defer: true,
+        },
+      ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },

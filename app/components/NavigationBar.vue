@@ -5,154 +5,44 @@
       class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors"
       aria-label="Calculator"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6 opacity-60 hover:opacity-100 transition-opacity"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <rect
-          x="4"
-          y="2"
-          width="16"
-          height="20"
-          rx="2"
-        />
-        <line
-          x1="8"
-          y1="6"
-          x2="16"
-          y2="6"
-        />
-        <line
-          x1="16"
-          y1="10"
-          x2="16"
-          y2="10"
-        />
-        <line
-          x1="12"
-          y1="10"
-          x2="12"
-          y2="10"
-        />
-        <line
-          x1="8"
-          y1="10"
-          x2="8"
-          y2="10"
-        />
-        <line
-          x1="16"
-          y1="14"
-          x2="16"
-          y2="14"
-        />
-        <line
-          x1="12"
-          y1="14"
-          x2="12"
-          y2="14"
-        />
-        <line
-          x1="8"
-          y1="14"
-          x2="8"
-          y2="14"
-        />
-        <line
-          x1="16"
-          y1="18"
-          x2="16"
-          y2="18"
-        />
-        <line
-          x1="12"
-          y1="18"
-          x2="12"
-          y2="18"
-        />
-        <line
-          x1="8"
-          y1="18"
-          x2="8"
-          y2="18"
-        />
-      </svg>
+      <ion-icon
+        name="calculator-outline"
+        size="large"
+        class="opacity-60 hover:opacity-100 transition-opacity"
+      />
     </NuxtLink>
     <NuxtLink
       to="/como-calcular-juros-da-poupanca"
       class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors"
       aria-label="Savings Account Calculator Guide"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6 opacity-60 hover:opacity-100 transition-opacity"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15h4v-6h-4v6m0-8h4V7h-4v2" />
-      </svg>
+      <ion-icon
+        name="wallet-outline"
+        size="large"
+        class="opacity-60 hover:opacity-100 transition-opacity"
+      />
     </NuxtLink>
     <NuxtLink
       to="/como-calcular-imposto-de-renda"
       class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors"
       aria-label="Income Tax Calculation Guide"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6 opacity-60 hover:opacity-100 transition-opacity"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-      </svg>
+      <ion-icon
+        name="star-outline"
+        size="large"
+        class="opacity-60 hover:opacity-100 transition-opacity"
+      />
     </NuxtLink>
     <NuxtLink
       to="/sobre"
       class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors"
       aria-label="Information"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6 opacity-60 hover:opacity-100 transition-opacity"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-        />
-        <line
-          x1="12"
-          y1="16"
-          x2="12"
-          y2="12"
-        />
-        <line
-          x1="12"
-          y1="8"
-          x2="12.01"
-          y2="8"
-        />
-      </svg>
+      <ion-icon
+        name="information-circle-outline"
+        size="large"
+        class="opacity-60 hover:opacity-100 transition-opacity"
+      />
     </NuxtLink>
   </div>
 </template>
