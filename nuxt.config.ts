@@ -65,6 +65,12 @@ export default defineNuxtConfig({
           integrity: 'sha384-ka/QOj1/87D5umY1GYq4GS0y8e8vwy0Wj0BKvxJTWpNFUIarDm645Kvr8QaxM3jy',
           crossorigin: 'anonymous',
         },
+        {
+          nomodule: true,
+          src: 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js',
+          integrity: 'sha384-Y7BxOV3n1SuhJ7sIgm/VmA+gWujL0HGJ8RLKBfH8hU6O2zXCCLZ2C0v5jGM+8THd',
+          crossorigin: 'anonymous',
+        },
       ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
