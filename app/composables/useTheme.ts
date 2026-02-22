@@ -20,14 +20,31 @@ if (typeof window !== 'undefined') {
   })
 }
 
-export function useTheme() {
-  const isDark = computed(() => {
-    if (preference.value === 'system') {
-      return systemIsDark.value
-    }
-    return preference.value === 'dark'
-  })
+const isDark = computed(() => {
+  if (preference.value === 'system') {
+    return systemIsDark.value
+  }
+  return preference.value === 'dark'
+})
 
+function applyTheme() {
+  if (typeof document === 'undefined')
+    return
+
+  const html = document.documentElement
+  const shouldBeDark = isDark.value
+
+  if (shouldBeDark) {
+    html.classList.add('dark')
+  }
+  else {
+    html.classList.remove('dark')
+  }
+}
+
+watch(isDark, applyTheme)
+
+export function useTheme() {
   const currentTheme = computed(() => {
     if (preference.value === 'system') {
       return systemIsDark.value ? 'dark' : 'light'
@@ -47,27 +64,8 @@ export function useTheme() {
     setTheme(nextTheme)
   }
 
-  function applyTheme() {
-    if (typeof document === 'undefined')
-      return
-
-    const html = document.documentElement
-    const shouldBeDark = isDark.value
-
-    if (shouldBeDark) {
-      html.classList.add('dark')
-    }
-    else {
-      html.classList.remove('dark')
-    }
-  }
-
   function initTheme() {
     applyTheme()
-
-    watch(isDark, () => {
-      applyTheme()
-    })
   }
 
   return {
