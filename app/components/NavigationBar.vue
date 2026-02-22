@@ -9,6 +9,7 @@
         name="calculator-outline"
         size="large"
         class="opacity-60 hover:opacity-100 transition-opacity"
+        aria-hidden="true"
       />
     </NuxtLink>
     <NuxtLink
@@ -20,6 +21,7 @@
         name="wallet-outline"
         size="large"
         class="opacity-60 hover:opacity-100 transition-opacity"
+        aria-hidden="true"
       />
     </NuxtLink>
     <NuxtLink
@@ -31,6 +33,7 @@
         name="star-outline"
         size="large"
         class="opacity-60 hover:opacity-100 transition-opacity"
+        aria-hidden="true"
       />
     </NuxtLink>
     <NuxtLink
@@ -42,6 +45,7 @@
         name="information-circle-outline"
         size="large"
         class="opacity-60 hover:opacity-100 transition-opacity"
+        aria-hidden="true"
       />
     </NuxtLink>
   </div>
