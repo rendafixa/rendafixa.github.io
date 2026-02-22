@@ -39,7 +39,8 @@
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "@tailwindcss/oxide",
-      "esbuild"
+      "esbuild",
+      "unrs-resolver"
     ]
   },
   "packageManager": "pnpm@10.28.1"
