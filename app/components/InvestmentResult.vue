@@ -183,7 +183,6 @@ const props = defineProps({
   },
 })
 
-const hasAmount = computed(() => !!props.amount)
 const hasInterestAmount = computed(() => props.interestAmount !== 0)
 const hasTaxAmount = computed(() => props.taxAmount !== null && props.taxAmount !== undefined && props.taxAmount !== 0)
 const hasIofAmount = computed(() => props.iofAmount !== null && props.iofAmount !== undefined && props.iofAmount !== 0)
