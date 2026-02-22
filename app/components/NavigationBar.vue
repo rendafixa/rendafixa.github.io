@@ -18,7 +18,7 @@
       aria-label="Savings Account Calculator Guide"
     >
       <ion-icon
-        name="wallet-outline"
+        name="today-outline"
         size="large"
         class="opacity-60 hover:opacity-100 transition-opacity"
         aria-hidden="true"
@@ -30,7 +30,7 @@
       aria-label="Income Tax Calculation Guide"
     >
       <ion-icon
-        name="star-outline"
+        name="card-outline"
         size="large"
         class="opacity-60 hover:opacity-100 transition-opacity"
         aria-hidden="true"

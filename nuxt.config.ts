@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module',
     '@nuxt/eslint',
   ],
+  ssr: false,
 
   devtools: { enabled: true },
   app: {
