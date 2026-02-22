@@ -11,7 +11,7 @@
         <ion-icon
           name="calculator-outline"
           size="small"
-          class="text-gray-400 dark:text-gray-500"
+          class="text-gray-400 dark:text-gray-300"
           aria-hidden="true"
         />
       </div>
