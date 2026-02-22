@@ -126,8 +126,6 @@
 <script setup lang='ts'>
 import { computed } from 'vue'
 
-const { isDark } = useTheme()
-
 const defaultLocale = 'pt-BR'
 const filters = {
   percent(amount: number) {
@@ -185,7 +183,6 @@ const props = defineProps({
   },
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const hasAmount = computed(() => !!props.amount)
 const hasInterestAmount = computed(() => props.interestAmount !== 0)
 const hasTaxAmount = computed(() => props.taxAmount !== null && props.taxAmount !== undefined && props.taxAmount !== 0)
@@ -216,21 +213,13 @@ const progressBarColor = computed(() => {
 })
 
 const headerGradientClass = computed(() => {
-  const darkGradientMap: Record<string, string> = {
-    amber: 'from-amber-800 to-amber-900',
-    green: 'from-green-800 to-green-900',
-    blue: 'from-blue-800 to-blue-900',
-    red: 'from-red-800 to-red-900',
+  const gradientMap: Record<string, string> = {
+    amber: 'from-amber-400 to-amber-500 dark:from-amber-800 dark:to-amber-900',
+    green: 'from-green-400 to-green-500 dark:from-green-800 dark:to-green-900',
+    blue: 'from-blue-400 to-blue-500 dark:from-blue-800 dark:to-blue-900',
+    red: 'from-red-400 to-red-500 dark:from-red-800 dark:to-red-900',
   }
-  const lightGradientMap: Record<string, string> = {
-    amber: 'from-amber-400 to-amber-500',
-    green: 'from-green-400 to-green-500',
-    blue: 'from-blue-400 to-blue-500',
-    red: 'from-red-400 to-red-500',
-  }
-  const gradientMap = isDark.value ? darkGradientMap : lightGradientMap
-  const defaultGradient = isDark.value ? 'from-amber-800 to-amber-900' : 'from-amber-400 to-amber-500'
-  return gradientMap[props.color] || defaultGradient
+  return gradientMap[props.color] || 'from-amber-400 to-amber-500 dark:from-amber-800 dark:to-amber-900'
 })
 
 const colorDotClass = computed(() => {
