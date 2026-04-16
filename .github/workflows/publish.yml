@@ -39,7 +39,7 @@ jobs:
       - name: Deploy 😎
         run: pnpm generate
       - name: Publish 🍻
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
   deploy:
