@@ -102,5 +102,7 @@ export default defineNuxtConfig({
     config: {
       stylistic: true, // can be an object or true for default stylistic rules
     },
+    // Optionally enable integration with the dev server checker
+    checker: true,
   },
 })
