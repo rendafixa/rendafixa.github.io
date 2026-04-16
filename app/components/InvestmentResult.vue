@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl dark:hover:shadow-white/15 transition-shadow duration-300 not-prose">
+  <div data-testid="result-card" class="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl dark:hover:shadow-white/15 transition-shadow duration-300 not-prose">
     <!-- Header with gradient background -->
     <div
       class="px-6 py-4 bg-gradient-to-r"
@@ -24,7 +24,7 @@
               Valor Total Líquido
             </p>
           </div>
-          <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <p data-testid="result-total-amount" class="text-2xl font-bold text-gray-900 dark:text-gray-100">
             {{ totalAmountDisplay }}
           </p>
         </div>
