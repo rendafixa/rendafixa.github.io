@@ -1,8 +1,9 @@
-name: Publish
+name: Build and test
 on:
   pull_request
 jobs:
-  deploy:
+  build:
+    name: Build and test
     runs-on: ubuntu-latest
     permissions:
       contents: read
