@@ -60,9 +60,6 @@ importers:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
-      vite-plugin-eslint2:
-        specifier: ^5.1.0
-        version: 5.1.0(@types/eslint@8.56.12)(eslint@10.2.0(jiti@2.6.1))(rollup@4.60.1)(vite@7.3.1(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@25.6.0)(happy-dom@20.9.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
@@ -12773,6 +12770,7 @@ snapshots:
       rollup: 4.60.1
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   vite-plugin-inspect@11.3.3(@nuxt/kit@4.4.2(magicast@0.5.2))(vite@7.3.1(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)):
     dependencies:
