@@ -60,20 +60,22 @@ async function fetchPoupanca() {
 async function fetchDi() {
   try {
     console.log('Fetching DI...')
-    const response = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4391/dados/ultimos/13?formato=json')
-    if (!Array.isArray(response.data) || response.data.length <= 1) {
-      console.error('[ERROR] BCB API returned insufficient DI data (need at least 2 items):', response.data)
-      return 0
+    const response = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4389/dados/ultimos/1?formato=json')
+    if (!Array.isArray(response.data) || response.data.length === 0) {
+      console.error('[ERROR] BCB API returned no data for CDI:', response.data)
+      return null
     }
-    const data = response.data.slice(1) // Ignores the partial value of current month
-    const value = data.reduce((acc, item) => {
-      const num = Number.parseFloat(item.valor)
-      if (!Number.isFinite(num)) {
-        console.warn('[WARN] Skipping non-numeric DI value:', item.valor)
-        return acc
-      }
-      return acc + num
-    }, 0)
+    const first = response.data[0]
+    if (!first || typeof first.valor === 'undefined') {
+      console.error('[ERROR] Unexpected BCB API payload shape (missing "valor"): ', response.data)
+      return null
+    }
+    const value = Number.parseFloat(first.valor)
+    if (!Number.isFinite(value)) {
+      console.error('[ERROR] Invalid CDI value received (not a finite number):', first.valor)
+      console.error('Full payload:', response.data)
+      return null
+    }
     console.log('DI value fetched:', value)
     return value
   }
