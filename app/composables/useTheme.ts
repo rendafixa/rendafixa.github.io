@@ -7,13 +7,13 @@ const THEME_KEY = 'rendafixa-theme'
 const preference = ref<Theme>('system')
 const systemIsDark = ref(false)
 
-if (typeof window !== 'undefined') {
+if (typeof globalThis.window !== 'undefined') {
   const stored = localStorage.getItem(THEME_KEY) as Theme | null
   if (stored && ['light', 'dark', 'system'].includes(stored)) {
     preference.value = stored
   }
 
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  const mediaQuery = globalThis.window.matchMedia('(prefers-color-scheme: dark)')
   systemIsDark.value = mediaQuery.matches
   mediaQuery.addEventListener('change', (e) => {
     systemIsDark.value = e.matches
@@ -70,7 +70,7 @@ export function useTheme() {
 
   function setTheme(theme: Theme) {
     preference.value = theme
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       localStorage.setItem(THEME_KEY, theme)
     }
   }

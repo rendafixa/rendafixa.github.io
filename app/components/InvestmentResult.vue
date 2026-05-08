@@ -160,7 +160,7 @@ const props = defineProps({
   amount: {
     type: Number,
     required: true,
-    validator: (value: number) => parseFloat(value.toString()) > 0,
+    validator: (value: number) => Number.parseFloat(value.toString()) > 0,
   },
   interestAmount: {
     type: Number,
