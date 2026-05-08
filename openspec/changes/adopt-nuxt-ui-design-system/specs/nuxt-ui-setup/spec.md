@@ -39,3 +39,13 @@ The build pipeline SHALL contain exactly one Tailwind CSS processing chain, driv
 #### Scenario: Build produces no duplicate CSS layers
 - **WHEN** `pnpm generate` completes
 - **THEN** there is no duplicate `@layer base`, `@layer utilities`, or `@tailwind` directive in the output CSS bundle
+
+## Tests
+
+No dedicated test file for this capability — it is infrastructure. Correctness is verified by:
+
+- **All existing `test/nuxt/` tests still pass** after installing `@nuxt/ui` and removing `@tailwindcss/vite`. If Nuxt UI is misconfigured (missing module, broken CSS imports), `mountSuspended` will fail to resolve auto-imported components.
+- **`pnpm generate` succeeds** (task 9.3) — static generation failing is a direct signal of broken setup.
+- **`pnpm lint` passes** (task 9.1) — ESLint `@nuxt/eslint` validates that no residual `useTheme` or `ThemeToggle` imports remain.
+
+Color mode behavior (dark class on `<html>`) is indirectly tested by the NavigationBar tests (toggle changes `colorMode.preference`) defined in the `layout-ui` spec.

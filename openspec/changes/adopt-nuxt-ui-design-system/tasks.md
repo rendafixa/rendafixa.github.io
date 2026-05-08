@@ -65,3 +65,47 @@
 - [ ] 9.3 Run `pnpm generate` and confirm static site generation completes without errors
 - [ ] 9.4 Manually review light mode and dark mode rendering in the browser for all four pages
 - [ ] 9.5 Remove any unused CSS from `app/assets/css/main.css` that is now redundant due to Nuxt UI
+
+## 10. Update AmountInput Tests
+
+- [ ] 10.1 Remove assertions on raw Tailwind class names (`.text-red-600`, `input.border-red-500`) — they are implementation details of the old markup and will no longer match
+- [ ] 10.2 Replace `wrapper.find('label[for="amount-input"]')` selector with a label text content assertion (e.g., `wrapper.find('label').text()` contains `'Valor da Aplicação'`)
+- [ ] 10.3 Assert leading icon is in the UInput slot: `wrapper.find('ion-icon[name="cash-outline"]').exists()` is true
+- [ ] 10.4 Assert error state by checking error text content rather than a CSS class (e.g., `wrapper.text()` contains the validation message)
+- [ ] 10.5 Run `pnpm test test/nuxt/AmountInput.test.ts` and confirm all cases pass
+
+## 11. Create Input Component Tests (6 new files)
+
+- [ ] 11.1 Create `test/nuxt/IndexCdbInput.test.ts` — label text, `id="cdb-input"` on input (required by CalculatorPage tests), leading icon, valid value → `store.cdb` updated, invalid value (≤ 0) → store unchanged and error text shown
+- [ ] 11.2 Create `test/nuxt/IndexDiInput.test.ts` — same pattern: label text, leading icon, valid value → `store.di` updated, invalid → store unchanged and error shown
+- [ ] 11.3 Create `test/nuxt/IndexLcxInput.test.ts` — label text, `id="lcx-input"` on input (required by CalculatorPage tests), leading icon, valid → `store.lcx` updated, invalid → store unchanged and error shown
+- [ ] 11.4 Create `test/nuxt/IndexSelicInput.test.ts` — label text, leading icon, valid → `store.selic` updated, invalid → store unchanged and error shown
+- [ ] 11.5 Create `test/nuxt/PeriodInput.test.ts` — label text, `type="number"` input, leading icon, valid period → `store.period` updated, invalid (≤ 0) → store unchanged and error shown
+- [ ] 11.6 Create `test/nuxt/PeriodTypeInput.test.ts` — component renders a selector, selecting a different type updates `store.periodType`, current value is reflected in the component state
+- [ ] 11.7 Run `pnpm test --project nuxt` and confirm all 6 new test files pass
+
+## 12. Create InvestmentResult Tests
+
+- [ ] 12.1 Create `test/nuxt/InvestmentResult.test.ts` with a `defaultProps` fixture: `{ name: 'CDB / RDB', totalAmount: 1105, liquidProfit: 80, investedAmount: 1000, grossInterest: 100, totalProfitPercentage: 8, taxPercentage: 15, taxAmount: 15, iofAmount: null }`
+- [ ] 12.2 Assert `data-testid="result-card"` element is present (critical — CalculatorPage tests depend on it)
+- [ ] 12.3 Assert `data-testid="result-total-amount"` element is present and contains `'R$'`
+- [ ] 12.4 Assert investment name `'CDB / RDB'` appears in `wrapper.text()`
+- [ ] 12.5 Assert `wrapper.find('progress').exists()` is true (UProgress renders a `<progress>` element)
+- [ ] 12.6 Assert progress caps at 100: mount with `totalProfitPercentage: 150`, assert `progress` element's value attribute ≤ `'100'`
+- [ ] 12.7 Assert tax badge shows percentage: `wrapper.text()` contains `'15%'`
+- [ ] 12.8 Assert tax badge absent when `taxPercentage: null`: no `%` in the badge area
+- [ ] 12.9 Assert deductions section hidden when `taxAmount: null, iofAmount: null`: wrapper does not contain `'IR'` or `'IOF'` labels
+- [ ] 12.10 Assert IOF line renders when `iofAmount: 5`: `wrapper.text()` contains `'IOF'`
+- [ ] 12.11 Run `pnpm test test/nuxt/InvestmentResult.test.ts` and confirm all cases pass
+
+## 13. Create Layout and Navigation Tests
+
+- [ ] 13.1 Create `test/nuxt/DefaultLayout.test.ts` — mount the default layout (use `mountSuspended` with a page route or stub `<NuxtPage>`); assert `wrapper.find('header').exists()`, `wrapper.find('main').exists()`, header contains the logo img src, header text contains `'Calculadora Renda Fixa'`
+- [ ] 13.2 Create `test/nuxt/NavigationBar.test.ts` — mount `NavigationBar.vue`; assert at least 4 navigable elements (buttons/links) are rendered; assert `ion-icon` elements are present; assert color mode toggle button exists; trigger click on toggle and assert `useColorMode().preference` changes
+- [ ] 13.3 Run `pnpm test --project nuxt` and confirm both new test files pass
+
+## 14. Update ContentGradientBox Tests
+
+- [ ] 14.1 In `test/nuxt/ContentGradientBox.test.ts`, loosen gradient class assertions: replace exact substring checks (`from-orange-`, `to-amber-`) with a general check that the element has classes starting with `from-` and `to-` (gradient intent preserved regardless of color tokens)
+- [ ] 14.2 Retain the `rounded-lg` and `p-4` class assertions (layout contract)
+- [ ] 14.3 Run `pnpm test test/nuxt/ContentGradientBox.test.ts` and confirm all cases pass
