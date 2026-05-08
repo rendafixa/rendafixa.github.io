@@ -7,7 +7,7 @@ const THEME_KEY = 'rendafixa-theme'
 const preference = ref<Theme>('system')
 const systemIsDark = ref(false)
 
-if (typeof globalThis.window !== 'undefined') {
+if (globalThis.window !== undefined) {
   const stored = localStorage.getItem(THEME_KEY) as Theme | null
   if (stored && ['light', 'dark', 'system'].includes(stored)) {
     preference.value = stored
@@ -70,7 +70,7 @@ export function useTheme() {
 
   function setTheme(theme: Theme) {
     preference.value = theme
-    if (typeof globalThis.window !== 'undefined') {
+    if (globalThis.window !== undefined) {
       localStorage.setItem(THEME_KEY, theme)
     }
   }
