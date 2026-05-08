@@ -1,7 +1,7 @@
 import axios from 'axios'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -38,7 +38,7 @@ async function fetchPoupanca() {
       return null
     }
     const first = response.data[0]
-    if (!first || typeof first.valor === 'undefined') {
+    if (!first?.valor) {
       console.error('[ERROR] Unexpected BCB API payload shape (missing "valor"): ', response.data)
       return null
     }
@@ -66,7 +66,7 @@ async function fetchDi() {
       return null
     }
     const first = response.data[0]
-    if (!first || typeof first.valor === 'undefined') {
+    if (!first?.valor) {
       console.error('[ERROR] Unexpected BCB API payload shape (missing "valor"): ', response.data)
       return null
     }
