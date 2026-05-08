@@ -19,7 +19,10 @@
         v-if="isLoading"
         class="block w-full pl-10 pr-20 py-2 border-b-2 border-gray-300 dark:border-gray-600 dark:bg-transparent"
       >
-        <span class="sr-only" aria-live="polite">Carregando</span>
+        <span
+          class="sr-only"
+          aria-live="polite"
+        >Carregando</span>
         <div class="h-5 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
       </div>
       <input

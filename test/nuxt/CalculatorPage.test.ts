@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { flushPromises } from '@vue/test-utils'
 import type { VueWrapper } from '@vue/test-utils'
+import { nextTick } from 'vue'
 import IndexPage from '~/pages/index.vue'
 import { useInvestmentStore } from '~/store/investment'
 
@@ -13,6 +14,13 @@ function getResultCard(wrapper: VueWrapper, name: string) {
 
 function getTotalAmount(card: VueWrapper) {
   return card.find('[data-testid="result-total-amount"]').text()
+}
+
+// Helper to ensure all reactivity has settled
+async function waitForReactivity(wrapper: VueWrapper) {
+  await flushPromises()
+  await nextTick()
+  await flushPromises()
 }
 
 describe('Calculator Page — Smoke Tests', () => {
@@ -48,7 +56,7 @@ describe('Calculator Page — Smoke Tests', () => {
       const before = getTotalAmount(card)
 
       await wrapper.find('#amount-input').setValue(5000)
-      await flushPromises()
+      await waitForReactivity(wrapper)
 
       const after = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
       expect(after).not.toBe(before)
@@ -61,7 +69,7 @@ describe('Calculator Page — Smoke Tests', () => {
       const before = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
 
       store.setDi(10)
-      await flushPromises()
+      await waitForReactivity(wrapper)
 
       const after = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
       expect(after).not.toBe(before)
@@ -74,7 +82,7 @@ describe('Calculator Page — Smoke Tests', () => {
       const before = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
 
       await wrapper.find('#cdb-input').setValue(110)
-      await flushPromises()
+      await waitForReactivity(wrapper)
 
       const after = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
       expect(after).not.toBe(before)
@@ -87,7 +95,7 @@ describe('Calculator Page — Smoke Tests', () => {
       const before = getTotalAmount(getResultCard(wrapper, 'LCI / LCA'))
 
       await wrapper.find('#lcx-input').setValue(90)
-      await flushPromises()
+      await waitForReactivity(wrapper)
 
       const after = getTotalAmount(getResultCard(wrapper, 'LCI / LCA'))
       expect(after).not.toBe(before)
