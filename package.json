@@ -18,7 +18,7 @@
     "@nuxt/test-utils": "^3.23.0",
     "@tailwindcss/typography": "^0.5.19",
     "@vitejs/plugin-vue": "^6.0.6",
-    "@vue/test-utils": "^2.4.6",
+    "@vue/test-utils": "^2.4.10",
     "eslint": "^10.3.0",
     "happy-dom": "^20.9.0",
     "jsdom": "^29.0.2",
@@ -33,7 +33,7 @@
     "axios": "^1.16.0",
     "nuxt-schema-org": "^5.0.10",
     "pinia": "^3.0.4",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.4"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
