@@ -69,7 +69,7 @@ describe('Calculator Page — Smoke Tests', () => {
       const before = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
 
       store.setDi(10)
-      await flushPromises()
+      await waitForReactivity(wrapper)
 
       const after = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
       expect(after).not.toBe(before)
@@ -82,7 +82,7 @@ describe('Calculator Page — Smoke Tests', () => {
       const before = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
 
       await wrapper.find('#cdb-input').setValue(110)
-      await flushPromises()
+      await waitForReactivity(wrapper)
 
       const after = getTotalAmount(getResultCard(wrapper, 'CDB / RDB'))
       expect(after).not.toBe(before)
@@ -95,7 +95,7 @@ describe('Calculator Page — Smoke Tests', () => {
       const before = getTotalAmount(getResultCard(wrapper, 'LCI / LCA'))
 
       await wrapper.find('#lcx-input').setValue(90)
-      await flushPromises()
+      await waitForReactivity(wrapper)
 
       const after = getTotalAmount(getResultCard(wrapper, 'LCI / LCA'))
       expect(after).not.toBe(before)
