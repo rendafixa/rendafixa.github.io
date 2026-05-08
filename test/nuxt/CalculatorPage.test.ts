@@ -17,7 +17,7 @@ function getTotalAmount(card: VueWrapper) {
 }
 
 // Helper to ensure all reactivity has settled
-async function waitForReactivity(wrapper: VueWrapper) {
+async function waitForReactivity(_wrapper: VueWrapper) {
   await flushPromises()
   await nextTick()
   await flushPromises()
