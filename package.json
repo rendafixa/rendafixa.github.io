@@ -22,7 +22,7 @@
     "eslint": "^10.3.0",
     "happy-dom": "^20.9.0",
     "jsdom": "^29.0.2",
-    "nuxt": "^4.4.2",
+    "nuxt": "^4.4.4",
     "typescript": "^6.0.3",
     "vite-plugin-eslint2": "^5.1.0",
     "vitest": "^3.2.4"
