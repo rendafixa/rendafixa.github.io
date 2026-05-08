@@ -39,3 +39,5 @@ Simule e compare CDB/RDB, LCI/LCA e Poupança com foco em impostos, IOF e índic
 - Quer melhorar alguma simulação ou adicionar um produto? Abra uma issue com sua sugestão.
 
 ---
+
+Séries: https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries
