@@ -6334,8 +6334,8 @@ packages:
     resolution: {integrity: sha512-FdNA4RyH1L43TlvGG8qOMIfcEczwA5ij+zLXUy3Z83CjxhLvcV7/Q/8pk22wnCgYw7PJhtK+7lhO+qqyT4NdvQ==}
     engines: {node: '>=16.14'}
 
-  ws@8.20.0:
-    resolution: {integrity: sha512-sAt8BhgNbzCtgGbt2OxmpuryO63ZoDk/sqaB/znQm94T4fCEsy/yV+7CdC1kJhOU9lboAEU7R3kquuycDoibVA==}
+  ws@8.20.1:
+    resolution: {integrity: sha512-It4dO0K5v//JtTXuPkfEOaI3uUN87iYPnqo/ZzqCoG3g8uhA66QUMs/SrM0YK7/NAu+r4LMh/9dq2A7k+rHs+w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -6932,7 +6932,7 @@ snapshots:
       eslint: 10.4.0(jiti@2.7.0)
       h3: 1.15.11
       tinyglobby: 0.2.16
-      ws: 8.20.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -7255,7 +7255,7 @@ snapshots:
       vite-plugin-inspect: 11.3.3(@nuxt/kit@4.4.5(magicast@0.5.2))(vite@7.3.3(@types/node@25.6.2)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.47.1)(yaml@2.9.0))
       vite-plugin-vue-tracer: 1.3.0(vite@7.3.3(@types/node@25.6.2)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.47.1)(yaml@2.9.0))(vue@3.5.34(typescript@6.0.3))
       which: 6.0.1
-      ws: 8.20.0
+      ws: 8.20.1
     optionalDependencies:
       '@vitejs/devtools': 0.1.21(@netlify/blobs@9.1.1)(@pnpm/logger@1001.0.1)(db0@0.3.4)(ioredis@5.10.1)(typescript@6.0.3)(vite@7.3.3(@types/node@25.6.2)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.47.1)(yaml@2.9.0))
     transitivePeerDependencies:
@@ -7296,7 +7296,7 @@ snapshots:
       vite-plugin-inspect: 12.0.0-beta.1(@nuxt/kit@4.4.4(magicast@0.5.2))(typescript@6.0.3)(vite@7.3.3(@types/node@25.6.2)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.47.1)(yaml@2.9.0))
       vite-plugin-vue-tracer: 1.3.0(vite@7.3.3(@types/node@25.6.2)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.47.1)(yaml@2.9.0))(vue@3.5.34(typescript@6.0.3))
       which: 6.0.1
-      ws: 8.20.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -9109,7 +9109,7 @@ snapshots:
       unconfig: 7.5.0
       unstorage: 1.17.5(@netlify/blobs@9.1.1)(db0@0.3.4)(ioredis@5.10.1)
       vue-virtual-scroller: 3.0.3(vue@3.5.34(typescript@6.0.3))
-      ws: 8.20.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -9158,7 +9158,7 @@ snapshots:
       tinyexec: 1.1.2
       vite: 7.3.3(@types/node@25.6.2)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.47.1)(yaml@2.9.0)
       vue: 3.5.34(typescript@6.0.3)
-      ws: 8.20.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -10010,7 +10010,7 @@ snapshots:
       sirv: 3.0.2
       structured-clone-es: 2.0.0
       valibot: 1.4.0(typescript@6.0.3)
-      ws: 8.20.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -10744,7 +10744,7 @@ snapshots:
       '@types/ws': 8.18.1
       entities: 7.0.1
       whatwg-mimetype: 3.0.0
-      ws: 8.20.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -13513,7 +13513,7 @@ snapshots:
       js-yaml: 4.1.1
       write-file-atomic: 5.0.1
 
-  ws@8.20.0: {}
+  ws@8.20.1: {}
 
   wsl-utils@0.1.0:
     dependencies:
