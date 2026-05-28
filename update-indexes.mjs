@@ -6,131 +6,166 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const filePath = path.join(__dirname, 'app', 'assets', 'indicadores.json')
-let indicadores
-if (!fs.existsSync(filePath)) {
-  console.error(`[ERROR] File not found or inaccessible: ${filePath}`)
-  process.exit(1)
-}
-try {
-  const rawData = fs.readFileSync(filePath, 'utf-8')
-  try {
-    indicadores = JSON.parse(rawData)
-  }
-  catch (parseError) {
-    console.error(`[ERROR] Malformed JSON in indicadores.json at ${filePath}`)
-    console.error(parseError.stack || parseError)
-    process.exit(1)
-  }
-}
-catch (fileError) {
-  console.error(`[ERROR] Unable to read indicadores.json at ${filePath}`)
-  console.error(fileError.stack || fileError)
-  process.exit(1)
+export const USER_AGENT = 'rendafixa-updater/1.0 (+https://github.com/rendafixa/rendafixa.github.io)'
+export const REQUEST_TIMEOUT_MS = 15_000
+export const MAX_RETRIES = 3
+export const INITIAL_BACKOFF_MS = 1_000
+
+export const URLS = {
+  poupanca: 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json',
+  cdi: 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.4389/dados/ultimos/1?formato=json',
+  selic: 'https://www.bcb.gov.br/api/servico/sitebcb/historicotaxasjuros',
 }
 
-async function fetchPoupanca() {
+export const apiClient = axios.create({
+  timeout: REQUEST_TIMEOUT_MS,
+  headers: { 'User-Agent': USER_AGENT },
+})
+
+export async function fetchWithRetry(url, retries = MAX_RETRIES, backoffMs = INITIAL_BACKOFF_MS) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await apiClient.get(url)
+    }
+    catch (error) {
+      const status = error.response?.status
+      const isRetryable = !status || status >= 500
+      if (attempt < retries && isRetryable) {
+        console.warn(`  Attempt ${attempt}/${retries} failed (${error.message}). Retrying in ${backoffMs}ms...`)
+        await new Promise(resolve => setTimeout(resolve, backoffMs))
+        backoffMs *= 2
+      }
+      else {
+        throw error
+      }
+    }
+  }
+}
+
+function sanitize(input) {
+  return String(input).slice(0, 200).replace(/[\n\r]/g, ' ')
+}
+
+function parseBcbSeriesValue(data, label) {
+  if (!Array.isArray(data) || data.length === 0) {
+    console.error(`[ERROR] BCB API returned no data for ${label}`)
+    return null
+  }
+  const first = data[0]
+  if (!first?.valor) {
+    console.error(`[ERROR] Unexpected BCB API payload shape for ${label} (missing "valor")`)
+    return null
+  }
+  const value = Number.parseFloat(first.valor)
+  if (!Number.isFinite(value)) {
+    console.error(`[ERROR] Invalid ${label} value (not a finite number): ${sanitize(first.valor)}`)
+    return null
+  }
+  return value
+}
+
+export async function fetchPoupanca() {
   try {
     console.log('Fetching Poupanca...')
-    const response = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json')
-    if (!Array.isArray(response.data) || response.data.length === 0) {
-      console.error('[ERROR] BCB API returned no data for Poupanca:', response.data)
-      return null
+    const response = await fetchWithRetry(URLS.poupanca)
+    const value = parseBcbSeriesValue(response.data, 'Poupanca')
+    if (value !== null) {
+      console.log('Poupanca value fetched:', value)
     }
-    const first = response.data[0]
-    if (!first?.valor) {
-      console.error('[ERROR] Unexpected BCB API payload shape (missing "valor"): ', response.data)
-      return null
-    }
-    const value = Number.parseFloat(first.valor)
-    if (!Number.isFinite(value)) {
-      console.error('[ERROR] Invalid Poupanca value received (not a finite number):', first.valor)
-      console.error('Full payload:', response.data)
-      return null
-    }
-    console.log('Poupanca value fetched:', value)
     return value
   }
   catch (error) {
-    console.error('Error fetching Poupanca:', error)
+    console.error(`Error fetching Poupanca after ${MAX_RETRIES} attempts:`, error.message)
     return null
   }
 }
 
-async function fetchDi() {
+export async function fetchDi() {
   try {
     console.log('Fetching DI...')
-    const response = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4389/dados/ultimos/1?formato=json')
-    if (!Array.isArray(response.data) || response.data.length === 0) {
-      console.error('[ERROR] BCB API returned no data for CDI:', response.data)
-      return null
+    const response = await fetchWithRetry(URLS.cdi)
+    const value = parseBcbSeriesValue(response.data, 'CDI')
+    if (value !== null) {
+      console.log('DI value fetched:', value)
     }
-    const first = response.data[0]
-    if (!first?.valor) {
-      console.error('[ERROR] Unexpected BCB API payload shape (missing "valor"): ', response.data)
-      return null
-    }
-    const value = Number.parseFloat(first.valor)
-    if (!Number.isFinite(value)) {
-      console.error('[ERROR] Invalid CDI value received (not a finite number):', first.valor)
-      console.error('Full payload:', response.data)
-      return null
-    }
-    console.log('DI value fetched:', value)
     return value
   }
   catch (error) {
-    console.error('Error fetching DI:', error)
+    console.error(`Error fetching DI after ${MAX_RETRIES} attempts:`, error.message)
     return null
   }
 }
 
-async function fetchSelic() {
+export async function fetchSelic() {
   try {
     console.log('Fetching Selic...')
-    const response = await axios.get('https://www.bcb.gov.br/api/servico/sitebcb/historicotaxasjuros')
-    const value = response.data.conteudo[0].MetaSelic
+    const response = await fetchWithRetry(URLS.selic)
+    const value = response.data?.conteudo?.[0]?.MetaSelic
+    if (value == null || !Number.isFinite(value)) {
+      console.error('[ERROR] Invalid Selic response (unexpected payload shape)')
+      return null
+    }
     console.log('Selic value fetched:', value)
     return value
   }
   catch (error) {
-    console.error('Error fetching Selic:', error)
+    console.error(`Error fetching Selic after ${MAX_RETRIES} attempts:`, error.message)
     return null
   }
 }
 
-async function updateIndicadores() {
-  try {
-    const poupancaValue = await fetchPoupanca()
-    const selicValue = await fetchSelic()
-    const cdiValue = await fetchDi()
+export async function updateIndicadores(targetPath) {
+  const raw = fs.readFileSync(targetPath, 'utf-8')
+  const indicadores = JSON.parse(raw)
 
-    if (poupancaValue == null || Number.isNaN(poupancaValue)) {
-      console.warn('Skipping update: Invalid poupanca value.')
-    }
-    else {
-      indicadores.poupanca.value = poupancaValue
-    }
+  const [poupancaValue, selicValue, cdiValue] = await Promise.all([
+    fetchPoupanca(),
+    fetchSelic(),
+    fetchDi(),
+  ])
 
-    if (selicValue !== null && selicValue !== undefined && !Number.isNaN(selicValue)) {
-      indicadores.selic.value = selicValue
-    }
-    else {
-      console.warn('Skipping update: Invalid selic value.')
-    }
-    if (cdiValue !== null && cdiValue !== undefined && !Number.isNaN(cdiValue)) {
-      indicadores.cdi.value = cdiValue
-    }
-    else {
-      console.warn('Skipping update: Invalid cdi value.')
-    }
+  let updated = 0
 
-    fs.writeFileSync(filePath, JSON.stringify(indicadores, null, 2))
-    console.log('indicadores.json updated successfully')
+  if (poupancaValue == null) {
+    console.warn('Skipping update: Invalid poupanca value.')
   }
-  catch (error) {
-    console.error('Error updating indicadores.json:', error)
+  else {
+    indicadores.poupanca.value = poupancaValue
+    updated++
   }
+
+  if (selicValue == null) {
+    console.warn('Skipping update: Invalid selic value.')
+  }
+  else {
+    indicadores.selic.value = selicValue
+    updated++
+  }
+
+  if (cdiValue == null) {
+    console.warn('Skipping update: Invalid cdi value.')
+  }
+  else {
+    indicadores.cdi.value = cdiValue
+    updated++
+  }
+
+  if (updated === 0) {
+    throw new Error('All API calls failed. No values updated.')
+  }
+
+  fs.writeFileSync(targetPath, `${JSON.stringify(indicadores, null, 2)}\n`)
+  console.log(`indicadores.json updated successfully (${updated}/3 values).`)
 }
 
-await updateIndicadores()
+// Only run when executed directly (not imported by tests)
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  const indicadoresPath = path.join(__dirname, 'app', 'assets', 'indicadores.json')
+  try {
+    await updateIndicadores(indicadoresPath)
+  }
+  catch (error) {
+    console.error(`[FATAL] ${error.message}`)
+    process.exit(1)
+  }
+}
