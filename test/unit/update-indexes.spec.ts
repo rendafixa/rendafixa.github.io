@@ -33,8 +33,10 @@ describe('fetchWithRetry', () => {
   })
 
   it('retries on 5xx and succeeds', async () => {
+    const serverError = new Error('Bad Gateway')
+    Object.assign(serverError, { response: { status: 502 } })
     vi.spyOn(apiClient, 'get')
-      .mockRejectedValueOnce({ response: { status: 502 }, message: 'Bad Gateway' })
+      .mockRejectedValueOnce(serverError)
       .mockResolvedValueOnce({ data: 'ok' })
 
     const result = await fetchWithRetry('http://example.com', 3, 1)
@@ -45,7 +47,7 @@ describe('fetchWithRetry', () => {
 
   it('retries on network error (no response)', async () => {
     vi.spyOn(apiClient, 'get')
-      .mockRejectedValueOnce({ message: 'ECONNRESET' })
+      .mockRejectedValueOnce(new Error('ECONNRESET'))
       .mockResolvedValueOnce({ data: 'ok' })
 
     const result = await fetchWithRetry('http://example.com', 3, 1)
@@ -55,7 +57,8 @@ describe('fetchWithRetry', () => {
   })
 
   it('does not retry on 4xx error', async () => {
-    const error = { response: { status: 404 }, message: 'Not Found' }
+    const error = new Error('Not Found')
+    Object.assign(error, { response: { status: 404 } })
     vi.spyOn(apiClient, 'get').mockRejectedValueOnce(error)
 
     await expect(fetchWithRetry('http://example.com', 3, 1)).rejects.toEqual(error)
@@ -63,7 +66,8 @@ describe('fetchWithRetry', () => {
   })
 
   it('throws after exhausting retries', async () => {
-    const error = { response: { status: 500 }, message: 'Internal Server Error' }
+    const error = new Error('Internal Server Error')
+    Object.assign(error, { response: { status: 500 } })
     vi.spyOn(apiClient, 'get')
       .mockRejectedValueOnce(error)
       .mockRejectedValueOnce(error)
@@ -104,7 +108,7 @@ describe('fetchPoupanca', () => {
   })
 
   it('returns null on network error', async () => {
-    vi.spyOn(apiClient, 'get').mockRejectedValue({ message: 'ECONNREFUSED' })
+    vi.spyOn(apiClient, 'get').mockRejectedValue(new Error('ECONNREFUSED'))
 
     const result = await fetchPoupanca()
 
@@ -124,7 +128,7 @@ describe('fetchDi', () => {
   })
 
   it('returns null on error', async () => {
-    vi.spyOn(apiClient, 'get').mockRejectedValue({ message: 'timeout' })
+    vi.spyOn(apiClient, 'get').mockRejectedValue(new Error('timeout'))
 
     const result = await fetchDi()
 
@@ -154,7 +158,7 @@ describe('fetchSelic', () => {
   })
 
   it('returns null on network error', async () => {
-    vi.spyOn(apiClient, 'get').mockRejectedValue({ message: 'ECONNREFUSED' })
+    vi.spyOn(apiClient, 'get').mockRejectedValue(new Error('ECONNREFUSED'))
 
     const result = await fetchSelic()
 
@@ -168,8 +172,8 @@ describe('updateIndicadores', () => {
 
   const baseIndicadores = {
     poupanca: { title: 'Poupanca', value: 0.5 },
-    selic: { title: 'SELIC', value: 10.0 },
-    cdi: { title: 'CDI', value: 10.0 },
+    selic: { title: 'SELIC', value: 10 },
+    cdi: { title: 'CDI', value: 10 },
   }
 
   beforeEach(() => {
@@ -205,9 +209,11 @@ describe('updateIndicadores', () => {
   })
 
   it('updates partial values when some APIs fail', async () => {
+    const serverError = new Error('Bad Gateway')
+    Object.assign(serverError, { response: { status: 502 } })
     vi.spyOn(apiClient, 'get').mockImplementation((url: string) => {
       if (url === URLS.poupanca) {
-        return Promise.reject({ response: { status: 502 }, message: 'Bad Gateway' })
+        return Promise.reject(serverError)
       }
       if (url === URLS.selic) {
         return Promise.resolve({ data: { conteudo: [{ MetaSelic: 14.5 }] } })
@@ -227,7 +233,7 @@ describe('updateIndicadores', () => {
   })
 
   it('throws when all APIs fail', async () => {
-    vi.spyOn(apiClient, 'get').mockRejectedValue({ message: 'ECONNREFUSED' })
+    vi.spyOn(apiClient, 'get').mockRejectedValue(new Error('ECONNREFUSED'))
 
     await expect(updateIndicadores(tmpFile)).rejects.toThrow('All API calls failed')
 

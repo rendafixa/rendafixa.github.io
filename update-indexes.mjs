@@ -42,19 +42,23 @@ export async function fetchWithRetry(url, retries = MAX_RETRIES, backoffMs = INI
   }
 }
 
+function sanitize(input) {
+  return String(input).slice(0, 200).replace(/[\n\r]/g, ' ')
+}
+
 function parseBcbSeriesValue(data, label) {
   if (!Array.isArray(data) || data.length === 0) {
-    console.error(`[ERROR] BCB API returned no data for ${label}:`, data)
+    console.error(`[ERROR] BCB API returned no data for ${label}`)
     return null
   }
   const first = data[0]
   if (!first?.valor) {
-    console.error(`[ERROR] Unexpected BCB API payload shape for ${label} (missing "valor"):`, data)
+    console.error(`[ERROR] Unexpected BCB API payload shape for ${label} (missing "valor")`)
     return null
   }
   const value = Number.parseFloat(first.valor)
   if (!Number.isFinite(value)) {
-    console.error(`[ERROR] Invalid ${label} value (not a finite number):`, first.valor)
+    console.error(`[ERROR] Invalid ${label} value (not a finite number): ${sanitize(first.valor)}`)
     return null
   }
   return value
@@ -98,7 +102,7 @@ export async function fetchSelic() {
     const response = await fetchWithRetry(URLS.selic)
     const value = response.data?.conteudo?.[0]?.MetaSelic
     if (value == null || !Number.isFinite(value)) {
-      console.error('[ERROR] Invalid Selic response:', response.data)
+      console.error('[ERROR] Invalid Selic response (unexpected payload shape)')
       return null
     }
     console.log('Selic value fetched:', value)
@@ -122,28 +126,28 @@ export async function updateIndicadores(targetPath) {
 
   let updated = 0
 
-  if (poupancaValue != null) {
+  if (poupancaValue == null) {
+    console.warn('Skipping update: Invalid poupanca value.')
+  }
+  else {
     indicadores.poupanca.value = poupancaValue
     updated++
   }
-  else {
-    console.warn('Skipping update: Invalid poupanca value.')
-  }
 
-  if (selicValue != null) {
+  if (selicValue == null) {
+    console.warn('Skipping update: Invalid selic value.')
+  }
+  else {
     indicadores.selic.value = selicValue
     updated++
   }
-  else {
-    console.warn('Skipping update: Invalid selic value.')
-  }
 
-  if (cdiValue != null) {
+  if (cdiValue == null) {
+    console.warn('Skipping update: Invalid cdi value.')
+  }
+  else {
     indicadores.cdi.value = cdiValue
     updated++
-  }
-  else {
-    console.warn('Skipping update: Invalid cdi value.')
   }
 
   if (updated === 0) {
