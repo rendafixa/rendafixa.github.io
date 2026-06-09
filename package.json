@@ -18,7 +18,7 @@
     "@nuxt/test-utils": "^4.0.3",
     "@tailwindcss/typography": "^0.5.20",
     "@vitejs/plugin-vue": "^6.0.7",
-    "@vue/test-utils": "^2.4.10",
+    "@vue/test-utils": "^2.4.11",
     "eslint": "^10.4.0",
     "happy-dom": "^20.10.2",
     "jsdom": "^29.1.1",
