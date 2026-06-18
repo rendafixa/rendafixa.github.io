@@ -16,7 +16,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^1.16.0",
     "@nuxt/test-utils": "^4.0.3",
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.20",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/test-utils": "^2.4.11",
     "eslint": "^10.4.0",
