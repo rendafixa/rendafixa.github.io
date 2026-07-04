@@ -6,6 +6,7 @@ import IndexCdbInput from '~/components/investment/IndexCdbInput.vue'
 import IndexLcxInput from '~/components/investment/IndexLcxInput.vue'
 import PeriodInput from './investment/PeriodInput.vue'
 import PeriodTypeInput from './investment/PeriodTypeInput.vue'
+import RecurringContributionInput from './investment/RecurringContributionInput.vue'
 </script>
 
 <template>
@@ -22,6 +23,7 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
           <PeriodInput />
           <PeriodTypeInput />
         </div>
+        <RecurringContributionInput />
         <IndexDiInput />
         <IndexSelicInput />
         <IndexCdbInput />
