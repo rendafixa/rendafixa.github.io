@@ -4,6 +4,8 @@ import IndexDiInput from '~/components/investment/IndexDiInput.vue'
 import IndexSelicInput from '~/components/investment/IndexSelicInput.vue'
 import IndexCdbInput from '~/components/investment/IndexCdbInput.vue'
 import IndexLcxInput from '~/components/investment/IndexLcxInput.vue'
+import IndexCdbPreInput from '~/components/investment/IndexCdbPreInput.vue'
+import IndexLcxPreInput from '~/components/investment/IndexLcxPreInput.vue'
 import PeriodInput from './investment/PeriodInput.vue'
 import PeriodTypeInput from './investment/PeriodTypeInput.vue'
 </script>
@@ -26,6 +28,8 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
         <IndexSelicInput />
         <IndexCdbInput />
         <IndexLcxInput />
+        <IndexCdbPreInput />
+        <IndexLcxPreInput />
       </form>
     </div>
   </div>
