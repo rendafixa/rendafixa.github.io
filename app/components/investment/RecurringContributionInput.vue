@@ -91,26 +91,33 @@
 
       <div
         v-if="inflationEnabled"
-        class="relative mt-3"
+        class="mt-3"
       >
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <ion-icon
-            name="trending-up-outline"
-            size="small"
-            class="text-gray-400 dark:text-gray-500"
-            aria-hidden="true"
-          />
-        </div>
-        <input
-          id="inflation-rate-input"
-          v-model.number="inflationRate"
-          type="number"
-          min="0"
-          placeholder="Taxa de inflação"
-          class="block w-full pl-10 pr-16 py-2 border-b-2 border-gray-300 dark:border-gray-600 dark:bg-transparent text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors"
+        <label
+          for="inflation-rate-input"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
-        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-          <span class="text-gray-500 dark:text-gray-400 text-sm">% ao ano</span>
+          Taxa de inflação
+        </label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <ion-icon
+              name="trending-up-outline"
+              size="small"
+              class="text-gray-400 dark:text-gray-500"
+              aria-hidden="true"
+            />
+          </div>
+          <input
+            id="inflation-rate-input"
+            v-model.number="inflationRate"
+            type="number"
+            min="0"
+            class="block w-full pl-10 pr-16 py-2 border-b-2 border-gray-300 dark:border-gray-600 dark:bg-transparent text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors"
+          >
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <span class="text-gray-500 dark:text-gray-400 text-sm">% ao ano</span>
+          </div>
         </div>
       </div>
     </div>
