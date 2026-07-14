@@ -23,6 +23,17 @@ CI order: `lint → test → generate` (not `build`).
 
 ## TypeScript setup
 
+TypeScript 7.0.2 is installed side-by-side with TypeScript 6.0.x via npm aliases because TS 7 has no programmatic API (coming in 7.1), which breaks `typescript-eslint` and Vue/Volar editor tooling:
+
+```json
+"@typescript/native": "npm:typescript@^7.0.2",
+"typescript": "npm:@typescript/typescript6@^6.0.2"
+```
+
+- `npx tsc` — runs **TypeScript 7** CLI (native Go port, ~10x faster)
+- `npx tsc6` — runs **TypeScript 6** for tools that need the API
+- ESLint, Volar, etc. resolve `typescript` to TS 6 via the alias
+
 `tsconfig.json` only extends `.nuxt/tsconfig.json`, which is generated. After a fresh clone, run `pnpm install` (postinstall runs `nuxt prepare` automatically) before TypeScript will resolve types.
 
 ## Testing
