@@ -18,6 +18,11 @@ export const useInvestmentStore = defineStore('investment', {
       lcx: 100,
       poupanca: null as number | null,
       selic: null as number | null,
+      recurringAmount: 0,
+      recurringFrequency: 1,
+      recurringFrequencyType: PeriodTypes.Months,
+      inflationEnabled: false,
+      inflationRate: null as number | null,
     }
   },
   actions: {
@@ -41,6 +46,21 @@ export const useInvestmentStore = defineStore('investment', {
     },
     setSelic(newSelic: number) {
       this.selic = newSelic
+    },
+    setRecurringAmount(newAmount: number) {
+      this.recurringAmount = newAmount
+    },
+    setRecurringFrequency(newFrequency: number) {
+      this.recurringFrequency = newFrequency
+    },
+    setRecurringFrequencyType(newType: PeriodTypes) {
+      this.recurringFrequencyType = newType
+    },
+    setInflationEnabled(enabled: boolean) {
+      this.inflationEnabled = enabled
+    },
+    setInflationRate(newRate: number) {
+      this.inflationRate = newRate
     },
     initializeStore() {
       this.loadIndexes()

@@ -125,12 +125,77 @@
           <span class="text-sm font-semibold text-red-700 dark:text-red-400">-{{ iofAmountDisplay }}</span>
         </div>
       </div>
+
+      <!-- Recurring contributions breakdown - shown on demand -->
+      <div
+        v-if="breakdown.length"
+        class="mt-4"
+      >
+        <button
+          type="button"
+          class="flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+          :aria-expanded="showBreakdown"
+          @click="showBreakdown = !showBreakdown"
+        >
+          <ion-icon
+            :name="showBreakdown ? 'chevron-up-outline' : 'chevron-down-outline'"
+            size="small"
+            aria-hidden="true"
+          />
+          Ver evolução dos aportes
+        </button>
+        <div
+          v-if="showBreakdown"
+          class="mt-3 overflow-x-auto"
+        >
+          <table class="w-full text-sm text-right">
+            <thead>
+              <tr class="text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                <th class="py-2 pr-3 text-left font-medium">
+                  Dia
+                </th>
+                <th class="py-2 px-3 font-medium">
+                  Aportado
+                </th>
+                <th class="py-2 px-3 font-medium">
+                  Saldo bruto
+                </th>
+                <th class="py-2 pl-3 font-medium">
+                  Juros
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="entry in breakdown"
+                :key="entry.day"
+                class="border-b border-gray-100 dark:border-gray-700/50"
+              >
+                <td class="py-2 pr-3 text-left text-gray-600 dark:text-gray-400">
+                  {{ entry.day }}
+                </td>
+                <td class="py-2 px-3 text-gray-900 dark:text-gray-100">
+                  {{ filters.currency(entry.contributed) }}
+                </td>
+                <td class="py-2 px-3 font-semibold text-gray-900 dark:text-gray-100">
+                  {{ filters.currency(entry.balance) }}
+                </td>
+                <td class="py-2 pl-3 text-green-700 dark:text-green-400">
+                  {{ filters.currency(entry.interest) }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang='ts'>
-import { computed } from 'vue'
+import type { PropType } from 'vue'
+import type { BreakdownEntry } from '~/src/aportes'
+import { computed, ref } from 'vue'
 
 const defaultLocale = 'pt-BR'
 const filters = {
@@ -187,7 +252,14 @@ const props = defineProps({
     required: false,
     default: 'amber',
   },
+  breakdown: {
+    type: Array as PropType<BreakdownEntry[]>,
+    required: false,
+    default: () => [],
+  },
 })
+
+const showBreakdown = ref(false)
 
 const hasInterestAmount = computed(() => props.interestAmount !== 0)
 const hasTaxAmount = computed(() => props.taxAmount !== null && props.taxAmount !== undefined && props.taxAmount !== 0)
