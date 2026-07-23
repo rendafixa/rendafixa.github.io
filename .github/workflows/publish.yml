@@ -27,13 +27,15 @@ jobs:
       - uses: pnpm/action-setup@v6
         name: Configure PNPM
       - name: Setup node env 🏗
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           check-latest: true
           cache: 'pnpm'
       - name: Install dependencies 👨🏻‍💻
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Prepare Nuxt
+        run: pnpm exec nuxt prepare
       - name: Lint check ✅
         run: pnpm lint
       - name: Deploy 😎
