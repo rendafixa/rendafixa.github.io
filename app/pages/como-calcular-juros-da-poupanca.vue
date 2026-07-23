@@ -84,7 +84,7 @@
 import InvestmentResult from '~/components/InvestmentResult.vue'
 import { computed, onMounted } from 'vue'
 import { getPoupancaResult } from '~/src/poupanca'
-import { useInvestmentStore } from '~/store/investment'
+import { useInvestmentStore } from '~/stores/investment'
 
 useSeoMeta({
   title: 'Como Calcular Juros da Poupança',

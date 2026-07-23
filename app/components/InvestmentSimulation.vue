@@ -39,7 +39,7 @@ import { computed } from 'vue'
 import { getCDBResult } from '~/src/cdb'
 import { getLcxResult } from '~/src/lcx'
 import { getPoupancaResult } from '~/src/poupanca'
-import { PeriodTypes, useInvestmentStore } from '~/store/investment'
+import { PeriodTypes, useInvestmentStore } from '~/stores/investment'
 
 const investment = useInvestmentStore()
 

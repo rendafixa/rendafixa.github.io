@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import AmountInput from '~/components/investment/AmountInput.vue'
-import { useInvestmentStore } from '~/store/investment'
+import { useInvestmentStore } from '~/stores/investment'
 
 describe('AmountInput Component', () => {
   describe('Rendering', () => {
