@@ -4,7 +4,7 @@ import { flushPromises } from '@vue/test-utils'
 import type { VueWrapper } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import IndexPage from '~/pages/index.vue'
-import { useInvestmentStore } from '~/store/investment'
+import { useInvestmentStore } from '~/stores/investment'
 
 function getResultCard(wrapper: VueWrapper, name: string) {
   return wrapper

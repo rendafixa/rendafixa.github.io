@@ -34,7 +34,7 @@
 
 <script setup lang='ts'>
 import { computed } from 'vue'
-import { PeriodTypes, useInvestmentStore } from '~/store/investment'
+import { PeriodTypes, useInvestmentStore } from '~/stores/investment'
 
 const store = useInvestmentStore()
 

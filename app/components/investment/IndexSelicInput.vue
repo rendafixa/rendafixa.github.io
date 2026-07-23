@@ -38,7 +38,7 @@
 
 <script setup lang='ts'>
 import { computed } from 'vue'
-import { useInvestmentStore } from '~/store/investment'
+import { useInvestmentStore } from '~/stores/investment'
 
 const store = useInvestmentStore()
 
