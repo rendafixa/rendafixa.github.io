@@ -94,6 +94,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-16',
 
   vite: {
+    optimizeDeps: {
+      include: ['@unhead/schema-org/vue'],
+    },
     plugins: [tailwindcss()],
   },
 
