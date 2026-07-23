@@ -16,6 +16,8 @@ export const useInvestmentStore = defineStore('investment', {
       period: 360,
       periodType: PeriodTypes.Days,
       lcx: 100,
+      cdbPre: 14,
+      lcxPre: 14,
       poupanca: null as number | null,
       selic: null as number | null,
     }
@@ -38,6 +40,12 @@ export const useInvestmentStore = defineStore('investment', {
     },
     setLcx(newLcx: number) {
       this.lcx = newLcx
+    },
+    setCdbPre(newCdbPre: number) {
+      this.cdbPre = newCdbPre
+    },
+    setLcxPre(newLcxPre: number) {
+      this.lcxPre = newLcxPre
     },
     setSelic(newSelic: number) {
       this.selic = newSelic

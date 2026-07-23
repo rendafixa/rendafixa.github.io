@@ -25,10 +25,25 @@
       class="mb-2"
     />
     <InvestmentResult
+      name="CDB / RDB prefixado"
+      :amount="investment.amount"
+      :interest-amount="resultCdbPre.interestAmount"
+      :tax-amount="resultCdbPre.taxAmount"
+      :tax-percentage="resultCdbPre.taxPercentage"
+      :iof-amount="resultCdbPre.iofAmount"
+      class="mb-2"
+    />
+    <InvestmentResult
       name="LCI / LCA"
       :amount="investment.amount"
       :interest-amount="resultLcx.interestAmount"
       :loading="!investment.di"
+      class="mb-2"
+    />
+    <InvestmentResult
+      name="LCI / LCA prefixado"
+      :amount="investment.amount"
+      :interest-amount="resultLcxPre.interestAmount"
     />
   </div>
 </template>
@@ -39,6 +54,7 @@ import { computed } from 'vue'
 import { getCDBResult } from '~/src/cdb'
 import { getLcxResult } from '~/src/lcx'
 import { getPoupancaResult } from '~/src/poupanca'
+import { getPrefixadoCdbResult, getPrefixadoLcxResult } from '~/src/prefixado'
 import { PeriodTypes, useInvestmentStore } from '~/store/investment'
 
 const investment = useInvestmentStore()
@@ -71,6 +87,22 @@ const resultPoupanca = computed(() => {
   return getPoupancaResult(
     investment.amount,
     investment.poupanca,
+    getDurationInDays(),
+  )
+})
+
+const resultCdbPre = computed(() => {
+  return getPrefixadoCdbResult(
+    investment.amount,
+    investment.cdbPre,
+    getDurationInDays(),
+  )
+})
+
+const resultLcxPre = computed(() => {
+  return getPrefixadoLcxResult(
+    investment.amount,
+    investment.lcxPre,
     getDurationInDays(),
   )
 })
