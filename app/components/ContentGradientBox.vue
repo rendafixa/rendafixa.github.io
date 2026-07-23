@@ -1,5 +1,5 @@
 <template>
-  <p class="p-4 shadow shadow-gray-400 dark:shadow-gray-700 rounded-lg bg-linear-to-r from-orange-200 to-amber-200 dark:from-orange-900/40 dark:to-amber-900/40 transition-colors">
+  <p class="p-4 rounded-xl border border-amber-200 dark:border-amber-900/70 bg-amber-50 dark:bg-amber-950/40 text-slate-700 dark:text-slate-200 shadow-sm dark:shadow-black/10 transition-colors">
     <slot />
   </p>
 </template>

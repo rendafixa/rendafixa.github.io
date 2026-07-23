@@ -1,5 +1,5 @@
 <template>
-  <section class="prose dark:prose-invert max-w-3xl mx-auto my-8 px-4 sm:px-8">
+  <section class="prose prose-slate dark:prose-invert max-w-3xl mx-auto my-8 px-4 sm:px-8">
     <h2>Como calcular juros da Poupança</h2>
     <p>
       De acordo com a <a
@@ -63,7 +63,7 @@
     <p>
       A poupança é isenta de imposto de renda, ou seja, os rendimentos não sofrem desconto de IR. Para entender melhor como funcionam os impostos em outros investimentos de renda fixa, confira nosso guia sobre       <NuxtLink
         to="/como-calcular-imposto-de-renda"
-        class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
+        class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
       >como calcular o imposto de renda</NuxtLink>.
     </p>
     <h3>Fontes Oficiais</h3>

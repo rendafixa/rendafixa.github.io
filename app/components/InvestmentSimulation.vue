@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+    <h2 class="text-lg font-semibold text-slate-950 dark:text-slate-50 mb-2">
       Simulação
     </h2>
-    <p class="text-gray-600 dark:text-gray-300 mb-4">
+    <p class="text-slate-600 dark:text-slate-300 mb-4">
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
