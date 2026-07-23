@@ -22,7 +22,9 @@ jobs:
           check-latest: true
           cache: 'pnpm'
       - name: Install dependencies 👨🏻‍💻
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Prepare Nuxt
+        run: pnpm exec nuxt prepare
       - name: Lint check ✅
         run: pnpm lint
       - name: Tests 🧑‍🔬
