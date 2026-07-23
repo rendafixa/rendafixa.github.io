@@ -2,7 +2,7 @@
   <div class="mb-6 flex-1">
     <label
       for="period-type-input"
-      class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+      class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
     >
       Tipo de período
     </label>
@@ -10,7 +10,7 @@
       <select
         id="period-type-input"
         v-model="periodType"
-        class="block w-full py-2 px-3 border-b-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-hidden transition-colors appearance-none cursor-pointer"
+        class="block w-full py-2 px-3 border-b-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-950 dark:text-slate-50 focus:border-emerald-600 dark:focus:border-emerald-400 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-500/20 dark:focus-visible:ring-emerald-400/30 transition-colors appearance-none cursor-pointer"
       >
         <option
           v-for="option in periodTypesOptions"
@@ -24,7 +24,7 @@
         <ion-icon
           name="chevron-down-outline"
           size="small"
-          class="text-gray-400 dark:text-gray-500"
+          class="text-slate-400 dark:text-slate-500"
           aria-hidden="true"
         />
       </div>

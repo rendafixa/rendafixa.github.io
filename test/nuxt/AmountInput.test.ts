@@ -49,7 +49,7 @@ describe('AmountInput Component', () => {
       const store = useInvestmentStore()
       store.setAmount(1000)
       await wrapper.vm.$nextTick()
-      expect(wrapper.find('.text-red-600').exists()).toBe(false)
+      expect(wrapper.find('.text-rose-700').exists()).toBe(false)
     })
   })
 
@@ -58,16 +58,16 @@ describe('AmountInput Component', () => {
       const wrapper = await mountSuspended(AmountInput)
       const input = wrapper.find('#amount-input')
       await input.setValue(100)
-      expect(wrapper.find('.text-red-600').exists()).toBe(false)
-      expect(input.classes()).not.toContain('border-red-500')
+      expect(wrapper.find('.text-rose-700').exists()).toBe(false)
+      expect(input.classes()).not.toContain('border-rose-600')
     })
 
     it('should accept large positive values', async () => {
       const wrapper = await mountSuspended(AmountInput)
       const input = wrapper.find('#amount-input')
       await input.setValue(1000000)
-      expect(wrapper.find('.text-red-600').exists()).toBe(false)
-      expect(input.classes()).not.toContain('border-red-500')
+      expect(wrapper.find('.text-rose-700').exists()).toBe(false)
+      expect(input.classes()).not.toContain('border-rose-600')
     })
 
     it('should update store when valid amount is entered', async () => {
@@ -76,7 +76,7 @@ describe('AmountInput Component', () => {
       const input = wrapper.find('#amount-input')
       await input.setValue(2500)
       await wrapper.vm.$nextTick()
-      expect(input.classes()).not.toContain('border-red-500')
+      expect(input.classes()).not.toContain('border-rose-600')
       expect(store.amount).toBeGreaterThan(0)
     })
   })
@@ -106,16 +106,16 @@ describe('AmountInput Component', () => {
       const wrapper = await mountSuspended(AmountInput)
       const input = wrapper.find('#amount-input')
       await input.setValue(0.01)
-      expect(wrapper.find('.text-red-600').exists()).toBe(false)
-      expect(input.classes()).not.toContain('border-red-500')
+      expect(wrapper.find('.text-rose-700').exists()).toBe(false)
+      expect(input.classes()).not.toContain('border-rose-600')
     })
 
     it('should handle value of exactly 1', async () => {
       const wrapper = await mountSuspended(AmountInput)
       const input = wrapper.find('#amount-input')
       await input.setValue(1)
-      expect(wrapper.find('.text-red-600').exists()).toBe(false)
-      expect(input.classes()).not.toContain('border-red-500')
+      expect(wrapper.find('.text-rose-700').exists()).toBe(false)
+      expect(input.classes()).not.toContain('border-rose-600')
     })
   })
 
@@ -141,7 +141,7 @@ describe('AmountInput Component', () => {
       expect(store.amount).toBeGreaterThan(0)
       await input.setValue(2000)
       await wrapper.vm.$nextTick()
-      expect(input.classes()).not.toContain('border-red-500')
+      expect(input.classes()).not.toContain('border-rose-600')
     })
   })
 
