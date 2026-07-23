@@ -45,7 +45,6 @@
       :amount="10000"
       :interest-amount="poupancaExample.interestAmount"
       :loading="!investment.poupanca"
-      color="amber"
       class="mb-6"
     />
 
