@@ -13,7 +13,6 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^1.16.0",
     "@nuxt/test-utils": "^4.0.3",
     "@tailwindcss/typography": "^0.5.20",
