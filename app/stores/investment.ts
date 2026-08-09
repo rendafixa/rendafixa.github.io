@@ -15,6 +15,8 @@ export const useInvestmentStore = defineStore('investment', () => {
   const period = ref(360)
   const periodType = ref<PeriodTypes>(PeriodTypes.Days)
   const lcx = ref(100)
+  const cdbPre = ref<number | null>(14)
+  const lcxPre = ref<number | null>(14)
   const poupanca = ref<number | null>(null)
   const selic = ref<number | null>(null)
 
@@ -42,6 +44,14 @@ export const useInvestmentStore = defineStore('investment', () => {
     lcx.value = newLcx
   }
 
+  function setCdbPre(newCdbPre: number | null) {
+    cdbPre.value = normalizeRate(newCdbPre)
+  }
+
+  function setLcxPre(newLcxPre: number | null) {
+    lcxPre.value = normalizeRate(newLcxPre)
+  }
+
   function setSelic(newSelic: number) {
     selic.value = newSelic
   }
@@ -63,6 +73,8 @@ export const useInvestmentStore = defineStore('investment', () => {
     period.value = 360
     periodType.value = PeriodTypes.Days
     lcx.value = 100
+    cdbPre.value = 14
+    lcxPre.value = 14
     poupanca.value = null
     selic.value = null
   }
@@ -74,6 +86,8 @@ export const useInvestmentStore = defineStore('investment', () => {
     period,
     periodType,
     lcx,
+    cdbPre,
+    lcxPre,
     poupanca,
     selic,
     setAmount,
@@ -82,9 +96,15 @@ export const useInvestmentStore = defineStore('investment', () => {
     setCdb,
     setDi,
     setLcx,
+    setCdbPre,
+    setLcxPre,
     setSelic,
     initializeStore,
     loadIndexes,
     $reset,
   }
 })
+
+function normalizeRate(rate: number | null): number | null {
+  return rate !== null && Number.isFinite(rate) ? rate : null
+}

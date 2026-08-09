@@ -19,6 +19,8 @@ describe('Investment Store', () => {
       period: 360,
       periodType: PeriodTypes.Days,
       lcx: 100,
+      cdbPre: 14,
+      lcxPre: 14,
       poupanca: null,
       selic: null,
     })
@@ -31,6 +33,8 @@ describe('Investment Store', () => {
     store.setPeriod(18)
     store.setPeriodType(PeriodTypes.Months)
     store.setLcx(95)
+    store.setCdbPre(13.25)
+    store.setLcxPre(null)
     store.setSelic(10)
 
     expect(store.amount).toBe(2500)
@@ -39,7 +43,17 @@ describe('Investment Store', () => {
     expect(store.period).toBe(18)
     expect(store.periodType).toBe(PeriodTypes.Months)
     expect(store.lcx).toBe(95)
+    expect(store.cdbPre).toBe(13.25)
+    expect(store.lcxPre).toBeNull()
     expect(store.selic).toBe(10)
+  })
+
+  it('normalizes non-finite prefixado rates to null', () => {
+    store.setCdbPre(Number.NaN)
+    store.setLcxPre(Number.POSITIVE_INFINITY)
+
+    expect(store.cdbPre).toBeNull()
+    expect(store.lcxPre).toBeNull()
   })
 
   it('initializes the bundled market indexes', () => {
@@ -57,6 +71,8 @@ describe('Investment Store', () => {
     store.setPeriod(18)
     store.setPeriodType(PeriodTypes.Years)
     store.setLcx(95)
+    store.setCdbPre(null)
+    store.setLcxPre(12)
     store.poupanca = 8
     store.setSelic(10)
 
@@ -69,6 +85,8 @@ describe('Investment Store', () => {
       period: 360,
       periodType: PeriodTypes.Days,
       lcx: 100,
+      cdbPre: 14,
+      lcxPre: 14,
       poupanca: null,
       selic: null,
     })
