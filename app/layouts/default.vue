@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors">
-    <header class="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-black/20 sticky top-0 z-50 transition-colors">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-default transition-colors">
+    <header class="sticky top-0 z-50 border-b border-default bg-default/90 shadow-sm backdrop-blur">
+      <div class="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <NuxtLink
@@ -15,15 +15,15 @@
                 class="w-12 h-12"
               >
             </NuxtLink>
-            <h1 class="ml-3 text-xl font-semibold text-slate-950 dark:text-slate-50 hidden sm:block whitespace-nowrap transition-colors">
+            <span class="ml-3 hidden whitespace-nowrap text-lg font-semibold sm:block">
               Calculadora Renda Fixa
-            </h1>
+            </span>
           </div>
           <NavigationBar />
         </div>
       </div>
     </header>
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="mx-auto w-full max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
       <NuxtPage />
     </main>
   </div>
@@ -31,10 +31,4 @@
 
 <script setup lang="ts">
 import '~/assets/css/main.css'
-
-const { initTheme } = useTheme()
-
-onMounted(() => {
-  initTheme()
-})
 </script>

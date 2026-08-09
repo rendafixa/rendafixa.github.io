@@ -1,6 +1,7 @@
 {
   "name": "rendafixa",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -25,16 +26,24 @@
     "nuxt": "^4.5.2",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "vite-plugin-eslint2": "^5.3.0",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "vitest-axe": "^0.1.0"
   },
   "dependencies": {
+    "@iconify-json/lucide": "^1.2.122",
+    "@internationalized/date": "^3.12.3",
+    "@nuxt/ui": "^4.10.0",
     "@pinia/nuxt": "^1.0.1",
-    "@tailwindcss/vite": "^4.3.3",
-    "@vue/devtools-api": "^8.1.5",
-    "axios": "^1.18.1",
+    "chart.js": "^4.5.1",
+    "chartjs-plugin-annotation": "^3.1.0",
+    "chartjs-plugin-datalabels": "^2.2.0",
+    "decimal.js": "^10.6.0",
     "nuxt-schema-org": "^6.2.3",
     "pinia": "^4.0.2",
-    "tailwindcss": "^4.3.2"
+    "tailwindcss": "^4.3.2",
+    "vue": "3.5.41",
+    "vue-chartjs": "^5.3.4",
+    "zod": "^4.4.3"
   },
   "packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1"
 }

@@ -1,0 +1,1849 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-09T19:44:48.792Z",
+  "brazilReferenceDate": "2026-08-09",
+  "rates": {
+    "selicEffective": {
+      "annualPct": "13.9",
+      "referenceDate": "2026-08-07"
+    },
+    "selicTarget": {
+      "annualPct": "14",
+      "referenceDate": "2026-08-09"
+    },
+    "cdi": {
+      "annualPct": "13.9",
+      "referenceDate": "2026-08-06"
+    },
+    "ipca12m": {
+      "annualPct": "4.64",
+      "referenceDate": "2026-06-01"
+    },
+    "trMonthly": {
+      "annualPct": "0.1708",
+      "referenceDate": "2026-08-06"
+    }
+  },
+  "projections": {
+    "selic": [
+      {
+        "meeting": "R5/2026",
+        "effectiveDate": "2026-08-06",
+        "annualPct": "13.9",
+        "estimated": false
+      },
+      {
+        "meeting": "R6/2026",
+        "effectiveDate": "2026-09-17",
+        "annualPct": "13.65",
+        "estimated": false
+      },
+      {
+        "meeting": "R7/2026",
+        "effectiveDate": "2026-11-05",
+        "annualPct": "13.65",
+        "estimated": false
+      },
+      {
+        "meeting": "R8/2026",
+        "effectiveDate": "2026-12-10",
+        "annualPct": "13.65",
+        "estimated": false
+      },
+      {
+        "meeting": "R1/2027",
+        "effectiveDate": "2027-01-28",
+        "annualPct": "13.65",
+        "estimated": false
+      },
+      {
+        "meeting": "R2/2027",
+        "effectiveDate": "2027-03-18",
+        "annualPct": "13.65",
+        "estimated": false
+      },
+      {
+        "meeting": "R3/2027",
+        "effectiveDate": "2027-04-29",
+        "annualPct": "13.4",
+        "estimated": false
+      },
+      {
+        "meeting": "R4/2027",
+        "effectiveDate": "2027-06-17",
+        "annualPct": "13.15",
+        "estimated": false
+      },
+      {
+        "meeting": "R5/2027",
+        "effectiveDate": "2027-08-05",
+        "annualPct": "12.65",
+        "estimated": false
+      },
+      {
+        "meeting": "R6/2027",
+        "effectiveDate": "2027-09-23",
+        "annualPct": "12.4",
+        "estimated": false
+      },
+      {
+        "meeting": "R7/2027",
+        "effectiveDate": "2027-10-28",
+        "annualPct": "12.4",
+        "estimated": false
+      },
+      {
+        "meeting": "R8/2027",
+        "effectiveDate": "2027-12-09",
+        "annualPct": "12.15",
+        "estimated": false
+      },
+      {
+        "meeting": "R4/2028",
+        "effectiveDate": "2028-01-24",
+        "annualPct": "11.4",
+        "estimated": true
+      },
+      {
+        "meeting": "R3/2028",
+        "effectiveDate": "2028-03-10",
+        "annualPct": "11.4",
+        "estimated": true
+      },
+      {
+        "meeting": "R2/2028",
+        "effectiveDate": "2028-04-25",
+        "annualPct": "11.65",
+        "estimated": true
+      },
+      {
+        "meeting": "R1/2028",
+        "effectiveDate": "2028-06-10",
+        "annualPct": "11.9",
+        "estimated": true
+      }
+    ],
+    "ipca": [
+      {
+        "year": 2026,
+        "annualPct": "5.0278"
+      },
+      {
+        "year": 2027,
+        "annualPct": "4.2722"
+      },
+      {
+        "year": 2028,
+        "annualPct": "3.8"
+      },
+      {
+        "year": 2029,
+        "annualPct": "3.5"
+      },
+      {
+        "year": 2030,
+        "annualPct": "3.5"
+      }
+    ]
+  },
+  "holidays": {
+    "supportedFrom": "2025-01-01",
+    "supportedUntil": "2056-12-31",
+    "dates": [
+      {
+        "date": "2025-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2025-03-03",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2025-03-04",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2025-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2025-06-19",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2025-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2025-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2025-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2025-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2025-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2026-02-16",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2026-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2026-06-04",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2026-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2026-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2026-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2026-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2026-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2027-02-09",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2027-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2027-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2027-05-27",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2027-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2027-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2027-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2027-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2027-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2027-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2028-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2028-02-29",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2028-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2028-06-15",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2028-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2028-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2028-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2028-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2028-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2029-02-12",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2029-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2029-05-31",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2029-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2029-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2029-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2029-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2029-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2030-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2030-03-04",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2030-03-05",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2030-04-19",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2030-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2030-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2030-06-20",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2030-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2030-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2030-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2030-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2030-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2030-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2031-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2031-02-24",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2031-02-25",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2031-04-11",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2031-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2031-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2031-06-12",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2031-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2031-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2031-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2031-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2031-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2031-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2032-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2032-02-09",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2032-02-10",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2032-03-26",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2032-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2032-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2032-05-27",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2032-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2032-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2032-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2032-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2032-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2032-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2033-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2033-02-28",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2033-03-01",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2033-04-15",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2033-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2033-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2033-06-16",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2033-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2033-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2033-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2033-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2033-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2033-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2034-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2034-02-20",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2034-02-21",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2034-04-07",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2034-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2034-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2034-06-08",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2034-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2034-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2034-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2034-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2034-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2034-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2035-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2035-02-05",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2035-02-06",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2035-03-23",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2035-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2035-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2035-05-24",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2035-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2035-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2035-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2035-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2035-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2035-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2036-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2036-02-25",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2036-02-26",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2036-04-11",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2036-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2036-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2036-06-12",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2036-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2036-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2036-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2036-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2036-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2036-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2037-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2037-02-16",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2037-02-17",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2037-04-03",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2037-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2037-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2037-06-04",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2037-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2037-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2037-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2037-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2037-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2037-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2038-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2038-03-08",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2038-03-09",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2038-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2038-04-23",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2038-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2038-06-24",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2038-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2038-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2038-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2038-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2038-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2038-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2039-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2039-02-21",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2039-02-22",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2039-04-08",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2039-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2039-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2039-06-09",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2039-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2039-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2039-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2039-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2039-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2039-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2040-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2040-02-13",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2040-02-14",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2040-03-30",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2040-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2040-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2040-05-31",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2040-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2040-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2040-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2040-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2040-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2040-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2041-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2041-03-04",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2041-03-05",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2041-04-19",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2041-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2041-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2041-06-20",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2041-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2041-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2041-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2041-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2041-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2041-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2042-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2042-02-17",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2042-02-18",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2042-04-04",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2042-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2042-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2042-06-05",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2042-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2042-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2042-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2042-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2042-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2042-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2043-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2043-02-09",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2043-02-10",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2043-03-27",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2043-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2043-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2043-05-28",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2043-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2043-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2043-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2043-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2043-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2043-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2044-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2044-02-29",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2044-03-01",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2044-04-15",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2044-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2044-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2044-06-16",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2044-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2044-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2044-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2044-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2044-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2044-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2045-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2045-02-20",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2045-02-21",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2045-04-07",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2045-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2045-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2045-06-08",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2045-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2045-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2045-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2045-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2045-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2045-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2046-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2046-02-05",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2046-02-06",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2046-03-23",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2046-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2046-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2046-05-24",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2046-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2046-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2046-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2046-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2046-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2046-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2047-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2047-02-25",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2047-02-26",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2047-04-12",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2047-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2047-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2047-06-13",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2047-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2047-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2047-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2047-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2047-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2047-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2048-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2048-02-17",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2048-02-18",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2048-04-03",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2048-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2048-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2048-06-04",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2048-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2048-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2048-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2048-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2048-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2048-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2049-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2049-03-01",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2049-03-02",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2049-04-16",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2049-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2049-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2049-06-17",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2049-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2049-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2049-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2049-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2049-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2049-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2050-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2050-02-21",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2050-02-22",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2050-04-08",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2050-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2050-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2050-06-09",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2050-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2050-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2050-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2050-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2050-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2050-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2051-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2051-02-13",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2051-02-14",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2051-03-31",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2051-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2051-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2051-06-01",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2051-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2051-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2051-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2051-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2051-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2051-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2052-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2052-03-04",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2052-03-05",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2052-04-19",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2052-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2052-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2052-06-20",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2052-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2052-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2052-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2052-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2052-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2052-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2053-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2053-02-17",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2053-02-18",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2053-04-04",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2053-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2053-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2053-06-05",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2053-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2053-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2053-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2053-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2053-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2053-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2054-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2054-02-09",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2054-02-10",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2054-03-27",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2054-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2054-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2054-05-28",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2054-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2054-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2054-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2054-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2054-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2054-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2055-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2055-03-01",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2055-03-02",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2055-04-16",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2055-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2055-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2055-06-17",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2055-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2055-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2055-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2055-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2055-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2055-12-25",
+        "name": "Natal"
+      },
+      {
+        "date": "2056-01-01",
+        "name": "Confraternização Universal"
+      },
+      {
+        "date": "2056-02-14",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2056-02-15",
+        "name": "Carnaval"
+      },
+      {
+        "date": "2056-03-31",
+        "name": "Paixão de Cristo"
+      },
+      {
+        "date": "2056-04-21",
+        "name": "Tiradentes"
+      },
+      {
+        "date": "2056-05-01",
+        "name": "Dia do Trabalho"
+      },
+      {
+        "date": "2056-06-01",
+        "name": "Corpus Christi"
+      },
+      {
+        "date": "2056-09-07",
+        "name": "Independência do Brasil"
+      },
+      {
+        "date": "2056-10-12",
+        "name": "Nossa Sr. a Aparecida - Padroeira do Brasil"
+      },
+      {
+        "date": "2056-11-02",
+        "name": "Finados"
+      },
+      {
+        "date": "2056-11-15",
+        "name": "Proclamação da República"
+      },
+      {
+        "date": "2056-11-20",
+        "name": "Dia Nacional de Zumbi e da Consciência Negra"
+      },
+      {
+        "date": "2056-12-25",
+        "name": "Natal"
+      }
+    ]
+  },
+  "sources": {
+    "bcb-sgs": {
+      "url": "https://dadosabertos.bcb.gov.br/",
+      "retrievedAt": "2026-08-09T19:44:48.792Z",
+      "referenceDate": "2026-08-09",
+      "status": "fresh",
+      "lastSuccessfulAt": "2026-08-09T19:44:48.792Z"
+    },
+    "focus": {
+      "url": "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/",
+      "retrievedAt": "2026-08-09T19:44:48.792Z",
+      "referenceDate": "2026-07-31",
+      "status": "fresh",
+      "lastSuccessfulAt": "2026-08-09T19:44:48.792Z"
+    },
+    "copom": {
+      "url": "https://www.bcb.gov.br/controleinflacao/copom",
+      "retrievedAt": "2026-08-09T19:44:48.792Z",
+      "referenceDate": "2026-08-09",
+      "status": "fresh",
+      "lastSuccessfulAt": "2026-08-09T19:44:48.792Z"
+    },
+    "anbima": {
+      "url": "https://www.anbima.com.br/feriados/",
+      "retrievedAt": "2026-08-09T19:44:48.792Z",
+      "referenceDate": "2026-08-09",
+      "status": "fresh",
+      "lastSuccessfulAt": "2026-08-09T19:44:48.792Z"
+    }
+  }
+}
