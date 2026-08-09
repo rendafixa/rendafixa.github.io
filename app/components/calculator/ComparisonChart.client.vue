@@ -26,6 +26,11 @@ function formatYAxisTick(value: string | number) {
   if (props.preferences.mode === 'value') return `R$ ${Number(value).toLocaleString('pt-BR')}`
   return `${value}%`
 }
+function formatDataLabel(value: unknown) {
+  if (value == null) return ''
+  const decimalPlaces = props.preferences.mode === 'value' ? 0 : 1
+  return Number(value).toFixed(decimalPlaces)
+}
 const data = computed<ChartData<'line'>>(() => ({
   labels: labels.value,
   datasets: [
@@ -52,7 +57,7 @@ const data = computed<ChartData<'line'>>(() => ({
 }))
 const options = computed<ChartOptions<'line'>>(() => ({
   responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' },
-  plugins: { datalabels: { display: props.preferences.labels, align: 'top', formatter: value => value == null ? '' : Number(value).toFixed(props.preferences.mode === 'value' ? 0 : 1) } },
+  plugins: { datalabels: { display: props.preferences.labels, align: 'top', formatter: formatDataLabel } },
   scales: { x: { ticks: { maxTicksLimit: 8 } }, y: { ticks: { callback: formatYAxisTick } } },
 }))
 </script>

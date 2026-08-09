@@ -1,7 +1,7 @@
 export function parseAnbimaHolidays(html, year) {
   return extractTagContents(html, 'tr').flatMap((row) => {
     const cells = extractTagContents(row, 'td')
-      .map(cell => decodeHtml(cell.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()))
+      .map(cell => decodeHtml(stripTags(cell).replace(/\s+/g, ' ').trim()))
     const date = /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/.exec(cells[0] ?? '')
     if (!date) return []
     const fullYear = date[3].length === 2 ? 2000 + Number(date[3]) : Number(date[3])
@@ -11,6 +11,20 @@ export function parseAnbimaHolidays(html, year) {
       name: cells[2],
     }]
   })
+}
+
+function stripTags(value) {
+  let output = ''
+  let insideTag = false
+  for (const character of value) {
+    if (character === '<') insideTag = true
+    else if (character === '>') {
+      insideTag = false
+      output += ' '
+    }
+    else if (!insideTag) output += character
+  }
+  return output
 }
 
 function extractTagContents(html, tag) {
