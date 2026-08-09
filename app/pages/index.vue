@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang='ts'>
-import { useInvestmentStore } from '~/store/investment'
+import { useInvestmentStore } from '~/stores/investment'
 import { onMounted } from 'vue'
 
 useSeoMeta({

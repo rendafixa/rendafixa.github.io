@@ -14,11 +14,11 @@ describe('ContentGradientBox Component', () => {
 
       // Verify all styling classes
       expect(classList).toContain('p-4')
-      expect(classList).toContain('shadow')
-      expect(classList).toContain('rounded-lg')
-      expect(classList).toContain('bg-linear-to-r')
-      expect(classList).toContain('from-orange-')
-      expect(classList).toContain('to-amber-')
+      expect(classList).toContain('shadow-sm')
+      expect(classList).toContain('rounded-xl')
+      expect(classList).toContain('border-amber-200')
+      expect(classList).toContain('bg-amber-50')
+      expect(classList).toContain('dark:bg-amber-950/40')
     })
   })
 

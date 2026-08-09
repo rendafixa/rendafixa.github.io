@@ -14,6 +14,7 @@ Simule e compare CDB/RDB, LCI/LCA e Poupança com foco em impostos, IOF e índic
 ## O que esta calculadora faz para você
 
 - Simula CDB/RDB com cálculo automático de IR (Imposto de Renda) e IOF (quando aplicável), mostrando valores brutos e líquidos;
+- Simula CDB/RDB e LCI/LCA prefixados com uma taxa anual informada pelo usuário;
 - Simula LCI/LCA considerando isenção de IR — veja o benefício fiscal direto no resultado;
 - Simula Poupança com as regras da caderneta atualizadas segundo a prática do mercado;
 - Converte períodos entre Dias / Meses / Anos seguindo as regras adotadas pelo Banco Central (meses = 365/12, anos = 365);
@@ -32,6 +33,11 @@ Simule e compare CDB/RDB, LCI/LCA e Poupança com foco em impostos, IOF e índic
 
 - As simulações seguem as regras fiscais brasileiras (tabela regressiva de IR por prazo e tabela de IOF para resgates em menos de 30 dias);
 - Índices de referência (DI, SELIC e taxa da poupança) são obtidos a partir de fontes oficiais que são atualizadas várias vezes ao dia, automaticamente.
+
+## Premissas das simulações prefixadas
+
+- Os resultados são estimativas que preservam a aproximação de 365 dias corridos usada nas demais simulações da calculadora. Contratos podem adotar bases de 252 dias úteis ou 360 dias corridos; confirme a convenção no contrato do emissor. Consulte os manuais da B3 para [CDB](https://www.b3.com.br/data/files/E9/24/20/40/0D331610D1820216790D8AA8/Manual-do-Produto-Certificado-de-Deposito-Bancario-CDB.pdf) e [LCI](https://www.b3.com.br/data/files/1E/00/80/73/5E331610C2BD3316790D8AA8/Manual-do-Produto-Letra-de-Credito-Imobiliario-LCI.pdf).
+- A calculadora não valida vencimento, liquidez nem condições de resgate de LCI/LCA. O prazo mínimo atual para títulos não indexados a índice de preços é de seis meses, conforme a [Resolução CMN nº 5.215](https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=5215&tipo=Resolu%C3%A7%C3%A3o+CMN).
 
 ## Observações finais
 

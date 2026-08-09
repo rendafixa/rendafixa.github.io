@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
-    <header class="bg-white dark:bg-gray-800 shadow-sm dark:shadow-gray-900/50 sticky top-0 z-50 transition-colors">
+  <div class="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors">
+    <header class="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-black/20 sticky top-0 z-50 transition-colors">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
@@ -15,7 +15,7 @@
                 class="w-12 h-12"
               >
             </NuxtLink>
-            <h1 class="ml-3 text-xl font-semibold text-gray-900 dark:text-gray-100 hidden sm:block whitespace-nowrap transition-colors">
+            <h1 class="ml-3 text-xl font-semibold text-slate-950 dark:text-slate-50 hidden sm:block whitespace-nowrap transition-colors">
               Calculadora Renda Fixa
             </h1>
           </div>

@@ -2,7 +2,7 @@
   <div class="mb-6">
     <label
       for="lcx-pre-input"
-      class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+      class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
     >
       LCI/LCA prefixado
     </label>
@@ -11,25 +11,31 @@
         <ion-icon
           name="calculator-outline"
           size="small"
-          class="text-gray-400 dark:text-gray-500"
+          class="text-slate-400 dark:text-slate-500"
           aria-hidden="true"
         />
       </div>
       <input
         id="lcx-pre-input"
-        v-model.number="lcxPre"
+        :value="lcxPre ?? ''"
         type="number"
-        min="0"
-        class="block w-full pl-10 pr-16 py-2 border-b-2 border-gray-300 dark:border-gray-600 dark:bg-transparent text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors"
-        :class="{ 'border-red-500 dark:border-red-400': !isValid }"
+        min="0.01"
+        step="0.01"
+        :aria-invalid="!isValid"
+        :aria-describedby="!isValid ? 'lcx-pre-error' : null"
+        class="block w-full pl-10 pr-16 py-2 border-b-2 border-slate-300 dark:border-slate-700 dark:bg-transparent text-slate-950 dark:text-slate-50 focus:border-emerald-600 dark:focus:border-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/20 dark:focus-visible:ring-emerald-400/30 transition-colors"
+        :class="{ 'border-rose-600 dark:border-rose-400': !isValid }"
+        @input="updateRate"
       >
       <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-        <span class="text-gray-500 dark:text-gray-400 text-sm">% a.a.</span>
+        <span class="text-slate-500 dark:text-slate-400 text-sm">% a.a.</span>
       </div>
     </div>
     <p
-      v-if="!isValid && lcxPre !== null"
-      class="mt-1 text-sm text-red-600 dark:text-red-400"
+      v-if="!isValid"
+      id="lcx-pre-error"
+      role="alert"
+      class="mt-1 text-sm text-rose-700 dark:text-rose-300"
     >
       {{ errorMessage }}
     </p>
@@ -38,26 +44,36 @@
 
 <script setup lang='ts'>
 import { computed } from 'vue'
-import { useInvestmentStore } from '~/store/investment'
+import { useInvestmentStore } from '~/stores/investment'
 
 const store = useInvestmentStore()
-const lcxPre = computed({
-  get: () => store.lcxPre,
-  set: data => store.setLcxPre(data),
-})
+const lcxPre = computed(() => store.lcxPre)
 const isValid = computed(() => {
-  if (!lcxPre.value) {
-    return false
-  }
-  return Number(lcxPre.value) > 0
+  return lcxPre.value !== null
+    && Number.isFinite(lcxPre.value)
+    && lcxPre.value > 0
 })
 const errorMessage = computed(() => {
-  if (!lcxPre.value) {
+  if (lcxPre.value === null) {
     return 'Obrigatório'
   }
-  if (Number(lcxPre.value) <= 0) {
+  if (lcxPre.value <= 0) {
     return 'Deve ser um número positivo'
   }
   return ''
 })
+
+function updateRate(event: Event) {
+  const value = (event.target as HTMLInputElement).value
+  store.setLcxPre(normalizeRate(value))
+}
+
+function normalizeRate(value: string): number | null {
+  if (value.trim() === '') {
+    return null
+  }
+
+  const rate = Number(value)
+  return Number.isFinite(rate) ? rate : null
+}
 </script>
