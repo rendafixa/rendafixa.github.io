@@ -97,12 +97,23 @@ function validateInput(input: InvestmentInput, startDate: IsoDate, market: Marke
   if (compareDates(input.maturityDate, startDate) <= 0) errors.push({ code: 'maturity-before-start', message: 'O vencimento deve ser posterior à data inicial.', investmentId: input.id, field: 'maturityDate' })
   if (compareDates(input.maturityDate, addYears(startDate, 30)) > 0) errors.push({ code: 'invalid-maturity', message: 'O vencimento deve estar dentro de 30 anos.', investmentId: input.id, field: 'maturityDate' })
   if (input.maturityDate > market.holidays.supportedUntil || input.maturityDate < market.holidays.supportedFrom) errors.push({ code: 'maturity-outside-holiday-coverage', message: 'Vencimento fora da cobertura de feriados.', investmentId: input.id, field: 'maturityDate' })
-  const rate = input.rate.kind === 'fixed' ? input.rate.annualPct : input.rate.kind === 'cdi-percent' ? input.rate.percentOfCdi : input.rate.kind === 'ipca-plus' ? input.rate.realAnnualPct : '1'
+  const { rate, minimum } = validationRate(input)
   try {
-    if (!decimal(rate).isFinite() || decimal(rate).lte(input.rate.kind === 'ipca-plus' ? -100 : 0)) errors.push({ code: 'invalid-rate', message: 'Informe uma taxa válida.', investmentId: input.id, field: 'rate' })
+    const parsedRate = decimal(rate)
+    if (!parsedRate.isFinite() || parsedRate.lte(minimum)) errors.push({ code: 'invalid-rate', message: 'Informe uma taxa válida.', investmentId: input.id, field: 'rate' })
   }
   catch {
     errors.push({ code: 'invalid-rate', message: 'Informe uma taxa válida.', investmentId: input.id, field: 'rate' })
   }
   return errors
+}
+
+function validationRate(input: InvestmentInput) {
+  switch (input.rate.kind) {
+    case 'fixed': return { rate: input.rate.annualPct, minimum: 0 }
+    case 'cdi-percent': return { rate: input.rate.percentOfCdi, minimum: 0 }
+    case 'ipca-plus': return { rate: input.rate.realAnnualPct, minimum: -100 }
+    case 'selic':
+    case 'savings': return { rate: '1', minimum: 0 }
+  }
 }

@@ -7,12 +7,12 @@ export function normalizeMarketData({ referenceDate, now, rates, focus, copom, h
     if (!section) return { ...(prior ?? { url, referenceDate: sectionReferenceDate, lastSuccessfulAt: previous?.generatedAt ?? generatedAt }), retrievedAt: generatedAt, status: 'stale' }
     return { url, retrievedAt: generatedAt, referenceDate: sectionReferenceDate, status: stale ? 'stale' : 'fresh', lastSuccessfulAt: generatedAt }
   }
-  const ratesReferenceDate = rates ? Object.values(rates).map(rate => rate.referenceDate).sort().at(-1) : referenceDate
+  const ratesReferenceDate = rates ? Object.values(rates).map(rate => rate.referenceDate).sort((left, right) => left.localeCompare(right)).at(-1) : referenceDate
   const ratesStale = !rates
     || ['selicEffective', 'selicTarget', 'cdi', 'trMonthly'].some(key => businessDaysBetween(rates[key].referenceDate, referenceDate) > 3)
     || calendarDaysBetween(rates.ipca12m.referenceDate, referenceDate) > 75
   const focusReferenceDate = focus
-    ? [latestFocusDate(focus.selic), latestFocusDate(focus.ipca)].sort()[0]
+    ? [latestFocusDate(focus.selic), latestFocusDate(focus.ipca)].sort((left, right) => left.localeCompare(right))[0]
     : referenceDate
   return {
     schemaVersion: 1,

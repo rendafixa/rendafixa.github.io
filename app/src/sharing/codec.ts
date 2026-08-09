@@ -9,8 +9,8 @@ export function encodeSharePayload(payload: SharePayload): DomainResult<string> 
   const bytes = new TextEncoder().encode(JSON.stringify(parsed.data))
   if (bytes.byteLength > MAX_SHARE_PAYLOAD_BYTES) return { ok: false, errors: [{ code: 'share-payload-too-large', message: 'A simulação excede o tamanho permitido para um link.' }] }
   let binary = ''
-  for (const byte of bytes) binary += String.fromCharCode(byte)
-  return { ok: true, value: btoa(binary).replaceAll('+', '-').replaceAll('/', '_').replace(/=+$/, ''), warnings: [] }
+  for (const byte of bytes) binary += String.fromCodePoint(byte)
+  return { ok: true, value: btoa(binary).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', ''), warnings: [] }
 }
 
 export function decodeSharePayload(value: string): DomainResult<SharePayload> {
@@ -18,7 +18,7 @@ export function decodeSharePayload(value: string): DomainResult<SharePayload> {
   try {
     const padded = value.replaceAll('-', '+').replaceAll('_', '/').padEnd(Math.ceil(value.length / 4) * 4, '=')
     const binary = atob(padded)
-    const bytes = Uint8Array.from(binary, character => character.charCodeAt(0))
+    const bytes = Uint8Array.from(binary, character => character.codePointAt(0) ?? 0)
     const json = JSON.parse(new TextDecoder().decode(bytes))
     if (json?.v !== 1) return { ok: false, errors: [{ code: 'unsupported-share-version', message: 'Esta versão de link não é compatível.' }] }
     const parsed = shareSchema.safeParse(json)

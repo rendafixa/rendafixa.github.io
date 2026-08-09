@@ -31,6 +31,22 @@ useSeoMeta({ title: 'Metodologia', description: 'Fórmulas, dados, impostos e li
           IR regressivo
         </h2>
         <table class="mt-4 w-full text-sm">
+          <thead>
+            <tr>
+              <th
+                scope="col"
+                class="p-2 text-left font-medium"
+              >
+                Prazo
+              </th>
+              <th
+                scope="col"
+                class="p-2 text-right font-medium"
+              >
+                Alíquota
+              </th>
+            </tr>
+          </thead>
           <tbody>
             <tr
               v-for="row in [['Até 180 dias', '22,5%'], ['181–360 dias', '20%'], ['361–720 dias', '17,5%'], ['Acima de 720 dias', '15%']]"

@@ -1,7 +1,7 @@
 import { fetchWithRetry, parseBrazilianDecimal } from './fetch-bcb-sgs.mjs'
 
 export function latestFocusDate(records) {
-  return records.filter(record => Number(record.baseCalculo) === 1).map(record => record.Data).sort().at(-1)
+  return records.filter(record => Number(record.baseCalculo) === 1).map(record => record.Data).sort((left, right) => left.localeCompare(right)).at(-1)
 }
 
 export function normalizeIpcaProjections(records) {
@@ -16,7 +16,7 @@ export function normalizeSelicProjections(records, meetings = []) {
   const latest = latestFocusDate(records)
   const official = new Map(meetings.map(item => [item.meeting, item.effectiveDate]))
   const filtered = records.filter(record => Number(record.baseCalculo) === 1 && record.Data === latest)
-  let lastDate = meetings.map(item => item.effectiveDate).sort().at(-1) ?? latest
+  let lastDate = meetings.map(item => item.effectiveDate).sort((left, right) => left.localeCompare(right)).at(-1) ?? latest
   return filtered.map((record, index) => {
     const meeting = record.Reuniao ?? `R${index + 1}`
     let effectiveDate = official.get(meeting)

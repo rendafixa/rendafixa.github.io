@@ -22,6 +22,10 @@ const referenceValues = computed(() => {
   const points = new Map(props.result.benchmarkTimelines[props.preferences.reference].map(point => [point.date, Number(point.netValue)]))
   return labels.value.map(date => points.get(date) ?? null)
 })
+function formatYAxisTick(value: string | number) {
+  if (props.preferences.mode === 'value') return `R$ ${Number(value).toLocaleString('pt-BR')}`
+  return `${value}%`
+}
 const data = computed<ChartData<'line'>>(() => ({
   labels: labels.value,
   datasets: [
@@ -49,7 +53,7 @@ const data = computed<ChartData<'line'>>(() => ({
 const options = computed<ChartOptions<'line'>>(() => ({
   responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' },
   plugins: { datalabels: { display: props.preferences.labels, align: 'top', formatter: value => value == null ? '' : Number(value).toFixed(props.preferences.mode === 'value' ? 0 : 1) } },
-  scales: { x: { ticks: { maxTicksLimit: 8 } }, y: { ticks: { callback: value => props.preferences.mode === 'value' ? `R$ ${Number(value).toLocaleString('pt-BR')}` : `${value}%` } } },
+  scales: { x: { ticks: { maxTicksLimit: 8 } }, y: { ticks: { callback: formatYAxisTick } } },
 }))
 </script>
 

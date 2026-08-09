@@ -70,8 +70,18 @@ useSeoMeta({
               class="w-full"
             />
           </UFormField>
-          <label class="flex min-h-11 items-center gap-2 pt-6"><USwitch v-model="store.useProjections" />Usar projeções</label>
-          <label class="flex min-h-11 items-center gap-2 pt-6"><USwitch v-model="store.showTaxDetails" />Detalhes tributários</label>
+          <div class="flex min-h-11 items-center pt-6">
+            <USwitch
+              v-model="store.useProjections"
+              label="Usar projeções"
+            />
+          </div>
+          <div class="flex min-h-11 items-center pt-6">
+            <USwitch
+              v-model="store.showTaxDetails"
+              label="Detalhes tributários"
+            />
+          </div>
         </div>
         <SimulationToolbar
           :request="store.request"

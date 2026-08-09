@@ -2,7 +2,7 @@ name: Update Indexes
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 14 * * 1-5'
+    - cron: '0 11,15,21 * * 1-5'
 
 jobs:
   update-market-data:

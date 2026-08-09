@@ -5,6 +5,7 @@ import { INVESTMENT_TYPE_LABELS } from '~/src/contracts/investment'
 const props = defineProps<{ investment: InvestmentInput }>()
 const emit = defineEmits<{ update: [value: InvestmentInput] }>()
 const types = Object.entries(INVESTMENT_TYPE_LABELS).map(([value, label]) => ({ value, label }))
+const productInputId = useId()
 
 function updateField(field: 'name' | 'maturityDate', value: string) {
   emit('update', { ...props.investment, [field]: value } as InvestmentInput)
@@ -34,7 +35,11 @@ const rateValue = computed(() => {
   if (props.investment.rate.kind === 'ipca-plus') return props.investment.rate.realAnnualPct
   return ''
 })
-const rateLabel = computed(() => props.investment.rate.kind === 'cdi-percent' ? '% do CDI' : props.investment.rate.kind === 'ipca-plus' ? 'Taxa real (% a.a.)' : 'Taxa (% a.a.)')
+const rateLabel = computed(() => {
+  if (props.investment.rate.kind === 'cdi-percent') return '% do CDI'
+  if (props.investment.rate.kind === 'ipca-plus') return 'Taxa real (% a.a.)'
+  return 'Taxa (% a.a.)'
+})
 </script>
 
 <template>
@@ -47,8 +52,13 @@ const rateLabel = computed(() => props.investment.rate.kind === 'cdi-percent' ? 
         @update:model-value="updateField('name', String($event))"
       />
     </UFormField>
-    <UFormField label="Produto">
+    <div>
+      <label
+        :for="productInputId"
+        class="mb-1.5 block text-sm font-medium"
+      >Produto</label>
       <select
+        :id="productInputId"
         :value="investment.type"
         class="h-11 w-full rounded-md border border-default bg-default px-3 text-sm"
         @change="updateType(($event.target as HTMLSelectElement).value)"
@@ -61,7 +71,7 @@ const rateLabel = computed(() => props.investment.rate.kind === 'cdi-percent' ? 
           {{ type.label }}
         </option>
       </select>
-    </UFormField>
+    </div>
     <UFormField
       v-if="rateValue"
       :label="rateLabel"

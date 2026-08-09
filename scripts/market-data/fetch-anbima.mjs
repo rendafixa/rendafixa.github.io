@@ -1,7 +1,7 @@
 export function parseAnbimaHolidays(html, year) {
-  return [...html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].flatMap((row) => {
-    const cells = [...row[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)]
-      .map(match => decodeHtml(match[1].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()))
+  return extractTagContents(html, 'tr').flatMap((row) => {
+    const cells = extractTagContents(row, 'td')
+      .map(cell => decodeHtml(cell.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()))
     const date = /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/.exec(cells[0] ?? '')
     if (!date) return []
     const fullYear = date[3].length === 2 ? 2000 + Number(date[3]) : Number(date[3])
@@ -11,6 +11,35 @@ export function parseAnbimaHolidays(html, year) {
       name: cells[2],
     }]
   })
+}
+
+function extractTagContents(html, tag) {
+  const lowerHtml = html.toLowerCase()
+  const opening = `<${tag}`
+  const closing = `</${tag}>`
+  const contents = []
+  let cursor = 0
+  while (cursor < html.length) {
+    const openingStart = findOpeningTag(lowerHtml, opening, cursor)
+    if (openingStart < 0) break
+    const contentStart = lowerHtml.indexOf('>', openingStart + opening.length)
+    if (contentStart < 0) break
+    const contentEnd = lowerHtml.indexOf(closing, contentStart + 1)
+    if (contentEnd < 0) break
+    contents.push(html.slice(contentStart + 1, contentEnd))
+    cursor = contentEnd + closing.length
+  }
+  return contents
+}
+
+function findOpeningTag(html, opening, fromIndex) {
+  let index = html.indexOf(opening, fromIndex)
+  while (index >= 0) {
+    const nextCharacter = html[index + opening.length]
+    if (nextCharacter === '>' || /\s/.test(nextCharacter)) return index
+    index = html.indexOf(opening, index + opening.length)
+  }
+  return -1
 }
 
 function decodeHtml(value) {

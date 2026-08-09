@@ -3,7 +3,8 @@ import type { SimulationWorkerRequest, SimulationWorkerResponse } from '../src/c
 import { simulateComparison } from '../src/simulation/simulate-comparison'
 
 self.addEventListener('message', (event: MessageEvent<SimulationWorkerRequest>) => {
-  if (event.data.type !== 'simulate') return
+  if (event.origin !== '' && event.origin !== self.location.origin) return
+  if (!event.data || event.data.type !== 'simulate') return
   const response: SimulationWorkerResponse = {
     requestId: event.data.requestId,
     type: 'result',

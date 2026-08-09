@@ -18,7 +18,7 @@ export function useComparisonCalculator() {
       return
     }
     store.loading = !store.result
-    const request = JSON.parse(JSON.stringify(store.request)) as ComparisonRequest
+    const request = structuredClone(store.request) as ComparisonRequest
     const calculation = await simulate(request, market)
     if (currentCalculationId !== calculationId) return
     if (calculation.ok) {

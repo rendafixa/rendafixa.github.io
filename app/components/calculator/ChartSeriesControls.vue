@@ -10,8 +10,13 @@ function patch(value: Partial<ChartPreferences>) {
 
 <template>
   <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-    <UFormField label="Métrica">
+    <div>
+      <label
+        for="chart-metric"
+        class="mb-1.5 block text-sm font-medium"
+      >Métrica</label>
       <select
+        id="chart-metric"
         :value="modelValue.mode"
         class="h-11 w-full rounded-md border border-default bg-default px-3"
         @change="patch({ mode: ($event.target as HTMLSelectElement).value as ChartPreferences['mode'] })"
@@ -22,9 +27,14 @@ function patch(value: Partial<ChartPreferences>) {
           Percentual
         </option>
       </select>
-    </UFormField>
-    <UFormField label="Período">
+    </div>
+    <div>
+      <label
+        for="chart-range"
+        class="mb-1.5 block text-sm font-medium"
+      >Período</label>
       <select
+        id="chart-range"
         :value="modelValue.range"
         class="h-11 w-full rounded-md border border-default bg-default px-3"
         @change="patch({ range: ($event.target as HTMLSelectElement).value as ChartPreferences['range'] })"
@@ -35,9 +45,14 @@ function patch(value: Partial<ChartPreferences>) {
           Últimos 12 meses
         </option>
       </select>
-    </UFormField>
-    <UFormField label="Referência">
+    </div>
+    <div>
+      <label
+        for="chart-reference"
+        class="mb-1.5 block text-sm font-medium"
+      >Referência</label>
       <select
+        id="chart-reference"
         :value="modelValue.reference"
         class="h-11 w-full rounded-md border border-default bg-default px-3"
         @change="patch({ reference: ($event.target as HTMLSelectElement).value as ChartPreferences['reference'] })"
@@ -52,10 +67,13 @@ function patch(value: Partial<ChartPreferences>) {
           IPCA
         </option>
       </select>
-    </UFormField>
-    <label class="flex min-h-11 items-center gap-2 pt-6"><UCheckbox
-      :model-value="modelValue.labels"
-      @update:model-value="patch({ labels: Boolean($event) })"
-    />Rótulos nas linhas</label>
+    </div>
+    <div class="flex min-h-11 items-center pt-6">
+      <UCheckbox
+        :model-value="modelValue.labels"
+        label="Rótulos nas linhas"
+        @update:model-value="patch({ labels: Boolean($event) })"
+      />
+    </div>
   </div>
 </template>
