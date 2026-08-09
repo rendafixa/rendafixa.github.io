@@ -2,8 +2,6 @@
 
 ## Package manager
 
-Use **pnpm** exclusively (`packageManager: "pnpm@10.33.0"`). Do not use npm or yarn.
-
 ```sh
 pnpm install --frozen-lockfile   # after cloning
 ```
