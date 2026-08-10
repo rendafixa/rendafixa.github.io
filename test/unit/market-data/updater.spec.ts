@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { buildSgsUrl, latestSgsRecord, parseBrazilianDecimal } from '../../../scripts/market-data/fetch-bcb-sgs.mjs'
 import { latestFocusDate, normalizeSelicProjections } from '../../../scripts/market-data/fetch-focus.mjs'
 import { fetchAnbimaRange, fetchAnbimaYear, parseAnbimaHolidays } from '../../../scripts/market-data/fetch-anbima.mjs'
+import { fetchCopom, PUBLISHED_COPOM_MEETINGS } from '../../../scripts/market-data/fetch-copom.mjs'
 import { normalizeMarketData } from '../../../scripts/market-data/normalize-market-data.mjs'
 import { validateMarketData } from '../../../scripts/market-data/validate-market-data.mjs'
 
@@ -49,6 +50,11 @@ describe('market updater normalization', () => {
     const result = normalizeSelicProjections(records, [{ meeting: 'R1/2027', effectiveDate: '2027-01-28' }])
     expect(result[0]).toMatchObject({ effectiveDate: '2027-01-28', estimated: false, annualPct: '12.4' })
     expect(result[1]?.estimated).toBe(true)
+  })
+
+  it('returns the immutable published Copom calendar', async () => {
+    expect(await fetchCopom()).toBe(PUBLISHED_COPOM_MEETINGS)
+    expect(PUBLISHED_COPOM_MEETINGS).toContainEqual({ meeting: 'R8/2027', effectiveDate: '2027-12-09' })
   })
 
   it('parses the one-digit dates and HTML entities returned by ANBIMA', async () => {

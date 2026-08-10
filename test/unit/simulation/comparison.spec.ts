@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import marketJson from '../../../app/assets/market-data.json'
 import type { ComparisonRequest } from '../../../app/src/contracts/investment'
 import type { MarketSnapshot } from '../../../app/src/contracts/market'
 import { simulateComparison } from '../../../app/src/simulation/simulate-comparison'
+import { marketFixture } from '../../fixtures/market-data/snapshot'
 
-const market = marketJson as MarketSnapshot
+const market = marketFixture as MarketSnapshot
 const request: ComparisonRequest = {
   schemaVersion: 1, startDate: '2026-08-09', principal: '10000', useProjections: true,
   investments: [
@@ -60,6 +60,16 @@ describe('comparison', () => {
     const savings = result.value.investments.find(item => item.investmentId === 'savings')!
     const cdi = result.value.investments.find(item => item.investmentId === 'cdi')!
     expect(Number(savings.netFinalValue)).toBeCloseTo(11740.44, 2)
-    expect(Number(cdi.netFinalValue)).toBeCloseTo(12515.84, 2)
+    expect(Number(cdi.netFinalValue)).toBeCloseTo(12612.99, 2)
+  })
+
+  it('produces the projected golden scenario', () => {
+    const projected = simulateComparison(request, market)
+    expect(projected.ok).toBe(true)
+    if (!projected.ok) return
+    const savings = projected.value.investments.find(item => item.investmentId === 'savings')!
+    const cdi = projected.value.investments.find(item => item.investmentId === 'cdi')!
+    expect(Number(savings.netFinalValue)).toBeCloseTo(11740.44, 2)
+    expect(Number(cdi.netFinalValue)).toBeCloseTo(12343.26, 2)
   })
 })

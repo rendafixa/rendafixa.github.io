@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest'
-import marketJson from '../../../app/assets/market-data.json'
 import type { InvestmentInput } from '../../../app/src/contracts/investment'
 import type { MarketSnapshot } from '../../../app/src/contracts/market'
 import { decimal } from '../../../app/src/finance/decimal'
@@ -8,8 +7,9 @@ import { ipcaLinkedFactor } from '../../../app/src/products/ipca-linked'
 import { savingsMonthlyFactor } from '../../../app/src/products/savings'
 import { ipcaRateForDate } from '../../../app/src/finance/rate-curves'
 import { simulateInvestment } from '../../../app/src/simulation/simulate-investment'
+import { marketFixture } from '../../fixtures/market-data/snapshot'
 
-const market = marketJson as MarketSnapshot
+const market = marketFixture as MarketSnapshot
 
 describe('product factors', () => {
   it.each([50, 100, 250])('applies %s%% CDI to the daily yield', (percentage) => {
