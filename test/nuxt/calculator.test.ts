@@ -6,13 +6,17 @@ import {
   ChartSeriesControls,
   ComparisonChart,
   ComparisonSummary,
+  EducationArticleLayout,
+  FormulaExample,
   HolidayList,
   InvestmentDesktopTable,
   InvestmentEditorFields,
+  InvestmentMobileCard,
   InvestmentMobileList,
   MarketIndicators,
   MonthlyYieldDetails,
   NavigationBar,
+  OfficialSourceList,
   ProjectionTables,
   SimulationToolbar,
 } from '#components'
@@ -85,6 +89,36 @@ describe('calculator components', () => {
     expect(wrapper.emitted('update')?.[0]?.[0]).toMatchObject({ id: 'one', name: 'CDB atualizado' })
   })
 
+  it.each([
+    ['poupanca', { kind: 'savings' }],
+    ['tesouro-selic', { kind: 'selic' }],
+    ['cdb-pre', { kind: 'fixed', annualPct: '12' }],
+    ['cdb-cdi', { kind: 'cdi-percent', percentOfCdi: '100' }],
+    ['cdb-ipca', { kind: 'ipca-plus', realAnnualPct: '6' }],
+  ] as const)('maps %s to its editor rate contract', async (type, rate) => {
+    const wrapper = await mountSuspended(InvestmentEditorFields, { props: { investment } })
+    await wrapper.get('select').setValue(type)
+    expect(wrapper.emitted('update')?.at(-1)?.[0]).toMatchObject({ type, rate })
+  })
+
+  it.each([
+    [{ kind: 'fixed', annualPct: '12' }, '13.5', { annualPct: '13.5' }],
+    [{ kind: 'cdi-percent', percentOfCdi: '100' }, '105', { percentOfCdi: '105' }],
+    [{ kind: 'ipca-plus', realAnnualPct: '6' }, '6.5', { realAnnualPct: '6.5' }],
+  ] as const)('updates the %s rate field', async (rate, value, expectedRate) => {
+    const wrapper = await mountSuspended(InvestmentEditorFields, {
+      props: { investment: { ...investment, rate } as InvestmentInput },
+    })
+    await wrapper.get('input[type="number"]').setValue(value)
+    expect(wrapper.emitted('update')?.at(-1)?.[0]).toMatchObject({ rate: expectedRate })
+  })
+
+  it('updates investment maturity dates', async () => {
+    const wrapper = await mountSuspended(InvestmentEditorFields, { props: { investment } })
+    await wrapper.get('input[type="date"]').setValue('2029-08-09')
+    expect(wrapper.emitted('update')?.at(-1)?.[0]).toMatchObject({ maturityDate: '2029-08-09' })
+  })
+
   it('renders market indicators without basic accessibility violations', async () => {
     const wrapper = await mountSuspended(MarketIndicators, { props: { market } })
     expect((await axe(wrapper.element)).violations).toHaveLength(0)
@@ -149,6 +183,55 @@ describe('calculator components', () => {
     expect(wrapper.emitted('share')).toHaveLength(1)
     expect(wrapper.text()).toContain('Link copiado')
   })
+
+  it('shows the manual-copy field when clipboard access is denied', async () => {
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: vi.fn().mockRejectedValue(new Error('denied')) } })
+    const wrapper = await mountSuspended(SimulationToolbar, {
+      props: { request, chart: { mode: 'value', range: 'full', reference: 'none', labels: false } },
+    })
+    await wrapper.findAll('button')[1]!.trigger('click')
+    const fallback = wrapper.get('#fallback-share')
+    await fallback.trigger('focus')
+    expect((fallback.element as HTMLInputElement).value).toContain('?sim=')
+  })
+
+  it('renders mobile ranking and every investment warning state', async () => {
+    const investmentResult = {
+      ...result.investments[0]!,
+      fgc: { covered: true as const, limit: '250000', exceeded: true as const, exceededOn: '2027-08-09' as const, balanceOnDate: '260000', uncoveredAtMaturity: '10000' },
+      taxBracketAlert: { nextDay: 181 as const, daysRemaining: 3, currentRatePct: '22.5', nextRatePct: '20' },
+    }
+    const wrapper = await mountSuspended(InvestmentMobileCard, {
+      props: { investment: request.investments[0]!, result: investmentResult, rank: 1, showTaxes: true, errors: ['Taxa inválida'] },
+    })
+    expect(wrapper.text()).toContain('#1')
+    expect(wrapper.text()).toContain('Acima do limite simplificado do FGC')
+    expect(wrapper.text()).toContain('Faltam 3 dias')
+    await wrapper.findAll('button').at(-1)!.trigger('click')
+    expect(wrapper.emitted('remove')).toHaveLength(1)
+  })
+
+  it('forwards mobile-card events with the investment id', async () => {
+    const wrapper = await mountSuspended(InvestmentMobileList, { props: { investments: request.investments, result, showTaxes: false } })
+    const card = wrapper.findComponent(InvestmentMobileCard)
+    card.vm.$emit('update', request.investments[0])
+    card.vm.$emit('remove')
+    expect(wrapper.emitted('update')?.[0]).toEqual(['one', request.investments[0]])
+    expect(wrapper.emitted('remove')?.[0]).toEqual(['one'])
+  })
+
+  it('renders educational components and secure official-source links', async () => {
+    const sources = [{ label: 'Banco Central', url: 'https://www.bcb.gov.br/' }]
+    const components = [
+      await mountSuspended(FormulaExample, { props: { title: 'Juros', formula: 'M = C × (1 + i)', example: 'Exemplo prático' } }),
+      await mountSuspended(OfficialSourceList, { props: { sources } }),
+      await mountSuspended(EducationArticleLayout, { props: { title: 'Poupança', summary: 'Como funciona', reviewed: '10/08/2026', sources }, slots: { default: '<p>Conteúdo</p>' } }),
+    ]
+    expect(components[0]!.text()).toContain('M = C × (1 + i)')
+    const link = components[1]!.get('a')
+    expect(link.attributes()).toMatchObject({ href: 'https://www.bcb.gov.br/', target: '_blank', rel: 'noopener noreferrer' })
+    expect(components[2]!.text()).toContain('Última revisão: 10/08/2026')
+  })
 })
 
 describe('calculator orchestration', () => {
@@ -181,6 +264,17 @@ describe('calculator orchestration', () => {
     history.replaceState({}, '', '/?sim=invalid')
     expect(sharing.readFromLocation()).toBeUndefined()
     expect(sharing.shareError.value).toBeTruthy()
+  })
+
+  it('reports an invalid simulation before requesting clipboard access', async () => {
+    const writeText = vi.fn()
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } })
+    const sharing = useShareSimulation()
+    const invalidRequest = { ...request, investments: Array.from({ length: 41 }, () => request.investments[0]!) }
+
+    expect(await sharing.copySimulation(invalidRequest, { mode: 'value', range: 'full', reference: 'none', labels: false })).toBe(false)
+    expect(sharing.shareError.value).toContain('Não foi possível compartilhar')
+    expect(writeText).not.toHaveBeenCalled()
   })
 
   it('calculates through the page composable and renders the main route', async () => {

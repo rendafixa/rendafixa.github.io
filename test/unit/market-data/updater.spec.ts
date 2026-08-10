@@ -1,8 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import fs from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-import { buildSgsUrl, latestSgsRecord, parseBrazilianDecimal } from '../../../scripts/market-data/fetch-bcb-sgs.mjs'
-import { latestFocusDate, normalizeSelicProjections } from '../../../scripts/market-data/fetch-focus.mjs'
+import { buildSgsUrl, fetchBcbRates, fetchWithRetry, latestSgsRecord, parseBcbDate, parseBrazilianDecimal } from '../../../scripts/market-data/fetch-bcb-sgs.mjs'
+import { fetchFocus, latestFocusDate, normalizeIpcaProjections, normalizeSelicProjections } from '../../../scripts/market-data/fetch-focus.mjs'
 import { fetchAnbimaRange, fetchAnbimaYear, parseAnbimaHolidays } from '../../../scripts/market-data/fetch-anbima.mjs'
 import { fetchCopom, PUBLISHED_COPOM_MEETINGS } from '../../../scripts/market-data/fetch-copom.mjs'
 import { normalizeMarketData } from '../../../scripts/market-data/normalize-market-data.mjs'
@@ -33,6 +33,40 @@ describe('market updater normalization', () => {
     expect(parseBrazilianDecimal(input)).toBe(expected)
   })
 
+  it.each(['invalid', '', '2026-08-09'])('rejects invalid BCB date %s', (input) => {
+    expect(() => parseBcbDate(input)).toThrow('Invalid BCB date')
+  })
+
+  it('retries transport failures and returns the first valid JSON response', async () => {
+    vi.useFakeTimers()
+    const fetchImpl = vi.fn()
+      .mockRejectedValueOnce(new Error('offline'))
+      .mockResolvedValueOnce({ ok: true, json: async () => [{ value: 1 }] })
+    const pending = fetchWithRetry('https://example.test/rate', { retries: 2, fetchImpl })
+    await vi.runAllTimersAsync()
+    await expect(pending).resolves.toEqual([{ value: 1 }])
+    expect(fetchImpl).toHaveBeenCalledTimes(2)
+    vi.useRealTimers()
+  })
+
+  it('throws the final HTTP failure without retrying when retries is one', async () => {
+    await expect(fetchWithRetry('https://example.test/rate', {
+      retries: 1,
+      fetchImpl: async () => ({ ok: false, status: 503 }),
+    })).rejects.toThrow('HTTP 503')
+  })
+
+  it('fetches every configured SGS series and rejects an all-future series', async () => {
+    const fetchImpl = vi.fn(async () => ({ ok: true, json: async () => [{ data: '08/08/2026', valor: '10,5' }] }))
+    const rates = await fetchBcbRates('2026-08-09', { fetchImpl })
+    expect(Object.keys(rates)).toEqual(['selicEffective', 'selicTarget', 'cdi', 'ipca12m', 'trMonthly'])
+    expect(fetchImpl).toHaveBeenCalledTimes(5)
+    await expect(fetchBcbRates('2026-08-09', {
+      fetchImpl: async () => ({ ok: true, json: async () => [{ data: '10/08/2026', valor: '10,5' }] }),
+      retries: 1,
+    })).rejects.toThrow('No non-future record')
+  })
+
   it('ignores a future SGS record', () => {
     expect(latestSgsRecord([{ data: '31/07/2026', valor: '14,9' }, { data: '10/08/2026', valor: '99' }], '2026-08-09')).toEqual({ annualPct: '14.9', referenceDate: '2026-07-31' })
   })
@@ -43,6 +77,24 @@ describe('market updater normalization', () => {
 
   it('selects the latest Focus date with baseCalculo 1', () => {
     expect(latestFocusDate([{ Data: '2026-07-30', DataReferencia: '2027', baseCalculo: 1 }, { Data: '2026-08-01', DataReferencia: '2027', baseCalculo: 0 }, { Data: '2026-07-31', DataReferencia: '2028', baseCalculo: 1 }])).toBe('2026-07-31')
+  })
+
+  it('normalizes only valid IPCA values from the latest Focus publication', () => {
+    expect(normalizeIpcaProjections([
+      { Data: '2026-08-01', DataReferencia: '2027', baseCalculo: 1, Mediana: '4,20' },
+      { Data: '2026-08-02', DataReferencia: '2028', baseCalculo: 1, Mediana: '3,80' },
+      { Data: '2026-08-02', DataReferencia: 'invalid', baseCalculo: 1, Mediana: '3,50' },
+      { Data: '2026-08-02', DataReferencia: '2029', baseCalculo: 0, Mediana: '3,40' },
+    ])).toEqual([{ year: 2028, annualPct: '3.8' }])
+  })
+
+  it('requests both Focus datasets and normalizes absent values to empty arrays', async () => {
+    const fetchImpl = vi.fn(async url => ({
+      ok: true,
+      json: async () => String(url).includes('Selic') ? { value: [{ Data: '2026-08-02' }] } : {},
+    }))
+    await expect(fetchFocus({ fetchImpl })).resolves.toEqual({ selic: [{ Data: '2026-08-02' }], ipca: [] })
+    expect(fetchImpl).toHaveBeenCalledTimes(2)
   })
 
   it('joins official Copom meetings and estimates later dates', () => {

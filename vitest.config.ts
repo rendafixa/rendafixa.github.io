@@ -15,6 +15,7 @@ export default async function defineVitestConfig() {
           'app/composables/**/*.ts',
           'app/workers/**/*.ts',
           'app/components/calculator/**/*.vue',
+          'app/components/education/**/*.vue',
           'app/components/NavigationBar.vue',
           'app/pages/index.vue',
           'scripts/market-data/**/*.mjs',
@@ -30,10 +31,10 @@ export default async function defineVitestConfig() {
           '**/coverage/**',
         ],
         thresholds: {
-          statements: 81,
-          branches: 72,
-          functions: 82,
-          lines: 85,
+          statements: 88,
+          branches: 81,
+          functions: 88,
+          lines: 91,
         },
       },
       projects: [
