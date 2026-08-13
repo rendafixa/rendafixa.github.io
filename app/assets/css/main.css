@@ -1,7 +1,30 @@
 @import "tailwindcss";
+@import "@nuxt/ui";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --ui-primary: var(--ui-color-blue-600);
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  background: var(--ui-bg);
+  color: var(--ui-text);
+}
+
+button,
+a,
+input,
+select {
+  min-height: 44px;
+}
 
 /* Custom animations and transitions */
 .page-enter-active,
@@ -14,4 +37,3 @@
   opacity: 0;
   transform: translateY(0.4rem);
 }
-

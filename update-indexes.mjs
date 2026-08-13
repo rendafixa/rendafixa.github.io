@@ -1,171 +1,62 @@
-import axios from 'axios'
-import fs from 'node:fs'
+import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { fetchAnbimaRange } from './scripts/market-data/fetch-anbima.mjs'
+import { fetchBcbRates } from './scripts/market-data/fetch-bcb-sgs.mjs'
+import { fetchCopom } from './scripts/market-data/fetch-copom.mjs'
+import { fetchFocus } from './scripts/market-data/fetch-focus.mjs'
+import { normalizeMarketData } from './scripts/market-data/normalize-market-data.mjs'
+import { validateMarketData } from './scripts/market-data/validate-market-data.mjs'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const currentFile = fileURLToPath(import.meta.url)
+const root = path.dirname(currentFile)
+export const MARKET_DATA_PATH = path.join(root, 'app/assets/market-data.json')
 
-export const USER_AGENT = 'rendafixa-updater/1.0 (+https://github.com/rendafixa/rendafixa.github.io)'
-export const REQUEST_TIMEOUT_MS = 15_000
-export const MAX_RETRIES = 3
-export const INITIAL_BACKOFF_MS = 1_000
-
-export const URLS = {
-  poupanca: 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.195/dados/ultimos/1?formato=json',
-  cdi: 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.4389/dados/ultimos/1?formato=json',
-  selic: 'https://www.bcb.gov.br/api/servico/sitebcb/historicotaxasjuros',
+export function brazilDate(now = new Date()) {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(now)
 }
 
-export const apiClient = axios.create({
-  timeout: REQUEST_TIMEOUT_MS,
-  headers: { 'User-Agent': USER_AGENT },
-})
-
-export async function fetchWithRetry(url, retries = MAX_RETRIES, backoffMs = INITIAL_BACKOFF_MS) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      return await apiClient.get(url)
-    }
-    catch (error) {
-      const status = error.response?.status
-      const isRetryable = !status || status >= 500
-      if (attempt < retries && isRetryable) {
-        console.warn(`  Attempt ${attempt}/${retries} failed (${error.message}). Retrying in ${backoffMs}ms...`)
-        await new Promise(resolve => setTimeout(resolve, backoffMs))
-        backoffMs *= 2
-      }
-      else {
-        throw error
-      }
-    }
-  }
-}
-
-function sanitize(input) {
-  return String(input).slice(0, 200).replace(/[\n\r]/g, ' ')
-}
-
-function parseBcbSeriesValue(data, label) {
-  if (!Array.isArray(data) || data.length === 0) {
-    console.error(`[ERROR] BCB API returned no data for ${label}`)
-    return null
-  }
-  const first = data[0]
-  if (!first?.valor) {
-    console.error(`[ERROR] Unexpected BCB API payload shape for ${label} (missing "valor")`)
-    return null
-  }
-  const value = Number.parseFloat(first.valor)
-  if (!Number.isFinite(value)) {
-    console.error(`[ERROR] Invalid ${label} value (not a finite number): ${sanitize(first.valor)}`)
-    return null
-  }
-  return value
-}
-
-export async function fetchPoupanca() {
+export async function updateIndexes(targetPath = MARKET_DATA_PATH, options = {}) {
+  const now = options.now ?? new Date()
+  const referenceDate = brazilDate(now)
+  let previous
   try {
-    console.log('Fetching Poupanca...')
-    const response = await fetchWithRetry(URLS.poupanca)
-    const value = parseBcbSeriesValue(response.data, 'Poupanca')
-    if (value !== null) {
-      console.log('Poupanca value fetched:', value)
-    }
-    return value
+    previous = validateMarketData(JSON.parse(await fs.readFile(targetPath, 'utf8')))
   }
-  catch (error) {
-    console.error(`Error fetching Poupanca after ${MAX_RETRIES} attempts:`, error.message)
-    return null
+  catch {
+    previous = undefined
   }
-}
 
-export async function fetchDi() {
-  try {
-    console.log('Fetching DI...')
-    const response = await fetchWithRetry(URLS.cdi)
-    const value = parseBcbSeriesValue(response.data, 'CDI')
-    if (value !== null) {
-      console.log('DI value fetched:', value)
-    }
-    return value
-  }
-  catch (error) {
-    console.error(`Error fetching DI after ${MAX_RETRIES} attempts:`, error.message)
-    return null
-  }
-}
-
-export async function fetchSelic() {
-  try {
-    console.log('Fetching Selic...')
-    const response = await fetchWithRetry(URLS.selic)
-    const value = response.data?.conteudo?.[0]?.MetaSelic
-    if (value == null || !Number.isFinite(value)) {
-      console.error('[ERROR] Invalid Selic response (unexpected payload shape)')
-      return null
-    }
-    console.log('Selic value fetched:', value)
-    return value
-  }
-  catch (error) {
-    console.error(`Error fetching Selic after ${MAX_RETRIES} attempts:`, error.message)
-    return null
-  }
-}
-
-export async function updateIndicadores(targetPath) {
-  const raw = fs.readFileSync(targetPath, 'utf-8')
-  const indicadores = JSON.parse(raw)
-
-  const [poupancaValue, selicValue, cdiValue] = await Promise.all([
-    fetchPoupanca(),
-    fetchSelic(),
-    fetchDi(),
+  const settled = await Promise.allSettled([
+    fetchBcbRates(referenceDate, options), fetchFocus(options), fetchCopom(options),
+    fetchAnbimaRange(Number(referenceDate.slice(0, 4)) - 1, Number(referenceDate.slice(0, 4)) + 30, options),
   ])
-
-  let updated = 0
-
-  if (poupancaValue == null) {
-    console.warn('Skipping update: Invalid poupanca value.')
+  const labels = ['BCB SGS', 'Focus', 'Copom', 'ANBIMA']
+  settled.forEach((result, index) => {
+    if (result.status === 'rejected') options.logger?.warn?.(`[WARN] ${labels[index]}: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`)
+  })
+  const value = index => settled[index].status === 'fulfilled' ? settled[index].value : undefined
+  const [rates, focus, copom, holidays] = [value(0), value(1), value(2), value(3)]
+  if ((!rates || !focus || !holidays) && !previous) throw new Error('Market sources failed and no valid previous snapshot exists.')
+  const snapshot = validateMarketData(normalizeMarketData({ referenceDate, now, rates, focus, copom, holidays, previous }))
+  const output = `${JSON.stringify(snapshot, null, 2)}\n`
+  const oldOutput = previous ? `${JSON.stringify(previous, null, 2)}\n` : ''
+  if (output !== oldOutput) {
+    const temporaryPath = `${targetPath}.tmp`
+    await fs.writeFile(temporaryPath, output)
+    await fs.rename(temporaryPath, targetPath)
   }
-  else {
-    indicadores.poupanca.value = poupancaValue
-    updated++
-  }
-
-  if (selicValue == null) {
-    console.warn('Skipping update: Invalid selic value.')
-  }
-  else {
-    indicadores.selic.value = selicValue
-    updated++
-  }
-
-  if (cdiValue == null) {
-    console.warn('Skipping update: Invalid cdi value.')
-  }
-  else {
-    indicadores.cdi.value = cdiValue
-    updated++
-  }
-
-  if (updated === 0) {
-    throw new Error('All API calls failed. No values updated.')
-  }
-
-  fs.writeFileSync(targetPath, `${JSON.stringify(indicadores, null, 2)}\n`)
-  console.log(`indicadores.json updated successfully (${updated}/3 values).`)
+  return snapshot
 }
 
-// Only run when executed directly (not imported by tests)
-if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
-  const indicadoresPath = path.join(__dirname, 'app', 'assets', 'indicadores.json')
+if (process.argv[1] && path.resolve(process.argv[1]) === currentFile) {
   try {
-    await updateIndicadores(indicadoresPath)
+    const snapshot = await updateIndexes(MARKET_DATA_PATH, { logger: console })
+    const stale = Object.entries(snapshot.sources).filter(([, source]) => source.status === 'stale').map(([name]) => name)
+    console.log(stale.length ? `market-data.json updated with stale sources: ${stale.join(', ')}.` : 'market-data.json updated successfully; all sources are fresh.')
   }
   catch (error) {
-    console.error(`[FATAL] ${error.message}`)
-    process.exit(1)
+    console.error(`[FATAL] ${error instanceof Error ? error.message : String(error)}`)
+    process.exitCode = 1
   }
 }
