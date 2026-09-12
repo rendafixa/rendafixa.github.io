@@ -13,7 +13,7 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.16.0",
+    "@nuxt/eslint": "^1.17.0",
     "@nuxt/test-utils": "^4.0.3",
     "@tailwindcss/typography": "^0.5.20",
     "@typescript/native": "npm:typescript@^7.0.2",
