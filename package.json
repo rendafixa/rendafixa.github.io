@@ -20,7 +20,7 @@
     "@vitejs/plugin-vue": "^6.0.9",
     "@vue/test-utils": "^2.4.11",
     "eslint": "^10.10.0",
-    "happy-dom": "^20.10.6",
+    "happy-dom": "^20.14.5",
     "jsdom": "^29.1.1",
     "nuxt": "^4.5.2",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
