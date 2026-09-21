@@ -27,7 +27,7 @@ jobs:
           show-progress: 'false'
           fetch-tags: 'false'
       - name: Conventional Commit Validation
-        uses: dev-build-deploy/commit-me@v1
+        uses: dev-build-deploy/commit-me@v2
         with:
           token: ${{ github.token }}
           update-labels: false
