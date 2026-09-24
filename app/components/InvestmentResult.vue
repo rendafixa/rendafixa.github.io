@@ -4,31 +4,30 @@
     class="bg-white dark:bg-slate-900 rounded-xl shadow-sm dark:shadow-black/20 overflow-hidden border border-slate-200/80 dark:border-slate-800 hover:shadow-md dark:hover:shadow-black/30 transition-shadow duration-300 not-prose"
   >
     <!-- Header with gradient background -->
-    <button
-      type="button"
-      class="w-full px-6 py-4 bg-linear-to-r from-emerald-600 to-emerald-700 dark:from-emerald-700 dark:to-emerald-900 flex items-center justify-between gap-3 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/60"
-      :aria-expanded="isOpen"
-      :aria-controls="contentId"
-      :aria-label="isOpen ? `Fechar detalhes de ${name}` : `Abrir detalhes de ${name}`"
-      @click="isOpen = !isOpen"
-    >
-      <h3 class="text-xl font-bold text-white drop-shadow-sm">
-        {{ name }}
-      </h3>
-      <span
-        class="inline-flex shrink-0 text-white transition-transform duration-300 ease-in-out"
-        :class="{ 'rotate-180': isOpen }"
-        aria-hidden="true"
+    <h3 class="m-0">
+      <button
+        type="button"
+        class="w-full px-6 py-4 bg-linear-to-r from-emerald-600 to-emerald-700 dark:from-emerald-700 dark:to-emerald-900 flex items-center justify-between gap-3 text-left text-xl font-bold text-white drop-shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/60"
+        :aria-expanded="isOpen"
+        :aria-controls="contentId"
+        @click="isOpen = !isOpen"
       >
-        <ion-icon
-          name="chevron-down-outline"
-          class="text-2xl"
-        />
-      </span>
-    </button>
+        {{ name }}
+        <span
+          class="inline-flex shrink-0 font-normal transition-transform duration-300 ease-in-out motion-reduce:transition-none"
+          :class="{ 'rotate-180': isOpen }"
+          aria-hidden="true"
+        >
+          <ion-icon
+            name="chevron-down-outline"
+            class="text-2xl"
+          />
+        </span>
+      </button>
+    </h3>
 
     <div
-      class="grid transition-[grid-template-rows] duration-300 ease-in-out"
+      class="grid transition-[grid-template-rows] duration-300 ease-in-out motion-reduce:transition-none"
       :class="isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
     >
       <div class="overflow-hidden min-h-0">
