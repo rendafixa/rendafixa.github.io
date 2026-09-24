@@ -11,7 +11,7 @@ import PeriodTypeInput from './investment/PeriodTypeInput.vue'
 </script>
 
 <template>
-  <div class="max-h-[calc(100vh-5rem)] overflow-y-auto bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-black/20 transition-colors">
+  <div class="sm:max-h-[calc(100vh-5rem)] sm:overflow-y-auto bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-black/20 transition-colors">
     <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
       <h2 class="text-lg font-semibold text-slate-950 dark:text-slate-50">
         Investimento
