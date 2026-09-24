@@ -63,6 +63,24 @@ describe('Calculator Page — Smoke Tests', () => {
     })
   })
 
+  describe('Result Card Toggle', () => {
+    it('collapses details on header click while keeping content in the DOM', async () => {
+      const card = getResultCard(wrapper, 'Poupança')
+      const toggle = card.find('h3 button')
+      const content = card.find(`[id="${toggle.attributes('aria-controls')}"]`)
+
+      expect(toggle.attributes('aria-expanded')).toBe('true')
+      expect(content.attributes('aria-hidden')).toBe('false')
+
+      await toggle.trigger('click')
+      await nextTick()
+
+      expect(toggle.attributes('aria-expanded')).toBe('false')
+      expect(content.attributes('aria-hidden')).toBe('true')
+      expect(card.find('[data-testid="result-total-amount"]').exists()).toBe(true)
+    })
+  })
+
   describe('Amount Change', () => {
     it('updates CDB result when amount changes', async () => {
       const card = getResultCard(wrapper, 'CDB / RDB')
