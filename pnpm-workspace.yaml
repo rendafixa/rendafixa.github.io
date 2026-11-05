@@ -12,3 +12,5 @@ allowBuilds:
 
 overrides:
   vue-router: ^5.2.0
+
+  '@nuxt/test-utils': ^4.3.4
