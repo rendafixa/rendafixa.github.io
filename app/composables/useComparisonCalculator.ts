@@ -1,5 +1,4 @@
 import marketData from '~/assets/market-data.json'
-import type { ComparisonRequest } from '~/src/contracts/investment'
 import { validateMarketSnapshot } from '~/src/market/validate-snapshot'
 import { useComparisonStore } from '~/stores/comparison'
 
@@ -18,7 +17,7 @@ export function useComparisonCalculator() {
       return
     }
     store.loading = !store.result
-    const request = JSON.parse(JSON.stringify(store.request)) as ComparisonRequest
+    const request = structuredClone(toPlain(store.request))
     const calculation = await simulate(request, market)
     if (currentCalculationId !== calculationId) return
     if (calculation.ok) {
@@ -37,4 +36,13 @@ export function useComparisonCalculator() {
   }, { deep: true, immediate: true })
   onScopeDispose(() => clearTimeout(timer))
   return { store, market, recalculate }
+}
+
+function toPlain<T>(value: T): T {
+  const raw = toRaw(value) as T
+  if (Array.isArray(raw)) return raw.map(item => toPlain(item)) as T
+  if (raw !== null && typeof raw === 'object') {
+    return Object.fromEntries(Object.entries(raw).map(([key, item]) => [key, toPlain(item)])) as T
+  }
+  return raw
 }

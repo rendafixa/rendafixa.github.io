@@ -26,7 +26,7 @@ export const snapshotSchema = z.object({
     ipca: z.array(z.object({ year: z.number().int(), annualPct: decimal })).min(1),
   }),
   holidays,
-  sources: z.record(z.string(), z.object({ url: z.string().url(), retrievedAt: z.string(), referenceDate: isoDate, status: z.enum(['fresh', 'stale']), lastSuccessfulAt: z.string() })),
+  sources: z.record(z.string(), z.object({ url: z.url(), retrievedAt: z.string(), referenceDate: isoDate, status: z.enum(['fresh', 'stale']), lastSuccessfulAt: z.string() })),
 })
 
 export function validateMarketData(value) {

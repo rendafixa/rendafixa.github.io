@@ -9,7 +9,7 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((value) => {
 const decimal = z.string().refine(value => value.trim() !== '' && Number.isFinite(Number(value)))
 const currentRate = z.object({ annualPct: decimal, referenceDate: isoDate })
 const source = z.object({
-  url: z.string().url(), retrievedAt: z.string(), referenceDate: isoDate,
+  url: z.url(), retrievedAt: z.string(), referenceDate: isoDate,
   status: z.enum(['fresh', 'stale']), lastSuccessfulAt: z.string(),
 })
 export const marketSnapshotSchema = z.object({
