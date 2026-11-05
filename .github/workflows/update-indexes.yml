@@ -5,10 +5,10 @@ on:
     - cron: '0 11,15,21 * * 1-5'
 
 jobs:
-  update-indicadores:
+  update-market-data:
     permissions:
       contents: write
-    name: Update indicadores
+    name: Update market data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,12 +25,12 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
-      - name: Update indicadores.json
+      - name: Update market-data.json
         run: pnpm update-indexes
       - name: Checking for changes
         id: check_changes
         run: |
-          if git diff --exit-code app/assets/indicadores.json; then
+          if git diff --exit-code app/assets/market-data.json; then
             echo "has_changes=false" >> $GITHUB_ENV
           else
             echo "has_changes=true" >> $GITHUB_ENV
@@ -41,8 +41,8 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add app/assets/indicadores.json
-          git commit -m "Updated indicadores.json on $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          git add app/assets/market-data.json
+          git commit -m "chore(market): update rates and projections"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
