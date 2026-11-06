@@ -32,7 +32,7 @@
     "@tailwindcss/vite": "^4.3.4",
     "@vue/devtools-api": "^8.2.1",
     "axios": "^1.21.0",
-    "nuxt-schema-org": "^6.4.3",
+    "nuxt-schema-org": "^7.0.1",
     "pinia": "^4.1.0",
     "tailwindcss": "^4.3.4"
   },
