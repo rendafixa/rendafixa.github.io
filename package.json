@@ -17,15 +17,15 @@
     "@nuxt/test-utils": "^4.4.0",
     "@tailwindcss/typography": "^0.5.20",
     "@typescript/native": "npm:typescript@^7.0.2",
-    "@vitejs/plugin-vue": "^6.0.10",
-    "@vue/test-utils": "^2.5.1",
-    "eslint": "^10.14.0",
+    "@vitejs/plugin-vue": "^6.0.11",
+    "@vue/test-utils": "^2.6.0",
+    "eslint": "^10.15.0",
     "happy-dom": "^21.0.4",
-    "jsdom": "^31.0.0",
+    "jsdom": "^31.0.1",
     "nuxt": "^4.6.4",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "vite-plugin-eslint2": "^5.3.0",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.1"
   },
   "dependencies": {
     "@pinia/nuxt": "^1.0.3",
@@ -36,5 +36,5 @@
     "pinia": "^4.1.0",
     "tailwindcss": "^4.3.5"
   },
-  "packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1"
+  "packageManager": "pnpm@12.21.0+sha512.66fd8278ee28935ce951792d34367ff3af5c432a2756445823029533835b8da529bbe0be5130afd56ed0713fb8789e47bad82d93bd5ae2fe54b15562d6276ef0"
 }
