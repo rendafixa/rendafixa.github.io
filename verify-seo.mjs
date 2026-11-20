@@ -82,6 +82,7 @@ for (const page of pages) {
     // every JSON-LD question must appear as visible text in the page.
     const visible = visibleMarkup(html)
     const questions = [...jsonLd.matchAll(/"@type":"Question","name":"((?:[^"\\]|\\.)*)"/g)].map(m => m[1].replaceAll('\\', ''))
+    check(`${page.path}: FAQ questions extracted`, questions.length > 0, 'no Question names found in JSON-LD — the visibility check would pass vacuously')
     for (const question of questions) {
       check(`${page.path}: FAQ question visible on page`, visible.includes(question), `"${question}" in JSON-LD but not in page markup`)
     }
@@ -92,6 +93,7 @@ for (const page of pages) {
     // JSON-LD must appear as visible text somewhere in the page markup.
     const visible = visibleMarkup(html)
     const crumbs = [...jsonLd.matchAll(/"@type":"ListItem","name":"((?:[^"\\]|\\.)*)"/g)].map(m => m[1].replaceAll('\\', ''))
+    check(`${page.path}: breadcrumb names extracted`, crumbs.length > 0, 'no ListItem names found in JSON-LD — the visibility check would pass vacuously')
     for (const crumb of crumbs) {
       check(`${page.path}: breadcrumb "${crumb}" visible on page`, visible.includes(crumb), `"${crumb}" in JSON-LD but not in page markup`)
     }
