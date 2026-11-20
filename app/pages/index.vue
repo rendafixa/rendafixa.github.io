@@ -1,5 +1,8 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+    <h1 class="sr-only">
+      Calculadora de Renda Fixa: CDB, LCI, LCA, Poupança e Tesouro Direto
+    </h1>
     <div class="sm:col-span-5 md:col-span-4 sm:self-start sm:sticky sm:top-20">
       <InvestmentInput />
     </div>
@@ -19,6 +22,7 @@ useSeoMeta({
   titleTemplate: null,
   description: 'Calculadora de renda fixa para simular CDB, RDB, LCI, LCA, Poupança e Tesouro Direto: rentabilidade bruta e líquida com CDI e SELIC atualizados, IR e IOF.',
   twitterCard: 'summary_large_image',
+  ogImageAlt: 'Cartão de compartilhamento da Calculadora de Renda Fixa com o título e a descrição da página.',
 })
 
 useSchemaOrg([
