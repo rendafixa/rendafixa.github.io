@@ -12,8 +12,8 @@ import {
   PointElement,
   Tooltip,
 } from 'chart.js'
-import type { ChartColors } from '~/src/chart'
-import { buildProgressionDatasets, buildProgressionOptions } from '~/src/chart'
+import type { ChartColors } from '~/lib/chart'
+import { buildProgressionDatasets, buildProgressionOptions } from '~/lib/chart'
 import type { ProgressionPoint } from '~/src/progression'
 import { useTheme } from '~/composables/useTheme'
 

@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import type { ChartOptions } from 'chart.js'
-import { buildProgressionDatasets, buildProgressionOptions, formatBRL, seriesLabels } from '../../../app/src/chart'
+import { buildProgressionDatasets, buildProgressionOptions, formatBRL, seriesLabels } from '../../../app/lib/chart'
 import type { ProgressionPoint } from '../../../app/src/progression'
-import type { ChartColors } from '../../../app/src/chart'
+import type { ChartColors } from '../../../app/lib/chart'
 
 const colors: ChartColors = {
   poupanca: '#f59e0b',

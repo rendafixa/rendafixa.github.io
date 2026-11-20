@@ -4,6 +4,7 @@ import { getCDBResult } from '../../../app/src/cdb'
 import { getPoupancaResult } from '../../../app/src/poupanca'
 import { getLcxResult } from '../../../app/src/lcx'
 import { getPrefixadoCdbResult, getPrefixadoLcxResult } from '../../../app/src/prefixado'
+import { getIndexIR, getIOFAmount, getIOFPercentage } from '../../../app/src/finance'
 
 const baseInput = {
   amount: 1000,
@@ -79,13 +80,65 @@ describe('getNetProgression - net value semantics (redeem on that day)', () => {
   })
 
   it('credits poupança interest only on full 30-day anniversaries', () => {
-    const points = getNetProgression({ ...baseInput, periodDays: 60 })
+    const beforeAnniversary = getNetProgression({ ...baseInput, periodDays: 29 })
+    const onAnniversary = getNetProgression({ ...baseInput, periodDays: 30 })
 
-    const day20 = points.find(point => point.day === 20)!
-    const day30 = points.find(point => point.day === 30)!
+    expect(beforeAnniversary[beforeAnniversary.length - 1].poupanca).toBe(1000)
+    expect(onAnniversary[onAnniversary.length - 1].poupanca).toBeGreaterThan(1000)
+  })
 
-    expect(day20.poupanca).toBe(1000)
-    expect(day30.poupanca).toBeGreaterThan(1000)
+  it('samples typical periods at monthly marks', () => {
+    const points = getNetProgression({ ...baseInput, periodDays: 360 })
+    const days = points.map(point => point.day)
+
+    expect(days).toEqual([0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360])
+  })
+})
+
+describe('getNetProgression - early redemption tax semantics', () => {
+  // Independent re-derivation of the net value, mirroring the financial math.
+  function expectedNetAt(amount: number, di: number, yearlyIndex: number, days: number) {
+    const dailyFactor = Math.pow(((yearlyIndex / 100) * di) / 100 + 1, 1 / 365)
+    const interest = Number.parseFloat((amount * Math.pow(dailyFactor, days) - amount).toFixed(2))
+    const iof = getIOFAmount(days, interest)
+    const tax = (interest - iof) * (getIndexIR(days) / 100)
+
+    return amount + interest - iof - tax
+  }
+
+  it('applies IOF inside the 30-day window and none at day 30', () => {
+    const day15 = getNetProgression({ ...baseInput, periodDays: 15 })
+    const day30 = getNetProgression({ ...baseInput, periodDays: 30 })
+
+    expect(getIOFPercentage(15)).toBeGreaterThan(0)
+    expect(getIOFPercentage(30)).toBe(0)
+
+    expect(day15[day15.length - 1].cdb).toBeCloseTo(
+      expectedNetAt(baseInput.amount, baseInput.di, baseInput.cdbIndex, 15),
+      2,
+    )
+    expect(day30[day30.length - 1].cdb).toBeCloseTo(
+      expectedNetAt(baseInput.amount, baseInput.di, baseInput.cdbIndex, 30),
+      2,
+    )
+  })
+
+  it('uses the IR bracket of each sampled day, not the final bracket', () => {
+    const points = getNetProgression({ ...baseInput, periodDays: 181 })
+    const day180 = points.find(point => point.day === 180)!
+    const day181 = points.find(point => point.day === 181)!
+
+    expect(getIndexIR(180)).toBe(22.5)
+    expect(getIndexIR(181)).toBe(20)
+
+    expect(day180.cdb).toBeCloseTo(
+      expectedNetAt(baseInput.amount, baseInput.di, baseInput.cdbIndex, 180),
+      2,
+    )
+    expect(day181.cdb).toBeCloseTo(
+      expectedNetAt(baseInput.amount, baseInput.di, baseInput.cdbIndex, 181),
+      2,
+    )
   })
 })
 

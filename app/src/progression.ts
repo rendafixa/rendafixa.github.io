@@ -24,6 +24,7 @@ export interface ProgressionPoint {
 }
 
 const MAX_SAMPLE_POINTS = 40
+const DAYS_PER_MONTH = 30
 
 /**
  * Samples the net value of each simulated investment over time.
@@ -42,7 +43,10 @@ function buildSampleDays(days: number): number[] {
     return [0]
   }
 
-  const step = Math.max(1, Math.ceil(days / (MAX_SAMPLE_POINTS - 1)))
+  // Monthly marks for typical durations; step grows in whole months so longer
+  // periods stay within the point cap while keeping the axis readable.
+  const stepMonths = Math.max(1, Math.ceil(days / (MAX_SAMPLE_POINTS - 1) / DAYS_PER_MONTH))
+  const step = stepMonths * DAYS_PER_MONTH
   const samples: number[] = []
 
   for (let day = 0; day < days; day += step) {
