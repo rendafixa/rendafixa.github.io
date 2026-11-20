@@ -95,7 +95,7 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ['@unhead/schema-org/vue'],
+      include: ['@unhead/schema-org/vue', 'chart.js', 'vue-chartjs'],
     },
     plugins: [tailwindcss()],
   },
