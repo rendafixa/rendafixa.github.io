@@ -15,6 +15,16 @@ function check(name, ok, detail = '') {
   if (!ok) failures.push(name)
 }
 
+function visibleMarkup(html) {
+  // Markup with scripts (including the JSON-LD itself), styles and comments
+  // stripped, so visibility checks cannot be satisfied by the structured
+  // data alone.
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+}
+
 function readPage(path) {
   const file = join(distDir, path)
   if (!existsSync(file)) {
@@ -70,13 +80,7 @@ for (const page of pages) {
   if (page.schema === 'FAQPage') {
     // Structured data must describe content the user can actually see:
     // every JSON-LD question must appear as visible text in the page.
-    // Compare against markup with scripts (including the JSON-LD itself),
-    // styles and comments stripped, so the check cannot be satisfied by
-    // the structured data alone.
-    const visible = html
-      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
-      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
-      .replace(/<!--[\s\S]*?-->/g, '')
+    const visible = visibleMarkup(html)
     const questions = [...jsonLd.matchAll(/"@type":"Question","name":"((?:[^"\\]|\\.)*)"/g)].map(m => m[1].replaceAll('\\', ''))
     for (const question of questions) {
       check(`${page.path}: FAQ question visible on page`, visible.includes(question), `"${question}" in JSON-LD but not in page markup`)
@@ -86,10 +90,7 @@ for (const page of pages) {
   if (jsonLd.includes('"@type":"BreadcrumbList"')) {
     // Same visibility rule as the FAQ check: every breadcrumb name in the
     // JSON-LD must appear as visible text somewhere in the page markup.
-    const visible = html
-      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
-      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
-      .replace(/<!--[\s\S]*?-->/g, '')
+    const visible = visibleMarkup(html)
     const crumbs = [...jsonLd.matchAll(/"@type":"ListItem","name":"((?:[^"\\]|\\.)*)"/g)].map(m => m[1].replaceAll('\\', ''))
     for (const crumb of crumbs) {
       check(`${page.path}: breadcrumb "${crumb}" visible on page`, visible.includes(crumb), `"${crumb}" in JSON-LD but not in page markup`)
