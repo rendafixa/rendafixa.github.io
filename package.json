@@ -10,7 +10,8 @@
     "test": "vitest",
     "update-indexes": "node update-indexes.mjs",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",

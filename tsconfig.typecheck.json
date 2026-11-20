@@ -1,0 +1,6 @@
+{
+  // Scoped typecheck: the pure TS layer typechecks cleanly, while test files
+  // still carry pre-existing type noise from generated Nuxt types.
+  "extends": "./tsconfig.json",
+  "include": ["app/src/**/*.ts", "app/lib/**/*.ts"]
+}
