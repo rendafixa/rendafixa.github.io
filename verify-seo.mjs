@@ -51,6 +51,15 @@ for (const page of pages) {
 
   const jsonLd = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(m => m[1]).join('\n')
   check(`${page.path}: JSON-LD ${page.schema}`, jsonLd.includes(`"@type":"${page.schema}"`))
+
+  if (page.schema === 'FAQPage') {
+    // Structured data must describe content the user can actually see:
+    // every JSON-LD question must appear as visible text in the page.
+    const questions = [...jsonLd.matchAll(/"@type":"Question","name":"((?:[^"\\]|\\.)*)"/g)].map(m => m[1].replaceAll('\\', ''))
+    for (const question of questions) {
+      check(`${page.path}: FAQ question visible on page`, html.includes(question), `"${question}" in JSON-LD but not in page markup`)
+    }
+  }
 }
 
 const sitemap = readPage('sitemap.xml')

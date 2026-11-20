@@ -65,6 +65,21 @@
         class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
       >como calcular o imposto de renda</NuxtLink>.
     </p>
+    <h3>Perguntas frequentes</h3>
+    <h4>Como a poupança é remunerada?</h4>
+    <p>
+      A remuneração é composta pela Taxa Referencial (TR) mais uma parcela adicional: 0,5% ao mês quando a meta da Selic for superior a 8,5% ao
+      ano, ou 70% da meta da Selic mensalizada quando for igual ou inferior a 8,5%.
+    </p>
+    <h4>Quando os rendimentos da poupança são creditados?</h4>
+    <p>
+      Mensalmente, na data de aniversário da conta, para depósitos de pessoa física. Contas abertas nos dias 29, 30 e 31 têm como data de
+      aniversário o dia 1º do mês seguinte.
+    </p>
+    <h4>A poupança paga imposto de renda?</h4>
+    <p>
+      Não. Os rendimentos da caderneta de poupança são isentos de IR para pessoa física, conforme a legislação vigente.
+    </p>
     <h3>Fontes Oficiais</h3>
     <ul>
       <li>
