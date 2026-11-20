@@ -6,7 +6,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
-    'nuxt-schema-org',
     '@nuxt/test-utils/module',
     '@nuxt/eslint',
   ],
@@ -82,11 +81,6 @@ export default defineNuxtConfig({
     },
   },
 
-  site: {
-    url: 'https://rendafixa.github.io',
-    name: 'Calculadora Renda Fixa',
-  },
-
   future: {
     compatibilityVersion: 4,
   },
@@ -95,7 +89,7 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ['@unhead/schema-org/vue'],
+      include: ['chart.js', 'vue-chartjs'],
     },
     plugins: [tailwindcss()],
   },

@@ -27,6 +27,8 @@ jobs:
         run: pnpm exec nuxt prepare
       - name: Lint check ✅
         run: pnpm lint
+      - name: Typecheck 🧠
+        run: pnpm typecheck
       - name: Tests 🧑‍🔬
         run: pnpm test
       - name: Deploy 😎

@@ -12,3 +12,6 @@ allowBuilds:
 
 overrides:
   vue-router: ^5.2.0
+
+minimumReleaseAgeExclude:
+  - vue-chartjs@5.3.7

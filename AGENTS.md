@@ -6,6 +6,8 @@
 pnpm install --frozen-lockfile   # after cloning
 ```
 
+pnpm enforces `minimumReleaseAge`; a release newer than the window resolves to an older version. Pin it exactly and add a `minimumReleaseAgeExclude` entry in `pnpm-workspace.yaml`.
+
 ## Key commands
 
 ```sh
@@ -13,11 +15,12 @@ pnpm dev            # dev server
 pnpm generate       # static site generation (what CI deploys)
 pnpm lint           # ESLint check
 pnpm lint:fix       # ESLint auto-fix
+pnpm typecheck      # scoped tsc over app/src and app/lib
 pnpm test           # all tests (both unit and nuxt projects)
 pnpm update-indexes # fetch live market rates → app/assets/indicadores.json
 ```
 
-CI order: `lint → test → generate` (not `build`).
+CI order: `lint → typecheck → test → generate` (not `build`).
 
 ## TypeScript setup
 
@@ -53,6 +56,10 @@ Run a single file:
 ```sh
 pnpm test test/unit/src/cdb.spec.ts
 ```
+
+Canvas-based components (Chart.js, etc.) gate rendering on `canvas.getContext('2d')` after mount; happy-dom has no canvas and the chart library throws unhandled rejections that fail `pnpm test`.
+
+`pnpm typecheck` covers `app/src` and `app/lib` only; full-project `tsc --noEmit` still reports pre-existing errors in `test/nuxt/*`.
 
 ## Architecture
 
