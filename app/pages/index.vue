@@ -14,9 +14,23 @@ import { useInvestmentStore } from '~/stores/investment'
 import { onMounted } from 'vue'
 
 useSeoMeta({
-  title: 'Calculadora',
-  description: 'Calculadora de investimentos Renda Fixa para simulação de rentabilidade em CDB, RDB, LC, LCI, LCA, Poupança e Tesouro Direto',
+  // the homepage carries the full brand title; drop the "%s | Renda Fixa" template
+  title: 'Calculadora de Renda Fixa: CDB, LCI, LCA, Poupança e Tesouro Direto',
+  titleTemplate: null,
+  description: 'Calculadora de renda fixa para simular CDB, RDB, LCI, LCA, Poupança e Tesouro Direto: rentabilidade bruta e líquida com CDI e SELIC atualizados, IR e IOF.',
+  twitterCard: 'summary_large_image',
 })
+
+useSchemaOrg([
+  defineSoftwareApp({
+    name: 'Calculadora de Renda Fixa',
+    description: 'Simulador de investimentos em renda fixa: CDB, RDB, LCI, LCA, Poupança e Tesouro Direto.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    url: 'https://rendafixa.github.io/',
+  }),
+])
+
 const store = useInvestmentStore()
 onMounted(() => {
   store.initializeStore()

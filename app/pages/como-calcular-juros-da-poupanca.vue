@@ -61,9 +61,24 @@
     <h3>Impostos na Poupança</h3>
     <p>
       A poupança é isenta de imposto de renda, ou seja, os rendimentos não sofrem desconto de IR. Para entender melhor como funcionam os impostos em outros investimentos de renda fixa, confira nosso guia sobre       <NuxtLink
-        to="/como-calcular-imposto-de-renda"
+        to="/como-calcular-imposto-de-renda/"
         class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
       >como calcular o imposto de renda</NuxtLink>.
+    </p>
+    <h3>Perguntas frequentes</h3>
+    <h4>Como a poupança é remunerada?</h4>
+    <p>
+      A remuneração é composta pela Taxa Referencial (TR) mais uma parcela adicional: 0,5% ao mês quando a meta da Selic for superior a 8,5% ao
+      ano, ou 70% da meta da Selic mensalizada quando for igual ou inferior a 8,5%.
+    </p>
+    <h4>Quando os rendimentos da poupança são creditados?</h4>
+    <p>
+      Mensalmente, na data de aniversário da conta, para depósitos de pessoa física. Contas abertas nos dias 29, 30 e 31 têm como data de
+      aniversário o dia 1º do mês seguinte.
+    </p>
+    <h4>A poupança paga imposto de renda?</h4>
+    <p>
+      Não. Os rendimentos da caderneta de poupança são isentos de IR para pessoa física, conforme a legislação vigente.
     </p>
     <h3>Fontes Oficiais</h3>
     <ul>
@@ -88,7 +103,46 @@ import { useInvestmentStore } from '~/stores/investment'
 useSeoMeta({
   title: 'Como Calcular Juros da Poupança',
   description: 'Entenda como funciona o cálculo dos juros da poupança, incluindo regras da Selic, TR, datas de aniversário conforme fontes oficiais do Banco Central',
+  twitterCard: 'summary_large_image',
 })
+
+useSchemaOrg([
+  {
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'Como a poupança é remunerada?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'A remuneração é composta pela Taxa Referencial (TR) mais uma parcela adicional: 0,5% ao mês quando a meta da Selic for superior a 8,5% ao ano, ou 70% da meta da Selic mensalizada quando for igual ou inferior a 8,5%.',
+        },
+      },
+      {
+        '@type': 'Question',
+        'name': 'Quando os rendimentos da poupança são creditados?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Mensalmente, na data de aniversário da conta, para depósitos de pessoa física. Contas abertas nos dias 29, 30 e 31 têm como data de aniversário o dia 1º do mês seguinte.',
+        },
+      },
+      {
+        '@type': 'Question',
+        'name': 'A poupança paga imposto de renda?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Não. Os rendimentos da caderneta de poupança são isentos de IR para pessoa física, conforme a legislação vigente.',
+        },
+      },
+    ],
+  },
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Início', item: '/' },
+      { name: 'Como Calcular Juros da Poupança', item: '/como-calcular-juros-da-poupanca/' },
+    ],
+  }),
+])
 
 const investment = useInvestmentStore()
 
