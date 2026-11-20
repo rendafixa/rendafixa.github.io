@@ -1,13 +1,17 @@
 <template>
   <section class="prose prose-slate prose-md dark:prose-invert max-w-4xl mx-auto my-8 px-4 sm:px-8">
-    <Breadcrumbs current="Sobre" />
+    <BreadcrumbNav current="Sobre" />
     <h1>Sobre este projeto</h1>
     <div class="mb-4">
       <div>
         <img
           src="/images/laptop-ide-code.jpg"
+          width="1920"
+          height="1282"
+          loading="lazy"
+          decoding="async"
           class="w-full h-80 object-cover"
-          alt="Laptop IDE Code"
+          alt="Notebook com editor de código aberto, representando o desenvolvimento do projeto"
         >
         <div class="p-6">
           <h3>Como tudo começou?</h3>
@@ -32,6 +36,13 @@
                 title="GitHub Contributors"
                 class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
               >alguns colegas</a>.
+            </p>
+            <p>
+              Volte para a
+              <NuxtLink
+                to="/"
+                class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
+              >calculadora de renda fixa</NuxtLink> e faça sua simulação.
             </p>
           </div>
           <div class="flex flex-wrap gap-2 mt-6">

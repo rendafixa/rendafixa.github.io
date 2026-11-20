@@ -1,6 +1,6 @@
 <template>
   <section class="prose prose-slate dark:prose-invert max-w-3xl mx-auto my-8 px-4 sm:px-8">
-    <Breadcrumbs current="Como Calcular Juros da Poupança" />
+    <BreadcrumbNav current="Como Calcular Juros da Poupança" />
     <h1>Como calcular juros da Poupança</h1>
     <p>
       De acordo com a <a
@@ -48,6 +48,14 @@
       :loading="!investment.poupanca"
       class="mb-6"
     />
+
+    <p>
+      Experimente com seus próprios números na
+      <NuxtLink
+        to="/"
+        class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
+      >calculadora de renda fixa</NuxtLink>.
+    </p>
 
     <h3>Como obtemos o índice da Poupança</h3>
     <p>

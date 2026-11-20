@@ -1,12 +1,16 @@
 <template>
   <section class="prose prose-slate dark:prose-invert max-w-3xl mx-auto my-8 px-4 sm:px-8">
-    <Breadcrumbs current="Como Calcular Imposto de Renda" />
+    <BreadcrumbNav current="Como Calcular Imposto de Renda" />
     <h1>Como calcular o Imposto de Renda sobre investimentos</h1>
 
     <p>
       Esta página explica, de forma clara e prática, como o Imposto de Renda (IR) incide sobre as principais aplicações financeiras no Brasil
       (CDB/RDB, LCI/LCA, fundos e poupança). As regras e tabelas aqui citadas seguem a legislação e normas oficiais (Receita Federal, Planalto,
-      Banco Central e CVM). Veja os links no final da página.
+      Banco Central e CVM). Veja os links no final da página. Para aplicar as regras abaixo com seus próprios números, use a
+      <NuxtLink
+        to="/"
+        class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
+      >calculadora de renda fixa</NuxtLink>.
     </p>
 
     <h3>Tabela regressiva do IR para aplicações de renda fixa</h3>
@@ -108,7 +112,11 @@
       <li><strong>Saldo final:</strong> R$ 10.000 + R$ 60 = <strong>R$ 10.060,00</strong>.</li>
     </ol>
     <p>
-      <em>Nota:</em> Embora isenta de IR, a poupança geralmente oferece rentabilidade menor que CDB ou LCI. A escolha depende do seu objetivo (liquidez, segurança ou rentabilidade).
+      <em>Nota:</em> Embora isenta de IR, a poupança geralmente oferece rentabilidade menor que CDB ou LCI. A escolha depende do seu objetivo (liquidez, segurança ou rentabilidade). Para entender como a poupança é remunerada, confira o guia
+      <NuxtLink
+        to="/como-calcular-juros-da-poupanca/"
+        class="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 underline"
+      >como calcular juros da poupança</NuxtLink>.
     </p>
 
     <h3>Perguntas frequentes</h3>
