@@ -146,4 +146,14 @@ export default defineNuxtConfig({
     // Optionally enable integration with the dev server checker
     checker: true,
   },
+
+  // Fully static deploy (GitHub Pages): every og:image is prerendered at
+  // build time, so there is no runtime rendering endpoint to protect.
+  // Signing URLs with NUXT_APP_SECRET would be dead weight — disable it
+  // so nuxt-og-image does not demand a secret in dev.
+  ogImage: {
+    security: {
+      secret: false,
+    },
+  },
 })
