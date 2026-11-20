@@ -31,10 +31,10 @@ function readPage(path) {
 const HOME_TITLE = 'Calculadora de Renda Fixa: CDB, LCI, LCA, Poupança e Tesouro Direto'
 const SITE = 'https://rendafixa.github.io'
 const pages = [
-  { path: 'index.html', title: HOME_TITLE, schema: 'SoftwareApplication' },
-  { path: 'como-calcular-imposto-de-renda/index.html', title: 'Como Calcular Imposto de Renda sobre Investimentos | Calculadora de Renda Fixa', schema: 'FAQPage' },
-  { path: 'como-calcular-juros-da-poupanca/index.html', title: 'Como Calcular Juros da Poupança | Calculadora de Renda Fixa', schema: 'FAQPage' },
-  { path: 'sobre/index.html', title: 'Sobre | Calculadora de Renda Fixa', schema: 'BreadcrumbList' },
+  { path: 'index.html', title: HOME_TITLE, schema: 'SoftwareApplication', h1: HOME_TITLE },
+  { path: 'como-calcular-imposto-de-renda/index.html', title: 'Como Calcular Imposto de Renda sobre Investimentos | Calculadora de Renda Fixa', schema: 'FAQPage', h1: 'Como calcular o Imposto de Renda sobre investimentos' },
+  { path: 'como-calcular-juros-da-poupanca/index.html', title: 'Como Calcular Juros da Poupança | Calculadora de Renda Fixa', schema: 'FAQPage', h1: 'Como calcular juros da Poupança' },
+  { path: 'sobre/index.html', title: 'Sobre | Calculadora de Renda Fixa', schema: 'BreadcrumbList', h1: 'Sobre este projeto' },
 ]
 
 for (const page of pages) {
@@ -43,6 +43,12 @@ for (const page of pages) {
 
   check(`${page.path}: exact title`, html.includes(`<title>${page.title}</title>`), `got ${html.match(/<title>[^<]*<\/title>/)?.[0] ?? 'no title'}`)
   check(`${page.path}: lang pt-BR`, html.includes('lang="pt-BR"'))
+
+  const h1Matches = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)]
+  const h1Text = h1Matches.map(([, inner]) => inner.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim())
+  check(`${page.path}: exactly one h1`, h1Matches.length === 1, `found ${h1Matches.length}`)
+  check(`${page.path}: h1 is the page topic`, h1Text[0] === page.h1, `got "${h1Text[0] ?? 'none'}", want "${page.h1}"`)
+
   const canonicalPath = page.path === 'index.html' ? '/' : `/${page.path.replace('index.html', '')}`
   check(`${page.path}: canonical`, html.includes(`<link rel="canonical" href="${SITE}${canonicalPath}">`))
   check(`${page.path}: og:image with rendered file`, (() => {

@@ -1,6 +1,6 @@
 <template>
   <section class="prose prose-slate dark:prose-invert max-w-3xl mx-auto my-8 px-4 sm:px-8">
-    <h2>Como calcular o Imposto de Renda sobre investimentos</h2>
+    <h1>Como calcular o Imposto de Renda sobre investimentos</h1>
 
     <p>
       Esta página explica, de forma clara e prática, como o Imposto de Renda (IR) incide sobre as principais aplicações financeiras no Brasil

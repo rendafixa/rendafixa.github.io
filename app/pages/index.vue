@@ -1,5 +1,6 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+    <h1 class="sr-only">Calculadora de Renda Fixa: CDB, LCI, LCA, Poupança e Tesouro Direto</h1>
     <div class="sm:col-span-5 md:col-span-4 sm:self-start sm:sticky sm:top-20">
       <InvestmentInput />
     </div>
