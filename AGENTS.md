@@ -13,6 +13,7 @@ pnpm enforces `minimumReleaseAge`; a release newer than the window resolves to a
 ```sh
 pnpm dev            # dev server
 pnpm generate       # static site generation (what CI deploys)
+pnpm verify:seo     # assert generated SEO output in .output/public (run after generate)
 pnpm lint           # ESLint check
 pnpm lint:fix       # ESLint auto-fix
 pnpm typecheck      # scoped tsc over app/src and app/lib
@@ -20,7 +21,7 @@ pnpm test           # all tests (both unit and nuxt projects)
 pnpm update-indexes # fetch live market rates → app/assets/indicadores.json
 ```
 
-CI order: `lint → typecheck → test → generate` (not `build`).
+CI order: `lint → typecheck → test → generate → verify:seo` (not `build`).
 
 ## TypeScript setup
 
@@ -61,13 +62,26 @@ Canvas-based components (Chart.js, etc.) gate rendering on `canvas.getContext('2
 
 `pnpm typecheck` covers `app/src` and `app/lib` only; full-project `tsc --noEmit` still reports pre-existing errors in `test/nuxt/*`.
 
+The `nuxt` project loads Nuxt with `ssr: false` (hardcoded in `@nuxt/test-utils`), which means:
+
+- `document.title` is unreliable (unhead does not resolve string `titleTemplate`s client-side there) and JSON-LD from `useSchemaOrg()` never reaches the head. Both are asserted by `pnpm verify:seo`, which checks the generated `.output/public` — always run it after `pnpm generate` (CI does, right after the generate step).
+- unhead applies DOM side effects on a timer: mount pages via `mountPageAndSettleHead` from `test/nuxt/seo-head.ts` before asserting head contents.
+
 ## Architecture
 
 - `app/src/` — pure TS financial logic (CDB, LCI/LCA, Poupança, taxes, IOF). No Nuxt dependency; unit-testable in node env.
 - `app/store/` — Pinia stores (investment state, loads `indicadores.json` at runtime).
 - `app/components/` — Vue components.
-- `app/pages/` — Nuxt pages (SPA, SSR is disabled).
+- `app/pages/` — Nuxt pages (prerendered: `ssr: true`, HTML rendered at build time, hydrated into an SPA feel client-side).
+- `app/components/OgImage/` — og:image templates (`*.satori.vue`) rendered to PNG by nuxt-og-image at `pnpm generate` time.
 - `app/assets/indicadores.json` — live market rates (CDI, SELIC, Poupança). Auto-updated by CI workflow; do not hand-edit for persistent changes—use `pnpm update-indexes`.
+
+## SEO (`@nuxtjs/seo`)
+
+`sitemap.xml`, `robots.txt`, og:image PNGs (under `/_og/s/`), JSON-LD graphs and `llms.txt` are all **generated at build time** by the bundled modules — never hand-edit or commit `public/sitemap.xml` / `public/robots.txt` (a static `robots.txt` gets renamed to `_robots.txt` and treated as config source).
+
+- Per-page og:image is wired via `routeRules` (`ogImage` key) in `nuxt.config.ts`, **not** `defineOgImage()` — the vitest nuxt environment loads Nuxt with `ssr: false`, where nuxt-og-image bails out and its composables don't exist (see Testing).
+- Internal links use trailing slashes (`/sobre/`); the site convention is `trailingSlash: true` and the link checker fails the build report otherwise.
 
 ## Nuxt 4 conventions
 
@@ -87,4 +101,4 @@ PR titles must follow **Conventional Commits** (enforced by CI workflow `pr-titl
 
 ## Deployment
 
-The site is a static SPA deployed to GitHub Pages via `pnpm generate`. There is no server-side rendering.
+The site is prerendered static HTML deployed to GitHub Pages via `pnpm generate`. SSR runs at build time only; after hydration the app behaves as an SPA. Skew protection keeps previous build assets alive for clients with cached HTML — its build history lives in `node_modules/.cache/nuxt-seo/skew-protection`, preserved by the cache step in `publish.yml`.

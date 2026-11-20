@@ -8,31 +8,23 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/test-utils/module',
     '@nuxt/eslint',
+    '@nuxtjs/seo',
   ],
-  ssr: false,
+  ssr: true,
 
   devtools: { enabled: true },
   app: {
     head: {
-      titleTemplate: '%s | Renda Fixa',
+      // No explicit titleTemplate: nuxt-seo-utils installs a function-based
+      // "%s | %siteName" template. String templates from nuxt.config do not
+      // resolve %s client-side under unhead v3.
       htmlAttrs: {
-        lang: 'pt',
+        lang: 'pt-BR',
       },
-      title: 'Calculadora',
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'apple-mobile-web-app-title',
           content: 'Renda Fixa',
-        },
-        {
-          name: 'og:title',
-          content: 'Calculadora Renda Fixa',
-        },
-        {
-          name: 'og:site_name',
-          content: 'Calculadora Renda Fixa',
         },
         { name: 'format-detection', content: 'telephone=no' },
       ],
@@ -78,6 +70,58 @@ export default defineNuxtConfig({
   vue: {
     compilerOptions: {
       isCustomElement: tag => tag.startsWith('ion-'),
+    },
+  },
+
+  site: {
+    url: 'https://rendafixa.github.io',
+    name: 'Calculadora de Renda Fixa',
+    description: 'Calculadora de renda fixa para simular CDB, RDB, LCI, LCA, Poupança e Tesouro Direto com CDI e SELIC atualizados.',
+    defaultLocale: 'pt-BR',
+    // GitHub Pages serves directory-style URLs (/sobre/)
+    trailingSlash: true,
+  },
+
+  // og:image per page, rendered at build time from the OgImage/Main template.
+  // Wired via route rules (not defineOgImage) because the vitest nuxt
+  // environment loads the app with ssr: false, where nuxt-og-image bails
+  // out entirely and its composables don't exist.
+  routeRules: {
+    '/': {
+      ogImage: {
+        component: 'Main',
+        props: {
+          title: 'Calculadora de Renda Fixa',
+          description: 'Simule CDB, LCI, LCA, Poupança e Tesouro Direto com CDI e SELIC atualizados.',
+        },
+      },
+    },
+    '/como-calcular-imposto-de-renda': {
+      ogImage: {
+        component: 'Main',
+        props: {
+          title: 'Como Calcular Imposto de Renda sobre Investimentos',
+          description: 'Tabela regressiva do IR, IOF em resgates curtos e investimentos isentos, com exemplos passo a passo.',
+        },
+      },
+    },
+    '/como-calcular-juros-da-poupanca': {
+      ogImage: {
+        component: 'Main',
+        props: {
+          title: 'Como Calcular Juros da Poupança',
+          description: 'Regras de remuneração da poupança: TR, Selic, data de aniversário e crédito dos rendimentos.',
+        },
+      },
+    },
+    '/sobre': {
+      ogImage: {
+        component: 'Main',
+        props: {
+          title: 'Sobre a Calculadora de Renda Fixa',
+          description: 'Conheça o projeto e quem o desenvolve.',
+        },
+      },
     },
   },
 

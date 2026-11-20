@@ -33,3 +33,5 @@ jobs:
         run: pnpm test
       - name: Deploy 😎
         run: pnpm generate
+      - name: Verify SEO output 🔎
+        run: pnpm verify:seo

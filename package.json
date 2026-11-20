@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare",
     "test": "vitest",
     "update-indexes": "node update-indexes.mjs",
+    "verify:seo": "node verify-seo.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p tsconfig.typecheck.json --noEmit"
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
     "@nuxt/test-utils": "^4.4.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.20",
     "@typescript/native": "npm:typescript@^7.0.2",
     "@vitejs/plugin-vue": "^6.0.11",
@@ -25,11 +27,14 @@
     "happy-dom": "^21.0.4",
     "jsdom": "^31.0.1",
     "nuxt": "^4.6.4",
+    "satori": "^0.63.2",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "unifont": "^1.0.3",
     "vite-plugin-eslint2": "^5.3.0",
     "vitest": "^5.1.1"
   },
   "dependencies": {
+    "@nuxtjs/seo": "^6.0.1",
     "@pinia/nuxt": "^1.0.3",
     "@tailwindcss/vite": "^4.3.5",
     "@vue/devtools-api": "^8.2.1",

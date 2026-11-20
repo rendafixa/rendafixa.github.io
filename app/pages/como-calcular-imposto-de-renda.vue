@@ -202,5 +202,44 @@
 useSeoMeta({
   title: 'Como Calcular Imposto de Renda sobre Investimentos',
   description: 'Guia prático para calcular IR e IOF em aplicações financeiras (CDB, LCI/LCA, Poupança) com referências oficiais',
+  twitterCard: 'summary_large_image',
 })
+
+useSchemaOrg([
+  {
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'Quais são as alíquotas do IR em aplicações de renda fixa?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'O IR é cobrado de forma regressiva conforme o prazo de aplicação: 22,5% até 180 dias, 20% de 181 a 360 dias, 17,5% de 361 a 720 dias e 15% acima de 720 dias.',
+        },
+      },
+      {
+        '@type': 'Question',
+        'name': 'Quando incide IOF sobre os rendimentos?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Em resgates feitos em até 30 dias do aporte incide IOF regressivo sobre os rendimentos (96% no primeiro dia, chegando a 0% no dia 30). O IOF reduz o ganho antes da aplicação do IR.',
+        },
+      },
+      {
+        '@type': 'Question',
+        'name': 'Quais investimentos são isentos de IR para pessoa física?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'LCI, LCA e Poupança são isentos de IR para pessoa física, conforme a legislação vigente. Verifique sempre as condições contratuais e eventuais alterações legislativas.',
+        },
+      },
+    ],
+  },
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Início', item: '/' },
+      { name: 'Como Calcular Imposto de Renda', item: '/como-calcular-imposto-de-renda/' },
+    ],
+  }),
+])
 </script>

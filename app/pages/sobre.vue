@@ -103,6 +103,16 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Sobre',
-  description: 'Saiba mais como o projeto Calculadora Renda Fixa começou e quem são os desenvolvedores',
+  description: 'Saiba mais como o projeto Calculadora de Renda Fixa começou e quem são os desenvolvedores',
+  twitterCard: 'summary_large_image',
 })
+
+useSchemaOrg([
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Início', item: '/' },
+      { name: 'Sobre', item: '/sobre/' },
+    ],
+  }),
+])
 </script>
