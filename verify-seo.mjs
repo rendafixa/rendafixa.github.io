@@ -21,7 +21,11 @@ function readPage(path) {
     check(`file ${path} exists`, false, 'missing from generate output')
     return ''
   }
-  return readFileSync(file, 'utf8')
+  const content = readFileSync(file, 'utf8')
+  if (!content.trim()) {
+    check(`file ${path} non-empty`, false, 'exists but is empty')
+  }
+  return content
 }
 
 const HOME_TITLE = 'Calculadora de Renda Fixa: CDB, LCI, LCA, Poupança e Tesouro Direto'
@@ -55,9 +59,16 @@ for (const page of pages) {
   if (page.schema === 'FAQPage') {
     // Structured data must describe content the user can actually see:
     // every JSON-LD question must appear as visible text in the page.
+    // Compare against markup with scripts (including the JSON-LD itself),
+    // styles and comments stripped, so the check cannot be satisfied by
+    // the structured data alone.
+    const visible = html
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<!--[\s\S]*?-->/g, '')
     const questions = [...jsonLd.matchAll(/"@type":"Question","name":"((?:[^"\\]|\\.)*)"/g)].map(m => m[1].replaceAll('\\', ''))
     for (const question of questions) {
-      check(`${page.path}: FAQ question visible on page`, html.includes(question), `"${question}" in JSON-LD but not in page markup`)
+      check(`${page.path}: FAQ question visible on page`, visible.includes(question), `"${question}" in JSON-LD but not in page markup`)
     }
   }
 }
