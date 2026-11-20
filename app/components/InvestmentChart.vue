@@ -86,9 +86,9 @@ const palette = computed<ChartColors>(() => {
   return {
     poupanca: cssVar(`--color-amber-${suffix}`, isDark.value ? '#fbbf24' : '#f59e0b'),
     cdb: cssVar(`--color-sky-${suffix}`, isDark.value ? '#38bdf8' : '#0ea5e9'),
-    cdbPre: cssVar(`--color-emerald-${suffix}`, isDark.value ? '#34d399' : '#10b981'),
-    lcx: cssVar(`--color-violet-${suffix}`, isDark.value ? '#a78bfa' : '#8b5cf6'),
-    lcxPre: cssVar(`--color-indigo-${suffix}`, isDark.value ? '#818cf8' : '#6366f1'),
+    cdbPre: cssVar(`--color-rose-${suffix}`, isDark.value ? '#fb7185' : '#f43f5e'),
+    lcx: cssVar(`--color-teal-${suffix}`, isDark.value ? '#2dd4bf' : '#14b8a6'),
+    lcxPre: cssVar(`--color-violet-${suffix}`, isDark.value ? '#a78bfa' : '#8b5cf6'),
     grid: isDark.value ? 'rgba(148, 163, 184, 0.25)' : 'rgba(100, 116, 139, 0.18)',
     text: cssVar(isDark.value ? '--color-slate-200' : '--color-slate-700', isDark.value ? '#e2e8f0' : '#334155'),
     muted: cssVar(isDark.value ? '--color-slate-400' : '--color-slate-500', isDark.value ? '#94a3b8' : '#64748b'),
@@ -101,7 +101,8 @@ const chartData = computed(() => ({
   datasets: buildProgressionDatasets(props.points, palette.value),
 }))
 
-const chartOptions = computed(() => buildProgressionOptions(palette.value))
+const chartOptions = computed(() =>
+  buildProgressionOptions(palette.value, props.points.at(-1)?.day ?? 0))
 
 function cssVar(name: string, fallback: string): string {
   if (typeof document === 'undefined') {

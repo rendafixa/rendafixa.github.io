@@ -51,8 +51,7 @@ export function buildProgressionDatasets(
       label: seriesLabels[key],
       data: points.map(point => ({ x: point.day, y: point[key] ?? 0 })),
       borderColor: colors[key],
-      backgroundColor: withAlpha(colors[key], 0.08),
-      fill: true,
+      fill: false,
       tension: 0.25,
       pointRadius: 0,
       pointHitRadius: 12,
@@ -60,7 +59,7 @@ export function buildProgressionDatasets(
     }))
 }
 
-export function buildProgressionOptions(colors: ChartColors): ChartOptions<'line'> {
+export function buildProgressionOptions(colors: ChartColors, maxDay: number): ChartOptions<'line'> {
   return {
     responsive: true,
     maintainAspectRatio: false,
@@ -93,6 +92,8 @@ export function buildProgressionOptions(colors: ChartColors): ChartOptions<'line
     scales: {
       x: {
         type: 'linear',
+        min: 0,
+        max: maxDay,
         grid: { color: colors.grid },
         ticks: { color: colors.muted, maxTicksLimit: 8 },
         title: {
@@ -110,32 +111,5 @@ export function buildProgressionOptions(colors: ChartColors): ChartOptions<'line
         },
       },
     },
-  }
-}
-
-function withAlpha(color: string, alpha: number): string {
-  const rgb = parseHexColor(color)
-
-  if (!rgb) {
-    return color
-  }
-
-  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`
-}
-
-function parseHexColor(color: string): { r: number, g: number, b: number } | null {
-  const match = /^#([0-9a-f]{6})$/i.exec(color)
-  const hex = match?.[1]
-
-  if (!hex) {
-    return null
-  }
-
-  const value = Number.parseInt(hex, 16)
-
-  return {
-    r: (value >> 16) & 0xff,
-    g: (value >> 8) & 0xff,
-    b: value & 0xff,
   }
 }
