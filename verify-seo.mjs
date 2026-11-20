@@ -57,6 +57,11 @@ for (const page of pages) {
     const ogPath = og[1].replace(SITE, '')
     return existsSync(join(distDir, ogPath))
   })(), 'og:image meta missing or PNG not rendered')
+  check(`${page.path}: og:image dimensions`, html.includes('<meta property="og:image:width" content="1200">') && html.includes('<meta property="og:image:height" content="600">'), 'og:image:width/height 1200x600 missing (WhatsApp and other scrapers need explicit dimensions)')
+  check(`${page.path}: og:image alt`, (() => {
+    const alt = html.match(/<meta property="og:image:alt" content="([^"]*)"/)
+    return alt !== null && alt[1].trim().length > 0
+  })(), 'og:image:alt missing or empty')
   check(`${page.path}: twitter card`, html.includes('name="twitter:card" content="summary_large_image"'))
 
   const jsonLd = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(m => m[1]).join('\n')

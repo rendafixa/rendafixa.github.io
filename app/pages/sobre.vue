@@ -106,6 +106,7 @@ useSeoMeta({
   title: 'Sobre',
   description: 'Saiba mais como o projeto Calculadora de Renda Fixa começou e quem são os desenvolvedores',
   twitterCard: 'summary_large_image',
+  ogImageAlt: 'Cartão de compartilhamento da página Sobre da Calculadora de Renda Fixa.',
 })
 
 useSchemaOrg([

@@ -20,6 +20,7 @@ useSeoMeta({
   titleTemplate: null,
   description: 'Calculadora de renda fixa para simular CDB, RDB, LCI, LCA, Poupança e Tesouro Direto: rentabilidade bruta e líquida com CDI e SELIC atualizados, IR e IOF.',
   twitterCard: 'summary_large_image',
+  ogImageAlt: 'Cartão de compartilhamento da Calculadora de Renda Fixa com o título e a descrição da página.',
 })
 
 useSchemaOrg([

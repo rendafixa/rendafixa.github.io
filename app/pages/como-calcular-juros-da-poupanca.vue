@@ -105,6 +105,7 @@ useSeoMeta({
   title: 'Como Calcular Juros da Poupança',
   description: 'Entenda como funciona o cálculo dos juros da poupança, incluindo regras da Selic, TR, datas de aniversário conforme fontes oficiais do Banco Central',
   twitterCard: 'summary_large_image',
+  ogImageAlt: 'Cartão de compartilhamento do guia Como Calcular Juros da Poupança.',
 })
 
 useSchemaOrg([

@@ -221,6 +221,7 @@ useSeoMeta({
   title: 'Como Calcular Imposto de Renda sobre Investimentos',
   description: 'Guia prático para calcular IR e IOF em aplicações financeiras (CDB, LCI/LCA, Poupança) com referências oficiais',
   twitterCard: 'summary_large_image',
+  ogImageAlt: 'Cartão de compartilhamento do guia Como Calcular Imposto de Renda sobre Investimentos.',
 })
 
 useSchemaOrg([

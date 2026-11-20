@@ -27,6 +27,10 @@ export default defineNuxtConfig({
           content: 'Renda Fixa',
         },
         { name: 'format-detection', content: 'telephone=no' },
+        // Explicit og:image dimensions: some scrapers (WhatsApp in
+        // particular) need them to show link previews reliably.
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '600' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
