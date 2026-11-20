@@ -1,5 +1,6 @@
 {
   "name": "rendafixa",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -34,7 +35,6 @@
     "@vue/devtools-api": "^8.2.1",
     "axios": "^1.21.1",
     "chart.js": "^4.6.1",
-    "nuxt-schema-org": "^7.0.1",
     "pinia": "^4.1.0",
     "tailwindcss": "^4.3.5",
     "vue-chartjs": "5.3.7"
