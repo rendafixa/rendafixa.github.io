@@ -44,7 +44,11 @@ describe('buildProgressionDatasets', () => {
       seriesLabels.cdb,
       seriesLabels.lcx,
     ])
-    expect(datasets[1].data).toEqual([1000, 1003.2, 1006.4])
+    expect(datasets[1].data).toEqual([
+      { x: 0, y: 1000 },
+      { x: 30, y: 1003.2 },
+      { x: 60, y: 1006.4 },
+    ])
   })
 
   it('adds prefixado datasets only when their points are present', () => {
@@ -58,7 +62,10 @@ describe('buildProgressionDatasets', () => {
       seriesLabels.lcx,
       seriesLabels.lcxPre,
     ])
-    expect(datasets[2].data).toEqual([1000, 1022.3])
+    expect(datasets[2].data).toEqual([
+      { x: 0, y: 1000 },
+      { x: 60, y: 1022.3 },
+    ])
   })
 
   it('styles each series with its palette colour and a filled area', () => {
@@ -76,12 +83,12 @@ describe('buildProgressionOptions', () => {
   type TooltipOptions = {
     callbacks: {
       label: (context: { dataset: { label?: string }, parsed: { y: number } }) => string
-      title: (items: Array<{ label?: string }>) => string
+      title: (items: Array<{ parsed: { x: number } }>) => string
     }
   }
 
   type AxesOptions = {
-    x: { ticks: { color: string }, grid: { color: string } }
+    x: { type: string, ticks: { color: string }, grid: { color: string } }
     y: { ticks: { callback: (value: number) => string } }
   }
 
@@ -112,9 +119,15 @@ describe('buildProgressionOptions', () => {
 
   it('labels tooltips with the sampled day', () => {
     const options = buildProgressionOptions(colors)
-    const title = tooltipOptions(options).callbacks.title([{ label: '30' }])
+    const title = tooltipOptions(options).callbacks.title([{ parsed: { x: 30 } }])
 
     expect(title).toBe('Dia 30')
+  })
+
+  it('uses a linear day axis so intervals keep true proportions', () => {
+    const options = buildProgressionOptions(colors)
+
+    expect(axesOptions(options).x.type).toBe('linear')
   })
 
   it('formats the y axis ticks as currency', () => {

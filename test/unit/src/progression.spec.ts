@@ -53,7 +53,7 @@ describe('getNetProgression - sample points', () => {
 })
 
 describe('getNetProgression - net value semantics (redeem on that day)', () => {
-  it('ends at the same net value the result cards show', () => {
+  it('matches the result-card net values exactly at the final day', () => {
     const points = getNetProgression(baseInput)
     const last = points[points.length - 1]
 
@@ -61,9 +61,9 @@ describe('getNetProgression - net value semantics (redeem on that day)', () => {
     const poupanca = getPoupancaResult(baseInput.amount, baseInput.poupancaIndex, baseInput.periodDays)
     const lcx = getLcxResult(baseInput.amount, baseInput.di, baseInput.lcxIndex, baseInput.periodDays)
 
-    expect(last.cdb).toBeCloseTo(netFromCDBResult(baseInput.amount, cdb), 2)
-    expect(last.poupanca).toBeCloseTo(baseInput.amount + poupanca.interestAmount, 2)
-    expect(last.lcx).toBeCloseTo(baseInput.amount + lcx.interestAmount, 2)
+    expect(last.cdb).toBe(netFromCDBResult(baseInput.amount, cdb))
+    expect(last.poupanca).toBe(baseInput.amount + poupanca.interestAmount)
+    expect(last.lcx).toBe(baseInput.amount + lcx.interestAmount)
   })
 
   it('never decreases over time for any series', () => {
@@ -159,8 +159,8 @@ describe('getNetProgression - prefixado series', () => {
     const cdbPre = getPrefixadoCdbResult(baseInput.amount, 14, baseInput.periodDays)
     const lcxPre = getPrefixadoLcxResult(baseInput.amount, 14, baseInput.periodDays)
 
-    expect(last.cdbPre).toBeCloseTo(netFromCDBResult(baseInput.amount, cdbPre), 2)
-    expect(last.lcxPre).toBeCloseTo(baseInput.amount + lcxPre.interestAmount, 2)
+    expect(last.cdbPre).toBe(netFromCDBResult(baseInput.amount, cdbPre))
+    expect(last.lcxPre).toBe(baseInput.amount + lcxPre.interestAmount)
   })
 
   it('ignores non-positive or non-finite prefixado rates', () => {

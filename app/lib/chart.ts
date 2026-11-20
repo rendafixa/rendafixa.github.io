@@ -1,5 +1,5 @@
 import type { ChartDataset, ChartOptions } from 'chart.js'
-import type { ProgressionPoint } from './progression'
+import type { ProgressionPoint } from '../src/progression'
 
 export interface ChartColors {
   poupanca: string
@@ -36,15 +36,20 @@ export function formatBRL(value: number): string {
   return currencyFormatter.format(value)
 }
 
+export interface ProgressionDataPoint {
+  x: number
+  y: number
+}
+
 export function buildProgressionDatasets(
   points: ProgressionPoint[],
   colors: ChartColors,
-): ChartDataset<'line', number[]>[] {
+): ChartDataset<'line', ProgressionDataPoint[]>[] {
   return SERIES_ORDER
     .filter(key => points.some(point => point[key] !== undefined))
     .map(key => ({
       label: seriesLabels[key],
-      data: points.map(point => point[key] ?? 0),
+      data: points.map(point => ({ x: point.day, y: point[key] ?? 0 })),
       borderColor: colors[key],
       backgroundColor: withAlpha(colors[key], 0.08),
       fill: true,
@@ -60,7 +65,8 @@ export function buildProgressionOptions(colors: ChartColors): ChartOptions<'line
     responsive: true,
     maintainAspectRatio: false,
     interaction: {
-      mode: 'index',
+      mode: 'nearest',
+      axis: 'x',
       intersect: false,
     },
     plugins: {
@@ -76,7 +82,7 @@ export function buildProgressionOptions(colors: ChartColors): ChartOptions<'line
         titleColor: colors.tooltipText,
         bodyColor: colors.tooltipText,
         callbacks: {
-          title: items => `Dia ${items[0]?.label ?? ''}`,
+          title: items => `Dia ${items[0]?.parsed.x ?? ''}`,
           label: (context) => {
             const value = context.parsed.y ?? 0
             return `${context.dataset.label}: ${formatBRL(value)}`
@@ -86,6 +92,7 @@ export function buildProgressionOptions(colors: ChartColors): ChartOptions<'line
     },
     scales: {
       x: {
+        type: 'linear',
         grid: { color: colors.grid },
         ticks: { color: colors.muted, maxTicksLimit: 8 },
         title: {
@@ -118,12 +125,13 @@ function withAlpha(color: string, alpha: number): string {
 
 function parseHexColor(color: string): { r: number, g: number, b: number } | null {
   const match = /^#([0-9a-f]{6})$/i.exec(color)
+  const hex = match?.[1]
 
-  if (!match) {
+  if (!hex) {
     return null
   }
 
-  const value = Number.parseInt(match[1], 16)
+  const value = Number.parseInt(hex, 16)
 
   return {
     r: (value >> 16) & 0xff,

@@ -98,7 +98,6 @@ const palette = computed<ChartColors>(() => {
 })
 
 const chartData = computed(() => ({
-  labels: props.points.map(point => String(point.day)),
   datasets: buildProgressionDatasets(props.points, palette.value),
 }))
 
