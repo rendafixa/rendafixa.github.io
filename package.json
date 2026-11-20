@@ -32,9 +32,11 @@
     "@tailwindcss/vite": "^4.3.5",
     "@vue/devtools-api": "^8.2.1",
     "axios": "^1.21.1",
+    "chart.js": "^4.6.1",
     "nuxt-schema-org": "^7.0.1",
     "pinia": "^4.1.0",
-    "tailwindcss": "^4.3.5"
+    "tailwindcss": "^4.3.5",
+    "vue-chartjs": "5.3.7"
   },
   "packageManager": "pnpm@12.21.0+sha512.66fd8278ee28935ce951792d34367ff3af5c432a2756445823029533835b8da529bbe0be5130afd56ed0713fb8789e47bad82d93bd5ae2fe54b15562d6276ef0"
 }

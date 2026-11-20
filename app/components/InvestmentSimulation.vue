@@ -7,6 +7,10 @@
       Simulação da rentabilidade do seu investimento conforme o tipo de
       aplicação:
     </p>
+    <InvestmentChart
+      :points="progression"
+      class="mb-4"
+    />
     <InvestmentResult
       name="Poupança"
       :amount="investment.amount"
@@ -90,11 +94,13 @@
 
 <script setup lang='ts'>
 import InvestmentResult from '~/components/InvestmentResult.vue'
+import InvestmentChart from '~/components/InvestmentChart.vue'
 import { computed } from 'vue'
 import { getCDBResult } from '~/src/cdb'
 import { getLcxResult } from '~/src/lcx'
 import { getPoupancaResult } from '~/src/poupanca'
 import { getPrefixadoCdbResult, getPrefixadoLcxResult } from '~/src/prefixado'
+import { getNetProgression } from '~/src/progression'
 import { PeriodTypes, useInvestmentStore } from '~/stores/investment'
 
 const investment = useInvestmentStore()
@@ -104,6 +110,26 @@ const periodMultiplier = {
   [PeriodTypes.Months]: 365 / 12,
   [PeriodTypes.Years]: 365,
 }
+
+const progression = computed(() => {
+  if (
+    !isPositiveFinite(investment.poupanca)
+    || !isPositiveFinite(investment.di)
+  ) {
+    return []
+  }
+
+  return getNetProgression({
+    amount: investment.amount,
+    di: investment.di,
+    periodDays: getDurationInDays(),
+    cdbIndex: investment.cdb,
+    lcxIndex: investment.lcx,
+    poupancaIndex: investment.poupanca,
+    cdbPreIndex: investment.cdbPre,
+    lcxPreIndex: investment.lcxPre,
+  })
+})
 
 const resultCDB = computed(() => {
   return getCDBResult(
