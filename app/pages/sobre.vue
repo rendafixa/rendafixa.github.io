@@ -1,5 +1,6 @@
 <template>
   <section class="prose prose-slate prose-md dark:prose-invert max-w-4xl mx-auto my-8 px-4 sm:px-8">
+    <Breadcrumbs current="Sobre" />
     <h1>Sobre este projeto</h1>
     <div class="mb-4">
       <div>

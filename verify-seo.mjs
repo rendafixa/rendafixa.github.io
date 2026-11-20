@@ -77,6 +77,19 @@ for (const page of pages) {
       check(`${page.path}: FAQ question visible on page`, visible.includes(question), `"${question}" in JSON-LD but not in page markup`)
     }
   }
+
+  if (jsonLd.includes('"@type":"BreadcrumbList"')) {
+    // Same visibility rule as the FAQ check: every breadcrumb name in the
+    // JSON-LD must appear as visible text somewhere in the page markup.
+    const visible = html
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<!--[\s\S]*?-->/g, '')
+    const crumbs = [...jsonLd.matchAll(/"@type":"ListItem","name":"((?:[^"\\]|\\.)*)"/g)].map(m => m[1].replaceAll('\\', ''))
+    for (const crumb of crumbs) {
+      check(`${page.path}: breadcrumb "${crumb}" visible on page`, visible.includes(crumb), `"${crumb}" in JSON-LD but not in page markup`)
+    }
+  }
 }
 
 const sitemap = readPage('sitemap.xml')

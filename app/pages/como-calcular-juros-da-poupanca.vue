@@ -1,5 +1,6 @@
 <template>
   <section class="prose prose-slate dark:prose-invert max-w-3xl mx-auto my-8 px-4 sm:px-8">
+    <Breadcrumbs current="Como Calcular Juros da Poupança" />
     <h1>Como calcular juros da Poupança</h1>
     <p>
       De acordo com a <a
