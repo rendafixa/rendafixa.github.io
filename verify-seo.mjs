@@ -109,6 +109,13 @@ if (robots) {
   check('robots.txt references sitemap', robots.includes(`Sitemap: ${SITE}/sitemap.xml`))
 }
 
+const notFound = readPage('404.html')
+if (notFound) {
+  check('404.html declares noindex', notFound.includes('name="robots" content="noindex"'))
+  check('404.html uses pt-BR', notFound.includes('lang="pt-BR"'))
+  check('404.html links back to the calculator', notFound.includes('href="/"'))
+}
+
 console.log(checks.join('\n'))
 if (failures.length > 0) {
   console.error(`\n${failures.length} SEO check(s) failed in ${distDir}`)
