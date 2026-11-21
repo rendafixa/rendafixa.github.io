@@ -63,7 +63,7 @@ export function runChecks(distDir) {
     return content
   }
 
-  const HOME_TITLE = 'Calculadora de Renda Fixa: CDB, LCI, LCA, Poupança e Tesouro Direto'
+  const HOME_TITLE = 'Calculadora de Renda Fixa: CDB, LCI, LCA e Tesouro Direto'
   const SITE = 'https://rendafixa.github.io'
   const pages = [
     { path: 'index.html', title: HOME_TITLE, schema: 'SoftwareApplication', h1: HOME_TITLE },
