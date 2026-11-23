@@ -39,7 +39,7 @@ jobs:
       - name: Skew protection build history 🗄️
         # nuxt-skew-protection keeps previous build assets alive for clients
         # with cached HTML; it needs its build history preserved across runs.
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: node_modules/.cache/nuxt-seo/skew-protection
           key: skew-protection-${{ github.run_id }}
