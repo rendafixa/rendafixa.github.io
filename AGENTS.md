@@ -2,6 +2,8 @@
 
 ## Package manager
 
+Node 26 is required (`engines.node: ^26.0.0`). `.nvmrc` is the single source of truth: developer machines read it, and every workflow passes it to `actions/setup-node` via `node-version-file`. Bump the file to move local and CI together.
+
 ```sh
 pnpm install --frozen-lockfile   # after cloning
 ```
