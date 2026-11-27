@@ -37,7 +37,7 @@
     "vitest": "^5.1.1"
   },
   "dependencies": {
-    "@nuxtjs/seo": "^6.0.1",
+    "@nuxtjs/seo": "^6.1.0",
     "@pinia/nuxt": "^1.0.3",
     "@tailwindcss/vite": "^4.3.5",
     "@vue/devtools-api": "^8.2.1",
